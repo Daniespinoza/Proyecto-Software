@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
-@section('titulo')
-@endsection
+@section('title','Expositores')
 
 @section('contenido')
 AORA SI K FUNSIONA WE

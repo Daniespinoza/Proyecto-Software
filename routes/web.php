@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('index');
 });
 /*Route::get('/agregar_expo', function () {
     return view('Agregar_Expo');

@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
-@section('titulo','Expositores')
-@endsection
+@section('title','Inicio')
 
 @section('contenido')
-HOLA JORGE
+INICIO
 @endsection

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>@yield('titulo','Difusión Utem')</title>
+	<title>@yield('title')</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href=" {{asset('css/select2.min.css')}}" />
         <link rel="stylesheet" href=" {{asset('css/ace-responsive.min.css')}}" />
         <link rel="stylesheet" href=" {{asset('css/dataTables.bootstrap.css')}}" />
-	    <link rel="stylesheet" href=" {{asset('css/bootstrap-editable.css')}}" />
+	    	<link rel="stylesheet" href=" {{asset('css/bootstrap-editable.css')}}" />
         <link rel="stylesheet" href=" {{asset('css/colorbox.min.css')}}" />
 
      	<link rel="stylesheet" href=" {{asset('css/ace-skins.min.css')}}" />

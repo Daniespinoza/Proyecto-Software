@@ -22,11 +22,13 @@ class CreateExhibitorsTable extends Migration
             $table->integer('run');
             $table->integer('alu_celular');
             $table->string('alu_email',50);
+            $table->string('password',50);
             $table->tinyInteger('semestres_aprobados');
             $table->tinyInteger('semestre_actual');
             $table->string('direccion',50);
             $table->integer('id_comuna')->unsigned();
             $table->boolean('activo');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

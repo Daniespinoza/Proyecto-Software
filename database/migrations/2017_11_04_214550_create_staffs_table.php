@@ -22,10 +22,13 @@ class CreateStaffsTable extends Migration
             $table->integer('run');
             $table->integer('id_cargo')->unsigned();
             $table->string('correo',50);
+            $table->string('password',50);
             $table->boolean('activo');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

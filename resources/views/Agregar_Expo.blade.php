@@ -4,5 +4,5 @@
 @endsection
 
 @section('contenido')
-HOLA JORGE
+AORA SI K FUNSIONA WE
 @endsection

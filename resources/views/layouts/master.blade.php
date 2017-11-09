@@ -447,8 +447,9 @@
         <script src="{{asset('js/date-time/datepicker.min.js')}}"></script>
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
-        @section('conteido')
-        <div class="main-container" >
 
+        <div class="main-container" >
+						@yield('contenido')
+				</div>
 	</body>
 </html>

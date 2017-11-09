@@ -14,7 +14,7 @@ class FkExpositor extends Migration
     public function up()
     {
         Schema::table('exhibitors', function (Blueprint $table) {
-            $table->foreign('id_comuna')->references('id_comuna')->on('communes');
+            $table->foreign('id_comuna')->references('id')->on('communes');
             $table->unique('alu_email');
             //
         });

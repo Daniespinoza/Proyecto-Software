@@ -14,8 +14,8 @@ class FkTurno extends Migration
     public function up()
     {
         Schema::table('turns', function (Blueprint $table) {
-            $table->foreign('id_jornada')->references('id_jornada')->on('jornadas');
-          $table->foreign('id_evento')->references('id_evento')->on('events');
+            $table->foreign('id_jornada')->references('id')->on('jornadas');
+          $table->foreign('id_evento')->references('id')->on('events');
             //
         });
     }

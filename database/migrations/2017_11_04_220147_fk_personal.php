@@ -14,7 +14,7 @@ class FkPersonal extends Migration
     public function up()
     {
         Schema::table('staffs', function (Blueprint $table) {
-            $table->foreign('id_cargo')->references('id_cargo')->on('staffcharges');
+            $table->foreign('id_cargo')->references('id')->on('staffcharges');
             $table->unique('correo');
             //
         });

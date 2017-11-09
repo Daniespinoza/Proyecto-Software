@@ -14,7 +14,7 @@ class CreateEstablishmentchargesTable extends Migration
     public function up()
     {
         Schema::create('establishmentcharges', function (Blueprint $table) {
-            $table->increments('id_cargo');
+            $table->increments('id');
             $table->string('descripcion',50);
             $table->timestamps();
         });

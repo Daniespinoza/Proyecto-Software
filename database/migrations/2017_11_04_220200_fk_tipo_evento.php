@@ -14,7 +14,7 @@ class FkTipoEvento extends Migration
     public function up()
     {
         Schema::table('eventtypes', function (Blueprint $table) {
-        $table->foreign('id_subtipo')->references('id_subtipo')->on('subtypes');
+        $table->foreign('id_subtipo')->references('id')->on('subtypes');
             //
         });
     }

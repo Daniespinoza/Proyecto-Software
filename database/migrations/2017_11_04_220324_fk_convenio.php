@@ -14,7 +14,7 @@ class FkConvenio extends Migration
     public function up()
     {
         Schema::table('agreements', function (Blueprint $table) {
-            $table->foreign('id_expositor')->references('id_expositor')->on('exhibitors');
+            $table->foreign('id_expositor')->references('id')->on('exhibitors');
             //
         });
     }

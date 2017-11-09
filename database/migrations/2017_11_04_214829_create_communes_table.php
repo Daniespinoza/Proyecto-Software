@@ -14,7 +14,7 @@ class CreateCommunesTable extends Migration
     public function up()
     {
         Schema::create('communes', function (Blueprint $table) {
-            $table->increments('id_comuna');
+            $table->increments('id');
             $table->string('nombre',50);
             $table->integer('id_region')->unsigned();
             $table->timestamps();

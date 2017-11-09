@@ -14,7 +14,7 @@ class CreateCapacitationsTable extends Migration
     public function up()
     {
         Schema::create('capacitations', function (Blueprint $table) {
-            $table->increments('id_capacitacion');
+            $table->increments('id');
             $table->integer('id_expositor')->unsigned();
             $table->string('descripcion',50);
             $table->boolean('activo');

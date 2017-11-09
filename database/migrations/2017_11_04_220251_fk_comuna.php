@@ -14,7 +14,7 @@ class FkComuna extends Migration
     public function up()
     {
         Schema::table('communes', function (Blueprint $table) {
-            $table->foreign('id_region')->references('id_region')->on('regions');
+            $table->foreign('id_region')->references('id')->on('regions');
             //
         });
     }

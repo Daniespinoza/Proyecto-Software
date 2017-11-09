@@ -14,7 +14,7 @@ class CreateExhibitorsTable extends Migration
     public function up()
     {
         Schema::create('exhibitors', function (Blueprint $table) {
-            $table->increments('id_expositor');
+            $table->increments('id');
             $table->string('alu_nombre',50);
             $table->string('alu_apellido_paterno',50);
             $table->string('alu_apellido_materno',50);

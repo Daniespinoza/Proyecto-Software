@@ -14,8 +14,8 @@ class FkStock extends Migration
     public function up()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->foreign('id_turno')->references('id_turno')->on('turns');
-          $table->foreign('id_material')->references('id_material')->on('materials');
+            $table->foreign('id_turno')->references('id')->on('turns');
+          $table->foreign('id_material')->references('id')->on('materials');
             //
         });
     }

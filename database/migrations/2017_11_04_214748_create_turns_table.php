@@ -14,7 +14,7 @@ class CreateTurnsTable extends Migration
     public function up()
     {
         Schema::create('turns', function (Blueprint $table) {
-            $table->increments('id_turno');
+            $table->increments('id');
             $table->integer('id_jornada')->unsigned();
             $table->integer('id_evento')->unsigned();
             $table->timestamps();

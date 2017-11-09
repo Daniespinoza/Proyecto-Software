@@ -14,9 +14,9 @@ class FkEvento extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->foreign('id_tipo_evento')->references('id_tipo_evento')->on('eventtypes');
-          $table->foreign('id_personal')->references('id_personal')->on('staffs');
-          $table->foreign('id_establecimiento')->references('id_establecimiento')->on('establishments');
+            $table->foreign('id_tipo_evento')->references('id')->on('eventtypes');
+          $table->foreign('id_personal')->references('id')->on('staffs');
+          $table->foreign('id_establecimiento')->references('id')->on('establishments');
             //
         });
     }

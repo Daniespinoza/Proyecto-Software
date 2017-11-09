@@ -14,7 +14,7 @@ class CreateTurndetailsTable extends Migration
     public function up()
     {
         Schema::create('turndetails', function (Blueprint $table) {
-            $table->increments('id_detalle_turno');
+            $table->increments('id');
             $table->integer('id_turno')->unsigned();
             $table->integer('id_expositor')->unsigned();
             $table->boolean('confirmacion');

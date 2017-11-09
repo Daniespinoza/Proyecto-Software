@@ -19,12 +19,12 @@
      	<link rel="stylesheet" href=" {{asset('css/ace-skins.min.css')}}" />
         <link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
         <link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
-        
+
 
 </head>
 
 <body class="no-skin">
-	
+
         <div id="navbar" class="navbar navbar-default">
             <div class="navbar-container" id="navbar-container">
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -95,7 +95,7 @@
 
 <ul class="nav nav-list">
     <li>
-        <a href="/inicio">
+        <a href="/">
             <i class="menu-icon fa fa-tachometer"></i>
             <span class="menu-text"> Inicio </span>
         </a>
@@ -121,6 +121,9 @@
             </li>
         </ul>
     </li>
+
+		<!-- Expositores -->
+
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-user"></i>
@@ -135,7 +138,23 @@
             <li class="">
                 <a href="/agregar_expositor">
                     <i class="menu-icon fa fa-caret-right"></i>
+                	Ver Todo
+
+                </a>
+                <b class="arrow"></b>
+            </li>
+						<li class="">
+                <a href="/agregar_expositor">
+                    <i class="menu-icon fa fa-caret-right"></i>
                 	Agregar
+
+                </a>
+                <b class="arrow"></b>
+            </li>
+						<li class="">
+                <a href="/agregar_expositor">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                	Actualizar
 
                 </a>
                 <b class="arrow"></b>
@@ -143,12 +162,16 @@
             <li class="">
                 <a href="/perfil/mis_datos">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Ver todo
+                    Eliminar
                 </a>
                 <b class="arrow"></b>
             </li>
         </ul>
     </li>
+
+
+		<!-- Evento -->
+
     <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-medkit"></i>
@@ -185,6 +208,58 @@
 
             </ul>
         </li>
+
+				<!-- Establecimiento -->
+				<li class="">
+		        <a href="#" class="dropdown-toggle">
+		            <i class="menu-icon fa fa-globe"></i>
+		            <span class="menu-text"> Establecimientos </span>
+
+		            <b class="arrow fa fa-angle-down"></b>
+		        </a>
+
+		        <b class="arrow"></b>
+
+		        <ul class="submenu">
+		            <li class="">
+		                <a href="/agregar_expositor">
+		                    <i class="menu-icon fa fa-caret-right"></i>
+		                	Ver Todo
+
+		                </a>
+		                <b class="arrow"></b>
+		            </li>
+								<li class="">
+		                <a href="/agregar_expositor">
+		                    <i class="menu-icon fa fa-caret-right"></i>
+		                	Agregar
+
+		                </a>
+		                <b class="arrow"></b>
+		            </li>
+								<li class="">
+		                <a href="/agregar_expositor">
+		                    <i class="menu-icon fa fa-caret-right"></i>
+		                	Actualizar
+
+		                </a>
+		                <b class="arrow"></b>
+		            </li>
+		            <li class="">
+		                <a href="/perfil/mis_datos">
+		                    <i class="menu-icon fa fa-caret-right"></i>
+		                    Eliminar
+		                </a>
+		                <b class="arrow"></b>
+		            </li>
+		        </ul>
+		    </li>
+
+
+
+
+
+				<!-- Materiales -->
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-globe"></i>
@@ -211,6 +286,14 @@
                 <li class="">
                     <a href="/sesaes/anular_reserva">
                         <i class="menu-icon fa fa-caret-right"></i>
+                        Actualizar
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+								<li class="">
+                    <a href="/sesaes/anular_reserva">
+                        <i class="menu-icon fa fa-caret-right"></i>
                         Eliminar
                     </a>
 
@@ -219,20 +302,25 @@
 
             </ul>
         </li>
+
+
+			<!-- Sueldos -->
         <li class="">
-        <a href="https://pagos.utem.cl/cupon_matricula/19360858" target="_blank">
+        <a href="#" target="_blank">
             <i class="menu-icon fa fa-credit-card "></i>
             <span class="menu-text"> Sueldos </span>
         </a>
-        <b class="arrow"></b>      
+        <b class="arrow"></b>
     </li>
 
+
+		<!-- Generar convenio -->
     <li class="">
-        <a href="/cupon/index">
+        <a href="#">
             <i class="menu-icon fa fa-credit-card "></i>
             <span class="menu-text"> Generar Convenio </span>
         </a>
-        <b class="arrow"></b>      
+        <b class="arrow"></b>
     </li>
 
     <li>
@@ -289,7 +377,7 @@
             <li class="">
                 <a href="http://validacion.utem.cl" target="_blank">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Validación Certificados 
+                    Validación Certificados
                 </a>
                 <b class="arrow"></b>
             </li>
@@ -331,7 +419,7 @@
                         <ul class="breadcrumb">
                             <li>
                                 <i class="ace-icon fa fa-home home-icon"></i>
-                                <a href="#">Inicio</a>
+                                <a href="/">Inicio</a>
                             </li>
 
                             <li class="active"></li>
@@ -343,7 +431,7 @@
 
          <script src="js/formulario.js"></script>
         <script src="{{asset('js/jquery.carousel.js')}}"></script>
-        
+
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/bootbox.min.js')}}"></script>
         <script src="{{asset('js/ace-elements.min.js')}}"></script>

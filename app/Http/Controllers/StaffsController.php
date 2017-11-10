@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class StaffsController extends Controller
+{
+  public function all()
+  {
+    return view('addexpo');
+  }
+}

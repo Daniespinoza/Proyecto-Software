@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('Agregar_Expo');
 });*/
 
-Route::get('/agregar_expositor', 'Agregar_expoController@all');
+Route::get('/agregar_expositor', 'StaffsController@all');

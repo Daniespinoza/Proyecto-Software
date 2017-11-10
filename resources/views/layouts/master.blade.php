@@ -126,7 +126,7 @@
 
     <li class="">
         <a href="#" class="dropdown-toggle">
-            <i class="menu-icon fa fa-user"></i>
+            <i class="menu-icon fa fa-group"></i>
             <span class="menu-text"> Expositores </span>
 
             <b class="arrow fa fa-angle-down"></b>
@@ -174,7 +174,7 @@
 
     <li class="">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-medkit"></i>
+                <i class="menu-icon fa fa-flag"></i>
                 <span class="menu-text"> Evento </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -212,7 +212,7 @@
 				<!-- Establecimiento -->
 				<li class="">
 		        <a href="#" class="dropdown-toggle">
-		            <i class="menu-icon fa fa-globe"></i>
+		            <i class="menu-icon fa fa-building"></i>
 		            <span class="menu-text"> Establecimientos </span>
 
 		            <b class="arrow fa fa-angle-down"></b>
@@ -262,7 +262,7 @@
 				<!-- Materiales -->
         <li class="">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-globe"></i>
+                <i class="menu-icon fa fa-pencil"></i>
                 <span class="menu-text"> Materiales </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -307,8 +307,8 @@
 			<!-- Sueldos -->
         <li class="">
         <a href="#" target="_blank">
-            <i class="menu-icon fa fa-credit-card "></i>
-            <span class="menu-text"> Sueldos </span>
+            <i class="menu-icon fa fa-money "></i>
+            <span class="menu-text"> Mi Sueldo </span>
         </a>
         <b class="arrow"></b>
     </li>
@@ -317,7 +317,7 @@
 		<!-- Generar convenio -->
     <li class="">
         <a href="#">
-            <i class="menu-icon fa fa-credit-card "></i>
+            <i class="menu-icon fa fa-pencil-square-o "></i>
             <span class="menu-text"> Generar Convenio </span>
         </a>
         <b class="arrow"></b>

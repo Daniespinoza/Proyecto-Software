@@ -14,4 +14,10 @@ class Turndetail extends Model
     'confirmacion',
     'asistencia'
   ];
+  public function Exhibitors(){
+    return $this->belongsToMany('App\Exhibitor');
+  }
+  public function Turns(){
+    return $this->hasOne('App\Turn');
+  }
 }

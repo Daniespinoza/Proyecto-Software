@@ -23,5 +23,12 @@ class Staff extends Model
       'password','rememberToken'
     ];
 
+    public function StaffCharges(){
+      return $this->hasOne('App\StaffCharge');
+    }
+    public function Events(){
+      return $this->belongsTo('App\Event');
+    }
+
 
 }

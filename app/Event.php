@@ -13,4 +13,19 @@ class Event extends Model
     'id_personal',
     'id_establecimiento'
   ];
+
+  public function Staffs(){
+    return $this->hasOne('App\Staff');
+  }
+  public function Eventtypes(){
+    return $this->hasOne('App\Eventtype');
+  }
+  public function Establishments(){
+    return $this->hasOne('App\Establishment');
+  }
+  public function Turns(){
+    return $this->belongsTo('App\Turn');
+  }
+
+
 }

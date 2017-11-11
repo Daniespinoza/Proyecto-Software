@@ -14,4 +14,8 @@ class Agreement extends Model
     'firma',
     'documento',
   ];
+
+  public function Exhibitors(){
+    return $this->hasMany('App\Exhibitor');
+  }
 }

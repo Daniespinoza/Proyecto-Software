@@ -8,5 +8,9 @@ class Department extends Model
 {
   protected $primaryKey = 'id';
 
-  protected $fillable = 'descripcion';
+  protected $fillable = ['descripcion'];
+
+  public function Establishments(){
+    return $this->belongsTo('App\Establishment');
+  }
 }

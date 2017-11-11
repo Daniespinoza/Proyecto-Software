@@ -13,4 +13,11 @@ class Stock extends Model
     'id_material',
     'cantidad'
   ];
+  public function Turns(){
+    return $this->hasOne('App\Turn');
+  }
+  public function Materials(){
+    return $this->hasMany('App\Material');
+  }
+
 }

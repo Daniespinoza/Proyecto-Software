@@ -13,4 +13,9 @@ class Capacitation extends Model
     'descripcion',
     'activo',
   ];
+
+  public function Exhibitors(){
+    return $this->belongsToMany('App\Exhibitor');
+  }
+
 }

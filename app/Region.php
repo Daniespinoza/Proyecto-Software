@@ -8,5 +8,10 @@ class Region extends Model
 {
   protected $primaryKey = 'id';
 
-  protected $fillable = 'nombre';
+  protected $fillable = ['nombre'];
+
+  public function Comunnes(){
+    return $this->hasMany('App\Commune');
+  }
+
 }

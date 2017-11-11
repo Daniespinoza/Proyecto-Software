@@ -12,4 +12,11 @@ class Eventtype extends Model
     'id_subtipo',
     'descripcion'
   ];
+
+  public function Subtypes(){
+    return $this->hasOne('App\Subtype');
+  }
+  public function Events(){
+    return $this->belongsTo('App\Event');
+  }
 }

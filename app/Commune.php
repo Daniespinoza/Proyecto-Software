@@ -12,4 +12,15 @@ class Commune extends Model
     'nombre',
     'id_region',
   ];
+
+  public function Regions(){
+    return $this->hasOne('App\Commune');
+  }
+  public function Exhibitos(){
+    return $this->belongsTo('App\Exhibitor');
+  }
+  public function Establishments(){
+    return $this->belongsTo('App\Establishment');
+  }
+
 }

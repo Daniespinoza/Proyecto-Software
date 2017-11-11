@@ -13,4 +13,8 @@ class Jornada extends Model
     'valor',
     'activo'
   ];
+  public function Turns(){
+    return $this->belongsTo('App\Turn');
+  }
+  
 }

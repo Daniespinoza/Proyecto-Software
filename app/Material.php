@@ -13,4 +13,8 @@ class Material extends Model
     'stock_total',
     'activo'
   ];
+
+  public function Stocks(){
+    return $this->belongsTo('App\Material');
+  }
 }

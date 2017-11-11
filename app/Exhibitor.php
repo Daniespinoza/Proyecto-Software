@@ -25,4 +25,19 @@ class Exhibitor extends Model
   protected $hidden = [
     'password','rememberToken'
   ];
+
+  public function Agreements(){
+    return $this->belongsTo('App\Agreement');
+  }
+  public function Communes(){
+    return $this->hasOne('App\Commune');
+  }
+  public function Capacitations(){
+    return $this->belongsToMany('App\Capacitation');
+  }
+  public function Turndetails(){
+    return $this->belongsToMany('App\Turndetail');
+  }
+
+
 }

@@ -37,14 +37,14 @@
                     <a href="/inicio" class="navbar-brand">
                         <small>
                             <img src="{{asset('images/logo.png')}}" height="23px">
-                            Difusion Utem
+                            Difusión UTEM
                         </small>
                     </a>
                 </div>
 
                 <div class="navbar-buttons navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
-                                                                                                <li class="light-blue">
+                        <li class="light-blue">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 
                                 <img class='nav-user-photo' src="images/desconocido.jpg" />

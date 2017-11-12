@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
-@section('titulo','Expositores')
-@endsection
+@section('title','Expositores')
 
 @section('contenido')
-HOLA JORGE
+AGREGAR EXPOSITOR
 @endsection

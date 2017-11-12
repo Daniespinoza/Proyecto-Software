@@ -3,5 +3,5 @@
 @section('title','Expositores')
 
 @section('contenido')
-AORA SI K FUNSIONA WE
+ACTUALIZAR MATERIAL
 @endsection

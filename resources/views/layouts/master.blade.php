@@ -136,23 +136,23 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="/agregar_expositor">
+                <a class="link" href=" {{ action('StaffsController@viewexp') }} ">
                     <i class="menu-icon fa fa-caret-right"></i>
                 	Ver Todo
 
                 </a>
                 <b class="arrow"></b>
             </li>
+
 						<li class="">
-                <a href="/agregar_expositor">
+                <a class="link" href=" {{ action('StaffsController@addexp') }} ">
                     <i class="menu-icon fa fa-caret-right"></i>
                 	Agregar
-
                 </a>
                 <b class="arrow"></b>
             </li>
 						<li class="">
-                <a href="/agregar_expositor">
+                <a class="link" href=" {{ action('StaffsController@updateexp') }} ">
                     <i class="menu-icon fa fa-caret-right"></i>
                 	Actualizar
 
@@ -160,7 +160,7 @@
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="/perfil/mis_datos">
+                <a class="link" href=" {{ action('StaffsController@deleteexp') }} ">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Eliminar
                 </a>
@@ -222,7 +222,7 @@
 
 		        <ul class="submenu">
 		            <li class="">
-		                <a href="/agregar_expositor">
+		                <a class="link" href=" {{ action('StaffsController@viewestablish') }} ">
 		                    <i class="menu-icon fa fa-caret-right"></i>
 		                	Ver Todo
 
@@ -230,7 +230,7 @@
 		                <b class="arrow"></b>
 		            </li>
 								<li class="">
-		                <a href="/agregar_expositor">
+		               <a class="link" href=" {{ action('StaffsController@addestablish') }} ">
 		                    <i class="menu-icon fa fa-caret-right"></i>
 		                	Agregar
 
@@ -238,7 +238,7 @@
 		                <b class="arrow"></b>
 		            </li>
 								<li class="">
-		                <a href="/agregar_expositor">
+		               <a class="link" href=" {{ action('StaffsController@updateestablish') }} ">
 		                    <i class="menu-icon fa fa-caret-right"></i>
 		                	Actualizar
 
@@ -246,7 +246,7 @@
 		                <b class="arrow"></b>
 		            </li>
 		            <li class="">
-		                <a href="/perfil/mis_datos">
+		                <a class="link" href=" {{ action('StaffsController@deleteestablish') }} ">
 		                    <i class="menu-icon fa fa-caret-right"></i>
 		                    Eliminar
 		                </a>
@@ -269,14 +269,14 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="">
-                    <a href="/sesaes/reserva_hora">
+                  <a class="link" href=" {{ action('StaffsController@viewmat') }} ">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Ver todo
                     </a>
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="/sesaes/anular_reserva">
+                    <a class="link" href=" {{ action('StaffsController@addmat') }} ">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Agregar
                     </a>
@@ -284,7 +284,7 @@
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="/sesaes/anular_reserva">
+                    <a class="link" href=" {{ action('StaffsController@updatemat') }} ">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Actualizar
                     </a>
@@ -292,7 +292,7 @@
                     <b class="arrow"></b>
                 </li>
 								<li class="">
-                    <a href="/sesaes/anular_reserva">
+                    <a class="link" href=" {{ action('StaffsController@deletemat') }} ">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Eliminar
                     </a>
@@ -316,7 +316,7 @@
 
 		<!-- Generar convenio -->
     <li class="">
-        <a href="#">
+        <a class="link" href=" {{ action('StaffsController@addagree') }}">
             <i class="menu-icon fa fa-pencil-square-o "></i>
             <span class="menu-text"> Generar Convenio </span>
         </a>

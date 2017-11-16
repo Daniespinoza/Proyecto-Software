@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('title','Expositores')
-
+@section('title','Establecimientos')
+@section('ventana','Actualizar Establecimientos')
 @section('contenido')
-ACTUALIZAR ESTABLECIMIENTO
+
 @endsection

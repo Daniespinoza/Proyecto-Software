@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@section('title','Expositores')
-
+@section('title','Establecimientos')
+@section('ventana','Agregar Establecimiento')
 @section('contenido')
-AGREGAR ESTABLECIMIENTO
+
 @endsection

@@ -20,7 +20,6 @@
         <link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
         <link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
 
-
 </head>
 
 <body class="no-skin">
@@ -114,7 +113,7 @@
         <ul class="submenu">
             <li class="">
                 <a href="/perfil/mis_datos">
-                    <i class="menu-icon fa fa-caret-right"></i>
+                    <i class="menu-icon fa fa-newspaper-o"></i>
                     Mis Datos
                 </a>
                 <b class="arrow"></b>
@@ -137,7 +136,7 @@
         <ul class="submenu">
             <li class="">
                 <a class="link" href=" {{ action('StaffsController@viewexp') }} ">
-                    <i class="menu-icon fa fa-caret-right"></i>
+                    <i class="menu-icon fa fa-search"></i>
                 	Ver Todo
 
                 </a>
@@ -146,14 +145,14 @@
 
 						<li class="">
                 <a class="link" href=" {{ action('StaffsController@addexp') }} ">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                	Agregar
+                    <i class="menu-icon fa fa-plus"></i>
+                		Agregar
                 </a>
                 <b class="arrow"></b>
             </li>
 						<li class="">
                 <a class="link" href=" {{ action('StaffsController@updateexp') }} ">
-                    <i class="menu-icon fa fa-caret-right"></i>
+                    <i class="menu-icon fa fa-refresh"></i>
                 	Actualizar
 
                 </a>
@@ -161,7 +160,7 @@
             </li>
             <li class="">
                 <a class="link" href=" {{ action('StaffsController@deleteexp') }} ">
-                    <i class="menu-icon fa fa-caret-right"></i>
+                    <i class="menu-icon fa fa-times"></i>
                     Eliminar
                 </a>
                 <b class="arrow"></b>
@@ -182,24 +181,24 @@
             <ul class="submenu">
                 <li class="">
                     <a href="/sesaes/reserva_hora">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Asignar horario
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="/sesaes/anular_reserva">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Calendario
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-                <li class="">
-                    <a href="/sesaes/anular_reserva">
-                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-plus"></i>
                         Crear Evento
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="/sesaes/anular_reserva">
+                        <i class="menu-icon fa fa-plus-circle"></i>
+                        Asignar Horario
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="/sesaes/anular_reserva">
+                        <i class="menu-icon fa fa-calendar"></i>
+                        Calendario
                     </a>
 
                     <b class="arrow"></b>
@@ -212,7 +211,7 @@
 				<!-- Establecimiento -->
 				<li class="">
 		        <a href="#" class="dropdown-toggle">
-		            <i class="menu-icon fa fa-building"></i>
+		            <i class="menu-icon fa fa-university"></i>
 		            <span class="menu-text"> Establecimientos </span>
 
 		            <b class="arrow fa fa-angle-down"></b>
@@ -223,7 +222,7 @@
 		        <ul class="submenu">
 		            <li class="">
 		                <a class="link" href=" {{ action('StaffsController@viewestablish') }} ">
-		                    <i class="menu-icon fa fa-caret-right"></i>
+		                    <i class="menu-icon fa fa-search"></i>
 		                	Ver Todo
 
 		                </a>
@@ -231,7 +230,7 @@
 		            </li>
 								<li class="">
 		               <a class="link" href=" {{ action('StaffsController@addestablish') }} ">
-		                    <i class="menu-icon fa fa-caret-right"></i>
+		                    <i class="menu-icon fa fa-plus"></i>
 		                	Agregar
 
 		                </a>
@@ -239,7 +238,7 @@
 		            </li>
 								<li class="">
 		               <a class="link" href=" {{ action('StaffsController@updateestablish') }} ">
-		                    <i class="menu-icon fa fa-caret-right"></i>
+		                    <i class="menu-icon fa fa-refresh"></i>
 		                	Actualizar
 
 		                </a>
@@ -247,7 +246,7 @@
 		            </li>
 		            <li class="">
 		                <a class="link" href=" {{ action('StaffsController@deleteestablish') }} ">
-		                    <i class="menu-icon fa fa-caret-right"></i>
+		                    <i class="menu-icon fa fa-times"></i>
 		                    Eliminar
 		                </a>
 		                <b class="arrow"></b>
@@ -270,14 +269,14 @@
             <ul class="submenu">
                 <li class="">
                   <a class="link" href=" {{ action('StaffsController@viewmat') }} ">
-                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-search"></i>
                         Ver todo
                     </a>
                     <b class="arrow"></b>
                 </li>
                 <li class="">
                     <a class="link" href=" {{ action('StaffsController@addmat') }} ">
-                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-plus"></i>
                         Agregar
                     </a>
 
@@ -285,7 +284,7 @@
                 </li>
                 <li class="">
                     <a class="link" href=" {{ action('StaffsController@updatemat') }} ">
-                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-refresh"></i>
                         Actualizar
                     </a>
 
@@ -293,7 +292,7 @@
                 </li>
 								<li class="">
                     <a class="link" href=" {{ action('StaffsController@deletemat') }} ">
-                        <i class="menu-icon fa fa-caret-right"></i>
+                        <i class="menu-icon fa fa-times"></i>
                         Eliminar
                     </a>
 
@@ -306,7 +305,7 @@
 
 			<!-- Sueldos -->
         <li class="">
-        <a href="#" target="_blank">
+        <a href="" target="_blank">
             <i class="menu-icon fa fa-money "></i>
             <span class="menu-text"> Mi Sueldo </span>
         </a>
@@ -384,7 +383,7 @@
         </ul>
     </li>
     <li>
-        <a href="/contacto">
+        <a href="">
             <i class="menu-icon fa fa-send"></i>
             <span class="menu-text"> Contáctanos</span>
         </a>
@@ -419,10 +418,10 @@
                         <ul class="breadcrumb">
                             <li>
                                 <i class="ace-icon fa fa-home home-icon"></i>
-                                <a href="/">Inicio</a>
+                                <a href="/">Inicio </a>
                             </li>
 
-                            <li class="active"></li>
+                            <li class="active"> @yield('ventana')</li>
                         </ul>
                         </div><!-- /.main-content -->
                     <div class="page-content">

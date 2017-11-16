@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('index');
 });
-
+*/
 Route::get('/agregar_expositor', 'StaffsController@addexp');
 Route::get('/ver_expositores', 'StaffsController@viewexp');
 Route::get('/actualizar_expositor', 'StaffsController@updateexp');
@@ -33,3 +33,7 @@ Route::get('/actualizar_material', 'StaffsController@updatemat');
 Route::get('/eliminar_material', 'StaffsController@deletemat');
 
 Route::get('/agregar_convenio', 'StaffsController@addagree');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index');

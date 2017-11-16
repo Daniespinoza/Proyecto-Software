@@ -48,7 +48,7 @@
 
                                 <img class='nav-user-photo' src="images/desconocido.jpg" />
                                 <span class="user-info">
-                                    <small>Hola Intruso</small>
+                                    <small>Hola   {{ Auth::user()->name }}</small>
                                     </span>
 
                                 <i class="ace-icon fa fa-caret-down"></i>
@@ -65,10 +65,15 @@
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="/salir">
+                                    <a href="{{ route('logout') }}"
+																		onclick="event.preventDefault();
+																		document.getElementById('logout-form').submit();">
                                         <i class="ace-icon fa fa-power-off"></i>
                                         Salir
-                                    </a>
+																		</a>
+																		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+																				{{ csrf_field() }}
+																		</form>
                                 </li>
                             </ul>
                         </li>

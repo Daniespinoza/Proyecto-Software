@@ -7,6 +7,32 @@ use Illuminate\Http\Request;
 class StaffsController extends Controller
 {
   //exhibitors
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
+
+  public function update($id)
+  {
+    # code...
+  }
+  public function show($id)
+  {
+    # code...
+  }
+  public function insert($id)
+  {
+    # code...
+  }
+  public function delete($id)
+  {
+    # code...
+  }
+
+
+
+
   public function addexp()
   {
     return view('personal/addexhibitor');
@@ -14,7 +40,8 @@ class StaffsController extends Controller
   public function deleteexp(){
     return view('personal/deleteexhibitor');
   }
-  public function viewexp(){
+  public function viewexp(Request $request){
+
     return view('personal/viewexhibitor');
   }
   public function updateexp(){

@@ -50,6 +50,40 @@
 
                 <div class="navbar-buttons navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
+											<!-- ALERTA ALERTAAA -->
+											@if (Auth::user()->id_rol==2)
+											<li class="purple">
+											<a aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+											<i class="ace-icon fa fa-bell icon-animated-bell"></i>
+											<span class="badge badge-success">1</span>
+											</a>
+											<ul style="" class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+											<li class="dropdown-header">
+											<i class="ace-icon fa fa-exclamation-triangle"></i>
+											1 Notificación
+											</li>
+											<li style="position: relative;" class="dropdown-content ace-scroll">
+											<div style="display: none;" class="scroll-track"><div class="scroll-bar"></div></div><div style="" class="scroll-content">
+											<ul class="dropdown-menu dropdown-navbar navbar-pink">
+											<li>
+											<a href="#">
+											<div class="clearfix">
+											<span class="pull-left">
+											<i class="fa fa-exclamation blue bigger-130 "></i>
+											<b>Notificación de turno</b><br />
+											Nuevo turno asignado, por favor revisa, no sea wn.
+											<br />
+											</span>
+											</div>
+											</a>
+											</li>
+
+											</ul>
+											</div>
+											</li>
+											</ul>
+											</li>
+											@endif
                         <li class="light-blue">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 
@@ -63,7 +97,7 @@
 
                             <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="/perfil/mis_datos">
+                                    <a href="">
                                         <i class="ace-icon fa fa-user"></i>
                                         Mis Datos
                                     </a>
@@ -124,17 +158,26 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="/perfil/mis_datos">
+                <a href="">
                     <i class="menu-icon fa fa-newspaper-o"></i>
                     Mis Datos
                 </a>
                 <b class="arrow"></b>
             </li>
+						@if (Auth::user()->id_rol == 2)
+						<li class="">
+                <a href="">
+                    <i class="menu-icon fa fa-calendar"></i>
+                    Mi horario
+                </a>
+                <b class="arrow"></b>
+            </li>
+						@endif
         </ul>
     </li>
 
 		<!-- Expositores -->
-
+		@if ( Auth::user()->id_rol == 1)
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-group"></i>
@@ -180,7 +223,7 @@
             </li>
         </ul>
     </li>
-
+		@endif
 
 		<!-- Evento -->
 
@@ -192,6 +235,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
+							@if (Auth::user()->id_rol == 1)
                 <li class="">
                     <a href="/sesaes/reserva_hora">
                         <i class="menu-icon fa fa-plus"></i>
@@ -207,11 +251,12 @@
 
                     <b class="arrow"></b>
                 </li>
+								@endif
 
                 <li class="">
                     <a href="">
                         <i class="menu-icon fa fa-calendar"></i>
-                        Calendario
+                        Calendario de actividades
                     </a>
 
                     <b class="arrow"></b>
@@ -223,13 +268,14 @@
 
 				<!-- Establecimiento -->
 				<li class="">
+						@if (Auth::user()->id_rol == 1)
 		        <a href="#" class="dropdown-toggle">
 		            <i class="menu-icon fa fa-university"></i>
 		            <span class="menu-text"> Establecimientos </span>
 
 		            <b class="arrow fa fa-angle-down"></b>
 		        </a>
-
+						@endif
 		        <b class="arrow"></b>
 
 		        <ul class="submenu">
@@ -272,6 +318,7 @@
 
 
 				<!-- Materiales -->
+				@if (Auth::user()->id_rol == 1)
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-pencil"></i>
@@ -314,6 +361,7 @@
 
             </ul>
         </li>
+				@endif
 
 
 			<!-- Sueldos -->
@@ -327,6 +375,7 @@
 
 
 		<!-- Generar convenio -->
+		@if (Auth::user()->id_rol == 1)
     <li class="">
         <a class="link" href=" {{ action('StaffsController@addagree') }}">
             <i class="menu-icon fa fa-pencil-square-o "></i>
@@ -334,6 +383,7 @@
         </a>
         <b class="arrow"></b>
     </li>
+		@endif
 
     <li>
     <b class="arrow"></b>

@@ -15,18 +15,19 @@ class CreateExhibitorsTable extends Migration
     {
         Schema::create('exhibitors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('alu_nombre',50);
-            $table->string('alu_apellido_paterno',50);
-            $table->string('alu_apellido_materno',50);
-            $table->string('alu_rut',50);
+            $table->string('alu_nombre');
+            $table->string('alu_apellido_paterno');
+            $table->string('alu_apellido_materno');
+            $table->string('alu_rut');
             $table->integer('run');
             $table->integer('alu_celular');
-            $table->string('alu_email',50);
-            $table->string('password',50);
+            $table->string('alu_email',150);
+            $table->string('password');
             $table->tinyInteger('semestres_aprobados');
             $table->tinyInteger('semestre_actual');
-            $table->string('direccion',50);
+            $table->string('direccion');
             $table->integer('id_comuna')->unsigned();
+            $table->integer('id_user')->unsigned();
             $table->boolean('activo');
             $table->rememberToken();
             $table->timestamps();

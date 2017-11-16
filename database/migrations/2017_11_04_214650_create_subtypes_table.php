@@ -15,7 +15,7 @@ class CreateSubtypesTable extends Migration
     {
         Schema::create('subtypes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion',50);
+            $table->string('descripcion');
             $table->timestamps();
         });
     }

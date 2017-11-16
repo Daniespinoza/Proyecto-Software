@@ -15,7 +15,7 @@ class CreateEstablishmentchargesTable extends Migration
     {
         Schema::create('establishmentcharges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion',50);
+            $table->string('descripcion');
             $table->timestamps();
         });
     }

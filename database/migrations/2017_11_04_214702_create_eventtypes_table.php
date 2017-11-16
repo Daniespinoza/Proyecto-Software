@@ -16,7 +16,7 @@ class CreateEventtypesTable extends Migration
         Schema::create('eventtypes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_subtipo')->unsigned();
-            $table->string('descripcion',50);
+            $table->string('descripcion');
             $table->timestamps();
         });
     }

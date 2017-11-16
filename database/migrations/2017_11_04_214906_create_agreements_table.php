@@ -16,7 +16,7 @@ class CreateAgreementsTable extends Migration
         Schema::create('agreements', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_expositor')->unsigned();
-            $table->string('descripcion',50);
+            $table->string('descripcion');
             $table->boolean('firma');
             $table->binary('documento'); // BLOB data
             $table->timestamps();

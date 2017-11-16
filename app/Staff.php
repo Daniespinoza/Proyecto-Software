@@ -16,18 +16,25 @@ class Staff extends Model
       'run',
       'correo',
       'activo',
-      'id_cargo'
+      'id_rol',
+      'id_user',
+      'password'
     ];
 
     protected $hidden = [
       'password','rememberToken'
     ];
 
-    public function StaffCharges(){
-      return $this->hasOne('App\StaffCharge');
+    //Relationships
+
+    public function Roles(){
+      return $this->hasOne('App\Role');
     }
     public function Events(){
       return $this->belongsTo('App\Event');
+    }
+    public function Users(){
+      return $this->hasMany('App\User');
     }
 
 

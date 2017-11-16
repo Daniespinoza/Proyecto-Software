@@ -15,7 +15,7 @@ class CreateJornadasTable extends Migration
     {
         Schema::create('jornadas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion',50);
+            $table->string('descripcion');
             $table->integer('valor');
             $table->boolean('activo');
             $table->timestamps();

@@ -15,15 +15,16 @@ class CreateStaffsTable extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',50);
-            $table->string('apellido_paterno',50);
-            $table->string('apellido_materno',50);
+            $table->string('nombre');
+            $table->string('apellido_paterno');
+            $table->string('apellido_materno');
             $table->string('rut',11);
             $table->integer('run');
-            $table->integer('id_cargo')->unsigned();
-            $table->string('correo',50);
-            $table->string('password',50);
+            $table->integer('id_rol')->unsigned();
+            $table->string('correo',150);
+            $table->string('password');
             $table->boolean('activo');
+            $table->integer('id_user')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

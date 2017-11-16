@@ -16,7 +16,7 @@ class CreateCapacitationsTable extends Migration
         Schema::create('capacitations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_expositor')->unsigned();
-            $table->string('descripcion',50);
+            $table->string('descripcion');
             $table->boolean('activo');
             $table->timestamps();
         });

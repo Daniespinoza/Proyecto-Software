@@ -20,11 +20,15 @@ class Exhibitor extends Model
     'semestre_actual',
     'direccion',
     'id_comuna',
-    'activo'
+    'activo',
+    'id_user',
+    'password'
   ];
   protected $hidden = [
     'password','rememberToken'
   ];
+
+  //Relationships
 
   public function Agreements(){
     return $this->belongsTo('App\Agreement');
@@ -37,6 +41,9 @@ class Exhibitor extends Model
   }
   public function Turndetails(){
     return $this->belongsToMany('App\Turndetail');
+  }
+  public function Users(){
+    return $this->hasMany('App\User');
   }
 
 

@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-header pull-left">
-                    <a href="/inicio" class="navbar-brand">
+                    <a href="" class="navbar-brand">
                         <small>
                             <img src="{{asset('images/logo.png')}}" height="23px">
                             Difusión UTEM
@@ -152,7 +152,8 @@
             </li>
 						<li class="">
                 <a class="link" href=" {{ action('StaffsController@updateexp') }} ">
-                    <i class="menu-icon fa fa-refresh"></i>
+                    <!--i class="menu-icon fa fa-refresh"></i-->
+										<i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
                 	Actualizar
 
                 </a>
@@ -238,7 +239,7 @@
 		            </li>
 								<li class="">
 		               <a class="link" href=" {{ action('StaffsController@updateestablish') }} ">
-		                    <i class="menu-icon fa fa-refresh"></i>
+		                    <i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
 		                	Actualizar
 
 		                </a>
@@ -284,7 +285,7 @@
                 </li>
                 <li class="">
                     <a class="link" href=" {{ action('StaffsController@updatemat') }} ">
-                        <i class="menu-icon fa fa-refresh"></i>
+                        <i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
                         Actualizar
                     </a>
 

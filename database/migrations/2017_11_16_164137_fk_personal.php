@@ -1,4 +1,4 @@
-<?phptaffCharge
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,12 +13,12 @@ class FkPersonal extends Migration
      */
     public function up()
     {
-        Schema::table('staffs', function (Blueprint $table) {
-            $table->foreign('id_rol')->references('id')->on('roles');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->unique('correo');
-            //
-        });
+      Schema::table('staffs', function (Blueprint $table) {
+          $table->foreign('id_user')->references('id')->on('users');
+          $table->foreign('id_rol')->references('id')->on('roles');
+          $table->unique('correo');
+          //
+      });
     }
 
     /**

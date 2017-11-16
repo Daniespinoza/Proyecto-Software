@@ -26,7 +26,7 @@
                         <div class="login-container">
                             <div class="center">
                                 <h1>
-                                    <img alt="25x25" src="images/40px-utemcito-azul.png" height="40" width="40">
+                                    <img alt="25x25" src="images/logo.png" height="40" width="40">
                                     <span class="red">Difusion</span>
                                     <span class="grey" id="id-text2">Utem</span>
                                 </h1>
@@ -75,14 +75,14 @@
                                                     </div>
 
                                                 </fieldset>
-                                                <div class="space"></div>
+                                                <!--div class="space"></div>
                                                 <a id="link_recuperar_pass" href="javascript:void(0)">                                                                                                                                                                    <i class="ace-icon fa fa-arrow-right" ></i> ¿Olvidó su contraseña?</a>
                                             </form>
 
                                         </div>
                                         <!-- /.widget-main -->
 
-                                        <!-- /recuperar_pass -->
+                                        <!-- /recuperar_pass >
                                         <div id="recuperar" style="display:none">
                                             <div class="widget-main">
                                                 <h4 class="header red lighter bigger">
@@ -132,7 +132,7 @@
 
                                                         <div id="respuesta_boton" class="col-xs-12" style="height: 60px"> </div>
                                                         <div class="clearfix">
-                                                            <button type="button" class="width-35 pull-right btn btn-sm btn-danger btn_recuperar_contrasena">
+                                                            <!--button type="button" class="width-35 pull-right btn btn-sm btn-danger btn_recuperar_contrasena">
                                                                 <i class="ace-icon fa fa-lightbulb-o"></i>
                                                                 <span class="bigger-110">Recuperar </span>
                                                             </button>

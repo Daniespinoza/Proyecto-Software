@@ -193,7 +193,7 @@
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a href="/sesaes/anular_reserva">
+                    <a href="">
                         <i class="menu-icon fa fa-plus-circle"></i>
                         Asignar Horario
                     </a>
@@ -202,7 +202,7 @@
                 </li>
 
                 <li class="">
-                    <a href="/sesaes/anular_reserva">
+                    <a href="">
                         <i class="menu-icon fa fa-calendar"></i>
                         Calendario
                     </a>

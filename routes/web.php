@@ -15,24 +15,24 @@ Route::get('/', function () {
     return view('index');
 });
 */
-Route::get('/agregar_expositor', 'StaffsController@addexp');
-Route::get('/ver_expositores', 'StaffsController@viewexp');
-Route::get('/actualizar_expositor', 'StaffsController@updateexp');
-Route::get('/eliminar_expositor', 'StaffsController@deleteexp');
+Route::get('/agregar_expositor', 'StaffsController@addexp')->middleware('auth');
+Route::get('/ver_expositores', 'StaffsController@viewexp')->middleware('auth');
+Route::get('/actualizar_expositor', 'StaffsController@updateexp')->middleware('auth');
+Route::get('/eliminar_expositor', 'StaffsController@deleteexp')->middleware('auth');
 
 
-Route::get('/agregar_establecimiento', 'StaffsController@addestablish');
-Route::get('/ver_establecimientos', 'StaffsController@viewestablish');
-Route::get('/actualizar_establecimientos', 'StaffsController@updateestablish');
-Route::get('/eliminar_establecimiento', 'StaffsController@deleteestablish');
+Route::get('/agregar_establecimiento', 'StaffsController@addestablish')->middleware('auth');
+Route::get('/ver_establecimientos', 'StaffsController@viewestablish')->middleware('auth');
+Route::get('/actualizar_establecimientos', 'StaffsController@updateestablish')->middleware('auth');
+Route::get('/eliminar_establecimiento', 'StaffsController@deleteestablish')->middleware('auth');
 
 
-Route::get('/agregar_material', 'StaffsController@addmat');
-Route::get('/ver_materiales', 'StaffsController@viewmat');
-Route::get('/actualizar_material', 'StaffsController@updatemat');
-Route::get('/eliminar_material', 'StaffsController@deletemat');
+Route::get('/agregar_material', 'StaffsController@addmat')->middleware('auth');
+Route::get('/ver_materiales', 'StaffsController@viewmat')->middleware('auth');
+Route::get('/actualizar_material', 'StaffsController@updatemat')->middleware('auth');
+Route::get('/eliminar_material', 'StaffsController@deletemat')->middleware('auth');
 
-Route::get('/agregar_convenio', 'StaffsController@addagree');
+Route::get('/agregar_convenio', 'StaffsController@addagree')->middleware('auth');
 
 Auth::routes();
 

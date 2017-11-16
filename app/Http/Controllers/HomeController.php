@@ -24,6 +24,6 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->user()->roles('admin');
-        return view('home');
+        return view('index');
     }
 }

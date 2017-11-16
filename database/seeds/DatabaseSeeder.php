@@ -11,6 +11,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+          $this->call([
+            RoleTableSeeder::class,
+            RegionTableSeeder::class,
+            UserTableSeeder::class,
+            CommuneTableSeeder::class,
+        ]);/*
+        $this->call(RegionTableSeeder::class);
+        $this->call(CommuneTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserTableSeeder::class);
+        DB::table('users')->insert([
+            'name' => 'expositor2',
+            'email' => 'expositor2'.'@gmail.com',
+            'password' => bcrypt('expositor2'),
+            'id_rol' => 4;
+        ]);*/
     }
 }

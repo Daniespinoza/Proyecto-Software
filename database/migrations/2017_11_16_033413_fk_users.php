@@ -16,10 +16,6 @@ class FkUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('id_rol')->references('id')->on('roles');
         });
-        Schema::table('staffs', function (Blueprint $table) {
-            $table->foreign('id_rol')->references('id')->on('roles');
-            //
-        });
     }
 
     /**

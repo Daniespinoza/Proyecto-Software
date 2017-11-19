@@ -16,5 +16,13 @@ class RegionTableSeeder extends Seeder
         $santiago->nombre = 'Santiago';
         $santiago->save();
 
+        $valparaiso = new Region();
+        $valparaiso->nombre = 'Valparaiso';
+        $valparaiso->save();
+
+        $rancagua = new Region();
+        $rancagua->nombre = 'Libertador Bernardo O Higgins';
+        $rancagua->save();
+
     }
 }

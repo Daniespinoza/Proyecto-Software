@@ -15,8 +15,13 @@ class CreateDepartamentsTable extends Migration
     {
         Schema::create('departaments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->timestamps();
+        });
+        Schema::table('departaments', function (Blueprint $table) {
+
+            $table->string('descripcion')->unique();
+
         });
     }
 

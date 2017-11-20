@@ -33,7 +33,7 @@ class CommuneTableSeeder extends Seeder
       $cerrillos->save();
 
       $cerronavia = new Commune();
-      $cerronavia->nombre = 'CerroNavia';
+      $cerronavia->nombre = 'Cerro Navia';
       $cerronavia->id_region = 1;
       $cerronavia->save();
 
@@ -72,45 +72,13 @@ class CommuneTableSeeder extends Seeder
       $florida‎->id_region = 1;
       $florida‎->save();
 
-      $Cerronavia = new Commune();
-      $Cerronavia->nombre = 'CerroNavia';
-      $Cerronavia->id_region = 1;
-      $Cerronavia->save();
 
-      $Conchali = new Commune();
-      $Conchali->nombre = 'Conchali';
-      $Conchali->id_region = 1;
-      $Conchali->save();
-
-      $Bosque = new Commune();
-      $Bosque->nombre = 'El Bosque';
-      $Bosque->id_region = 1;
-      $Bosque->save();
-
-      $Estacion = new Commune();
-      $Estacion->nombre = 'Estacion Central';
-      $Estacion->id_region = 1;
-      $Estacion->save();
 
       $Huechuraba‎ = new Commune();
       $Huechuraba‎->nombre = 'Huechuraba‎';
       $Huechuraba‎->id_region = 1;
       $Huechuraba‎->save();
 
-      $Independencia‎ = new Commune();
-      $Independencia‎->nombre = 'Independencia';
-      $Independencia‎->id_region = 1;
-      $Independencia‎->save();
-
-      $Cisterna‎ = new Commune();
-      $Cisterna‎->nombre = 'La Cisterna';
-      $Cisterna‎->id_region = 1;
-      $Cisterna‎->save();
-
-      $Florida‎ = new Commune();
-      $Florida‎->nombre = 'La Florida';
-      $Florida‎->id_region = 1;
-      $Florida‎->save();
 
       $Granja‎ = new Commune();
       $Granja‎->nombre = 'La Granja';

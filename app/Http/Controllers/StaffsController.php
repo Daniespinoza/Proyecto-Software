@@ -31,7 +31,10 @@ class StaffsController extends Controller
   }
 
 
-
+  public function datos()
+  {
+    return view('personal/mis_datos');
+  }
 
   public function addexp()
   {

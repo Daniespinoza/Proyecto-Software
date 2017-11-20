@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 */
+Route::get('/mis_datos', 'StaffsController@datos')->middleware('auth');
+
 Route::get('/agregar_expositor', 'StaffsController@addexp')->middleware('auth');
 Route::get('/ver_expositores', 'StaffsController@viewexp')->middleware('auth');
 Route::get('/actualizar_expositor', 'StaffsController@updateexp')->middleware('auth');

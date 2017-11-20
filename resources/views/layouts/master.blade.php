@@ -89,7 +89,7 @@
 
                                 <img class='nav-user-photo' src="images/desconocido.jpg" />
                                 <span class="user-info">
-                                    <small>Hola   {{ Auth::user()->name }}</small>
+                                    <small>Hola, {{ Auth::user()->name }}</small>
                                     </span>
 
                                 <i class="ace-icon fa fa-caret-down"></i>
@@ -510,8 +510,41 @@
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
 
-        <div class="main-container" >
+
 						@yield('contenido')
-				</div>
+						<div class="footer">
+		                        <div class="footer-inner">
+		                            <div class="footer-content">
+		                                <span class="bigger-120">
+		                                    Universidad Tecnológica Metropolitana
+		                                </span>
+		                            </div>
+		                        </div>
+		                    </div>
+
+		                    <a href="#" id="btn-scroll-u" class="btn-scroll-up btn btn-sm btn-inverse">
+		                        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		                    </a>
+		                </div><!-- /.main-container -->
+		            </div>
+		        </div>
+						<script type="text/javascript">
+            window.jQuery || document.write("<script src='/js/jquery.min.js'>" + "<" + "/script>");
+        </script>
+        <script type="text/javascript">
+            if ('ontouchstart' in document.documentElement)
+                document.write("<script src='/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+        </script>
+
+
+        <style>
+            @media only screen and (max-height: 540px){
+                .ace-nav>li>.dropdown-menu {  margin-top: auto;
+                                              z-index: 1042;
+                                              position: absolute;
+                }
+            }
+        </style>
+
 	</body>
 </html>

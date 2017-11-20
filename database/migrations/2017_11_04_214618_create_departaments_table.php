@@ -18,11 +18,6 @@ class CreateDepartamentsTable extends Migration
             $table->string('descripcion')->nullable();
             $table->timestamps();
         });
-        Schema::table('departaments', function (Blueprint $table) {
-
-            $table->string('descripcion')->unique();
-
-        });
     }
 
     /**

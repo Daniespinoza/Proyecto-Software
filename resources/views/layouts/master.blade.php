@@ -158,7 +158,7 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="mis_datos">
+                <a href="{{ action('StaffsController@datos') }}">
                     <i class="menu-icon fa fa-newspaper-o"></i>
                     Mis Datos
                 </a>

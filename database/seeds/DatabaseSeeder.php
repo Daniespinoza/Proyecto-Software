@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             RoleTableSeeder::class,
             RegionTableSeeder::class,
             UserTableSeeder::class,
-            CommuneTableSeeder::class,
+            MaterialTableSeeder::class,
+            CommuneTableSeeder::class
         ]);/*
         $this->call(RegionTableSeeder::class);
         $this->call(CommuneTableSeeder::class);

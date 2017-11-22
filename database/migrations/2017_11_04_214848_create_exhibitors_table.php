@@ -28,6 +28,7 @@ class CreateExhibitorsTable extends Migration
             $table->string('direccion');
             $table->integer('id_comuna')->unsigned();
             $table->integer('id_user')->unsigned();
+            $table->integer('id_carrera')->unsigned();
             $table->boolean('activo');
             $table->rememberToken();
             $table->timestamps();

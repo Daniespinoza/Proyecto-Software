@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Commune;
+use App\Region;
 
 class CommuneTableSeeder extends Seeder
 {
@@ -12,184 +13,192 @@ class CommuneTableSeeder extends Seeder
      */
     public function run()
     {
-      $cerrillos = new Commune();
-      $cerrillos->nombre = 'Cerrillos';
-      $cerrillos->id_region = 1;
-      $cerrillos->save();
+
+
+      $comuna = new Commune();
+      $comuna->nombre = "Cerrillos";
+      $comuna->id_region = 1;
+      $comuna->save();
 
       $cerronavia = new Commune();
-      $cerronavia->nombre = 'Cerro Navia';
+      $cerronavia->nombre = "Cerro Navia";
       $cerronavia->id_region = 1;
       $cerronavia->save();
 
       $conchali = new Commune();
-      $conchali->nombre = 'Conchali';
+      $conchali->nombre = "Conchali";
       $conchali->id_region = 1;
       $conchali->save();
 
       $bosque = new Commune();
-      $bosque->nombre = 'El Bosque';
+      $bosque->nombre = "El Bosque";
       $bosque->id_region = 1;
       $bosque->save();
 
       $estacion = new Commune();
-      $estacion->nombre = 'Estacion Central';
+      $estacion->nombre = "Estacion Central";
       $estacion->id_region = 1;
       $estacion->save();
 
       $huechuraba‎ = new Commune();
-      $huechuraba‎->nombre = 'Huechuraba‎';
+      $huechuraba‎->nombre = "Huechuraba‎";
       $huechuraba‎->id_region = 1;
       $huechuraba‎->save();
 
       $independencia‎ = new Commune();
-      $independencia‎->nombre = 'Independencia';
+      $independencia‎->nombre = "Independencia";
       $independencia‎->id_region = 1;
       $independencia‎->save();
 
       $cisterna‎ = new Commune();
-      $cisterna‎->nombre = 'La Cisterna';
+      $cisterna‎->nombre = "La Cisterna";
       $cisterna‎->id_region = 1;
       $cisterna‎->save();
 
       $florida‎ = new Commune();
-      $florida‎->nombre = 'La Florida';
+      $florida‎->nombre = "La Florida";
       $florida‎->id_region = 1;
       $florida‎->save();
 
-      $pintana = new Commune();
-      $pintana‎->nombre = 'La Pintana';
-      $pintana‎->id_region = 1;
-      $pintana‎->save();
+      $comuna2 = new Commune();
+      $comuna2->nombre = "La Pintana";
+      $comuna2->id_region = 1;
+      $comuna2->save();
+
+
 
       $granja‎ = new Commune();
-      $granja‎->nombre = 'La Granja';
+      $granja‎->nombre = "La Granja";
       $granja‎->id_region = 1;
       $granja‎->save();
 
       $Reina‎ = new Commune();
-      $Reina‎->nombre = 'La Reina‎';
+      $Reina‎->nombre = "La Reina‎";
       $Reina‎->id_region = 1;
       $Reina‎->save();
 
       $Condes‎ = new Commune();
-      $Condes‎->nombre = 'Las Condes‎';
+      $Condes‎->nombre = "Las Condes‎";
       $Condes‎->id_region = 1;
       $Condes‎->save();
 
-      $Barnechea = new Commune();
-      $Barnechea‎->nombre = 'Lo Barnechea';
-      $Barnechea‎->id_region = 1;
-      $Barnechea‎->save();
+      $comuna3 = new Commune();
+      $comuna3->nombre = "Lo Barnechea";
+      $comuna3->id_region = 1;
+      $comuna3->save();
 
-      $Espejo = new Commune();
-      $Espejo‎->nombre = 'Lo Espejo';
-      $Espejo‎->id_region = 1;
-      $Espejo‎->save();
 
-      $Prado = new Commune();
-      $Prado‎->nombre = 'Lo Prado';
-      $Prado‎->id_region = 1;
-      $Prado‎->save();
+      $comuna4 = new Commune();
+      $comuna4->nombre = "Lo Espejo";
+      $comuna4->id_region = 1;
+      $comuna4->save();
+
+      $comuna5 = new Commune();
+      $comuna5->nombre = "Lo Prado";
+      $comuna5->id_region = 1;
+      $comuna5->save();
+
 
       $Macul‎ = new Commune();
-      $Macul‎->nombre = 'Macul';
+      $Macul‎->nombre = "Macul";
       $Macul‎->id_region = 1;
       $Macul‎->save();
 
-      $Maipu = new Commune();
-      $Maipu‎->nombre = 'Maipú';
-      $Maipu‎->id_region = 1;
-      $Maipu‎->save();
+      $comuna6 = new Commune();
+      $comuna6->nombre = "Maipú";
+      $comuna6->id_region = 1;
+      $comuna6->save();
 
-      $Nunoa = new Commune();
-      $Nunoa->nombre = 'Ñuñoa‎';
-      $Nunoa‎->id_region = 1;
-      $Nunoa‎→save();
+      $comuna7 = new Commune();
+      $comuna7->nombre = "Ñuñoa";
+      $comuna7->id_region = 1;
+      $comuna7->save();
 
-      $PadreH = new Commune();
-      $PadreH->nombre = 'Padre Hurtado';
-      $PadreH->id_region = 1;
-      $PadreH->save();
 
-      $PAC = new Commune();
-      $PAC‎->nombre = 'Pedro Aguirre Cerda';
-      $PAC‎->id_region = 1;
-      $PAC->save();
+      $aPadreH = new Commune();
+      $aPadreH->nombre = "Padre Hurtado";
+      $aPadreH->id_region = 1;
+      $aPadreH->save();
 
-      $Peñalolen‎‎ = new Commune();
-      $Peñalolen->nombre = 'Peñalolén‎';
-      $Peñalolen‎->id_region = 1;
-      $Peñalolen‎->save();
+      $comuna8 = new Commune();
+      $comuna8->nombre = "Pedro Aguirre Cerda";
+      $comuna8->id_region = 1;
+      $comuna8->save();
 
-      $Pirque = new Commune();
-      $Pirque->nombre = 'Pirque';
-      $Pirque‎->id_region = 1;
-      $Pirque‎->save();
+      $comuna9 = new Commune();
+      $comuna9->nombre = "Peñalolen";
+      $comuna9->id_region = 1;
+      $comuna9->save();
 
-      $providencia = new Commune();
-      $providencia->nombre = 'Providencia';
-      $providencia->id_region = 1;
-      $providencia->save();
+      $comuna0 = new Commune();
+      $comuna0->nombre = "Pirque";
+      $comuna0->id_region = 1;
+      $comuna0->save();
 
-      $Pudahuel‎‎‎ = new Commune();
-      $Pudahuel‎->nombre = 'Pudahuel‎';
-      $Pudahuel‎->id_region = 1;
-      $Pudahuel‎‎->save();
+      $comuna11 = new Commune();
+      $comuna11->nombre = "Providencia";
+      $comuna11->id_region = 1;
+      $comuna11->save();
 
-      $Puente = new Commune();
-      $Puente->nombre = 'Puente Alto‎';
-      $Puente‎->id_region = 1;
-      $Puente‎->save();
+      $comuna22= new Commune();
+      $comuna22->nombre = "Pudahuel";
+      $comuna22->id_region = 1;
+      $comuna22->save();
 
-      $Quilicura‎ = new Commune();
-      $Quilicura->nombre = 'Quilicura‎';
-      $Quilicura‎->id_region = 1;
-      $Quilicura‎->save();
+      $comuna33= new Commune();
+      $comuna33->nombre = "Puente Alto";
+      $comuna33->id_region = 1;
+      $comuna33->save();
 
-      $Quinta= new Commune();
-      $Quinta->nombre = 'Quinta Normal‎';
-      $Quinta‎->id_region = 1;
-      $Quinta‎->save();
+      $comuna44 = new Commune();
+      $comuna44->nombre = "Quilicura";
+      $comuna44->id_region = 1;
+      $comuna44->save();
 
-      $Recoleta‎‎ = new Commune();
-      $Recoleta->nombre = 'Recoleta';
-      $Recoleta‎->id_region = 1;
-      $Recoleta‎->save();
+      $comuna55 = new Commune();
+      $comuna55->nombre = "Quinta Normal";
+      $comuna55->id_region = 1;
+      $comuna55->save();
 
-      $renca = new Commune();
-      $renca->nombre = 'Renca';
-      $renca->id_region = 1;
-      $renca->save();
+      $comuna66 = new Commune();
+      $comuna66->nombre = "Recoleta";
+      $comuna66->id_region = 1;
+      $comuna66->save();
 
-      $SanB = new Commune();
-      $SanB->nombre = 'San Bernardo';
-      $SanB‎->id_region = 1;
-      $SanB‎->save();
+      $comuna77 = new Commune();
+      $comuna77->nombre = "Recoleta";
+      $comuna77->id_region = 1;
+      $comuna77->save();
 
-      $SanM = new Commune();
-      $SanM->nombre = 'San Miguel';
-      $SanM‎->id_region = 1;
-      $SanM‎->save();
+      $comuna88 = new Commune();
+      $comuna88->nombre = "Renca";
+      $comuna88->id_region = 1;
+      $comuna88->save();
 
-      $SanJ = new Commune();
-      $SanJ->nombre = 'San Joaquín';
-      $SanJ‎->id_region = 1;
-      $SanJ‎->save();
+      $comuna99 = new Commune();
+      $comuna99->nombre = "San Miguel";
+      $comuna99->id_region = 1;
+      $comuna99->save();
 
-      $SanR = new Commune();
-      $SanR->nombre = 'San Ramón';
-      $SanR‎->id_region = 1;
-      $SanR‎->save();
+      $comuna00 = new Commune();
+      $comuna00->nombre = "San Joaquín";
+      $comuna00->id_region = 1;
+      $comuna00->save();
 
-      $santiago = new Commune();
-      $santiago->nombre = 'Santiago';
-      $santiago->id_region = 1;
-      $santiago->save();
+      $comuna111 = new Commune();
+      $comuna111->nombre = "San Bernardo";
+      $comuna111->id_region = 1;
+      $comuna111->save();
 
-      $Vitacura‎= new Commune();
-      $Vitacura‎->nombre = 'Vitacura‎';
-      $Vitacura‎->id_region = 1;
-      $Vitacura‎->save();
+      $comuna222 = new Commune();
+      $comuna222->nombre = "Santiago";
+      $comuna222->id_region = 1;
+      $comuna222->save();
+
+      $comuna333 = new Commune();
+      $comuna333->nombre = "Vitacura";
+      $comuna333->id_region = 1;
+      $comuna333->save();
+
     }
 }

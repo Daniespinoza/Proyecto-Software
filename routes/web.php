@@ -25,7 +25,7 @@ Route::get('/eliminar_expositor', 'StaffsController@deleteexp');
 
 Route::get('/agregar_establecimiento', 'StaffsController@addestablish');
 Route::get('/ver_establecimientos', 'StaffsController@viewestablish');
-Route::get('/actualizar_establecimientos', 'StaffsController@updateestablish')
+Route::get('/actualizar_establecimientos', 'StaffsController@updateestablish');
 Route::get('/eliminar_establecimiento', 'StaffsController@deleteestablish');
 
 
@@ -34,7 +34,7 @@ Route::get('/ver_materiales', 'StaffsController@viewmat');
 Route::get('/actualizar_material', 'StaffsController@updatemat');
 Route::get('/eliminar_material', 'StaffsController@deletemat');
 
-Route::get('/agregar_convenio', 'StaffsController@addagree')-;
+Route::get('/agregar_convenio', 'StaffsController@addagree');
 
 Auth::routes();
 

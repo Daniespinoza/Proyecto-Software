@@ -20,6 +20,7 @@ class CreateExhibitorsTable extends Migration
             $table->string('alu_apellido_materno');
             $table->string('alu_rut');
             $table->integer('run');
+            $table->string('genero');
             $table->integer('alu_celular');
             $table->string('alu_email',150);
             $table->string('password');

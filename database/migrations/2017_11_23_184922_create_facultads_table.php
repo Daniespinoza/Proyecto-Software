@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class FkCarrerauniques extends Migration
+class CreateFacultadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class FkCarrerauniques extends Migration
      */
     public function up()
     {
-        Schema::table('carreras', function (Blueprint $table) {
-          $table->unique('nombre');
+        Schema::create('facultads', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class FkCarrerauniques extends Migration
      */
     public function down()
     {
-        Schema::table('carreras', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('facultads');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class FkCarrerauniques extends Migration
+class FkCarreraFacultad extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class FkCarrerauniques extends Migration
     public function up()
     {
         Schema::table('carreras', function (Blueprint $table) {
-          $table->unique('nombre');
+            $table->foreign('id_facultad')->references('id')->on('facultads');
         });
     }
 

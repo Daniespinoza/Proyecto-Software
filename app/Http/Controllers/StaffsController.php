@@ -9,7 +9,7 @@ class StaffsController extends Controller
   //exhibitors
   public function __construct()
   {
-    $this->middleware('auth');
+    $this->middleware('admin');
   }
 
 

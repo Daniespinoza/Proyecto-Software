@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             MaterialTableSeeder::class,
             CommuneTableSeeder::class,
-            FacultadesTableSeeder::class
+            FacultadesTableSeeder::class,
+            CarreraTableSeeder::class
         ]);/*
         $this->call(RegionTableSeeder::class);
         $this->call(CommuneTableSeeder::class);

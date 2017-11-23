@@ -43,7 +43,7 @@ class StaffsController extends Controller
   public function deleteexp(){
     return view('personal/deleteexhibitor');
   }
-  public function viewexp(Request $request){
+  public function viewexp(){
 
     return view('personal/viewexhibitor');
   }

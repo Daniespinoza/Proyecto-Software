@@ -14,6 +14,7 @@ class Exhibitor extends Model
     'alu_apellido_materno',
     'alu_rut',
     'run',
+    'genero',
     'alu_celular',
     'alu_email',
     'semestres_aprobados',
@@ -22,6 +23,7 @@ class Exhibitor extends Model
     'id_comuna',
     'activo',
     'id_user',
+    'id_carrera',
     'password'
   ];
   protected $hidden = [
@@ -44,6 +46,9 @@ class Exhibitor extends Model
   }
   public function Users(){
     return $this->hasMany('App\User');
+  }
+  public function Carreras(){
+    return $this->hasOne('App\Carrera');
   }
 
 

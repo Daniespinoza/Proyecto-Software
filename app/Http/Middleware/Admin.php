@@ -18,6 +18,6 @@ class Admin
       if(auth()->user()->id_rol == 1){
       return $next($request);
     }
-      return redirect('home');
+      return redirect('/');
     }
 }

@@ -23,6 +23,7 @@ class CreateEstablishmentsTable extends Migration
             $table->integer('id_tipo_establecimiento')->unsigned();
             $table->string('encargado');
             $table->integer('id_cargo')->unsigned();
+            $table->integer('id_clase')->unsigned();
             $table->string('correo',150)->nullable();
             $table->integer('telefono')->nullable();
             $table->string('pace')->nullable();

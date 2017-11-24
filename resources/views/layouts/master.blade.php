@@ -10,27 +10,24 @@
 	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href= "{{asset('css/bootstrap.min.css')}}" />
-        <link rel="stylesheet" type="text/css" href=" {{asset('css/font-awesome.min.css')}}" />
-        <link rel="stylesheet" type="text/css" href=" {{asset('css/css5c0a.css')}}" />
-        <link rel="stylesheet" type="text/css" href=" {{asset('css/ace.min.css')}}" />
-        <link href=" {{asset('css/bootstrap-responsive.min.css')}}" rel="stylesheet" />
-        <link rel="stylesheet" href=" {{asset('css/select2.min.css')}}" />
-        <link rel="stylesheet" href=" {{asset('css/ace-responsive.min.css')}}" />
-        <link rel="stylesheet" href=" {{asset('css/dataTables.bootstrap.css')}}" />
-	    	<link rel="stylesheet" href=" {{asset('css/bootstrap-editable.css')}}" />
-        <link rel="stylesheet" href=" {{asset('css/colorbox.min.css')}}" />
-
-     	<link rel="stylesheet" href=" {{asset('css/ace-skins.min.css')}}" />
-        <link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
-        <link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href= "{{asset('css/bootstrap.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href=" {{asset('css/font-awesome.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href=" {{asset('css/css5c0a.css')}}" />
+  <link rel="stylesheet" type="text/css" href=" {{asset('css/ace.min.css')}}" />
+  <link rel="stylesheet" href=" {{asset('css/bootstrap-responsive.min.css')}}" />
+  <link rel="stylesheet" href=" {{asset('css/select2.min.css')}}" />
+  <link rel="stylesheet" href=" {{asset('css/ace-responsive.min.css')}}" />
+  <link rel="stylesheet" href=" {{asset('css/dataTables.bootstrap.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/bootstrap-editable.css')}}" />
+  <link rel="stylesheet" href=" {{asset('css/colorbox.min.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/ace-skins.min.css')}}" />
+  <link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
+  <link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
 </head>
 
 <body class="no-skin">
-
         <div id="navbar" class="navbar navbar-default">
             <div class="navbar-container" id="navbar-container">
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -51,7 +48,7 @@
                 <div class="navbar-buttons navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
 											<!-- ALERTA ALERTAAA -->
-											@if (Auth::user()->id_rol==2)
+											@if (Auth::user()->id_rol==4)
 											<li class="purple">
 											<a aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
 											<i class="ace-icon fa fa-bell icon-animated-bell"></i>
@@ -71,7 +68,7 @@
 											<span class="pull-left">
 											<i class="fa fa-exclamation blue bigger-130 "></i>
 											<b>Notificación de turno</b><br />
-											Nuevo turno asignado, por favor revisa, no sea wn.
+											Nuevo turno asignado. Revisar sus turnos.
 											<br />
 											</span>
 											</div>
@@ -158,13 +155,13 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="{{ action('StaffsController@datos') }}">
+                <a href="">
                     <i class="menu-icon fa fa-newspaper-o"></i>
                     Mis Datos
                 </a>
                 <b class="arrow"></b>
             </li>
-						@if (Auth::user()->id_rol == 2)
+						@if (Auth::user()->id_rol == 4)
 						<li class="">
                 <a href="">
                     <i class="menu-icon fa fa-calendar"></i>
@@ -177,7 +174,7 @@
     </li>
 
 		<!-- Expositores -->
-		@if ( Auth::user()->id_rol == 1)
+		@if (Auth::user()->id_rol != 4)
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-group"></i>
@@ -190,23 +187,23 @@
 
         <ul class="submenu">
             <li class="">
-                <a class="link" href=" {{ action('StaffsController@viewexp') }} ">
+                <a class="link" href="">
                     <i class="menu-icon fa fa-search"></i>
                 	Ver Todo
 
                 </a>
                 <b class="arrow"></b>
             </li>
-
+						@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
 						<li class="">
-                <a class="link" href=" {{ action('StaffsController@addexp') }} ">
+                <a class="link" href="">
                     <i class="menu-icon fa fa-plus"></i>
                 		Agregar
                 </a>
                 <b class="arrow"></b>
             </li>
 						<li class="">
-                <a class="link" href=" {{ action('StaffsController@updateexp') }} ">
+                <a class="link" href="">
                     <!--i class="menu-icon fa fa-refresh"></i-->
 										<i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
                 	Actualizar
@@ -215,12 +212,13 @@
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a class="link" href=" {{ action('StaffsController@deleteexp') }} ">
+                <a class="link" href="">
                     <i class="menu-icon fa fa-times"></i>
                     Eliminar
                 </a>
                 <b class="arrow"></b>
             </li>
+						@endif
         </ul>
     </li>
 		@endif
@@ -235,14 +233,17 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-							@if (Auth::user()->id_rol == 1)
+							@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3 )
                 <li class="">
-                    <a href="/sesaes/reserva_hora">
+                    <a href="">
                         <i class="menu-icon fa fa-plus"></i>
                         Crear Evento
                     </a>
                     <b class="arrow"></b>
                 </li>
+								@endif
+
+								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2 )
                 <li class="">
                     <a href="">
                         <i class="menu-icon fa fa-plus-circle"></i>
@@ -252,7 +253,6 @@
                     <b class="arrow"></b>
                 </li>
 								@endif
-
                 <li class="">
                     <a href="">
                         <i class="menu-icon fa fa-calendar"></i>
@@ -267,28 +267,28 @@
         </li>
 
 				<!-- Establecimiento -->
+				@if (Auth::user()->id_rol != 4)
 				<li class="">
-						@if (Auth::user()->id_rol == 1)
 		        <a href="#" class="dropdown-toggle">
 		            <i class="menu-icon fa fa-university"></i>
 		            <span class="menu-text"> Establecimientos </span>
 
 		            <b class="arrow fa fa-angle-down"></b>
 		        </a>
-						@endif
 		        <b class="arrow"></b>
 
 		        <ul class="submenu">
 		            <li class="">
-		                <a class="link" href=" {{ action('StaffsController@viewestablish') }} ">
+		                <a class="link" href="">
 		                    <i class="menu-icon fa fa-search"></i>
 		                	Ver Todo
 
 		                </a>
 		                <b class="arrow"></b>
 		            </li>
+								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
 								<li class="">
-		               <a class="link" href=" {{ action('StaffsController@addestablish') }} ">
+		               <a class="link" href="">
 		                    <i class="menu-icon fa fa-plus"></i>
 		                	Agregar
 
@@ -296,7 +296,7 @@
 		                <b class="arrow"></b>
 		            </li>
 								<li class="">
-		               <a class="link" href=" {{ action('StaffsController@updateestablish') }} ">
+		               <a class="link" href="">
 		                    <i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
 		                	Actualizar
 
@@ -304,21 +304,22 @@
 		                <b class="arrow"></b>
 		            </li>
 		            <li class="">
-		                <a class="link" href=" {{ action('StaffsController@deleteestablish') }} ">
+		                <a class="link" href="">
 		                    <i class="menu-icon fa fa-times"></i>
 		                    Eliminar
 		                </a>
 		                <b class="arrow"></b>
 		            </li>
+								@endif
 		        </ul>
 		    </li>
-
+				@endif
 
 
 
 
 				<!-- Materiales -->
-				@if (Auth::user()->id_rol == 1)
+				@if (Auth::user()->id_rol != 4)
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-pencil"></i>
@@ -328,14 +329,15 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="">
-                  <a class="link" href=" {{ action('StaffsController@viewmat') }} ">
+                  <a class="link" href="">
                         <i class="menu-icon fa fa-search"></i>
                         Ver todo
                     </a>
                     <b class="arrow"></b>
                 </li>
+								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
                 <li class="">
-                    <a class="link" href=" {{ action('StaffsController@addmat') }} ">
+                    <a class="link" href="">
                         <i class="menu-icon fa fa-plus"></i>
                         Agregar
                     </a>
@@ -343,7 +345,7 @@
                     <b class="arrow"></b>
                 </li>
                 <li class="">
-                    <a class="link" href=" {{ action('StaffsController@updatemat') }} ">
+                    <a class="link" href="">
                         <i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
                         Actualizar
                     </a>
@@ -351,13 +353,14 @@
                     <b class="arrow"></b>
                 </li>
 								<li class="">
-                    <a class="link" href=" {{ action('StaffsController@deletemat') }} ">
+                    <a class="link" href="">
                         <i class="menu-icon fa fa-times"></i>
                         Eliminar
                     </a>
 
                     <b class="arrow"></b>
                 </li>
+								@endif
 
             </ul>
         </li>
@@ -365,19 +368,21 @@
 
 
 			<!-- Sueldos -->
-        <li class="">
+		@if (Auth::user()->id_rol == 4)
+    <li class="">
         <a href="" target="_blank">
             <i class="menu-icon fa fa-money "></i>
             <span class="menu-text"> Mi Sueldo </span>
         </a>
         <b class="arrow"></b>
     </li>
+		@endif
 
 
 		<!-- Generar convenio -->
 		@if (Auth::user()->id_rol == 1)
     <li class="">
-        <a class="link" href=" {{ action('StaffsController@addagree') }}">
+        <a class="link" href="">
             <i class="menu-icon fa fa-pencil-square-o "></i>
             <span class="menu-text"> Generar Convenio </span>
         </a>

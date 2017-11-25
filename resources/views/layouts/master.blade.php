@@ -173,6 +173,38 @@
         </ul>
     </li>
 
+		@if (Auth::user()->id_rol == 1)
+		<li class="">
+				<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-check-square"></i>
+						<span class="menu-text"> Personal </span>
+
+						<b class="arrow fa fa-angle-down"></b>
+				</a>
+				<b class="arrow"></b>
+				<ul class="submenu">
+						<li class="">
+								<a class="link" href="{{action('PersonalController@index')}}">
+										<i class="menu-icon fa fa-search"></i>
+									Ver Todo
+
+								</a>
+								<b class="arrow"></b>
+						</li>
+						<li class="">
+								<a class="link" href="{{action('PersonalController@create')}}">
+										<i class="menu-icon fa fa-plus"></i>
+										Agregar
+								</a>
+								<b class="arrow"></b>
+						</li>
+				</ul>
+		</li>
+		@endif
+
+
+
+
 		<!-- Expositores -->
 		@if (Auth::user()->id_rol != 4)
     <li class="">
@@ -202,27 +234,13 @@
                 </a>
                 <b class="arrow"></b>
             </li>
-						<!--
-						<li class="">
-                <a class="link" href="">
-                    										<i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
-                	Actualizar
 
-                </a>
-                <b class="arrow"></b>
-            </li>
-            <li class="">
-                <a class="link" href="">
-                    <i class="menu-icon fa fa-times"></i>
-                    Eliminar
-                </a>
-                <b class="arrow"></b>
-            </li>
-						-->
 						@endif
         </ul>
     </li>
 		@endif
+
+
 
 		<!-- Evento -->
 
@@ -280,7 +298,7 @@
 
 		        <ul class="submenu">
 		            <li class="">
-		                <a class="link" href="">
+		                <a class="link" href="{{action('EstablecimientosController@index')}}">
 		                    <i class="menu-icon fa fa-search"></i>
 		                	Ver Todo
 
@@ -289,28 +307,14 @@
 		            </li>
 								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
 								<li class="">
-		               <a class="link" href="">
+		               <a class="link" href="{{action('EstablecimientosController@create')}}">
 		                    <i class="menu-icon fa fa-plus"></i>
 		                	Agregar
 
 		                </a>
 		                <b class="arrow"></b>
 		            </li>
-								<li class="">
-		               <a class="link" href="">
-		                    <i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
-		                	Actualizar
 
-		                </a>
-		                <b class="arrow"></b>
-		            </li>
-		            <li class="">
-		                <a class="link" href="">
-		                    <i class="menu-icon fa fa-times"></i>
-		                    Eliminar
-		                </a>
-		                <b class="arrow"></b>
-		            </li>
 								@endif
 		        </ul>
 		    </li>

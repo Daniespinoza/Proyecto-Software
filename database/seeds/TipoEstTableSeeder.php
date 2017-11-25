@@ -12,29 +12,26 @@ class TipoEstTableSeeder extends Seeder
      */
     public function run()
     {
-      
-      $tipo = new Establishmenttype();
-      $tipo->tipo = 'MUN';
-      $tipo->save();
+      //CH	TP	CH/TP	VARIOS	PREU
+      $c1 = new Establishmenttype();
+      $c1->tipo = 'CH';
+      $c1->save();
 
-      $tipo1 = new Establishmenttype();
-      $tipo1->tipo = 'A.D.';
-      $tipo1->save();
+      $c2 = new Establishmenttype();
+      $c2->tipo = 'TP';
+      $c2->save();
 
-      $tipo2 = new Establishmenttype();
-      $tipo2->tipo = 'P.S.';
-      $tipo2->save();
+      $c3 = new Establishmenttype();
+      $c3->tipo = 'CH/TP';
+      $c3->save();
 
-      $tipo3 = new Establishmenttype();
-      $tipo3->tipo = 'P.P.';
-      $tipo3->save();
+      $c4 = new Establishmenttype();
+      $c4->tipo = 'VARIOS';
+      $c4->save();
 
-      $tipo4 = new Establishmenttype();
-      $tipo4->tipo = 'VARIOS';
-      $tipo4->save();
+      $c5 = new Establishmenttype();
+      $c5->tipo = 'PREU';
+      $c5->save();
 
-      $tipo5 = new Establishmenttype();
-      $tipo5->tipo = 'PREU';
-      $tipo5->save();
     }
 }

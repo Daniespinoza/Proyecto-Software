@@ -13,19 +13,19 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         $coordarea = new Role();
-        $coordarea->permiso = 'Coordinadora de Area';
+        $coordarea->permiso = 'Coordinador/a de Área';
         $coordarea->save();
 
         $coordexpo = new Role();
-        $coordexpo->permiso = 'Coordinadora de Expositores';
+        $coordexpo->permiso = 'Coordinador/a de Expositores';
         $coordexpo->save();
 
         $secretaria = new Role();
-        $secretaria->permiso = 'Secretaria';
+        $secretaria->permiso = 'Secretario/a';
         $secretaria->save();
 
         $expositor = new Role();
-        $expositor->permiso = 'Expositor';
+        $expositor->permiso = 'Expositor/a';
         $expositor->save();
     }
 }

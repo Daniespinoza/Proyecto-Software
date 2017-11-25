@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('title','Expositores')
 @section('ventana','Agregar Expositor')
 @section('contenido')
@@ -14,75 +15,119 @@
 <div class="form-group">
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Rut </label>
      <div class="col-md-4">
-        <input class="form-control" type="text"/>
+        <input class="form-control" type="text" name="rut" required/>
       </div>
     </div>
     <div class="form-group">
-          <label class="col-md-3 control-label no-padding-right"> Nombre Completo </label>
+          <label class="col-md-3 control-label no-padding-right"> Nombre </label>
         <div class="col-md-4">
-          <input class="form-control" type="text"/>
+          <input class="form-control" type="text" name = "nombre"required/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Apellido Paterno </label>
           <div class="col-md-4">
-              <input class="form-control" type="text" name="rbd" />
+              <input class="form-control" type="text" name="ap_pat" required/>
           </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Apellido Materno </label>
         <div class="col-md-4">
-            <input class="form-control" type="text" name="rbd" />
+            <input class="form-control" type="text" name="ap_mat" required/>
         </div>
     </div>
-      <div class="form-group">
-          <label class="col-md-3 control-label no-padding-right"> Comuna</label>
-          <div class="col-md-4">
-          {!!  $comunas = DB::table('communes')->get() !!}
+    <div class="form-group">
+        <label class="col-md-3 control-label no-padding-right"> Genero</label>
+        <div class="col-md-4">
+          <select class="form-control" name="genero" required>
+            <option value="">--Seleccione un Genero--</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+        </select>
 
-        <select class="" name="">
+      </div>
+      </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label no-padding-right"> Region</label>
+        <div class="col-md-4">
+          <select class="form-control" name="regiones" id="selectRegion"required>
+            <option value="">--Seleccione una region--</option>
 
+          @foreach ($regions as $region)
+            <option value="{{$region['id']}}">{{$region['nombre']}}</option>
 
+        @endforeach
         </select>
 
 
+        <input  type="checkbox" name="otraReg" value="1" id="checkReg"/>otra
 
 
-          <input  type="checkbox" name="si_otra" value="si" />otra
+      </div>
+      </div>
+      <div class="form-group">
+          <label class="col-md-3 control-label no-padding-right"> Comuna</label>
+          <div class="col-md-4">
+
+            <select class="form-control" name="comuna"required>
+              <option value="">--Seleccione una comuna--</option>
+
+            @foreach ($commun as $comunas)
+              <option value="{{$comunas['id']}}">{{$comunas['nombre']}}</option>
+
+          @endforeach
+          </select>
+          <input  type="checkbox" name="otraCom" value="si"/>otra
         </select>
         </div>
 </div>
 <div class="form-group">
-<label class="col-md-3 control-label no-padding-right"> Dirección</label>
-<div class="col-md-4">
-<input type="text" name="rbd" class="form-control" />
-</div>
+    <label class="col-md-3 control-label no-padding-right"> Dirección</label>
+  <div class="col-md-4">
+    <input type="text" name="direccion" class="form-control" required/>
+  </div>
 </div>
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right">Teléfono</label>
           <div class="col-md-4">
-          <input type="number" class="form-control" />
+          <input type="number" class="form-control" name = "telefono" required/>
+      </div>
+    </div>
+  <div class="form-group">
+        <label class="col-md-3 control-label no-padding-right"> Carrera</label>
+        <div class="col-md-4">
+          <select class="form-control" name="carrera" id="selectRegion" required>
+            <option value="">--Seleccione una Carrera--</option>
+
+          @foreach ($carreras as $carrera)
+            <option value="{{$carrera['id']}}">{{$carrera['nombre']}}</option>
+
+        @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label no-padding-right"> Semestre Actual </label>
+      <div class="col-md-4">
+        <input type="number" class="form-control"  name = "sem" required/>
       </div>
     </div>
       <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Correo </label>
         <div class="col-md-4">
-          <input type="email" class="form-control" />
+          <input type="email" class="form-control"  name = "mail" required/>
+        </div>
+        <div class="col-md-3 control-label no-padding-right">
+
+        <button type="" class="btn btn-blue">
+          <i class="ace-icon bigger-110">
+            Agregar
+        </i>
+        </button>
         </div>
       </div>
-      <div class="form-group">
-          <label class="col-md-3 control-label no-padding-right"> Contraseña</label>
-<div class="col-md-4">
-          <input class="form-control" type="password" name="rbd" />
-      </div>
-      <div class="col-md-3 control-label no-padding-right">
 
-      <button type="" class="btn btn-blue">
-        <i class="ace-icon bigger-110">
-          Agregar
-      </i>
-      </button>
-    </div>
+
     </div>
 
 

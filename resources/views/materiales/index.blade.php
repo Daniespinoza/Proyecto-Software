@@ -7,10 +7,12 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        
+
         <th>Nombre</th>
         <th>Cantidad</th>
+        @if(Auth::user()->id_rol == 1 ||Auth::user()->id_rol == 2)
         <th colspan="2">Acciones</th>
+        @endif
       </tr>
     </thead>
     <tbody>
@@ -22,6 +24,7 @@
 
         <td>{{$post['descripcion']}}</td>
         <td>{{$post['stock_total']}}</td>
+        @if(Auth::user()->id_rol == 1 ||Auth::user()->id_rol == 2)
         <td><a href="{{action('MaterialesController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
         <td><form action="{{action('MaterialesController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
@@ -29,6 +32,7 @@
             <button class="btn btn-danger" type="submit">Eliminar</button>
             </form>
         </td>
+        @endif
         <!--td><a href="{{action('MaterialesController@destroy', $post['id'], $post['descripcion'], $post['stock_total'])}}" class="btn btn-danger">Eliminar</a></td-->
         @endif
       </tr>

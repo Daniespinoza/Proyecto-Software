@@ -196,16 +196,16 @@
             </li>
 						@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
 						<li class="">
-                <a class="link" href="{{action('ExpositoresController@index')}}">
+                <a class="link" href="{{action('ExpositoresController@create')}}">
                     <i class="menu-icon fa fa-plus"></i>
                 		Agregar
                 </a>
                 <b class="arrow"></b>
             </li>
+						<!--
 						<li class="">
                 <a class="link" href="">
-                    <!--i class="menu-icon fa fa-refresh"></i-->
-										<i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                    										<i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
                 	Actualizar
 
                 </a>
@@ -218,6 +218,7 @@
                 </a>
                 <b class="arrow"></b>
             </li>
+						-->
 						@endif
         </ul>
     </li>

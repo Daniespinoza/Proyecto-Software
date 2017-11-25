@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="form-group">
-          <label class="col-md-3 control-label no-padding-right"> Primer Nombre </label>
+          <label class="col-md-3 control-label no-padding-right"> Nombre Completo </label>
         <div class="col-md-4">
           <input class="form-control" type="text"/>
         </div>
@@ -26,23 +26,23 @@
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Apellido Paterno </label>
           <div class="col-md-4">
-              <input class="form-control" type="text" id="rbd" />
+              <input class="form-control" type="text" name="rbd" />
           </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Apellido Materno </label>
         <div class="col-md-4">
-            <input class="form-control" type="text" id="rbd" />
+            <input class="form-control" type="text" name="rbd" />
         </div>
     </div>
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Comuna</label>
           <div class="col-md-4">
-          <select class="form-control" name="comuna" id="id_comuna">
+          <select class="form-control" name="comuna" name="id_comuna">
             <option class="form-control" value="">--Selecione un comuna--</option>
-            @foreach(comunas as comuna)
+            {{-- @foreach(comunas as comuna)
               <option class="form-control" value="{{ $comuna['id']}}"> $comuna['nombre']</option>
-            @endforeach
+            @endforeach --}}
           <input  type="checkbox" name="si_otra" value="si" />otra
         </select>
         </div>
@@ -50,7 +50,7 @@
 <div class="form-group">
 <label class="col-md-3 control-label no-padding-right"> Dirección</label>
 <div class="col-md-4">
-<input type="text" id="rbd" class="form-control" />
+<input type="text" name="rbd" class="form-control" />
 </div>
 </div>
       <div class="form-group">
@@ -68,7 +68,7 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Contraseña</label>
 <div class="col-md-4">
-          <input class="form-control" type="password" id="rbd" />
+          <input class="form-control" type="password" name="rbd" />
       </div>
       <div class="col-md-3 control-label no-padding-right">
 

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exhibitor;
 use App\Commune;
-use App\Region;
-use DB;
+use App\Carrera;
+use Illuminate\Support\Facades\DB;
+
 
 class ExpositoresController extends Controller
 {
@@ -21,17 +22,20 @@ class ExpositoresController extends Controller
      */
     public function index()
     {
-        /*$expositores = Exhibitor::all()->toArray();
-        foreach ($expositores as $expo => $valor) {
-          $carrera = Carrera::find($expo->id_carrera)->first();
+        $expositores = array();
+        $exposit = Exhibitor::all()->toArray();
+        foreach ($exposit as $expo) {
+          $carrera = Carrera::where('id',$expo['id_carrera'])->first();
+          $nomcarrera = $carrera->nombre;
+          $expo['id_carrera'] = $nomcarrera;
 
+          $comuna = Commune::where('id',$expo['id_comuna'])->first();
+          $nomcomuna = $comuna->nombre;
+          $expo['id_comuna'] = $nomcomuna;
+          array_push($expositores,$expo);
         }
-        */
-        /*$expositores = DB::table('exhibitors')
-                        ->join('carreras','exhibitors.id_carrera','=','carreras.id')
-                        ->join('communes','exhibitors.id_comuna','=','communes.id')
-                        ->get();*/
         //dd($expositores);
+
         return view('expositores.index', compact('expositores'));
     }
 
@@ -53,7 +57,7 @@ class ExpositoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

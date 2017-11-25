@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exhibitor;
+use App\Commune;
+use App\Region;
+use DB;
 
 class ExpositoresController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('exhi');
+      $this->middleware('auth');
   }
     /**
      * Display a listing of the resource.
@@ -17,7 +21,18 @@ class ExpositoresController extends Controller
      */
     public function index()
     {
-        //
+        /*$expositores = Exhibitor::all()->toArray();
+        foreach ($expositores as $expo => $valor) {
+          $carrera = Carrera::find($expo->id_carrera)->first();
+
+        }
+        */
+        /*$expositores = DB::table('exhibitors')
+                        ->join('carreras','exhibitors.id_carrera','=','carreras.id')
+                        ->join('communes','exhibitors.id_comuna','=','communes.id')
+                        ->get();*/
+        //dd($expositores);
+        return view('expositores.index', compact('expositores'));
     }
 
     /**
@@ -27,7 +42,7 @@ class ExpositoresController extends Controller
      */
     public function create()
     {
-        //
+        return view('expositores.create');
     }
 
     /**

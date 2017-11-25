@@ -7,7 +7,7 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
+        
         <th>Nombre</th>
         <th>Cantidad</th>
         <th colspan="2">Acciones</th>
@@ -19,7 +19,7 @@
       <tr>
 
         @if($post['activo'] == true)
-        <td>{{$post['id']}}</td>
+
         <td>{{$post['descripcion']}}</td>
         <td>{{$post['stock_total']}}</td>
         <td><a href="{{action('MaterialesController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>

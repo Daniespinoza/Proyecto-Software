@@ -7,7 +7,6 @@
     <table class="table table-striped">
     <thead>
       <tr>
-
         <th>Nombre</th>
         <th>Cantidad</th>
         @if(Auth::user()->id_rol == 1 ||Auth::user()->id_rol == 2)
@@ -33,7 +32,6 @@
             </form>
         </td>
         @endif
-        <!--td><a href="{{action('MaterialesController@destroy', $post['id'], $post['descripcion'], $post['stock_total'])}}" class="btn btn-danger">Eliminar</a></td-->
         @endif
       </tr>
       @endforeach

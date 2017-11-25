@@ -17,12 +17,12 @@ class Staff extends Model
       'correo',
       'activo',
       'id_rol',
-      'id_user',
-      'password'
+      'id_user'
+
     ];
 
     protected $hidden = [
-      'password','rememberToken'
+      'rememberToken'
     ];
 
     //Relationships

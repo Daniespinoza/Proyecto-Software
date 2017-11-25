@@ -23,11 +23,11 @@ class Exhibitor extends Model
     'id_comuna',
     'activo',
     'id_user',
-    'id_carrera',
-    'password'
+    'id_carrera'
+
   ];
   protected $hidden = [
-    'password','rememberToken'
+    'rememberToken'
   ];
 
   //Relationships

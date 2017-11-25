@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             FacultadesTableSeeder::class,
             CarreraTableSeeder::class,
             TipoEstTableSeeder::class,
-            ClaseEstTableSeeder::class
+            ClaseEstTableSeeder::class,
+            ExpositorTableSeeder::class,
+            PersonalTableSeeder::class
         ]);
     }
 }

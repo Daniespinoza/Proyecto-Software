@@ -13,7 +13,7 @@ class CreateStaffsTable extends Migration
      */
     public function up()
     {
-        Schema::create('staffs', function (Blueprint $table) {
+        Schema::create('staff', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido_paterno');
@@ -22,7 +22,7 @@ class CreateStaffsTable extends Migration
             $table->integer('run');
             $table->integer('id_rol')->unsigned();
             $table->string('correo',150);
-            $table->string('password');
+            //$table->string('password');
             $table->boolean('activo');
             $table->integer('id_user')->unsigned();
             $table->rememberToken();
@@ -38,6 +38,6 @@ class CreateStaffsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staffs');
+        Schema::dropIfExists('staff');
     }
 }

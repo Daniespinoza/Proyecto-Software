@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exhibitor;
+use App\Commune;
+use App\Carrera;
+use Illuminate\Support\Facades\DB;
+
 
 class ExpositoresController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('exhi');
+      $this->middleware('auth');
   }
     /**
      * Display a listing of the resource.
@@ -17,7 +22,21 @@ class ExpositoresController extends Controller
      */
     public function index()
     {
-        //
+        $expositores = array();
+        $exposit = Exhibitor::all()->toArray();
+        foreach ($exposit as $expo) {
+          $carrera = Carrera::where('id',$expo['id_carrera'])->first();
+          $nomcarrera = $carrera->nombre;
+          $expo['id_carrera'] = $nomcarrera;
+
+          $comuna = Commune::where('id',$expo['id_comuna'])->first();
+          $nomcomuna = $comuna->nombre;
+          $expo['id_comuna'] = $nomcomuna;
+          array_push($expositores,$expo);
+        }
+        //dd($expositores);
+
+        return view('expositores.index', compact('expositores'));
     }
 
     /**
@@ -27,7 +46,7 @@ class ExpositoresController extends Controller
      */
     public function create()
     {
-        //
+        return view('expositores.create');
     }
 
     /**
@@ -38,7 +57,7 @@ class ExpositoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

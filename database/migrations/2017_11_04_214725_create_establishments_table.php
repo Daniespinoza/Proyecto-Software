@@ -24,7 +24,7 @@ class CreateEstablishmentsTable extends Migration
             $table->string('encargado');
             $table->integer('id_cargo')->unsigned();
             $table->string('correo',150)->nullable();
-            $table->integer('telefono')->nullable();
+            $table->bigInteger('telefono')->nullable();
             $table->string('pace')->nullable();
             $table->timestamps();
         });

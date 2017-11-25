@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ config('app.locale') }}">
 <head>
 	<title>@yield('title')</title>
 	<meta http-equiv="cache-control" content="max-age=0" />
@@ -329,7 +329,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li class="">
-                  <a class="link" href="">
+                  <a class="link" href="{{action('MaterialesController@index')}}">
                         <i class="menu-icon fa fa-search"></i>
                         Ver todo
                     </a>
@@ -337,25 +337,9 @@
                 </li>
 								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
                 <li class="">
-                    <a class="link" href="">
+                    <a class="link" href="{{action('MaterialesController@create')}}">
                         <i class="menu-icon fa fa-plus"></i>
                         Agregar
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a class="link" href="">
-                        <i class="menu-icon fa fa-refresh fa-spin fa-3x fa-fw"></i>
-                        Actualizar
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-								<li class="">
-                    <a class="link" href="">
-                        <i class="menu-icon fa fa-times"></i>
-                        Eliminar
                     </a>
 
                     <b class="arrow"></b>

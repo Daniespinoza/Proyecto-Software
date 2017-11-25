@@ -46,9 +46,28 @@ class MaterialesController extends Controller
             'descripcion' => $request->get('nombre'),
             'stock_total' => $request->get('cantidad'),
             'activo' => true
+
           ]);
 
-          $material->save();
+          $users = Material::where('descripcion',$material['descripcion'])->first();
+
+
+          if($users==null){
+            $material->save();
+          }
+          else
+          {
+            $sum=$request->get('cantidad') + $users->stock_total;
+            $users['stock_total']=$sum;
+            $users['activo']=true;
+            $users->save();
+
+
+
+
+          }
+
+
           return redirect('/materiales');
     }
 

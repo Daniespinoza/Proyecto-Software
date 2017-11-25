@@ -25,7 +25,8 @@ class EstablecimientosController extends Controller
      */
     public function index()
     {
-        //
+        $establecimientos = Establishment::all()->toArray();
+        return view('establecimientos.index',compact('establecimientos'));
     }
 
     /**

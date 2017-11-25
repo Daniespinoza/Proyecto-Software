@@ -18,7 +18,6 @@ class Establishment extends Model
       'id_tipo_establecimiento',
       'encargado',
       'id_cargo',
-      'id_clase',
       'correo',
       'telefono',
       'pace'
@@ -27,7 +26,7 @@ class Establishment extends Model
     public function Communes(){
       return $this->hasOne('App\Commune');
     }
-    public function Departments(){
+    public function Departaments(){
       return $this->hasOne('App\Department');
     }
     public function Establishmenttypes(){
@@ -38,9 +37,6 @@ class Establishment extends Model
     }
     public function Events(){
       return $this->belongsTo('App\Event');
-    }
-    public function EstablishmentClasses(){
-      return $this->hasOne('App\EstablishmentClass');
     }
 
 

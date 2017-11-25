@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 */
+
+/*
 Route::get('/mis_datos', 'StaffsController@datos');
 
 Route::get('/agregar_expositor', 'StaffsController@addexp');
@@ -35,7 +37,20 @@ Route::get('/actualizar_material', 'StaffsController@updatemat');
 Route::get('/eliminar_material', 'StaffsController@deletemat');
 
 Route::get('/agregar_convenio', 'StaffsController@addagree');
+*/
 
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+
+Route::resource('establecimientos','EstablecimientosController');
+Route::resource('expositores','ExpositoresController');
+Route::resource('personal','PersonalController');
+Route::resource('materiales','MaterialesController');
+Route::resource('eventos','EventosController');
+
+
+
+
+
+////////////////////

@@ -17,6 +17,7 @@ class UserTableSeeder extends Seeder
       $admin->email = 'veronica@utem.cl';
       $admin->password = bcrypt('veronica');
       $admin->id_rol = 1;
+      $admin->activo = true;
       $admin->save();
 
       $roja = new User();
@@ -24,6 +25,7 @@ class UserTableSeeder extends Seeder
       $roja->email = 'amaya@utem.cl';
       $roja->password = bcrypt('amaya');
       $roja->id_rol = 2;
+      $roja->activo = true;
       $roja->save();
 
       $secretaria = new User();
@@ -31,6 +33,7 @@ class UserTableSeeder extends Seeder
       $secretaria->email = 'secretaria@utem.cl';
       $secretaria->password = bcrypt('secretaria');
       $secretaria->id_rol = 3;
+      $secretaria->activo = true;
       $secretaria->save();
 
       $expositor = new User();
@@ -38,6 +41,7 @@ class UserTableSeeder extends Seeder
       $expositor->email = 'expositor@utem.cl';
       $expositor->password = bcrypt('expositor');
       $expositor->id_rol = 4;
+      $expositor->activo = true;
       $expositor->save();
 
     }

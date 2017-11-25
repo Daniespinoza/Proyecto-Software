@@ -38,11 +38,16 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Comuna</label>
           <div class="col-md-4">
-          <select class="form-control" name="comuna" name="id_comuna">
-            <option class="form-control" value="">--Selecione un comuna--</option>
-            {{-- @foreach(comunas as comuna)
-              <option class="form-control" value="{{ $comuna['id']}}"> $comuna['nombre']</option>
-            @endforeach --}}
+          {!!  $comunas = DB::table('communes')->get() !!}
+
+        <select class="" name="">
+
+
+        </select>
+
+
+
+
           <input  type="checkbox" name="si_otra" value="si" />otra
         </select>
         </div>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exhibitor;
+use App\User;
 use App\Commune;
 use App\Carrera;
+use App\Region;
 use Illuminate\Support\Facades\DB;
 
 
@@ -46,7 +48,10 @@ class ExpositoresController extends Controller
      */
     public function create()
     {
-        return view('expositores.create');
+        $regions = Region::all();
+        $commun= Commune::all();
+        $carreras = Carrera::all();
+        return view('expositores.create',compact('regions','commun','carreras'));
     }
 
     /**
@@ -57,7 +62,43 @@ class ExpositoresController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+        $pass = substr($request->get('mail'), 0,-8);
+        $users = new User([
+            'name'=> $request->get('nombre') ,
+            'email'=> $request->get('mail'),
+            'password'=> bcrypt($pass),
+            'id_rol'=> 4,
+            'activo'=>true
+
+        ]);
+
+        $users -> save();
+        $run =substr($request->get('rut'), 0,8);
+        $sema = $request->get('sem') - 1;
+        $expo = new Exhibitor([
+
+          'alu_nombre'=> $request->get('nombre'),
+          'alu_apellido_paterno'=> $request->get('ap_pat'),
+          'alu_apellido_materno'=> $request->get('ap_mat'),
+          'alu_rut'=> $request->get('rut'),
+          'run'=> $run,
+          'genero'=> $request->get('genero'),
+          'alu_celular'=> $request->get('telefono'),
+          'alu_email'=> $request->get('mail'),
+          'semestres_aprobados'=> $sema,
+          'semestre_actual'=> $request->get('sem'),
+          'direccion'=> $request->get('direccion'),
+          'id_comuna'=> $request->get('comuna'),
+          'activo'=> true,
+          'id_user'=> $users->id,
+          'id_carrera'=> $request->get('carrera')
+
+        ]);
+        $expo->save();
+
+        return redirect('/expositores');
+
     }
 
     /**
@@ -79,7 +120,22 @@ class ExpositoresController extends Controller
      */
     public function edit($id)
     {
-        //
+      $expo = Exhibitor::find($id);
+      $c = $expo->id_comuna;
+      $comm= Commune::where('id','=',$c)->get();
+      $r =$comm[0]['id_region'] ;
+      $regi = Region::where('id','=',$r)->get();
+      $car=$expo->id_carrera;
+
+      $carres = Carrera::where('id','=',$car)->get();
+
+      $commun = Commune::all();
+      $regions = Region::all();
+      $carreras = Carrera::all();
+
+
+
+      return view('expositores.edit', compact('expo','id','comm','regi','carres','regions','commun','carreras'));
     }
 
     /**
@@ -91,7 +147,27 @@ class ExpositoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        $sema = $request->get('sem') - 1;
+        $expo = Exhibitor::find($id);
+        $expo ->alu_rut = $request->get('rut');
+        $expo ->alu_nombre = $request->get('nombre');
+        $expo ->alu_apellido_paterno= $request->get('ap_pat') ;
+        $expo ->alu_apellido_materno = $request->get('ap_mat');
+        $expo ->alu_email = $request->get('mail');
+        $expo ->alu_celular = $request->get('telefono');
+        $expo ->direccion = $request->get('direccion');
+        $expo ->id_carrera = $request->get('carrera');
+        $expo ->id_comuna = $request->get('comuna');
+        $expo ->genero = $request->get('genero');
+        $expo ->semestre_actual = $request->get('sem');
+        $expo ->semestres_aprobados = $sema;
+        $expo ->activo=true;
+        $expo->save();
+        return redirect('/expositores');
+
+
+
     }
 
     /**

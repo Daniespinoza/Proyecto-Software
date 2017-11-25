@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             ExpositorTableSeeder::class,
             PersonalTableSeeder::class,
             TipoEncargadoTableSeeder::class,
-            DepartamentTableSeeder::class
-          //  EstablecimientoTableSeeder::class
+            DepartamentTableSeeder::class,
+            EstablecimientoTableSeeder::class
         ]);
     }
 }

@@ -51,7 +51,6 @@ class MaterialesController extends Controller
 
           $users = Material::where('descripcion',$material['descripcion'])->first();
 
-
           if($users==null){
             $material->save();
           }
@@ -61,9 +60,6 @@ class MaterialesController extends Controller
             $users['stock_total']=$sum;
             $users['activo']=true;
             $users->save();
-
-
-
 
           }
 

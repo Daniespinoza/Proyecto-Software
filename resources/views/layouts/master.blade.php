@@ -187,7 +187,7 @@
 
         <ul class="submenu">
             <li class="">
-                <a class="link" href="">
+                <a class="link" href="{{action('ExpositoresController@index')}}">
                     <i class="menu-icon fa fa-search"></i>
                 	Ver Todo
 
@@ -196,7 +196,7 @@
             </li>
 						@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
 						<li class="">
-                <a class="link" href="">
+                <a class="link" href="{{action('ExpositoresController@index')}}">
                     <i class="menu-icon fa fa-plus"></i>
                 		Agregar
                 </a>

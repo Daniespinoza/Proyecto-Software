@@ -9,8 +9,8 @@
 </div>
 <div class="row">
 <div class="col-xs-12">
-<form class="form-horizontal ingresar_solicitud" target="_blank" method="post" action="/certificados_2/guardar_solicitud">
-
+<form class="form-horizontal" method="post" action="{{url('establecimientos')}}">
+{{csrf_field()}}
 <div class="form-group">
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> RBD </label>
      <div class="col-md-4">
@@ -26,13 +26,15 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Comuna</label>
           <div class="col-md-4">
-          <select class="form-control" name="comuna" id="id_comuna">
+            {{--!!Form::select('comunas',$comunas,null,['id'=>'comunas','class'=>'form-control','action'=>'EstablecimientosController@comunas'])!!--}}
+        
+          <!--select class="form-control" name="comuna" id="id_comuna">
             <option class="form-control" value="">--Selecione un comuna--</option>
             {{-- @foreach(comunas as comuna)
               <option class="form-control" value="{{ $comuna['id']}}"> $comuna['nombre']</option>
             @endforeach --}}
           <input  type="checkbox" name="si_otra" value="si" />otra
-        </select>
+        </select-->
         </div>
 </div>
 <div class="form-group">
@@ -87,26 +89,14 @@
           <input type="radio" name="pace" value="1" />Si
           <input  type="radio" name="pace" value="2" />No
       </div>
-      <div class="col-md-3 control-label no-padding-right">
 
-      <button type="" class="btn btn-purple">
-        <i class="ace-icon bigger-110">
-          Agregar
-      </i>
-      </button>
+
+
     </div>
-    </div>
-    <!--div class="form-group">
+    <div class="col-md-2"></div>
+    <input type="submit" class="btn btn-primary">
+  </div>
 
-    <div class="clearfix form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-<div class="form-control">
-
-
-      </div>
-      </div>
-      </div>
-    </div-->
 </form>
 </div>
 </div>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Establishment;
 use App\Establishmenttype;
 use App\Establishmentcharge;
-use App\EstablishmentClass;
+use App\Departament;
 use App\Region;
 use App\Commune;
 
@@ -23,9 +23,31 @@ class EstablecimientosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $establecimientos = Establishment::all()->toArray();
+        $establecimientos = array();
+        $est = Establishment::all()->toArray();
+        foreach ($est as $estab) {
+          $comuna = Commune::where('id',$estab['id_comuna'])->first();
+          $nomcomuna = $comuna->nombre;
+          $estab['id_comuna'] = $nomcomuna;
+
+          $dep = Departament::where('id',$estab['id_depto'])->first();
+          $nomdep = $dep->descripcion;
+          $estab['id_depto'] = $nomdep;
+
+          $tipo = Establishmenttype::where('id',$estab['id_tipo_establecimiento'])->first();
+          $t = $tipo->tipo;
+          $estab['id_tipo_establecimiento'] = $t;
+
+          $cargo = Establishmentcharge::where('id',$estab['id_cargo'])->first();
+          $car = $cargo->descripcion;
+          $estab['id_cargo'] = $car;
+
+          array_push($establecimientos,$estab);
+
+        }
         return view('establecimientos.index',compact('establecimientos'));
     }
 
@@ -36,7 +58,7 @@ class EstablecimientosController extends Controller
      */
     public function create()
     {
-        //
+        return view('establecimientos.create');
     }
 
     /**

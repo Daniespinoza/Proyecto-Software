@@ -142,7 +142,7 @@ class PersonalController extends Controller
 
         return redirect('/personal');
     }
-
+//
     /**
      * Remove the specified resource from storage.
      *

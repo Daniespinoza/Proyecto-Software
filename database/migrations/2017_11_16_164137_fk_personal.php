@@ -13,7 +13,7 @@ class FkPersonal extends Migration
      */
     public function up()
     {
-      Schema::table('staffs', function (Blueprint $table) {
+      Schema::table('staff', function (Blueprint $table) {
           $table->foreign('id_user')->references('id')->on('users');
           $table->foreign('id_rol')->references('id')->on('roles');
           $table->unique('correo');
@@ -28,7 +28,7 @@ class FkPersonal extends Migration
      */
     public function down()
     {
-        Schema::table('staffs', function (Blueprint $table) {
+        Schema::table('staff', function (Blueprint $table) {
             //
         });
     }

@@ -13,7 +13,7 @@ class MaterialTableSeeder extends Seeder
     public function run()
     {
       $adminpubli = new Material();
-    $adminpubli->descripcion = 'Ficha Administracion Publica' ;
+    $adminpubli->descripcion = 'Ficha Administración Pública' ;
     $adminpubli->stock_total = '100';
     $adminpubli->activo = 1 ;
     $adminpubli -> save();
@@ -79,7 +79,7 @@ class MaterialTableSeeder extends Seeder
     $CivilCompu-> save();
 
     $Civilmecanica = new Material();
-    $Civilmecanica->descripcion = 'Ficha Ing Civil Mecanica' ;
+    $Civilmecanica->descripcion = 'Ficha Ing Civil Mecánica' ;
     $Civilmecanica->stock_total= 100;
     $Civilmecanica->activo = 1 ;
     $Civilmecanica -> save();
@@ -199,7 +199,7 @@ class MaterialTableSeeder extends Seeder
     $Espec-> save();
 
     $GuiaA = new Material();
-    $GuiaA->descripcion = 'Guia Academica';
+    $GuiaA->descripcion = 'Guía Academica';
     $GuiaA->stock_total= 100;
     $GuiaA->activo = 1 ;
     $GuiaA-> save();
@@ -211,13 +211,13 @@ class MaterialTableSeeder extends Seeder
     $Rinfo-> save();
 
     $Lap = new Material();
-    $Lap->descripcion = 'Lapices Ecológicos';
+    $Lap->descripcion = 'Lápices Ecológicos';
     $Lap->stock_total= 100;
     $Lap->activo = 1 ;
     $Lap-> save();
 
     $LapMG = new Material();
-    $LapMG->descripcion = 'Lapices Me Gusta';
+    $LapMG->descripcion = 'Lápices Me Gusta';
     $LapMG->stock_total= 100;
     $LapMG->activo = 1 ;
     $LapMG-> save();

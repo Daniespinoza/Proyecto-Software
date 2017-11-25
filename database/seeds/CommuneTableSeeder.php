@@ -26,7 +26,7 @@ class CommuneTableSeeder extends Seeder
       $cerronavia->save();
 
       $conchali = new Commune();
-      $conchali->nombre = "Conchali";
+      $conchali->nombre = "Conchalí";
       $conchali->id_region = 1;
       $conchali->save();
 
@@ -36,7 +36,7 @@ class CommuneTableSeeder extends Seeder
       $bosque->save();
 
       $estacion = new Commune();
-      $estacion->nombre = "Estacion Central";
+      $estacion->nombre = "Estación Central";
       $estacion->id_region = 1;
       $estacion->save();
 
@@ -126,7 +126,7 @@ class CommuneTableSeeder extends Seeder
       $comuna8->save();
 
       $comuna9 = new Commune();
-      $comuna9->nombre = "Peñalolen";
+      $comuna9->nombre = "Peñalolén";
       $comuna9->id_region = 1;
       $comuna9->save();
 

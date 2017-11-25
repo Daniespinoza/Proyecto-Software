@@ -18,7 +18,7 @@ class CreateStaffsTable extends Migration
             $table->string('nombre');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
-            $table->string('rut',11);
+            $table->string('rut');
             $table->integer('run');
             $table->integer('id_rol')->unsigned();
             $table->string('correo',150);

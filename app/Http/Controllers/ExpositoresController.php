@@ -50,7 +50,7 @@ class ExpositoresController extends Controller
     {
         $regions = Region::all();
         $commun= Commune::all();
-       $carreras = Carrera::orderBy('nombre','asc')->get();
+        $carreras = Carrera::orderBy('nombre','asc')->get();
         return view('expositores.create',compact('regions','commun','carreras'));
     }
 
@@ -147,24 +147,26 @@ class ExpositoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
-
         $sema = $request->get('sem') - 1;
+
         $expo = Exhibitor::find($id)->get();
-        $expo ->alu_rut = $request->get('rut');
-        $expo ->alu_nombre = $request->get('nombre');
-        $expo ->alu_apellido_paterno= $request->get('ap_pat') ;
-        $expo ->alu_apellido_materno = $request->get('ap_mat');
-        $expo ->alu_email = $request->get('mail');
-        $expo ->alu_celular = $request->get('telefono');
-        $expo ->direccion = $request->get('direccion');
-        $expo ->id_carrera = $request->get('carrera');
-        $expo ->id_comuna = $request->get('comuna');
-        $expo ->genero = $request->get('genero');
-        $expo ->semestre_actual = $request->get('sem');
-        $expo ->semestres_aprobados = $sema;
-        $expo ->activo=true;
+        $expo->alu_rut = $request->get('rut');
+        $expo->alu_nombre = $request->get('nombre');
+        $expo->alu_apellido_paterno= $request->get('ap_pat') ;
+        $expo->alu_apellido_materno = $request->get('ap_mat');
+        $expo->alu_email = $request->get('mail');
+        $expo->alu_celular = $request->get('telefono');
+        $expo->direccion = $request->get('direccion');
+        $expo->id_carrera = $request->get('carrera');
+        $expo->id_comuna = $request->get('comuna');
+        $expo->genero = $request->get('genero');
+        $expo->semestre_actual = $request->get('sem');
+        $expo->semestres_aprobados = $sema;
+        $expo->activo = true;
+        dd($expo);
         $expo->save();
+
+
         return redirect('/expositores');
 
 

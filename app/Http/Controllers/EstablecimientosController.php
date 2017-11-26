@@ -58,7 +58,12 @@ class EstablecimientosController extends Controller
      */
     public function create()
     {
-        return view('establecimientos.create');
+        $tipos = Establishmenttype::all();
+        $deptos = Departament::all();
+        $comunas = Commune::orderBy('nombre','asc')->get();
+        $regiones = Region::orderBy('nombre','asc')->get();
+        $cargos = Establishmentcharge::orderBy('descripcion','asc')->get();
+        return view('establecimientos.create',compact('tipos','deptos','comunas','regiones','cargos'));
     }
 
     /**
@@ -69,7 +74,23 @@ class EstablecimientosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $est = new Establishment([
+          'rbd' => $request->get('rbd'),
+          'nombre_establecimiento' => $request->get('nombre'),
+          'id_comuna' => $request->get('comuna'),
+          'direccion' => $request->get('direccion'),
+          'id_depto' => $request->get('depto'),
+          'id_tipo_establecimiento' => $request->get('tipo'),
+          'encargado' => $request->get('encargado'),
+          'id_cargo' => $request->get('cargo'),
+          'correo' => $request->get('correo'),
+          'telefono' => $request->get('fono'),
+          'pace' => $request->get('pace'),
+        ]);
+        $est->save();
+
+        return redirect('/establecimientos');
+
     }
 
     /**
@@ -91,7 +112,25 @@ class EstablecimientosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estab = Establishment::find($id);
+        $comunas = Commune::all();
+        $com = Commune::where('id','=',$estab->id_comuna)->get();
+        //dd($com[0]->nombre);
+
+        $deptos = Departament::all();
+        $dept = Departament::where('id','=',$estab->id_depto)->get();
+        //dd($dept[0]->descripcion);
+
+        $tipos = Establishmenttype::all();
+        $tip = Establishmenttype::where('id','=',$estab->id_tipo_establecimiento)->get();
+        //dd($tip[0]->tipo);
+
+        $cargos = Establishmentcharge::all();
+        $carg = Establishmentcharge::where('id','=',$estab->id_cargo)->get();
+        //dd($cargo[0]->descripcion);
+
+        return view('establecimientos.edit',compact('estab','comunas','deptos','tipos','cargos','com','dept','tip','carg','id'));
+
     }
 
     /**

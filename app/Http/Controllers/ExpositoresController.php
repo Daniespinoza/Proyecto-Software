@@ -149,7 +149,8 @@ class ExpositoresController extends Controller
     {
         $sema = $request->get('sem') - 1;
 
-        $expo = Exhibitor::find($id)->get();
+        $expo = Exhibitor::find($id);
+
         $expo->alu_rut = $request->get('rut');
         $expo->alu_nombre = $request->get('nombre');
         $expo->alu_apellido_paterno= $request->get('ap_pat') ;
@@ -163,7 +164,7 @@ class ExpositoresController extends Controller
         $expo->semestre_actual = $request->get('sem');
         $expo->semestres_aprobados = $sema;
         $expo->activo = true;
-        dd($expo);
+        //dd($expo);
         $expo->save();
 
 

@@ -50,7 +50,7 @@ class ExpositoresController extends Controller
     {
         $regions = Region::all();
         $commun= Commune::all();
-        $carreras = Carrera::all();
+       $carreras = Carrera::orderBy('nombre','asc')->get();
         return view('expositores.create',compact('regions','commun','carreras'));
     }
 
@@ -126,8 +126,8 @@ class ExpositoresController extends Controller
       $r =$comm[0]['id_region'] ;
       $regi = Region::where('id','=',$r)->get();
       $car=$expo->id_carrera;
-
       $carres = Carrera::where('id','=',$car)->get();
+      $sex=$expo->genero;
 
       $commun = Commune::all();
       $regions = Region::all();
@@ -135,7 +135,7 @@ class ExpositoresController extends Controller
 
 
 
-      return view('expositores.edit', compact('expo','id','comm','regi','carres','regions','commun','carreras'));
+      return view('expositores.edit', compact('expo','sex','id','comm','regi','carres','regions','commun','carreras'));
     }
 
     /**
@@ -148,8 +148,9 @@ class ExpositoresController extends Controller
     public function update(Request $request, $id)
     {
         dd($request);
+
         $sema = $request->get('sem') - 1;
-        $expo = Exhibitor::find($id);
+        $expo = Exhibitor::find($id)->get();
         $expo ->alu_rut = $request->get('rut');
         $expo ->alu_nombre = $request->get('nombre');
         $expo ->alu_apellido_paterno= $request->get('ap_pat') ;
@@ -178,6 +179,18 @@ class ExpositoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $expo = Exhibitor::find($id);
+      $expo->activo =0;
+      $expo->save();
+      $id1 =$expo->id_user;
+      $user = User::where('id','=',$id1)->first();
+      $user->activo=0;
+      $user -> save();
+
+
+      return redirect('/expositores');
+
+
+
     }
 }

@@ -11,7 +11,8 @@ class Turn extends Model
   protected $fillable = [
     'id_jornada',
     'id_evento',
-    'transporte'
+    'transporte',
+    'tipo_transporte'
   ];
 
   public function Events(){

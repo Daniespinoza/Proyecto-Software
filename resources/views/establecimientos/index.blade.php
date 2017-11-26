@@ -40,12 +40,7 @@
         <td>{{$post['pace']}}</td>
         @if(Auth::user()->id_rol == 1)
         <td><a href="{{action('EstablecimientosController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
-        <!--td><form action="{{action('EstablecimientosController@destroy', $post['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Eliminar</button>
-            </form>
-        </td-->
+        
         @endif
       </tr>
       @endforeach

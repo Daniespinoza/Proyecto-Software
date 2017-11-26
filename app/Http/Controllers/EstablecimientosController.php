@@ -142,7 +142,23 @@ class EstablecimientosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $estab = Establishment::find($id);
+
+        $estab->rbd = $request->get('rbd');
+        $estab->nombre_establecimiento = $request->get('rbd');
+        $estab->id_comuna = $request->get('comuna');
+        $estab->direccion = $request->get('direccion');
+        $estab->id_depto = $request->get('depto');
+        $estab->id_tipo_establecimiento = $request->get('tipo');
+        $estab->encargado = $request->get('encargado');
+        $estab->id_cargo = $request->get('cargo');
+        $estab->correo = $request->get('correo');
+        $estab->telefono = $request->get('fono');
+        $estab->pace = $request->get('pace');
+        $estab->save();
+
+        return redirect('/establecimientos');
+
     }
 
     /**

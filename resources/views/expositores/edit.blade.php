@@ -38,18 +38,23 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label no-padding-right"> Genero</label>
+        <label class="col-md-3 control-label no-padding-right"> Género</label>
         <div class="col-md-4">
           <select class="form-control" name="genero" value="{{$expo->genero}}"required>
-            <option value="">--Seleccione un Genero--</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
+
+            <option value="{{$sex}}">{{ $sex }}</option>
+            @if( $sex == "Femenino" )
+            <option value="Masculino">Masculino</option>
+            @endif
+            @if( $sex == "Masculino" )
+            <option value="Femenino">Femenino</option>
+            @endif
         </select>
 
       </div>
       </div>
     <div class="form-group">
-        <label class="col-md-3 control-label no-padding-right"> Region</label>
+        <label class="col-md-3 control-label no-padding-right"> Región</label>
         <div class="col-md-4">
           <select class="form-control" name="regiones" id="selectRegion"required>
             <option value="{{$regi[0]['id']}}">{{$regi[0]['nombre']}}</option>

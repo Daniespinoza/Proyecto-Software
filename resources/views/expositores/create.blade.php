@@ -37,21 +37,21 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-3 control-label no-padding-right"> Genero</label>
+        <label class="col-md-3 control-label no-padding-right"> Género</label>
         <div class="col-md-4">
           <select class="form-control" name="genero" required>
-            <option value="">--Seleccione un Genero--</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
+            <option value="">--Seleccione un Género--</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
         </select>
 
       </div>
       </div>
     <div class="form-group">
-        <label class="col-md-3 control-label no-padding-right"> Region</label>
+        <label class="col-md-3 control-label no-padding-right"> Región</label>
         <div class="col-md-4">
           <select class="form-control" name="regiones" id="selectRegion"required>
-            <option value="">--Seleccione una region--</option>
+            <option value="">--Seleccione una región--</option>
 
           @foreach ($regions as $region)
             <option value="{{$region['id']}}">{{$region['nombre']}}</option>
@@ -70,7 +70,7 @@
           <div class="col-md-4">
 
             <select class="form-control" name="comuna"required>
-              <option value="">--Seleccione una comuna--</option>
+              <option value="">--Seleccione una Comuna--</option>
 
             @foreach ($commun as $comunas)
               <option value="{{$comunas['id']}}">{{$comunas['nombre']}}</option>

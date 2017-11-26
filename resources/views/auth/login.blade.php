@@ -48,7 +48,7 @@
                                                 <fieldset>
                                                     <label class="block clearfix">
                                                         <span class="block input-icon input-icon-right">
-                                                            <input id="email" type="text" name="email" class="form-control" placeholder="RUT" value="{{ old('email') }}"  required="true" autocomplete="username" />
+                                                            <input id="email" type="text" name="email" class="form-control" placeholder="email" value="{{ old('email') }}"  required="true" autocomplete="username" />
                                                             {{ csrf_field() }}
                                                             <i class="ace-icon fa fa-user"></i>
                                                         </span>

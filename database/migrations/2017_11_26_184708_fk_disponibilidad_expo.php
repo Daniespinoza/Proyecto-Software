@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubtypesTable extends Migration
+class FkDisponibilidadExpo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateSubtypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('subtypes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('descripcion');
-            $table->timestamps();
+        Schema::table('disponibilidads', function (Blueprint $table) {
+            $table->foreign('id_expositor')->references('id')->on('exhibitors');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateSubtypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subtypes');
+        Schema::table('disponibilidads', function (Blueprint $table) {
+            //
+        });
     }
 }

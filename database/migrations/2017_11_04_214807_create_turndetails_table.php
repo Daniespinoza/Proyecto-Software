@@ -19,6 +19,8 @@ class CreateTurndetailsTable extends Migration
             $table->integer('id_expositor')->unsigned();
             $table->boolean('confirmacion');
             $table->boolean('asistencia');
+            $table->boolean('encargado_turno')->nullable();
+            $table->bigInteger('dinero_turno')->nullable();
             $table->timestamps();
         });
     }

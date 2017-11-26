@@ -18,6 +18,8 @@ class CreateEventsTable extends Migration
             $table->integer('id_tipo_evento')->unsigned();
             $table->integer('id_personal')->unsigned();
             $table->integer('id_establecimiento')->unsigned();
+            $table->integer('cupos');
+            $table->dateTime('fecha_inicio');
             $table->timestamps();
         });
     }

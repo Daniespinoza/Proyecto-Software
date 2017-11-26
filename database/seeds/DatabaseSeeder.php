@@ -24,7 +24,9 @@ class DatabaseSeeder extends Seeder
             PersonalTableSeeder::class,
             TipoEncargadoTableSeeder::class,
             DepartamentTableSeeder::class,
-            EstablecimientoTableSeeder::class
+            EstablecimientoTableSeeder::class,
+            SubtypeTableSeeder::class,
+            TypeEventTableSeeder::class
         ]);
     }
 }

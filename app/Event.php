@@ -11,7 +11,9 @@ class Event extends Model
   protected $fillable = [
     'id_tipo_evento',
     'id_personal',
-    'id_establecimiento'
+    'id_establecimiento',
+    'cupos',
+    'fecha_inicio'
   ];
 
   public function Staffs(){

@@ -12,7 +12,9 @@ class Turndetail extends Model
     'id_turno',
     'id_expositor',
     'confirmacion',
-    'asistencia'
+    'asistencia',
+    'encargado_turno',
+    'dinero_turno'
   ];
   public function Exhibitors(){
     return $this->belongsToMany('App\Exhibitor');

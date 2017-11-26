@@ -23,7 +23,7 @@ class EventosController extends Controller
      */
     public function index()
     {
-        //
+        return view('eventos.index');
     }
 
     /**

@@ -50,6 +50,9 @@ class Exhibitor extends Model
   public function Carreras(){
     return $this->hasOne('App\Carrera');
   }
+  public function Disponibilidads(){
+    return $this->belongsTo('App\Disponibilidad');
+  }
 
 
 }

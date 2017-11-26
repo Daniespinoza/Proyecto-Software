@@ -48,6 +48,7 @@ Route::resource('expositores','ExpositoresController');
 Route::resource('personal','PersonalController');
 Route::resource('materiales','MaterialesController');
 Route::resource('eventos','EventosController');
+Route::resource('Mis_Datos','DatosController');
 
 
 

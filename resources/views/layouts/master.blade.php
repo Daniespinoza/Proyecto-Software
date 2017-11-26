@@ -155,20 +155,29 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="">
+                <a class="link" href="{{action('DatosController@index')}}">
                     <i class="menu-icon fa fa-newspaper-o"></i>
                     Mis Datos
                 </a>
                 <b class="arrow"></b>
             </li>
 						@if (Auth::user()->id_rol == 4)
+					<li class="">
+								<a class="link" href="{{action('DatosController@index')}}">
+										<i class="menu-icon fa fa-calendar"></i>
+										Mi Historial
+								</a>
+								<b class="arrow"></b>
+					</li>
+
 						<li class="">
-                <a href="">
+                <a hred="">
                     <i class="menu-icon fa fa-calendar"></i>
                     Mi horario
                 </a>
                 <b class="arrow"></b>
             </li>
+
 						@endif
         </ul>
     </li>

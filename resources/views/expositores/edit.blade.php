@@ -10,10 +10,10 @@
 </div>
 <div class="row">
 <div class="col-xs-12">
-<form class="form-horizontal "  method="post" action="{{action('ExpositoresController@update',$id)}}">
+<form class="form-horizontal" method="post" action="{{action('ExpositoresController@update',$id)}}">
 {{csrf_field()}}
-
 <div class="form-group">
+  <input name="_method" type="hidden" value="PATCH"/>
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Rut </label>
      <div class="col-md-4">
         <input class="form-control" type="text" name="rut" value="{{$expo->alu_rut}}" required />
@@ -56,7 +56,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Región</label>
         <div class="col-md-4">
-          <select class="form-control" name="regiones" id="selectRegion"required>
+          <select class="form-control" name="regiones" required>
             <option value="{{$regi[0]['id']}}">{{$regi[0]['nombre']}}</option>
         @foreach ($regions as $region)
             @if($region->id !=$regi[0]['id'] )
@@ -69,7 +69,7 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Comuna</label>
           <div class="col-md-4">
-            <select class="form-control" name="comuna"required>
+            <select class="form-control" name="comuna" required>
               <option value="{{$comm[0]['id']}}">{{$comm[0]['nombre']}}</option>
 
             @foreach ($commun as $comunas)
@@ -89,13 +89,13 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right">Teléfono</label>
           <div class="col-md-4">
-          <input type="number" class="form-control" name = "telefono"value="{{$expo->alu_celular}}" required/>
+          <input type="number" class="form-control" name = "telefono" value="{{$expo->alu_celular}}" required/>
       </div>
     </div>
   <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Carrera</label>
         <div class="col-md-4">
-          <select class="form-control" name="carrera"  value=""required>
+          <select class="form-control" name="carrera" required>
               <option value="{{$comm[0]['id']}}">{{$carres[0]['nombre']}}</option>
 
           @foreach ($carreras as $carrera)
@@ -109,7 +109,7 @@
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-right"> Semestre Actual </label>
       <div class="col-md-4">
-        <input type="number" class="form-control"  name = "sem" value="{{$expo->semestre_actual}}"required/>
+        <input type="number" class="form-control"  name = "sem" value="{{$expo->semestre_actual}}" required/>
       </div>
     </div>
       <div class="form-group">
@@ -119,13 +119,10 @@
         </div>
         <div class="col-md-3 control-label no-padding-right">
 
-        <button type="" class="btn btn-blue">
-          <i class="ace-icon bigger-110">
-            Agregar
-        </i>
-        </button>
         </div>
       </div>
+      <div class="col-md-6"></div>
+      <button type="submit" class="btn btn-primary">Actualizar</button>
 
 
     </div>

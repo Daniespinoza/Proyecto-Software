@@ -50,8 +50,8 @@
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Región</label>
         <div class="col-md-4">
-          <select class="form-control" name="regiones" id="selectRegion"required>
-            <option value="">--Seleccione una región--</option>
+          <select class="form-control" name="regiones" required>
+            <option value="">-- Seleccione una región --</option>
 
           @foreach ($regions as $region)
             <option value="{{$region['id']}}">{{$region['nombre']}}</option>
@@ -60,7 +60,7 @@
         </select>
 
 
-        <input  type="checkbox" name="otraReg" value="1" id="checkReg"/>otra
+        <input  type="checkbox" name="otraReg" value="1"/>otra
 
 
       </div>
@@ -70,7 +70,7 @@
           <div class="col-md-4">
 
             <select class="form-control" name="comuna"required>
-              <option value="">--Seleccione una Comuna--</option>
+              <option value="">-- Seleccione una Comuna --</option>
 
             @foreach ($commun as $comunas)
               <option value="{{$comunas['id']}}">{{$comunas['nombre']}}</option>
@@ -96,8 +96,8 @@
   <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Carrera</label>
         <div class="col-md-4">
-          <select class="form-control" name="carrera" id="selectRegion" required>
-            <option value="">--Seleccione una Carrera--</option>
+          <select class="form-control" name="carrera"  required>
+            <option value="">-- Seleccione una Carrera --</option>
 
           @foreach ($carreras as $carrera)
             <option value="{{$carrera['id']}}">{{$carrera['nombre']}}</option>
@@ -119,13 +119,10 @@
         </div>
         <div class="col-md-3 control-label no-padding-right">
 
-        <button type="" class="btn btn-blue">
-          <i class="ace-icon bigger-110">
-            Agregar
-        </i>
-        </button>
         </div>
       </div>
+      <div class="col-md-6"></div>
+      <input type="submit" class="btn btn-primary">
 
 
     </div>

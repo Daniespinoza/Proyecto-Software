@@ -9,7 +9,8 @@ use App\Establishmentcharge;
 use App\Departament;
 use App\Region;
 use App\Commune;
-
+use Auth;
+use Illuminate\Support\Facades\DB;
 
 class EstablecimientosController extends Controller
 {
@@ -26,6 +27,7 @@ class EstablecimientosController extends Controller
 
     public function index()
     {
+      if(Auth::user()->id_rol != 4){
         $establecimientos = array();
         $est = Establishment::all()->toArray();
         foreach ($est as $estab) {
@@ -49,6 +51,10 @@ class EstablecimientosController extends Controller
 
         }
         return view('establecimientos.index',compact('establecimientos'));
+      }
+      else{
+        return redirect('/');
+      }
     }
 
     /**
@@ -58,12 +64,17 @@ class EstablecimientosController extends Controller
      */
     public function create()
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
         $tipos = Establishmenttype::all();
         $deptos = Departament::all();
         $comunas = Commune::orderBy('nombre','asc')->get();
         $regiones = Region::orderBy('nombre','asc')->get();
         $cargos = Establishmentcharge::orderBy('descripcion','asc')->get();
         return view('establecimientos.create',compact('tipos','deptos','comunas','regiones','cargos'));
+      }
+      else{
+        return redirect('/');
+      }
     }
 
     /**
@@ -74,6 +85,7 @@ class EstablecimientosController extends Controller
      */
     public function store(Request $request)
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
         $est = new Establishment([
           'rbd' => $request->get('rbd'),
           'nombre_establecimiento' => $request->get('nombre'),
@@ -90,6 +102,10 @@ class EstablecimientosController extends Controller
         $est->save();
 
         return redirect('/establecimientos');
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 
@@ -112,6 +128,7 @@ class EstablecimientosController extends Controller
      */
     public function edit($id)
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
         $estab = Establishment::find($id);
         $comunas = Commune::all();
         $com = Commune::where('id','=',$estab->id_comuna)->get();
@@ -130,6 +147,10 @@ class EstablecimientosController extends Controller
         //dd($cargo[0]->descripcion);
 
         return view('establecimientos.edit',compact('estab','comunas','deptos','tipos','cargos','com','dept','tip','carg','id'));
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 
@@ -142,6 +163,7 @@ class EstablecimientosController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
         $estab = Establishment::find($id);
 
         $estab->rbd = $request->get('rbd');
@@ -158,6 +180,10 @@ class EstablecimientosController extends Controller
         $estab->save();
 
         return redirect('/establecimientos');
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 

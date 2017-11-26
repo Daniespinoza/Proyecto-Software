@@ -10,7 +10,7 @@ use App\Carrera;
 use App\Region;
 use App\Facultad;
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 
 class ExpositoresController extends Controller
 {
@@ -25,23 +25,28 @@ class ExpositoresController extends Controller
      */
     public function index()
     {
-        $expositores = array();
-        $exposit = Exhibitor::all()->toArray();
-        foreach ($exposit as $expo) {
-          $carrera = Carrera::where('id',$expo['id_carrera'])->first();
-          $nomcarrera = $carrera->nombre;
-          $expo['id_carrera'] = $nomcarrera;
+        if(Auth::user()->id_rol != 4){
+          $expositores = array();
+          $exposit = Exhibitor::all()->toArray();
+          foreach ($exposit as $expo) {
+            $carrera = Carrera::where('id',$expo['id_carrera'])->first();
+            $nomcarrera = $carrera->nombre;
+            $expo['id_carrera'] = $nomcarrera;
 
-          $comuna = Commune::where('id',$expo['id_comuna'])->first();
-          $nomcomuna = $comuna->nombre;
-          $expo['id_comuna'] = $nomcomuna;
-          array_push($expositores,$expo);
+            $comuna = Commune::where('id',$expo['id_comuna'])->first();
+            $nomcomuna = $comuna->nombre;
+            $expo['id_comuna'] = $nomcomuna;
+            array_push($expositores,$expo);
+          }
+          $facultades = Facultad::all()->toArray();
+          $carreras = Carrera::all()->toArray();
+          //dd($expositores);
+
+          return view('expositores.index', compact('expositores','facultades','carreras'));
         }
-        $facultades = Facultad::all()->toArray();
-        $carreras = Carrera::all()->toArray();
-        //dd($expositores);
-
-        return view('expositores.index', compact('expositores','facultades','carreras'));
+        else{
+          return redirect('/');
+        }
     }
 
     /**
@@ -51,10 +56,15 @@ class ExpositoresController extends Controller
      */
     public function create()
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
         $regions = Region::all();
         $commun= Commune::all();
         $carreras = Carrera::orderBy('nombre','asc')->get();
         return view('expositores.create',compact('regions','commun','carreras'));
+      }
+      else{
+        return redirect('/');
+      }
     }
 
     /**
@@ -65,6 +75,7 @@ class ExpositoresController extends Controller
      */
     public function store(Request $request)
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
 
         $pass = substr($request->get('mail'), 0,-8);
         $users = new User([
@@ -101,6 +112,10 @@ class ExpositoresController extends Controller
         $expo->save();
 
         return redirect('/expositores');
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 
@@ -123,22 +138,30 @@ class ExpositoresController extends Controller
      */
     public function edit($id)
     {
-      $expo = Exhibitor::find($id);
-      $c = $expo->id_comuna;
-      $comm= Commune::where('id','=',$c)->get();
-      $r =$comm[0]['id_region'] ;
-      $regi = Region::where('id','=',$r)->get();
-      $car=$expo->id_carrera;
-      $carres = Carrera::where('id','=',$car)->get();
-      $sex=$expo->genero;
 
-      $commun = Commune::all();
-      $regions = Region::all();
-      $carreras = Carrera::all();
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $expo = Exhibitor::find($id);
+        $c = $expo->id_comuna;
+        $comm= Commune::where('id','=',$c)->get();
+        $r =$comm[0]['id_region'] ;
+        $regi = Region::where('id','=',$r)->get();
+        $car=$expo->id_carrera;
+        $carres = Carrera::where('id','=',$car)->get();
+        $sex=$expo->genero;
+
+        $commun = Commune::all();
+        $regions = Region::all();
+        $carreras = Carrera::all();
 
 
 
-      return view('expositores.edit', compact('expo','sex','id','comm','regi','carres','regions','commun','carreras'));
+        return view('expositores.edit', compact('expo','sex','id','comm','regi','carres','regions','commun','carreras'));
+      }
+      else{
+        return redirect('/');
+      }
+
+
     }
 
     /**
@@ -150,6 +173,7 @@ class ExpositoresController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
         $sema = $request->get('sem') - 1;
 
         $expo = Exhibitor::find($id);
@@ -173,6 +197,10 @@ class ExpositoresController extends Controller
 
         return redirect('/expositores');
 
+      }
+      else{
+        return redirect('/');
+      }
 
 
     }
@@ -185,18 +213,22 @@ class ExpositoresController extends Controller
      */
     public function destroy($id)
     {
-      $expo = Exhibitor::find($id);
-      $expo->activo =0;
-      $expo->save();
-      $id1 =$expo->id_user;
-      $user = User::where('id','=',$id1)->first();
-      $user->activo=0;
-      $user -> save();
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $expo = Exhibitor::find($id);
+        $expo->activo =0;
+        $expo->save();
+        $id1 =$expo->id_user;
+        $user = User::where('id','=',$id1)->first();
+        $user->activo=0;
+        $user -> save();
 
 
-      return redirect('/expositores');
+        return redirect('/expositores');
 
-
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 }

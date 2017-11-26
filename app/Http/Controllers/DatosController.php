@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate \ Support \ Facades \ Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Exhibitor;
 use App\User;
@@ -11,6 +12,8 @@ use App\Commune;
 use App\Carrera;
 use App\Region;
 use App\Staff;
+use App\Disponibilidad;
+
 
 class DatosController extends Controller
 {
@@ -53,14 +56,6 @@ class DatosController extends Controller
         return  view('datos.mis_datos',compact('array','comuna','region'));
 
       }
-
-
-
-
-
-
-
-
 
 
     }
@@ -130,4 +125,32 @@ class DatosController extends Controller
     {
         //
     }
+
+
+    public function getHorario()
+    {
+      
+
+      $user = Auth::user()->id;
+      $expositor = Exhibitor::where('id_user',$user)->get();
+      //dd($expositor[0]['id']);
+      $id = $expositor[0]['id'];
+      //dd($id);
+      $horario = Disponibilidad::where('id_expositor',$expositor[0]['id'])->get();
+      //dd($horario);
+      return view('datos.mi_horario',compact('expositor','horario','id'));
+    }
+    public function setHorario()
+    {
+
+    }
+
+
+
+
+
+
+
+
+
 }

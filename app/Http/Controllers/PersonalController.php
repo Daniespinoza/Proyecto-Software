@@ -19,6 +19,7 @@ class PersonalController extends Controller
 
     public function index()
     {
+      if(Auth::user()->id_rol == 1){
         $personal = array();
         $perso = Staff::all()->toArray();
         foreach ($perso as $per) {
@@ -30,6 +31,10 @@ class PersonalController extends Controller
           }
         }
         return view('personal.index', compact('personal'));
+      }
+      else{
+        return redirect('/');
+      }
     }
 
     /**
@@ -39,8 +44,13 @@ class PersonalController extends Controller
      */
     public function create()
     {
+      if(Auth::user()->id_rol == 1){
         $roles = Role::where('id','!=',4)->get();
         return view('personal.create',compact('roles'));
+      }
+      else{
+        return redirect('/');
+      }
     }
 
     /**
@@ -51,33 +61,39 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-      $pass = substr($request->get('correo'),0,-8);
-      $ac = true;
-      $user = new User([
-        'name' => $request->get('nombre'),
-        'email' => $request->get('correo'),
-        'password' => bcrypt($pass),
-        'id_rol' => $request->get('rol'),
-        'activo' => $ac
-      ]);
+      if(Auth::user()->id_rol == 1){
 
-      $user->save();
+        $pass = substr($request->get('correo'),0,-8);
+        $ac = true;
+        $user = new User([
+          'name' => $request->get('nombre'),
+          'email' => $request->get('correo'),
+          'password' => bcrypt($pass),
+          'id_rol' => $request->get('rol'),
+          'activo' => $ac
+        ]);
 
-      $staff = new Staff([
-        'nombre' => $request->get('nombre'),
-        'apellido_paterno' => $request->get('ap_pat'),
-        'apellido_materno' => $request->get('ap_mat'),
-        'rut' => $request->get('rut'),
-        'run' => $request->get('run'),
-        'id_rol' => $request->get('rol'),
-        'correo' => $request->get('correo'),
-        'activo' => true,
-        'id_user' => $user->id
-      ]);
+        $user->save();
 
-      $staff->save();
+        $staff = new Staff([
+          'nombre' => $request->get('nombre'),
+          'apellido_paterno' => $request->get('ap_pat'),
+          'apellido_materno' => $request->get('ap_mat'),
+          'rut' => $request->get('rut'),
+          'run' => $request->get('run'),
+          'id_rol' => $request->get('rol'),
+          'correo' => $request->get('correo'),
+          'activo' => true,
+          'id_user' => $user->id
+        ]);
 
-      return redirect('/personal');
+        $staff->save();
+
+        return redirect('/personal');
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 
@@ -100,11 +116,16 @@ class PersonalController extends Controller
      */
     public function edit($id)
     {
-      $personal = Staff::find($id);
-      $roles = Role::where('id','!=',4)->get();
-      $r = $personal->id_rol;
-      $roll = Role::where('id','=',$r)->get();
-      return view('personal.edit', compact('personal','roles','roll','id'));
+      if(Auth::user()->id_rol == 1){
+        $personal = Staff::find($id);
+        $roles = Role::where('id','!=',4)->get();
+        $r = $personal->id_rol;
+        $roll = Role::where('id','=',$r)->get();
+        return view('personal.edit', compact('personal','roles','roll','id'));
+      }
+      else{
+        return redirect('/');
+      }
     }
 
     /**
@@ -116,6 +137,7 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if(Auth::user()->id_rol == 1){
         $personal = Staff::find($id);
         $user = User::find($personal->id_user);
         $pw = substr($request->get('correo'),0,-8);
@@ -141,6 +163,10 @@ class PersonalController extends Controller
 
 
         return redirect('/personal');
+      }
+      else{
+        return redirect('/');
+      }
     }
 //
     /**
@@ -151,6 +177,7 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
+      if(Auth::user()->id_rol == 1){
         $personal = Staff::find($id);
         $mod = Staff::where('id',$id)->first();
         $user = User::find($personal->id_user);
@@ -176,5 +203,9 @@ class PersonalController extends Controller
         $personal->save();
 
         return redirect('/personal');
+      }
+      else{
+        return redirect('/');
+      }
     }
 }

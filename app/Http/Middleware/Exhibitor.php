@@ -18,6 +18,6 @@ class Exhibitor
        if(auth()->user()->id_rol == 4){
        return $next($request);
      }
-       return redirect('home');
+       return redirect('/');
      }
 }

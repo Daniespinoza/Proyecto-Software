@@ -73,7 +73,7 @@
         </div>
 
     </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-6"></div>
       <button type="submit" class="btn btn-primary">Actualizar</button>
     </div>
   </div>

@@ -13,6 +13,7 @@
         <th class="text-center" >Género</th>
         <th class="text-center" >RUT</th>
         <th class="text-center" >Carrera</th>
+        <th class="text-center" >Facultad</th>
         <th class="text-center" >Correo</th>
         <th class="text-center" >Celular</th>
         <th class="text-center" >Dirección</th>
@@ -31,6 +32,15 @@
         <td class="text-center" >{{$post['genero']}}</td>
         <td class="text-center" >{{$post['alu_rut']}}</td>
         <td class="text-center" >{{$post['id_carrera']}}</td>
+        @foreach($carreras as $car)
+          @if($car['nombre'] == $post['id_carrera'])
+            @foreach($facultades as $fac)
+              @if($fac['id'] == $car['id_facultad'])
+                <td class="text-center" >{{$fac['nombre']}}</td>
+              @endif
+            @endforeach
+          @endif
+        @endforeach
         <td class="text-center" >{{$post['alu_email']}}</td>
         <td class="text-center" >{{$post['alu_celular']}}</td>
         <td class="text-center" >{{$post['direccion']}}</td>

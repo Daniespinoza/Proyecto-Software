@@ -28,7 +28,7 @@
           <div class="col-md-4">
 
           <select class="form-control" name="comuna" required>
-            <option class="form-control" value="">-- Selecione una comuna --</option>
+            <option class="form-control" value="">-- Seleccione una comuna --</option>
             @foreach($comunas as $comuna)
               <option class="form-control" value="{{$comuna['id']}}"> {{$comuna['nombre']}}</option>
             @endforeach
@@ -47,7 +47,7 @@
           <label class="col-md-3 control-label no-padding-right"> Depto</label>
           <div class="col-md-4">
             <select name="depto" class="form-control" required>
-            <option value="">-- Selecione un departamento --</option>
+            <option value="">-- Seleccione un departamento --</option>
             @foreach($deptos as $depto)
               <option class="form-control" value="{{$depto['id']}}"> {{$depto['descripcion']}}</option>
             @endforeach
@@ -58,7 +58,7 @@
         <label class="col-md-3 control-label no-padding-right"> Tipo </label>
         <div class="col-md-4">
           <select class="form-control" name="tipo" required>
-            <option value="">-- Selecione un tipo de Establecimiento --</option>
+            <option value="">-- Seleccione un tipo de Establecimiento --</option>
             @foreach($tipos as $tipo)
               <option class="form-control" value="{{$tipo['id']}}"> {{$tipo['tipo']}}</option>
             @endforeach

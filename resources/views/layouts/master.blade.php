@@ -25,6 +25,9 @@
 	<link rel="stylesheet" href=" {{asset('css/ace-skins.min.css')}}" />
   <link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
   <link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
+
+
+
 </head>
 
 <body class="no-skin">
@@ -94,7 +97,7 @@
 
                             <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="">
+                                    <a class="link" href="{{action('DatosController@index')}}">
                                         <i class="ace-icon fa fa-user"></i>
                                         Mis Datos
                                     </a>
@@ -282,7 +285,7 @@
                 </li>
 								@endif
                 <li class="">
-                    <a href="">
+                    <a class="link" href="{{action('EventosController@index')}}">
                         <i class="menu-icon fa fa-calendar"></i>
                         Calendario de actividades
                     </a>
@@ -494,7 +497,7 @@
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-         <script src="js/formulario.js"></script>
+        <script src="{{asset('js/formulario.js')}}"></script>
         <script src="{{asset('js/jquery.carousel.js')}}"></script>
 
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -502,7 +505,6 @@
         <script src="{{asset('js/ace-elements.min.js')}}"></script>
         <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('js/jquery.dataTables.bootstrap.min.js')}}"></script>
-
         <script src="{{asset('js/jquery.colorbox-min.js')}}"></script>
         <script src="{{asset('js/ace.min.js')}}"></script>
         <script src="{{asset('js/fuelux/fuelux.wizard.min.js')}}"></script>
@@ -512,6 +514,8 @@
         <script src="{{asset('js/date-time/datepicker.min.js')}}"></script>
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
+
+		
 
 
 						@yield('contenido')

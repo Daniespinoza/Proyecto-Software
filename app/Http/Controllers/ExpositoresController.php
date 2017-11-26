@@ -8,6 +8,7 @@ use App\User;
 use App\Commune;
 use App\Carrera;
 use App\Region;
+use App\Facultad;
 use Illuminate\Support\Facades\DB;
 
 
@@ -36,9 +37,11 @@ class ExpositoresController extends Controller
           $expo['id_comuna'] = $nomcomuna;
           array_push($expositores,$expo);
         }
+        $facultades = Facultad::all()->toArray();
+        $carreras = Carrera::all()->toArray();
         //dd($expositores);
 
-        return view('expositores.index', compact('expositores'));
+        return view('expositores.index', compact('expositores','facultades','carreras'));
     }
 
     /**

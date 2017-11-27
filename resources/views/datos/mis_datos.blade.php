@@ -2,7 +2,7 @@
 
 
 @section('title','Mi Perfil')
-@section('ventana','Mis Datos')
+@section('ventana','mis datos')
 @section('contenido')
 <div class="page-content">
                         <script src="/js/perfil.js"></script>
@@ -123,7 +123,10 @@
                                     <i class="ace-icon fa fa-caret-right bigger-110 green"></i>
                                     <span class="text-centered"><b>Comuna: </b></span>{{$comuna->nombre}}
                                 </li>
-
+                                <li>
+                                    <i class="ace-icon fa fa-caret-right bigger-110 green"></i>
+                                    <span class="text-centered"><b>Teléfono: </b></span>{{$expo->alu_celular}}
+                                </li>
                             </ul><br><br>
                              <button type="button" class="btn btn-info action-buttons center" data-toggle="modal" data-target="#form_direccion">
                                     <i class="fa fa-pencil-square-o fa-2"></i> Actualizar dirección
@@ -149,10 +152,11 @@
                                 Cambio Contraseña
                             </h1>
                         </div>
-                        <form class="form-horizontal cambio_clave" method="post" action="">
+                        <form class="form-horizontal cambio_clave" method="post" action="{{action('DatosController@update',$user,'1')}}">
                             <div class="space-10"></div>
-
+                            {{csrf_field()}}
                             <div class="form-group">
+                                <input name="_method" type="hidden" value="PATCH"/>
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-pass1">Nueva Contraseña</label>
                                 <div class="col-xs-12 col-sm-9">
                                     <input type="password" name="nueva_password" id="nueva_password" required="required"  maxlength="15">&nbsp;&nbsp;&nbsp;<strong>Recuerda solo ingresar números y letras, sin acentos ni espacios.</strong>
@@ -212,16 +216,33 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title green" id="myModalLabel"><center>Modificar Dirección</center></h4>
                         </div>
-                        <form class="form-horizontal seleccionComuna" method="post" action="/perfil/modificarDireccion">
-
+                        <form class="form-horizontal seleccionComuna" method="post" action="{{action('DatosController@update',$user,'0')}}">
                             <div class="modal-body cuerpo_detalle_reserva">
+                              {{csrf_field()}}
                                 <table class="ui table segment">
                                     <tr>
                                         <td>
+                                          <input name="_method" type="hidden" value="PATCH"/>
                                             <label> Dirección </label>
                                         </td>
                                         <td class="form-control-static">
-                                            <input type="text" class="col-md-12" name="txtDireccion" required placeholder="Ingrese nueva dirección" id="form-field-1">
+
+                                            <input type="text" class="col-md-12" value="{{$expo->direccion}}" name="txtDireccion" required placeholder="Ingrese nueva dirección" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label> Región </label>
+                                        </td>
+                                        <td class="form-control-static">
+                                            <select name="selectComuna"  class="selectComuna col-md-12">
+                                              <option value="{{$region->id}}">{{$region->nombre}}</option>v
+                                              @foreach ($regions as $regione)
+                                              @if($region->nombre != $regione['nombre'])
+                                                <option value="{{$regione['id']}}">{{$regione['nombre']}}</option>
+                                                @endif
+                                            @endforeach
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -229,8 +250,13 @@
                                             <label> Comuna </label>
                                         </td>
                                         <td class="form-control-static">
-                                            <select name="selectComuna" id="selectComuna" class="selectComuna col-md-12">
-
+                                            <select name="selectComuna"  class="selectComuna col-md-12">
+                                              <option value="{{$comuna->id}}">{{$comuna->nombre}}</option>
+                                              @foreach ($comunas as $com)
+                                              @if($comuna->nombre != $com['nombre'])
+                                                <option value="{{$com['id']}}">{{$com['nombre']}}</option>
+                                                @endif
+                                            @endforeach
                                             </select>
                                         </td>
                                     </tr>
@@ -239,7 +265,7 @@
                                             <label> Teléfono </label>
                                         </td>
                                         <td class="form-control-static">
-                                            <input type="number" class="col-md-12" name="txtTelefono" placeholder="Ingrese nuevo teléfono" id="txtTelefono">
+                                            <input type="number" class="col-md-12" value="{{$expo->alu_celular}}"name="txtTelefono" placeholder="Ingrese nuevo teléfono" >
                                         </td>
                                     </tr>
                                 </table>

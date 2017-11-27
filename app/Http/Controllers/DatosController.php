@@ -37,12 +37,12 @@ class DatosController extends Controller
         $correo=$expo->alu_email;
         $rut = $expo->alu_rut;
         $array = array('nombre' => $nombre,'correo' =>$correo,'rut'=>$rut);
-
-
         $carrera = Carrera::where('id',$expo['id_carrera'])->first();
         $comuna = Commune::where('id',$expo['id_comuna'])->first();
         $region = Region::where('id',$comuna['id_region'])->first();
-        return  view('datos.mis_datos',compact('expo','array','carrera','comuna','region'));
+        $comunas = Commune::all()->toArray();
+        $regions = Region::all()->toArray();
+        return  view('datos.mis_datos',compact('expo','array','carrera','comuna','region','user','comunas','regions'));
 
       }
       else {
@@ -53,7 +53,9 @@ class DatosController extends Controller
         $array = array('nombre' => $nombre,'correo' =>$correo,'rut'=>$rut);
         $comuna = Commune::where('id',$staffs['id_comuna'])->first();
         $region = Region::where('id',$comuna['id_region'])->first();
-        return  view('datos.mis_datos',compact('array','comuna','region'));
+        $comunas = Commune::all()->toArray();
+        $regions = Region::all()->toArray();
+        return  view('datos.mis_datos',compact('array','comuna','region','user','comunas','regions'));
 
       }
 
@@ -98,9 +100,9 @@ class DatosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+
     }
 
     /**
@@ -112,8 +114,38 @@ class DatosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $pass = $request->get('nueva_password');
+       $dir = $request->get('txtDireccion');
+
+    if($pass != ""){
+       $pass = $request->get('nueva_password');
+       $pass2= $request->get('confirmacion_password');
+       if($pass == $pass2){
+
+        $user = User::where('id','=',$id)->first();
+        $user -> password = bcrypt($request->get('nueva_password'));
+        $user -> save();
+        return redirect('mis_datos');
+      }
+      else {
+          print 'alert("mensaje");';
+          return redirect('mis_datos');
+      }
     }
+    if($dir =!""){
+      $expo = Exhibitor::where('id_user','=',$id)->first();
+      $com = $request ->get('selectComuna');
+      $tel = $request -> get ('txtTelefono');
+      $dir = $request->get('txtDireccion');
+      $expo ->id_comuna = $com;
+      $expo ->direccion = $dir;
+      $expo ->alu_celular = $tel;
+      $expo->save();
+      return redirect('mis_datos');
+
+    }
+  }
+
 
     /**
      * Remove the specified resource from storage.

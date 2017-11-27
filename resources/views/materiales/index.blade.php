@@ -3,6 +3,9 @@
 @section('title','Materiales')
 @section('ventana','Ver Materiales')
 @section('contenido')
+<div class="page-header">
+  <h1>Materiales Inscritos</h1>
+</div>
 <div class="table-responsive">
     <table class="table table-bordered">
     <thead>

@@ -3,6 +3,9 @@
 @section('title','Establecimientos')
 @section('ventana','Ver Establecimientos')
 @section('contenido')
+<div class="page-header">
+  <h1>Establecimientos Inscritos</h1>
+</div>
 <div class="table-responsive">
     <table class="table table-bordered">
     <thead>

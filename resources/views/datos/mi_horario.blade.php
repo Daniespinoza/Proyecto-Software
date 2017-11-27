@@ -3,7 +3,9 @@
 @section('title','Horario')
 @section('ventana','Mi Horario')
 @section('contenido')
-<h1>Tu horario {{Auth::user()->name}}</h1><br>
+<div class="page-header">
+  <h1>Tu horario {{Auth::user()->name}}</h1>
+</div>
 <div class="table-responsive">
     <table class="table table-bordered">
     <thead>

@@ -208,7 +208,7 @@
                 </div>
             </div>
 
-
+            @if (Auth::user()->id_rol == 4)
             <div class="modal fade" id="form_direccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="height: 200">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -280,6 +280,7 @@
                     <!-- /.modal-content -->
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

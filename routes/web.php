@@ -48,7 +48,7 @@ Route::resource('expositores','ExpositoresController');
 Route::resource('personal','PersonalController');
 Route::resource('materiales','MaterialesController');
 Route::resource('eventos','EventosController');
-Route::resource('Mis_Datos','DatosController');
+Route::resource('mis_datos','DatosController');
 
 Route::get('/mi_horario','DatosController@getHorario')->middleware('exhi');
 Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi');

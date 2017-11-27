@@ -129,8 +129,6 @@ class DatosController extends Controller
 
     public function getHorario()
     {
-      
-
       $user = Auth::user()->id;
       $expositor = Exhibitor::where('id_user',$user)->get();
       //dd($expositor[0]['id']);
@@ -142,7 +140,7 @@ class DatosController extends Controller
     }
     public function setHorario()
     {
-
+      return view('datos.agregar_horario');
     }
 
 

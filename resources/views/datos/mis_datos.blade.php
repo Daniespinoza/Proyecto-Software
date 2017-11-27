@@ -186,6 +186,11 @@
 
                                 </div>
                             </div>
+                            @if ($errors->has('password'))
+    <div class="alert alert-success">
+       <strong>Alerta! </strong> se cambió la clave
+    </div>
+@endif
 
                             <div class="space-40"></div>
                             <div class="clearfix form-actions">

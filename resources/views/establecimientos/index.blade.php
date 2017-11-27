@@ -18,7 +18,7 @@
         <th class="text-center" >Correo</th>
         <th class="text-center" >Teléfono</th>
         <th class="text-center" >PACE</th>
-        @if(Auth::user()->id_rol == 1)
+        @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3)
         <th  class="text-center" colspan="1">Acción</th>
         @endif
       </tr>
@@ -38,7 +38,7 @@
         <td class="text-center" >{{$post['correo']}}</td>
         <td class="text-center" >{{$post['telefono']}}</td>
         <td class="text-center" >{{$post['pace']}}</td>
-        @if(Auth::user()->id_rol == 1)
+        @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3)
         <td class="text-center" ><a href="{{action('EstablecimientosController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
 
         @endif

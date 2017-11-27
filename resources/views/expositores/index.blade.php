@@ -18,7 +18,9 @@
         <th class="text-center" >Celular</th>
         <th class="text-center" >Dirección</th>
         <th class="text-center" >Comuna</th>
+        @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
         <th class="text-center"  colspan="2">Acciones</th>
+        @endif
       </tr>
     </thead>
     <tbody>
@@ -45,6 +47,7 @@
         <td class="text-center" >{{$post['alu_celular']}}</td>
         <td class="text-center" >{{$post['direccion']}}</td>
         <td class="text-center" >{{$post['id_comuna']}}</td>
+        @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
         <td class="text-center" ><a href="{{action('ExpositoresController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
         <td class="text-center" ><form action="{{action('ExpositoresController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
@@ -52,6 +55,7 @@
             <button class="btn btn-danger" type="submit">Eliminar</button>
             </form>
         </td>
+        @endif
         @endif
       </tr>
       @endforeach

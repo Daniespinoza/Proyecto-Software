@@ -28,6 +28,10 @@
 
 
 
+
+
+
+
 </head>
 
 <body class="no-skin">
@@ -173,17 +177,47 @@
 								<b class="arrow"></b>
 					</li>
 
-						<li class="">
-                <a hred="">
-                    <i class="menu-icon fa fa-calendar"></i>
-                    Mi horario
+						@endif
+        </ul>
+    </li>
+
+		@if(Auth::user()->id_rol == 4)
+		<li class="">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-info-circle"></i>
+            <span class="menu-text"> Datos </span>
+
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+					<li class="">
+						<a class="link" href="{{action('DatosController@getHorario')}}">
+							<i class="menu-icon fa fa-calendar"></i>
+							Mi horario
+						</a>
+						<b class="arrow"></b>
+					</li>
+
+            <li class="">
+                <a class="link" href="{{action('DatosController@setHorario')}}">
+                    <i class="menu-icon fa fa-upload"></i>
+                    Ingresar Horario
                 </a>
                 <b class="arrow"></b>
             </li>
 
-						@endif
+
+
+
         </ul>
     </li>
+		@endif
+
+
+
 
 		@if (Auth::user()->id_rol == 1)
 		<li class="">
@@ -317,7 +351,7 @@
 		                </a>
 		                <b class="arrow"></b>
 		            </li>
-								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
+								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3)
 								<li class="">
 		               <a class="link" href="{{action('EstablecimientosController@create')}}">
 		                    <i class="menu-icon fa fa-plus"></i>
@@ -516,6 +550,7 @@
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
 
 		
+
 
 
 						@yield('contenido')

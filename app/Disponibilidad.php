@@ -16,6 +16,7 @@ class Disponibilidad extends Model
       'jueves',
       'viernes',
       'sabado',
+      'domingo',
       'total_m',
       'total_t'
     ];

@@ -9,61 +9,71 @@
 </div>
 <div class="row">
 <div class="col-xs-12">
-<form id="formHorario" class="form-horizontal ingresar_solicitud" method="post" action="{{url('datos')}}">
+<form id="formHorario" class="form-horizontal ingresar_solicitud" method="post" action="{{url('horario')}}">
 <div class="form-group">
   {{csrf_field()}}
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-center"> Lunes </label>
         <div class="col-md-6">
-          <label class="radio-inline"><input type="radio" name="lunes">Mañana</label>
-          <label class="radio-inline"><input type="radio" name="lunes">Tarde</label>
-          <label class="radio-inline"><input type="radio" name="lunes">Todo el día</label>
+          {{ Form::radio('lunes','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('lunes','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('lunes','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('lunes','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-center"> Martes </label>
         <div class="col-md-6">
-          <label class="radio-inline"><input type="radio" name="martes">Mañana</label>
-          <label class="radio-inline"><input type="radio" name="martes">Tarde</label>
-          <label class="radio-inline"><input type="radio" name="martes">Todo el día</label>
+          {{ Form::radio('martes','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('martes','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('martes','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('martes','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
-      <label class="col-md-3 control-label no-padding-center"> Miercoles </label>
+      <label class="col-md-3 control-label no-padding-center"> Miércoles </label>
         <div class="col-md-6">
-          <label class="radio-inline"><input type="radio" name="miercoles">Mañana</label>
-          <label class="radio-inline"><input type="radio" name="miercoles">Tarde</label>
-          <label class="radio-inline"><input type="radio" name="miercoles">Todo el día</label>
+          {{ Form::radio('miercoles','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('miercoles','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('miercoles','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('miercoles','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-center"> Jueves </label>
         <div class="col-md-6">
-          <label class="radio-inline"><input type="radio" name="jueves">Mañana</label>
-          <label class="radio-inline"><input type="radio" name="jueves">Tarde</label>
-          <label class="radio-inline"><input type="radio" name="jueves">Todo el día</label>
+          {{ Form::radio('jueves','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('jueves','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('jueves','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('jueves','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-center"> Viernes </label>
         <div class="col-md-6">
-          <label class="radio-inline"><input type="radio" name="viernes">Mañana</label>
-          <label class="radio-inline"><input type="radio" name="viernes">Tarde</label>
-          <label class="radio-inline"><input type="radio" name="viernes">Todo el día</label>
+          {{ Form::radio('viernes','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('viernes','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('viernes','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('viernes','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-center"> Sábado </label>
         <div class="col-md-6">
-          <label class="radio-inline"><input type="radio" name="sabado">Mañana</label>
-          <label class="radio-inline"><input type="radio" name="sabado">Tarde</label>
-          <label class="radio-inline"><input type="radio" name="sabado">Todo el día</label>
+          {{ Form::radio('sabado','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('sabado','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('sabado','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('sabado','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
-
     <div class="form-group">
-      <label class="col-md-6 control-label no-padding-center"> <strong>Si no tiene disponibilidad un día, dejelo vacío</strong></label>
-
+      <label class="col-md-3 control-label no-padding-center"> Domingo </label>
+        <div class="col-md-6">
+          {{ Form::radio('domingo','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('domingo','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('domingo','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('domingo','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+        </div>
     </div>
 
 
@@ -94,4 +104,6 @@
 	   $("#formHorario")[0].reset();
    });
 </script>
+
+
 @endsection

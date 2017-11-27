@@ -134,13 +134,84 @@ class DatosController extends Controller
       //dd($expositor[0]['id']);
       $id = $expositor[0]['id'];
       //dd($id);
-      $horario = Disponibilidad::where('id_expositor',$expositor[0]['id'])->get();
+      //$hor = Disponibilidad::all();
+      //dd($hor);
+      $horario = Disponibilidad::where('id_expositor',$id)->get();
       //dd($horario);
-      return view('datos.mi_horario',compact('expositor','horario','id'));
+
+    
+        return view('datos.mi_horario',compact('expositor','horario','id'));
+
     }
     public function setHorario()
     {
-      return view('datos.agregar_horario');
+
+      $user = Auth::user()->id;
+      $expositor = Exhibitor::where('id_user',$user)->get();
+      $id = $expositor[0]['id'];
+      $horario = Disponibilidad::where('id_expositor',$id)->get();
+      //dd($horario);
+      return view('datos.agregar_horario',compact('expositor','horario','id'));
+    }
+    public function updateHorario(Request $request)
+    {
+      //dd($request->get('lunes'));
+      $user = Auth::user()->id;
+      $expositor = Exhibitor::where('id_user',$user)->get();
+      //dd($expositor[0]['id']);
+      $id = $expositor[0]['id'];
+      //dd($id);
+      //$hor = Disponibilidad::all();
+      //dd($hor);
+      $horario = Disponibilidad::where('id_expositor',$id)->get();
+      //dd($horario);
+
+      $dias = array();
+      $lu = $request->get('lunes');
+      $ma = $request->get('martes');
+      $mi = $request->get('miercoles');
+      $ju = $request->get('jueves');
+      $vi = $request->get('viernes');
+      $sa = $request->get('sabado');
+      $do = $request->get('domingo');
+      array_push($dias,$lu);
+      array_push($dias,$ma);
+      array_push($dias,$mi);
+      array_push($dias,$ju);
+      array_push($dias,$vi);
+      array_push($dias,$sa);
+      array_push($dias,$do);
+      //dd($dias);
+
+      $tot_m = 0;
+      $tot_t = 0;
+
+      for ($i=0; $i < 7; $i++) {
+        if ($dias[$i] == 'Mañana') {
+          $tot_m++;
+        }
+        elseif ($dias[$i] == 'Tarde') {
+          $tot_t++;
+        }
+      }
+
+      $seth = new Disponibilidad();
+      $seth->id_expositor = $id;
+      $seth->lunes = $lu;
+      $seth->martes = $ma;
+      $seth->miercoles = $mi;
+      $seth->jueves = $ju;
+      $seth->viernes = $vi;
+      $seth->sabado = $sa;
+      $seth->domingo = $do;
+      $seth->total_m = $tot_m;
+      $seth->total_t = $tot_t;
+      //dd($seth);
+      $seth->save();
+      return redirect('/mi_horario');
+      //dd($horario);
+
+
     }
 
 

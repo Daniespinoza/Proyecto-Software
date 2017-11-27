@@ -64,7 +64,7 @@ class EstablecimientosController extends Controller
      */
     public function create()
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
+      if(Auth::user()->id_rol != 4){
         $tipos = Establishmenttype::all();
         $deptos = Departament::all();
         $comunas = Commune::orderBy('nombre','asc')->get();
@@ -85,7 +85,7 @@ class EstablecimientosController extends Controller
      */
     public function store(Request $request)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
+      if(Auth::user()->id_rol != 4){
         $est = new Establishment([
           'rbd' => $request->get('rbd'),
           'nombre_establecimiento' => $request->get('nombre'),
@@ -128,7 +128,7 @@ class EstablecimientosController extends Controller
      */
     public function edit($id)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
+      if(Auth::user()->id_rol != 4){
         $estab = Establishment::find($id);
         $comunas = Commune::all();
         $com = Commune::where('id','=',$estab->id_comuna)->get();
@@ -163,7 +163,7 @@ class EstablecimientosController extends Controller
      */
     public function update(Request $request, $id)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3){
+      if(Auth::user()->id_rol != 4){
         $estab = Establishment::find($id);
 
         $estab->rbd = $request->get('rbd');

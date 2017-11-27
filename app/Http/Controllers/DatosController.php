@@ -168,11 +168,15 @@ class DatosController extends Controller
       //dd($id);
       //$hor = Disponibilidad::all();
       //dd($hor);
-      $horario = Disponibilidad::where('id_expositor',$id)->get();
+      $horario = Disponibilidad::where('id_expositor',$id)->first();
       //dd($horario);
-
-    
+      if ($horario == null) {
+        return redirect('/ingresar_horario');
+      }
+      else {
+        //dd([$expositor,$id,$horario['lunes']]);
         return view('datos.mi_horario',compact('expositor','horario','id'));
+      }
 
     }
     public function setHorario()
@@ -181,9 +185,15 @@ class DatosController extends Controller
       $user = Auth::user()->id;
       $expositor = Exhibitor::where('id_user',$user)->get();
       $id = $expositor[0]['id'];
-      $horario = Disponibilidad::where('id_expositor',$id)->get();
+      $horario = Disponibilidad::where('id_expositor',$id)->first();
       //dd($horario);
-      return view('datos.agregar_horario',compact('expositor','horario','id'));
+      if($horario == null){
+        //dd([$expositor,$id,$horario['lunes']]);
+        return view('datos.agregar_horario',compact('expositor','horario','id'));
+      }
+      else {
+        return redirect('/mi_horario');
+      }
     }
     public function updateHorario(Request $request)
     {
@@ -223,6 +233,10 @@ class DatosController extends Controller
           $tot_m++;
         }
         elseif ($dias[$i] == 'Tarde') {
+          $tot_t++;
+        }
+        elseif ($dias[$i] == 'Todo el día') {
+          $tot_m++;
           $tot_t++;
         }
       }

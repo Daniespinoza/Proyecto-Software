@@ -8,6 +8,7 @@
 <script src='js/moment.min.js'></script>
 <script src='js/jquery.min.js'></script>
 <script src='js/fullcalendar.min.js'></script>
+<script src='js/es.js'></script>
 <script>
 
 	$(document).ready(function() {
@@ -18,6 +19,7 @@
       navLinks: true,
       selectable: true,
 			eventLimit: true, // allow "more" link when too many events
+
 			events: [
 				{
 					title: 'Expo 1',

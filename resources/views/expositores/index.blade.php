@@ -3,6 +3,9 @@
 @section('title','Expositores')
 @section('ventana','Ver Expositores')
 @section('contenido')
+<div class="page-header">
+  <h1>Expositores Inscritos</h1>
+</div>
 <div class="table-responsive">
     <table class="table table-bordered">
     <thead>

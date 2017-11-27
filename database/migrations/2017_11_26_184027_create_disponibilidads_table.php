@@ -22,6 +22,7 @@ class CreateDisponibilidadsTable extends Migration
             $table->string('jueves')->nullable();
             $table->string('viernes')->nullable();
             $table->string('sabado')->nullable();
+            $table->string('domingo')->nullable();
             $table->integer('total_m');
             $table->integer('total_t');
             $table->timestamps();

@@ -20,6 +20,7 @@ class HorarioTableSeeder extends Seeder
         $horario->jueves = 'Tarde' ;
         $horario->viernes = 'Todo el Día' ;
         $horario->sabado = null ;
+        $horario->domingo = null;
         $horario->total_m = 3;
         $horario->total_t = 2;
         $horario->save();

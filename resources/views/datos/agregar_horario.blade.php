@@ -3,7 +3,6 @@
 @section('title','Horario')
 @section('ventana','Establecer Horario')
 @section('contenido')
-
 <div class="page-content">
 <div class="page-header">
   <h1>Formulario Establecer mi Horario</h1>

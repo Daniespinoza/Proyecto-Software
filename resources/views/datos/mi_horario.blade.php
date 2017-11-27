@@ -16,6 +16,7 @@
         <th class="text-center" >Jueves</th>
         <th class="text-center" >Viernes</th>
         <th class="text-center" >Sábado</th>
+        <th class="text-center" >Domingo</th>
         <th class="text-center" >Total Mañana</th>
         <th class="text-center" >Total Tarde</th>
         <th class="text-center" colspan="1">Acción</th>
@@ -27,37 +28,43 @@
         @if($horario[0]['lunes'] != null)
           <td class="text-center" >{{$horario[0]['lunes']}}</td>
         @else
-          <td class="text-center" >No Disponible</td>
+          <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
         @if($horario[0]['martes'] != null)
           <td class="text-center" >{{$horario[0]['martes']}}</td>
         @else
-          <td class="text-center" >No Disponible</td>
+          <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
         @if($horario[0]['miercoles'] != null)
           <td class="text-center" >{{$horario[0]['miercoles']}}</td>
         @else
-          <td class="text-center" >No Disponible</td>
+          <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
         @if($horario[0]['jueves'] != null)
           <td class="text-center" >{{$horario[0]['jueves']}}</td>
         @else
-          <td class="text-center" >No Disponible</td>
+          <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
         @if($horario[0]['viernes'] != null)
           <td class="text-center" >{{$horario[0]['viernes']}}</td>
         @else
-          <td class="text-center" >No Disponible</td>
+          <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
         @if($horario[0]['sabado'] != null)
           <td class="text-center" >{{$horario[0]['sabado']}}</td>
         @else
-          <td class="text-center" >No Disponible</td>
+          <td class="text-center" style="color:Red;">No Disponible</td>
+        @endif
+
+        @if($horario[0]['domingo'] != null)
+          <td class="text-center" >{{$horario[0]['domingo']}}</td>
+        @else
+          <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
         <td class="text-center" >{{$horario[0]['total_m']}}</td>

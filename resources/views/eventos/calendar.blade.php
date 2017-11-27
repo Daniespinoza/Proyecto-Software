@@ -18,7 +18,21 @@
 			editable: true,
       navLinks: true,
       selectable: true,
+			selectHelper: true,
 			eventLimit: true, // allow "more" link when too many events
+			select: function(start, end) {
+				var title = prompt('Event Title:');
+				var eventData;
+				if (title) {
+					eventData = {
+						title: title,
+						start: start,
+						end: end
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
+			},
 
 			events: [
 				{

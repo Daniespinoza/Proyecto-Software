@@ -25,51 +25,51 @@
     <tbody>
 
       <tr>
-        @if($horario[0]['lunes'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['lunes']}}</td>
+        @if($horario['lunes'] != 'Ninguno')
+          <td class="text-center" >{{$horario['lunes']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        @if($horario[0]['martes'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['martes']}}</td>
+        @if($horario['martes'] != 'Ninguno')
+          <td class="text-center" >{{$horario['martes']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        @if($horario[0]['miercoles'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['miercoles']}}</td>
+        @if($horario['miercoles'] != 'Ninguno')
+          <td class="text-center" >{{$horario['miercoles']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        @if($horario[0]['jueves'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['jueves']}}</td>
+        @if($horario['jueves'] != 'Ninguno')
+          <td class="text-center" >{{$horario['jueves']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        @if($horario[0]['viernes'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['viernes']}}</td>
+        @if($horario['viernes'] != 'Ninguno')
+          <td class="text-center" >{{$horario['viernes']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        @if($horario[0]['sabado'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['sabado']}}</td>
+        @if($horario['sabado'] != 'Ninguno')
+          <td class="text-center" >{{$horario['sabado']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        @if($horario[0]['domingo'] != 'Ninguno')
-          <td class="text-center" >{{$horario[0]['domingo']}}</td>
+        @if($horario['domingo'] != 'Ninguno')
+          <td class="text-center" >{{$horario['domingo']}}</td>
         @else
           <td class="text-center" style="color:Red;">No Disponible</td>
         @endif
 
-        <td class="text-center" >{{$horario[0]['total_m']}}</td>
-        <td class="text-center" >{{$horario[0]['total_t']}}</td>
-        <td class="text-center" ><a href="" class="btn btn-warning">Editar</a></td>
+        <td class="text-center" >{{$horario['total_m']}}</td>
+        <td class="text-center" >{{$horario['total_t']}}</td>
+        <td class="text-center" ><a href="" class="btn btn-success"><strong>Actualizar</strong></a></td>
 
       </tr>
 

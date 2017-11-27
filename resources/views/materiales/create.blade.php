@@ -24,30 +24,16 @@
         </div>
       </div>
 
-      <div class="col-md-3 control-label no-padding-right">
+      <div class="col-md-7 control-label no-padding-right">
 
-      <!--button type="" class="btn btn-tomato">
-        <i class="ace-icon bigger-110">
-          Agregar
-      </i>
-    </button-->
+
     <div class="col-md-6"></div>
       <input type="submit" class="btn btn-primary">
     </div>
 
     </div>
     </div>
-    <!--div class="form-group">
 
-    <div class="clearfix form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-<div class="form-control">
-
-
-      </div>
-      </div>
-      </div>
-    </div-->
 </form>
 </div>
 </div>

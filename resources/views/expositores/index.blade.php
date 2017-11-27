@@ -51,11 +51,11 @@
         <td class="text-center" >{{$post['direccion']}}</td>
         <td class="text-center" >{{$post['id_comuna']}}</td>
         @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
-        <td class="text-center" ><a href="{{action('ExpositoresController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
+        <td class="text-center" ><a href="{{action('ExpositoresController@edit', $post['id'])}}" class="btn btn-success"><strong>Editar</strong></a></td>
         <td class="text-center" ><form action="{{action('ExpositoresController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <button class="btn btn-danger" type="submit"><strong>Eliminar</strong></button>
             </form>
         </td>
         @endif

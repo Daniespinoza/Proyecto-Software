@@ -351,7 +351,7 @@
 		                </a>
 		                <b class="arrow"></b>
 		            </li>
-								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3)
+
 								<li class="">
 		               <a class="link" href="{{action('EstablecimientosController@create')}}">
 		                    <i class="menu-icon fa fa-plus"></i>
@@ -361,7 +361,7 @@
 		                <b class="arrow"></b>
 		            </li>
 
-								@endif
+								
 		        </ul>
 		    </li>
 				@endif
@@ -549,7 +549,7 @@
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
 
-		
+
 
 
 

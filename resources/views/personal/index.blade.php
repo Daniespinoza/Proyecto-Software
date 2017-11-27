@@ -22,20 +22,18 @@
     <tbody>
       @foreach($personal as $post)
       <tr>
-
         @if($post['activo'] == true)
-
         <td class="text-center">{{$post['nombre']}}</td>
         <td class="text-center">{{$post['apellido_paterno']}}</td>
         <td class="text-center">{{$post['apellido_materno']}}</td>
         <td class="text-center">{{$post['rut']}}</td>
         <td class="text-center">{{$post['id_rol']}}</td>
         <td class="text-center">{{$post['correo']}}</td>
-        <td class="text-center"><a href="{{action('PersonalController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
+        <td class="text-center"><a href="{{action('PersonalController@edit', $post['id'])}}" class="btn btn-success"><strong>Editar</strong></a></td>
         <td class="text-center"><form action="{{action('PersonalController@destroy', $post['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <button class="btn btn-danger" type="submit"><strong>Eliminar</strong></button>
             </form>
         </td>
         @endif

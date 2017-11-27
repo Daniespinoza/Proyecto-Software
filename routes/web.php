@@ -40,7 +40,6 @@ Route::get('/agregar_convenio', 'StaffsController@addagree');
 */
 
 Auth::routes();
-
 Route::get('/', 'HomeController@index');
 
 Route::resource('establecimientos','EstablecimientosController');
@@ -53,7 +52,9 @@ Route::resource('mis_datos','DatosController');
 Route::get('/mi_horario','DatosController@getHorario')->middleware('exhi');
 Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi');
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
-
+Route::get('/cal', function () {
+    return view('eventos.calendar');
+});
 //Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
 
 

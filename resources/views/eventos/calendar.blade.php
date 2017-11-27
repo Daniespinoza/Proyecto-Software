@@ -1,4 +1,8 @@
 @extends('layouts.master')
+
+@section('title','Calendario')
+@section('ventana','Calendario')
+@section('contenido')
 <link href='css/fullcalendar.min.css' rel='stylesheet' />
 <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <script src='js/moment.min.js'></script>
@@ -40,10 +44,5 @@
 	});
 
 </script>
-@section('title','Calendario')
-@section('ventana','Calendario')
-@section('contenido')
-
 <div id='calendar'></div>
-
 @endsection

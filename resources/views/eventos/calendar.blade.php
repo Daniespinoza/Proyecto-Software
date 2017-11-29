@@ -9,10 +9,18 @@
 <script src='js/jquery.min.js'></script>
 <script src='js/fullcalendar.min.js'></script>
 <script src='js/es.js'></script>
+
+<div class="row">
+	<div class="col-md-4">
+
+
+	</div>
+	<div class="col-md-8">
+
+
+
 <script>
-
 	$(document).ready(function() {
-
 		$('#calendar').fullCalendar({
 			defaultDate: '2017-11-12',
 			editable: true,
@@ -22,11 +30,16 @@
 			eventLimit: true, // allow "more" link when too many events
 			select: function(start, end) {
 				var title = prompt('Event Title:');
+				var cupos = prompt('cupos:');
+				var hora = prompt('hora:');
 				var eventData;
 				if (title) {
 					eventData = {
 						title: title,
+						cupos: cupos,
+						hora: hora,
 						start: start,
+
 						end: end
 					};
 					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
@@ -38,6 +51,7 @@
 				{
 					title: 'Expo 1',
 					start: '2017-11-01'
+
 				},
 				{
 					title: 'Semana de exposiones',
@@ -58,7 +72,9 @@
 		});
 
 	});
-
 </script>
+
 <div id='calendar'></div>
+</div>
+</div>
 @endsection

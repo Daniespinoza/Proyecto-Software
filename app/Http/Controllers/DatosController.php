@@ -259,6 +259,12 @@ class DatosController extends Controller
 
 
     }
+    public function convenio()
+    {
+      if (Auth::user()->id_rol == 1){
+        return view('convenio');
+      }
+    }
 
 
 

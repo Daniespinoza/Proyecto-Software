@@ -361,7 +361,7 @@
 		                <b class="arrow"></b>
 		            </li>
 
-								
+
 		        </ul>
 		    </li>
 				@endif
@@ -417,7 +417,7 @@
 		<!-- Generar convenio -->
 		@if (Auth::user()->id_rol == 1)
     <li class="">
-        <a class="link" href="">
+        <a class="link" href="{{action('DatosController@convenio')}}">
             <i class="menu-icon fa fa-pencil-square-o "></i>
             <span class="menu-text"> Generar Convenio </span>
         </a>

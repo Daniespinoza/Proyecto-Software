@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Event;
+use App\Eventtype;
+use App\Subtype;
 use App\Jornada;
 use App\Turn;
 use App\Turndetail;
 use App\Exhibitor;
+use App\Establishment;
+use Auth;
 
 
 class EventosController extends Controller
@@ -33,7 +38,18 @@ class EventosController extends Controller
      */
     public function create()
     {
-        //
+      {
+        if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+          $establecimientos = Establishment::all()->toArray();
+          $evento = Eventtype::all()->toArray();
+          $sub = Subtype::all()->toArray();
+
+          return view('eventos.create',compact('establecimientos','evento','sub'));
+        }
+        else{
+          return redirect('/');
+        }
+      }
     }
 
     /**
@@ -44,7 +60,27 @@ class EventosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+
+          $eventype = new Eventtype([
+            'id_subtipo'=>$request->get('sub_tipo'),
+            'descripcion'=>$request->get('tipo_evento')
+
+          ]);
+          $evento = new Event([
+            'id_tipo_evento'=> $request->get(),
+            'id_personal'=>$request->get(),
+            'id_establecimiento'=>$request->get(),
+            'cupos'=>$request->get(),
+            'fecha_inicio'=>$request->get()
+
+          ]);
+
+
+        }
+        else {
+          return redirect('/');
+        }
     }
 
     /**

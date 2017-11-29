@@ -38,7 +38,7 @@ class EventosController extends Controller
      */
     public function create()
     {
-      {
+
         if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
           $establecimientos = Establishment::all()->toArray();
           $evento = Eventtype::all()->toArray();
@@ -49,7 +49,7 @@ class EventosController extends Controller
         else{
           return redirect('/');
         }
-      }
+
     }
 
     /**
@@ -127,4 +127,19 @@ class EventosController extends Controller
     {
         //
     }
+    public function asignarHorario()
+    {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $establecimientos = Establishment::all()->toArray();
+        $evento = Eventtype::all()->toArray();
+        $sub = Subtype::all()->toArray();
+
+        return view('eventos.prueba',compact('establecimientos','evento','sub'));
+      }
+      else{
+        return redirect('/');
+      }
+      
+    }
+
 }

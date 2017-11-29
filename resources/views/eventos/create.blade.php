@@ -13,7 +13,7 @@
 <form class="form-horizontal "  method="post" action="{{url('eventos')}}">
 {{csrf_field()}}
     <div class="form-group">
-          <label class="col-md-3 control-label no-padding-right"> Nombre de evento</label>
+          <label class="col-md-2 control-label no-padding-right"> Nombre de evento</label>
         <div class="col-md-4">
           <input class="form-control" type="text" name = "nombre"required/>
         </div>
@@ -73,7 +73,5 @@
 
 </form>
 </div>
-
-
 
 @endsection

@@ -310,7 +310,7 @@
 
 								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2 )
                 <li class="">
-                    <a href="">
+                    <a class="link" href="{{action('EventosController@asignarHorario')}}">
                         <i class="menu-icon fa fa-plus-circle"></i>
                         Asignar Horario
                     </a>

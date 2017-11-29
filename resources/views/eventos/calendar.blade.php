@@ -10,15 +10,6 @@
 <script src='js/fullcalendar.min.js'></script>
 <script src='js/es.js'></script>
 
-<div class="row">
-	<div class="col-md-4">
-
-
-	</div>
-	<div class="col-md-8">
-
-
-
 <script>
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
@@ -75,6 +66,5 @@
 </script>
 
 <div id='calendar'></div>
-</div>
-</div>
+
 @endsection

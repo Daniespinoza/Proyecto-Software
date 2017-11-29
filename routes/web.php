@@ -54,6 +54,8 @@ Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi')
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 
 Route::get('/generar_convenio','DatosController@convenio')->middleware('admin');
+Route::get('/asignar_horario','EventosController@asignarHorario')->middleware('auth');
+
 
 //Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
 

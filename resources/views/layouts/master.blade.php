@@ -10,28 +10,22 @@
 	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href= "{{asset('css/bootstrap.min.css')}}" />
-  <link rel="stylesheet" type="text/css" href=" {{asset('css/font-awesome.min.css')}}" />
-  <link rel="stylesheet" type="text/css" href=" {{asset('css/css5c0a.css')}}" />
-  <link rel="stylesheet" type="text/css" href=" {{asset('css/ace.min.css')}}" />
-  <link rel="stylesheet" href=" {{asset('css/bootstrap-responsive.min.css')}}" />
-  <link rel="stylesheet" href=" {{asset('css/select2.min.css')}}" />
-  <link rel="stylesheet" href=" {{asset('css/ace-responsive.min.css')}}" />
-  <link rel="stylesheet" href=" {{asset('css/dataTables.bootstrap.css')}}" />
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href= "{{asset('css/bootstrap.min.css')}}" />
+	<link rel="stylesheet" type="text/css" href=" {{asset('css/font-awesome.min.css')}}" />
+	<link rel="stylesheet" type="text/css" href=" {{asset('css/css5c0a.css')}}" />
+	<link rel="stylesheet" type="text/css" href=" {{asset('css/ace.min.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/bootstrap-responsive.min.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/select2.min.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/ace-responsive.min.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/dataTables.bootstrap.css')}}" />
 	<link rel="stylesheet" href=" {{asset('css/bootstrap-editable.css')}}" />
-  <link rel="stylesheet" href=" {{asset('css/colorbox.min.css')}}" />
+	<link rel="stylesheet" href=" {{asset('css/colorbox.min.css')}}" />
 	<link rel="stylesheet" href=" {{asset('css/ace-skins.min.css')}}" />
-  <link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
-  <link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
-
-
-
-
-
-
-
+	<link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
+	<link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
 </head>
 
 <body class="no-skin">

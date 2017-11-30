@@ -33,7 +33,7 @@ class DatosController extends Controller
       if(Auth::user()->id_rol == 4)
       {
         $expo = Exhibitor::where('id_user','=',$user)->first();
-        $nombre = $expo->alu_nombre." ".$expo->alu_apellido_paterno." ".$expo->alu_apellido_paterno;
+        $nombre = $expo->alu_nombre." ".$expo->alu_apellido_paterno." ".$expo->alu_apellido_materno;
         $correo=$expo->alu_email;
         $rut = $expo->alu_rut;
         $array = array('nombre' => $nombre,'correo' =>$correo,'rut'=>$rut);
@@ -266,7 +266,7 @@ class DatosController extends Controller
       }
     }
 
-  
+
 
 
 

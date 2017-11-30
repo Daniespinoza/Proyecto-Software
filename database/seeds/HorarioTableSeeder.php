@@ -14,13 +14,13 @@ class HorarioTableSeeder extends Seeder
     {
         $horario = new Disponibilidad();
         $horario->id_expositor = 1;
-        $horario->lunes = null ;
+        $horario->lunes = 'Ninguno' ;
         $horario->martes = 'Mañana' ;
         $horario->miercoles = 'Mañana' ;
         $horario->jueves = 'Tarde' ;
         $horario->viernes = 'Todo el Día' ;
-        $horario->sabado = null ;
-        $horario->domingo = null;
+        $horario->sabado = 'Ninguno';
+        $horario->domingo = 'Ninguno';
         $horario->total_m = 3;
         $horario->total_t = 2;
         $horario->save();

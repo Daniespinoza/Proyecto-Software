@@ -208,4 +208,5 @@ class PersonalController extends Controller
         return redirect('/');
       }
     }
+
 }

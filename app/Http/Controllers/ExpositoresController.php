@@ -231,5 +231,7 @@ class ExpositoresController extends Controller
       }
 
     }
-  
+
+
+
 }

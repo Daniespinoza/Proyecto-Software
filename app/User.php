@@ -33,10 +33,10 @@ class User extends Authenticatable
     //Relationships
 
     public function Exhibitors(){
-      return $this->belongTo('App\Exhibitor');
+      return $this->belongsTo('App\Exhibitor');
     }
     public function Staffs(){
-      return $this->belongTo('App\Staff');
+      return $this->belongsTo('App\Staff');
     }
     public function Roles(){
       return $this->hasOne('App\Role');

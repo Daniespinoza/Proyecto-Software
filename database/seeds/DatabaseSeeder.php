@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             TipoEncargadoTableSeeder::class,
             DepartamentTableSeeder::class,
             EstablecimientoTableSeeder::class,
-            SubtypeTableSeeder::class,
             TypeEventTableSeeder::class,
             HorarioTableSeeder::class
         ]);

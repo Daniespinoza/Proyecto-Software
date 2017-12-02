@@ -17,7 +17,8 @@ Route::get('/', function () {
 */
 Route::get('users', function () {
     $user = App\User::all();
-    return $user->toJson();
+    $user->toJson();
+    return response($user);
 });
 // QUESTION: Debemos crear nuevos campos en la base de datos
 // TEMP: Como pasar una tabla de datos a json

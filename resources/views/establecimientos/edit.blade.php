@@ -15,7 +15,7 @@
     <input name="_method" type="hidden" value="PATCH"/>
       <label class="col-md-3 control-label no-padding-right" for="form-field-1"> RBD </label>
         <div class="col-md-4">
-          <input class="form-control" type="number" name="rbd" value="{{$estab->rbd}}" required/>
+          <input class="form-control" type="number" name="rbd" pattern="[0-9]" value="{{$estab->rbd}}" required/>
         </div>
   </div>
   <div class="form-group">
@@ -105,7 +105,7 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Teléfono</label>
           <div class="col-md-4">
-          <input type="integer" name="fono" class="form-control" value="{{$estab->telefono}}" />
+          <input type="number" name="fono" pattern="[0-9]" class="form-control" value="{{$estab->telefono}}" />
       </div>
     </div>
 
@@ -123,8 +123,6 @@
   </div>
 
 </form>
-</div>
-</div>
 </div>
 
 

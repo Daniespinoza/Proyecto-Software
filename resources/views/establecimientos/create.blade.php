@@ -14,7 +14,7 @@
 <div class="form-group">
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> RBD </label>
      <div class="col-md-4">
-        <input class="form-control" type="number" name="rbd" required/>
+        <input class="form-control" pattern="[0-9]" min="1" type="number" name="rbd" required/>
       </div>
     </div>
     <div class="form-group">
@@ -40,7 +40,7 @@
 <div class="form-group">
 <label class="col-md-3 control-label no-padding-right"> Dirección</label>
 <div class="col-md-4">
-<input type="text" name="direccion" class="form-control" required/>
+<input type="text" name="direccion" placeholder="dirección ejemplo #334" class="form-control" required/>
 </div>
 </div>
       <div class="form-group">
@@ -85,14 +85,14 @@
       <div class="form-group">
            <label class="col-md-3 control-label no-padding-right"> Correo</label>
             <div class="col-md-4">
-          <input type="email" name="correo" class="form-control" />
+          <input type="email" name="correo" placeholder="ejemplo@utem.cl" class="form-control" />
       </div>
     </div>
 
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Teléfono</label>
           <div class="col-md-4">
-          <input type="integer" name="fono" class="form-control" />
+          <input type="number" pattern="[0-9]" name="fono" placeholder="56999887766 ó 2299988877" class="form-control" />
       </div>
     </div>
     <div class="form-group">
@@ -110,8 +110,8 @@
 
 </form>
 </div>
-</div>
-</div>
+
+
 
 
 @endsection

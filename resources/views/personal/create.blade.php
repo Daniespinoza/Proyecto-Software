@@ -35,14 +35,14 @@
         <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> RUT</label>
             <div class="col-md-4">
-                <input type="text" name="rut" class="form-control" required/>
+                <input type="text" name="rut" class="form-control" pattern="([0-9]{2}|[0-9]{1}).[0-9]{3}.[0-9]{3}(-[0-9]{1}|-k|-K)" placeholder="11.111.111-k" required/>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> RUN</label>
             <div class="col-md-4">
-                <input type="number" name="run" class="form-control" required/>
+                <input type="number" pattern="[0-9]" min="1" max="99999999" name="run" placeholder="rut sin puntos ni dígito verificador" class="form-control" required/>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
         <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Correo</label>
             <div class="col-md-4">
-                <input type="text" name="correo" class="form-control" required/>
+                <input type="text" name="correo" class="form-control" placeholder="ejemplo@utem.cl" required />
             </div>
         </div>
 
@@ -75,8 +75,7 @@
 
 </form>
 </div>
-</div>
-</div>
+
 
 
 @endsection

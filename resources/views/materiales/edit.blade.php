@@ -16,12 +16,12 @@
       <input name="_method" type="hidden" value="PATCH"/>
       <label class="col-md-3 control-label no-padding-right"> Nombre </label>
         <div class="col-md-4">
-          <input class="form-control" type="text" name="nombre" value="{{$materiales->descripcion}}"/>
+          <input class="form-control" type="text" name="nombre" value="{{$materiales->descripcion}}" required/>
         </div>
     </div>
       <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Cantidad </label>
         <div class="col-md-4">
-          <input class="form-control" type="number" name="cantidad" value="{{$materiales->stock_total}}"/>
+          <input class="form-control" type="number" pattern="[0-9]" min="0" name="cantidad" value="{{$materiales->stock_total}}" required/>
         </div>
       </div>
 
@@ -37,8 +37,7 @@
 
 </form>
 </div>
-</div>
-</div>
+
 
 
 @endsection

@@ -15,7 +15,7 @@
 <div class="form-group">
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Rut </label>
      <div class="col-md-4">
-        <input class="form-control" type="text" name="rut" required/>
+        <input class="form-control" type="text" name="rut" placeholder="11111111-k" pattern="[0-9]{8}(-[0-9]|-k|-K)"required/>
       </div>
     </div>
     <div class="form-group">
@@ -84,13 +84,13 @@
 <div class="form-group">
     <label class="col-md-3 control-label no-padding-right"> Dirección</label>
   <div class="col-md-4">
-    <input type="text" name="direccion" class="form-control" required/>
+    <input type="text" name="direccion" class="form-control" placeholder="dirección ejemplo #334"required/>
   </div>
 </div>
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right">Teléfono</label>
           <div class="col-md-4">
-          <input type="number" class="form-control" name = "telefono" required/>
+          <input type="number" class="form-control" name = "telefono" pattern="[0-9]" placeholder="56999887766" required/>
       </div>
     </div>
   <div class="form-group">
@@ -109,13 +109,13 @@
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-right"> Semestre Actual </label>
       <div class="col-md-4">
-        <input type="number" class="form-control"  name = "sem" required/>
+        <input type="number" class="form-control"  patter="[0-9]" name = "sem" required/>
       </div>
     </div>
       <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Correo </label>
         <div class="col-md-4">
-          <input type="email" class="form-control"  name = "mail" required/>
+          <input type="email" class="form-control"  placeholder="ejemplo@utem.cl" name = "mail" required/>
         </div>
         <div class="col-md-3 control-label no-padding-right">
 
@@ -132,8 +132,7 @@
 
 </form>
 </div>
-</div>
-</div>
+
 
 
 @endsection

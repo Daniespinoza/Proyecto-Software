@@ -15,12 +15,12 @@
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-right"> Nombre </label>
         <div class="col-md-4">
-          <input class="form-control" type="text" name="nombre" />
+          <input class="form-control" type="text" name="nombre" required/>
         </div>
     </div>
       <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Cantidad </label>
         <div class="col-md-4">
-          <input class="form-control" type="number" name="cantidad" />
+          <input class="form-control" type="number" min="1" name="cantidad" required/>
         </div>
       </div>
 
@@ -36,8 +36,7 @@
 
 </form>
 </div>
-</div>
-</div>
+
 
 
 @endsection

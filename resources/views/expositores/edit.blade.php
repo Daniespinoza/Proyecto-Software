@@ -89,7 +89,7 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right">Teléfono</label>
           <div class="col-md-4">
-          <input type="number" class="form-control" name = "telefono" value="{{$expo->alu_celular}}" required/>
+          <input type="number" class="form-control" pattern="[0-9]" name = "telefono" value="{{$expo->alu_celular}}" required/>
       </div>
     </div>
   <div class="form-group">
@@ -109,7 +109,7 @@
     <div class="form-group">
       <label class="col-md-3 control-label no-padding-right"> Semestre Actual </label>
       <div class="col-md-4">
-        <input type="number" class="form-control"  name = "sem" value="{{$expo->semestre_actual}}" required/>
+        <input type="number" class="form-control" pattern="[0-9]" name = "sem" value="{{$expo->semestre_actual}}" required/>
       </div>
     </div>
       <div class="form-group">
@@ -131,8 +131,6 @@
     </div>
 
 </form>
-</div>
-</div>
 </div>
 
 

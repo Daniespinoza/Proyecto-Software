@@ -15,7 +15,13 @@ Route::get('/', function () {
     return view('index');
 });
 */
-
+Route::get('users', function () {
+    $user = App\User::all();
+    return $user->toJson();
+});
+// QUESTION: Debemos crear nuevos campos en la base de datos
+// TEMP: Como pasar una tabla de datos a json
+// IDEA: Crear nuevos campo en la tabla eventos 
 /*
 Route::get('/mis_datos', 'StaffsController@datos');
 

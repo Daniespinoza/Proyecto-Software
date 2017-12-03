@@ -3,27 +3,32 @@
 @section('title','Expositores')
 @section('ventana','Ver Pagos')
 @section('contenido')
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+
 <div class="page-header">
   <h1>Sueldo del Mes {{Auth::user()->name}}</h1>
 </div>
-<div class="table-responsive">
     <label for="">Monto bruto total a pagar </label>
-    <input type="text" name="total" value="{{$pagar}}" disabled>
-    <table class="table table-bordered">
+    <input type="text" name="total" value=" $ {{$pagar}}" disabled>
+<div class="table-responsive">
+  <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
       <tr>
-
         <th class="text-center" >Fecha</th>
         <th class="text-center" >Evento</th>
         <th class="text-center" >Organizador</th>
-
         <th class="text-center" >Monto</th>
-
-
-
-
       </tr>
     </thead>
+    <tfoot>
+      <tr>
+        <th class="text-center" >Fecha</th>
+        <th class="text-center" >Evento</th>
+        <th class="text-center" >Organizador</th>
+        <th class="text-center" >Monto</th>
+      </tr>
+    </tfoot>
     <tbody>
 @for($i=0; $i< $max ; $i++)
       <tr>
@@ -33,15 +38,23 @@
         <td class="text-center" >{{$esta[$i][0]['nombre_establecimiento']}}</td>
         <td class="text-center" >{{$jornada[$i][0]['valor']}}</td>
 
-
-
-
       </tr>
       @endfor
-
     </tbody>
   </table>
-
   </div>
+
+  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+    } );
+  } );
+  </script>
+
 
 @endsection

@@ -399,7 +399,7 @@
 			<!-- Sueldos -->
 		@if (Auth::user()->id_rol == 4)
     <li class="">
-        <a href="" target="_blank">
+        <a class="link" href="{{action('ExpositoresController@getPagos')}}">
             <i class="menu-icon fa fa-money "></i>
             <span class="menu-text"> Mi Sueldo </span>
         </a>

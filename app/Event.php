@@ -14,7 +14,6 @@ class Event extends Model
     'id_tipo_evento',
     'id_personal',
     'id_establecimiento',
-    'direccion',
     'cupos',
     'fecha_inicio'
   ];

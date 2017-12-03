@@ -399,7 +399,7 @@
 			<!-- Sueldos -->
 		@if (Auth::user()->id_rol == 4)
     <li class="">
-        <a class="link" href="{{action('ExpositoresController@getPagos')}}" target="_blank">
+        <a class="link" href="{{action('ExpositoresController@getPagos')}}" >
             <i class="menu-icon fa fa-money "></i>
             <span class="menu-text"> Mi Sueldo </span>
         </a>
@@ -413,7 +413,7 @@
     <li class="">
         <a class="link" href="{{action('DatosController@convenio')}}">
             <i class="menu-icon fa fa-pencil-square-o "></i>
-            <span class="menu-text"> Generar Convenio </span>
+            <span class="menu-text"> Generar Pagos </span>
         </a>
         <b class="arrow"></b>
     </li>

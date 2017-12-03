@@ -9,8 +9,8 @@
 <div class="page-header">
   <h1>Sueldo del Mes {{Auth::user()->name}}</h1>
 </div>
-    <label for="">Monto bruto total a pagar </label>
-    <input type="text" name="total" value=" $ {{$pagar}}" disabled>
+    <h4>Monto bruto total a pagar <strong>$ {{$pagar}}</strong></h4><br>
+    <!--input type="text" name="total" value=" $ {{$pagar}}" disabled-->
 <div class="table-responsive">
   <table id="example" class="display" cellspacing="0" width="100%">
     <thead>

@@ -4,27 +4,39 @@
 @section('title','Mi Perfil')
 @section('ventana','Mi Historial')
 @section('contenido')
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 <div class="page-header">
   <h1>Tu historial {{Auth::user()->name}}</h1>
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered">
+  <table id="example" class="display" cellspacing="0" width="100%">
     <thead>
       <tr>
-        <th class="text-center" >Fecha</th>
-        <th class="text-center" >Evento</th>
-        <th class="text-center" >Tipo</th>
-        <th class="text-center" >Establecimiento</th>
-        <th class="text-center" >Dirección</th>
-        <th class="text-center" colspan="1">Confirmar</th>
-        <th class="text-center" colspan="1">Rechazar</th>
-        <th class="text-center" >Observaciones</th>
+        <th class="text-center">Fecha</th>
+        <th class="text-center">Evento</th>
+        <th class="text-center">Tipo</th>
+        <th class="text-center">Establecimiento</th>
+        <th class="text-center">Dirección</th>
+        <th class="text-center">Confirmar</th>
+        <th class="text-center">Rechazar</th>
+        <th class="text-center">Observaciones</th>
       </tr>
     </thead>
+    <tfoot>
+        <tr>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Evento</th>
+          <th class="text-center">Tipo</th>
+          <th class="text-center">Establecimiento</th>
+          <th class="text-center">Dirección</th>
+          <th class="text-center">Confirmar</th>
+          <th class="text-center">Rechazar</th>
+          <th class="text-center">Observaciones</th>
+        </tr>
+    </tfoot>
     <tbody>
 
-      <tr>
         @for($i=0; $i< $max ; $i++)
               <tr>
 
@@ -45,12 +57,12 @@
 
                 @else
                     @if($det[$i]['confirmacion'] ==2)
-                          <td class="text-center" ><b><font color="red"> Usted Rechazo el turno </font></b></td>
+                          <td class="text-center" ><b><font color="red"> Usted rechazó el turno </font></b></td>
                     @else
                         @if($fecha[$i]->invert == 1)
-                          <td class="text-center" >Turno Confirmado</td>
+                          <td class="text-center" ><b><font color="green"> Turno confirmado </font></b></td>
                         @else
-                          <td class="text-center" ><b><font color="red"> Usted No confirmo </font></b></td>
+                          <td class="text-center" ><b><font color="red"> Usted no confirmó </font></b></td>
                         @endif
                     @endif
 
@@ -67,26 +79,26 @@
                   </td>
                 @else
                   @if($det[$i]['confirmacion'] == 2)
-                <td class="text-center" ><b><font color="red"> Usted Rechazo el turno </font></b></td>
+                <td class="text-center" ><b><font color="red"> Usted rechazó el turno </font></b></td>
                   @else
                       <td class="text-center" >Evento Finalizado</td>
                     @endif
                 @endif
 
                 @if($det[$i]['confirmacion'] == 2)
-                <td class="text-center" ><b><font color="red"> Usted Rechazo el turno </font></b></td>
+                <td class="text-center" ><b><font color="red"> Usted rechazó el turno </font></b></td>
                 @else
                       @if($det[$i]['asistencia'] == 0 && $fecha[$i]->invert == 0 )
                       <td class="text-center" ><b><font color="red"> No asistió al evento </font></b></td>
                       @else
                           @if($det[$i]['asistencia'] == 1)
-                              <td class="text-center" >Asistio</td>
+                              <td class="text-center" >Asistió</td>
                           @else
                               @if($det[$i]['confirmacion'] == 1)
-                                <td class="text-center" >Recuerda asistir al evento</td>
+                                <td class="text-center" ><b><font color="purple"> Recuerda asistir al evento</font></b></td>
                               @else
-                                  <td class="text-center" >Recuerda Confirmar/Rechazar el evento </td>
-                                @endif
+                                  <td class="text-center" ><b><font color="purple"> Recuerda Confirmar/Rechazar el evento </font></b></td>
+                              @endif
                           @endif
                       @endif
                 @endif
@@ -94,12 +106,23 @@
         @endfor
 
 
-      </tr>
+
 
     </tbody>
   </table>
   </div>
 
+  <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+    } );
+  } );
+  </script>
 
 
 

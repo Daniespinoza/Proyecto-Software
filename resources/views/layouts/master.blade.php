@@ -158,22 +158,25 @@
             <li class="">
                 <a class="link" href="{{action('DatosController@index')}}">
                     <i class="menu-icon fa fa-newspaper-o"></i>
-                    Mis Datos
+                    Mis Datos Personales
                 </a>
                 <b class="arrow"></b>
             </li>
-						@if (Auth::user()->id_rol == 4)
-					<li class="">
-								<a class="link" href="{{action('DatosController@getHistorial')}}">
-										<i class="menu-icon fa fa-calendar"></i>
-										Mi Historial
-								</a>
-								<b class="arrow"></b>
-					</li>
 
-						@endif
         </ul>
     </li>
+
+		@if (Auth::user()->id_rol == 4)
+		<li class="">
+				<a class="link" href="{{action('DatosController@getHistorial')}}" >
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text"> Mis Turnos </span>
+				</a>
+				<b class="arrow"></b>
+		</li>
+		@endif
+
+
 
 		@if(Auth::user()->id_rol == 4)
 		<li class="">

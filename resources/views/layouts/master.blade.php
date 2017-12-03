@@ -164,7 +164,7 @@
             </li>
 						@if (Auth::user()->id_rol == 4)
 					<li class="">
-								<a class="link" href="{{action('DatosController@index')}}">
+								<a class="link" href="{{action('DatosController@getHistorial')}}">
 										<i class="menu-icon fa fa-calendar"></i>
 										Mi Historial
 								</a>

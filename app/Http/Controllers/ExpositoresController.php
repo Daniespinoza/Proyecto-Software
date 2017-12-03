@@ -247,7 +247,7 @@ class ExpositoresController extends Controller
       if (Auth::user()->id_rol == 4){
           $id = Auth::user()->id;
           $expo = Exhibitor::where('id_user','=',$id)->first();
-          $detalle_turno = Turndetail::where('id_expositor','=',$expo->id)->get();
+          $detalle_turno = Turndetail::where('id_expositor','=',$expo->id)->where('asistencia','=',1)->get();
           $turno = array();
           $jornada = array();
           $evento = array();

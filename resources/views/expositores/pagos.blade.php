@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('title','Expositores')
-@section('ventana','Ver Expositores')
+@section('ventana','Ver Pagos')
 @section('contenido')
 <div class="page-header">
   <h1>Sueldo del Mes {{Auth::user()->name}}</h1>
 </div>
 <div class="table-responsive">
-    <label for="">Total a pagar mes</label>
+    <label for="">Monto bruto total a pagar </label>
     <input type="text" name="total" value="{{$pagar}}" disabled>
     <table class="table table-bordered">
     <thead>

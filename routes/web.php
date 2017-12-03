@@ -22,7 +22,7 @@ Route::get('users', function () {
 });
 // QUESTION: Debemos crear nuevos campos en la base de datos
 // TEMP: Como pasar una tabla de datos a json
-// IDEA: Crear nuevos campo en la tabla eventos 
+// IDEA: Crear nuevos campo en la tabla eventos
 /*
 Route::get('/mis_datos', 'StaffsController@datos');
 
@@ -57,6 +57,7 @@ Route::resource('eventos','EventosController');
 Route::resource('mis_datos','DatosController');
 
 Route::get('/mi_horario','DatosController@getHorario')->middleware('exhi');
+Route::get('/mis_pagos','ExpositoresController@getPagos')->middleware('exhi');
 Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi');
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 

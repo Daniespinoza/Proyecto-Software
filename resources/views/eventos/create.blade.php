@@ -13,41 +13,40 @@
 <form class="form-horizontal "  method="post" action="{{url('eventos')}}">
 {{csrf_field()}}
     <div class="form-group">
-          <label class="col-md-2 control-label no-padding-right"> Nombre de evento</label>
+          <label class="col-md-3 control-label no-padding-right"> Nombre de evento</label>
         <div class="col-md-4">
           <input class="form-control" type="text" name = "nombre"required/>
         </div>
     </div>
+
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Tipo de evento </label>
           <div class="col-md-4">
-            <select class="" name="tipo_evento">
-              @foreach($sub as $subt)
-              <option value="{{$subt['descripcion']}}">{{$subt['descripcion']}}</option>
-              @endforeach
-            </select>
-          </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label no-padding-right"> Sub-Tipo de evento </label>
-          <div class="col-md-4">
-            <select class="" name="sub_tipo">
+            <select class="" name="tipo_evento" required>
+
+            <option class="" name="tipo_evento" required>-- Seleccione un tipo de evento --</option>
               @foreach($evento as $eve)
-              <option value="{{$eve['id']}}">{{$eve['descripcion']}}</option>
+              <option value="{{$eve['id']}}">{{$eve['subtipo']}}</option>
               @endforeach
+
             </select>
           </div>
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Lugar de evento</label>
         <div class="col-md-4">
-        <select class="" name="">
-          @foreach($establecimientos as $esta)
-          <option value="{{$esta['id']}}">{{$esta['nombre_establecimiento']}}</option>
-          @endforeach
-        </select>
+          <input class="form-control" type="text" name = "direccion" required/>
         </div>
     </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label no-padding-right"> Descripción</label>
+        <div class="col-md-4">
+          <input class="form-control" type="text" name = "descripcion" required/>
+        </div>
+    </div>
+
+
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Fecha</label>
         <div class="col-md-4">
@@ -58,8 +57,9 @@
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right">Cupos requeridos</label>
         <div class="col-md-4">
-          <input type="number" name="cupos" value="" required>
+          <input type="number" name="cupos" min="1" value="" required>
       </div>
+      <br><br><br>
       <div class="col-md-6"></div>
       <input type="submit" class="btn btn-primary">
       </div>

@@ -42,9 +42,8 @@ class EventosController extends Controller
         if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
           $establecimientos = Establishment::all()->toArray();
           $evento = Eventtype::all()->toArray();
-          $sub = Subtype::all()->toArray();
 
-          return view('eventos.create',compact('establecimientos','evento','sub'));
+          return view('eventos.create',compact('establecimientos','evento'));
         }
         else{
           return redirect('/');
@@ -63,8 +62,8 @@ class EventosController extends Controller
         if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
 
           $eventype = new Eventtype([
-            'id_subtipo'=>$request->get('sub_tipo'),
-            'descripcion'=>$request->get('tipo_evento')
+            'tipo_evento'=>$request->get('tipo_evento'),
+            'descripcion'=>$request->get('descripcion')
 
           ]);
           $evento = new Event([
@@ -139,7 +138,7 @@ class EventosController extends Controller
       else{
         return redirect('/');
       }
-      
+
     }
 
 }

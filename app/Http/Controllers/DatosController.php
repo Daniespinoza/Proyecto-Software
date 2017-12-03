@@ -13,6 +13,13 @@ use App\Carrera;
 use App\Region;
 use App\Staff;
 use App\Disponibilidad;
+use App\Event;
+use App\Eventtype;
+use App\Establishment;
+use App\Jornada;
+use App\Turn;
+use App\Turndetail;
+
 
 
 class DatosController extends Controller
@@ -266,14 +273,66 @@ class DatosController extends Controller
       }
     }
 
+    public function getHistorial()
+    {
+
+      if (Auth::user()->id_rol == 4){
+          $id = Auth::user()->id;
+          $expo = Exhibitor::where('id_user','=',$id)->first();
+          $detalle_turno = Turndetail::where('id_expositor','=',$expo->id)->get();
+          $now = new \DateTime();
+          $now->format('Y-m-d');
+
+          $det = array();
+          $turno = array();
+          $jornada = array();
+          $evento = array();
+          $tipo = array();
+          $esta = array();
+          $fecha = array();
+          $post = array();
+          $pagar = 0;
+          foreach ($detalle_turno as $dt) {
+                array_push($det,$dt);
+                array_push($post,$dt->id);
+                $tur = Turn::where('id','=',$dt->id_turno)->get();
+                foreach ($tur as $tr ) {
+                  $jorn = Jornada::where('id','=',$tr->id_jornada)->get();
+                  $pagar = $pagar + $jorn[0]['valor'];
+                  array_push($jornada,$jorn);
+                  $eve = Event::where('id','=',$tr->id_evento)->get();
+                  foreach($eve as $e){
+                    $tp = Eventtype::where('id','=',$e->id_tipo_evento)->get();
+                    array_push($tipo,$tp);
+                    $et = Establishment::where('id','=',$e->id_establecimiento)->get();
+                    array_push($esta,$et);
+                  }
+                  $date = date_create($eve[0]['fecha_inicio']);
+                  $fec = $date->diff($now);
+
+                  array_push($fecha,$fec);
+                  array_push($evento,$eve);
+                }
+                array_push($turno,$tur);
+          }
+          $max = count($evento);
+
+            return view('/datos.mi_historia',compact('det','jornada','tipo','evento','esta','pagar','max','fecha','post') );
+          }
+    }
+    public function updateAsistir(Request $request)
+    {
+      if (Auth::user()->id_rol == 4){
+        $idd = $request->getQueryString();
+        $detail = Turndetail::find($idd);
+        $detail ->confirmacion = $request->get('asistir');
+        $detail->save();
 
 
+        return back()->withInput();
 
 
-
-
-
-
-
+      }
+    }
 
 }

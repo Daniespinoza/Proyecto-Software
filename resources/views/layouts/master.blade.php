@@ -414,7 +414,7 @@
 		<!-- Generar convenio -->
 		@if (Auth::user()->id_rol == 1)
     <li class="">
-        <a class="link" href="{{action('DatosController@convenio')}}">
+        <a class="link" href="{{action('DatosController@pagos')}}">
             <i class="menu-icon fa fa-pencil-square-o "></i>
             <span class="menu-text"> Generar Pagos </span>
         </a>

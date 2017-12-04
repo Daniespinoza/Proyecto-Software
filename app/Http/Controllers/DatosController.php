@@ -266,10 +266,10 @@ class DatosController extends Controller
 
 
     }
-    public function convenio()
+    public function pagos()
     {
       if (Auth::user()->id_rol == 1){
-        return view('convenio');
+        return view('pagos');
       }
     }
 

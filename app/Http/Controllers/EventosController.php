@@ -12,6 +12,7 @@ use App\Turn;
 use App\Turndetail;
 use App\Exhibitor;
 use App\Establishment;
+use App\Staff;
 use Auth;
 
 
@@ -61,19 +62,55 @@ class EventosController extends Controller
     {
         if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
 
-          $eventype = new Eventtype([
-            'tipo_evento'=>$request->get('tipo_evento'),
-            'descripcion'=>$request->get('descripcion')
+          $user = Auth::user()->id;
+          $St = Staff::where('id_user','=',$user)->get();
 
-          ]);
-          $evento = new Event([
-            'id_tipo_evento'=> $request->get(),
-            'id_personal'=>$request->get(),
-            'id_establecimiento'=>$request->get(),
-            'cupos'=>$request->get(),
-            'start'=>$request->get()
+          if(preg_match("/^[0-9]+$/" , $request->get('tipo_evento') ) ) {
 
-          ]);
+            $evento = new Event([
+              'id_tipo_evento'=> $request->get('tipo_evento'),
+              'id_personal'=>$St[0]['id'],
+              'id_establecimiento'=>$request->get('esta'),
+              'cupos'=>$request->get('cupos'),
+              'direccion'=> $request->get('direccion'),
+              'start'=>$request->get('fecha'),
+              'title' => $request->get('nombre')
+
+            ]);
+
+            $evento->save();
+
+
+
+          }
+          else {
+
+            $eventype = new Eventtype([
+              'subtipo'=>$request->get('tipo_evento'),
+              'descripcion'=>$request->get('descripcion'),
+
+
+            ]);
+            $eventype->save();
+            $eve = Eventtype::where('subtipo','=',$request->get('tipo_evento'))->get();
+
+            $evento = new Event([
+              'id_tipo_evento'=> $eve[0]['id'],
+              'id_personal'=>$St[0]['id'],
+              'id_establecimiento'=>$request->get('esta'),
+              'cupos'=>$request->get('cupos'),
+              'direccion'=> $request->get('direccion'),
+              'start'=>$request->get('fecha'),
+              'title' => $request->get('nombre')
+
+            ]);
+            $evento->save();
+          }
+
+          return view('eventos.calendar');
+
+
+
 
 
         }

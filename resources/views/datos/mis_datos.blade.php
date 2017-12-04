@@ -189,8 +189,7 @@
                               <div class="alert alert-danger" style="display: none" id="de">
                                 <i class="ace-icon fa fa-warning"></i>
                                 <strong>Alerta!</strong> <span id="demo"></span>
-
-</div>
+                              </div>
                           </div>
 
 

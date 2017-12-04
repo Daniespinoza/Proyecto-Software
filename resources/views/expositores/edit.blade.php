@@ -9,6 +9,16 @@
   <h1>Formulario De Actualización de Expositor</h1>
 </div>
 <div class="row">
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      @foreach ($errors->all() as $error)
+      <div class="alert alert-danger" >
+        <i class="ace-icon fa fa-warning"></i>
+        <strong>Alerta! </strong>{{ $error }}
+      </div>
+      @endforeach
+  </div>
+  @endif
 <div class="col-xs-12">
 <form class="form-horizontal" method="post" action="{{action('ExpositoresController@update',$id)}}">
 {{csrf_field()}}

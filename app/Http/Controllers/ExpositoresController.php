@@ -15,6 +15,8 @@ use App\Jornada;
 use App\Turn;
 use App\Turndetail;
 use App\Establishment;
+use Validator;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -84,6 +86,14 @@ class ExpositoresController extends Controller
     {
       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
 
+        $validatedData = Validator::make($request->all(),[
+        'rut' => 'unique:exhibitors,alu_rut',
+        'mail' => 'unique:users,email',
+    ]);
+    if ($validatedData->fails()) {
+              return redirect('/expositores/create')->withErrors($validatedData)->withInput();
+            }
+            else {
         $pass = substr($request->get('mail'), 0,-8);
         $users = new User([
             'name'=> $request->get('nombre') ,
@@ -120,6 +130,7 @@ class ExpositoresController extends Controller
 
         return redirect('/expositores');
       }
+      }
       else{
         return redirect('/');
       }
@@ -146,33 +157,26 @@ class ExpositoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
-        $expo = Exhibitor::find($id);
-        $c = $expo->id_comuna;
-        $comm= Commune::where('id','=',$c)->get();
-        $r =$comm[0]['id_region'] ;
-        $regi = Region::where('id','=',$r)->get();
-        $car=$expo->id_carrera;
-        $carres = Carrera::where('id','=',$car)->get();
-        $sex=$expo->genero;
-
-        $commun = Commune::all();
-        $regions = Region::all();
-        $carreras = Carrera::all();
-
-
-
-        return view('expositores.edit', compact('expo','sex','id','comm','regi','carres','regions','commun','carreras'));
-      }
-      else{
-        return redirect('/');
-      }
-
-
-    }
+     public function edit($id)
+     {
+       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+         $expo = Exhibitor::find($id);
+         $c = $expo->id_comuna;
+         $comm= Commune::where('id','=',$c)->get();
+         $r =$comm[0]['id_region'] ;
+         $regi = Region::where('id','=',$r)->get();
+         $car=$expo->id_carrera;
+         $carres = Carrera::where('id','=',$car)->get();
+         $sex=$expo->genero;
+         $commun = Commune::all();
+         $regions = Region::all();
+         $carreras = Carrera::all();
+         return view('expositores.edit', compact('expo','sex','id','comm','regi','carres','regions','commun','carreras'));
+       }
+       else{
+         return redirect('/');
+       }
+     }
 
     /**
      * Update the specified resource in storage.
@@ -184,6 +188,14 @@ class ExpositoresController extends Controller
     public function update(Request $request, $id)
     {
       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $validatedData = Validator::make($request->all(),[
+        'rut' => 'unique:exhibitors,alu_rut',
+        'mail' => 'unique:exhibitors,alu_email',
+      ]);
+    if ($validatedData->fails()) {
+              return redirect()->route('expositores/{id}/edit', ['id' => $id])->withErrors($validatedData)->withInput();
+            }
+            else {
         $sema = $request->get('sem') - 1;
 
         $expo = Exhibitor::find($id);
@@ -208,6 +220,7 @@ class ExpositoresController extends Controller
         return redirect('/expositores');
 
       }
+    }
       else{
         return redirect('/');
       }

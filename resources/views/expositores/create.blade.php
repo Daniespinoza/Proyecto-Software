@@ -9,6 +9,16 @@
   <h1>Formulario Inscripción de Expositor</h1>
 </div>
 <div class="row">
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      @foreach ($errors->all() as $error)
+      <div class="alert alert-danger" >
+        <i class="ace-icon fa fa-warning"></i>
+        <strong>Alerta! </strong>{{ $error }}
+      </div>
+      @endforeach
+  </div>
+  @endif
 <div class="col-xs-12">
 <form class="form-horizontal "  method="post" action="{{url('expositores')}}">
 {{csrf_field()}}
@@ -90,7 +100,7 @@
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right">Teléfono</label>
           <div class="col-md-4">
-          <input type="number" class="form-control" name = "telefono" pattern="[0-9]" placeholder="56999887766" required/>
+          <input type="number" class="form-control" name = "telefono" pattern="[0-9]" max="99999999999" placeholder="56999887766" required/>
       </div>
     </div>
   <div class="form-group">

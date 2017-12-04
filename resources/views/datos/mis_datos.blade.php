@@ -152,7 +152,7 @@
                                 Cambio Contraseña
                             </h1>
                         </div>
-                        <form class="form-horizontal cambio_clave" method="post" action="{{action('DatosController@update',$user,'1')}}">
+                        <form name="myForm" onsubmit="return validateForm()" class="form-horizontal cambio_clave" method="post" action="{{action('DatosController@update',$user,'1')}}">
                             <div class="space-10"></div>
                             {{csrf_field()}}
                             <div class="form-group">
@@ -203,7 +203,7 @@
                             <div class="content msg_error" style="display: none">
                                 <div class="col-sm-10 col-sm-offset-1">
                                     <div class="row">
-                                        <div class="alert alert-danger log_error">
+                                        <div class="alert alert-danger log_error" id="demo">
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title green" id="myModalLabel"><center>Modificar Dirección</center></h4>
                         </div>
-                        <form class="form-horizontal seleccionComuna" method="post" action="{{action('DatosController@update',$user,'0')}}">
+                        <form class="form-horizontal seleccionComuna"  method="post" action="{{action('DatosController@update',$user,'0')}}">
                             <div class="modal-body cuerpo_detalle_reserva">
                               {{csrf_field()}}
                                 <table class="ui table segment">
@@ -290,5 +290,17 @@
     </div>
 </div>
 </div><!-- /.row -->
-
+<script>
+function validateForm() {
+  var x = document.forms["myForm"]["confirmacion_password"].value;
+  var y = document.forms["myForm"]["nueva_password"].value;
+      if (x !== y) {
+         document.getElementById("demo").innerHTML="ERROR!";
+          return false;
+      }else{
+          document.getElementById("demo").innerHTML="ERROR!";
+          return false;
+      }
+}
+</script>
 @endsection

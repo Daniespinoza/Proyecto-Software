@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 */
-Route::get('users', function () {
-    $user = App\User::all();
-    $user->toJson();
-    return response($user);
+Route::get('events', function () {
+    $event = App\Event::all();
+    $event->toJson();
+    return response($event);
 });
 // QUESTION: Debemos crear nuevos campos en la base de datos
 // TEMP: Como pasar una tabla de datos a json

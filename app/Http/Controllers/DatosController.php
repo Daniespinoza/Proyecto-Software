@@ -307,7 +307,7 @@ class DatosController extends Controller
                     $et = Establishment::where('id','=',$e->id_establecimiento)->get();
                     array_push($esta,$et);
                   }
-                  $date = date_create($eve[0]['fecha_inicio']);
+                  $date = date_create($eve[0]['start']);
                   $fec = $date->diff($now);
 
                   array_push($fecha,$fec);

@@ -71,7 +71,7 @@ class EventosController extends Controller
             'id_personal'=>$request->get(),
             'id_establecimiento'=>$request->get(),
             'cupos'=>$request->get(),
-            'fecha_inicio'=>$request->get()
+            'start'=>$request->get()
 
           ]);
 

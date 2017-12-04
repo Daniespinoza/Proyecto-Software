@@ -10,7 +10,8 @@ class Eventtype extends Model
 
   protected $fillable = [
     'subtipo',
-    'descripcion'
+    'descripcion',
+    'title'
   ];
 
   public function Events(){

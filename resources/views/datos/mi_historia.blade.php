@@ -40,7 +40,7 @@
         @for($i=0; $i< $max ; $i++)
               <tr>
 
-                <td class="text-center" >{{$evento[$i][0]['fecha_inicio']}}</td>
+                <td class="text-center" >{{$evento[$i][0]['start']}}</td>
                 <td class="text-center" >{{$tipo[$i][0]['subtipo']}}</td>
                 <td class="text-center" >{{$tipo[$i][0]['descripcion']   }}</td>
                 <td class="text-center" >{{$esta[$i][0]['nombre_establecimiento']}}</td>

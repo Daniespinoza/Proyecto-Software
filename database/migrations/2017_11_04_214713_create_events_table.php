@@ -20,7 +20,7 @@ class CreateEventsTable extends Migration
             $table->integer('id_establecimiento')->unsigned();
             $table->string('direccion');
             $table->integer('cupos');
-            $table->dateTime('fecha_inicio');
+            $table->dateTime('start');
             $table->timestamps();
         });
     }

@@ -16,7 +16,8 @@ class Event extends Model
     'id_establecimiento',
     'direccion',
     'cupos',
-    'start'
+    'start',
+    'title'
   ];
 
   public function Staffs(){

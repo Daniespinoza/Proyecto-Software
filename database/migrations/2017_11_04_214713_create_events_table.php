@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('direccion');
             $table->integer('cupos');
             $table->dateTime('start');
+            $table->string('title');
             $table->timestamps();
         });
     }

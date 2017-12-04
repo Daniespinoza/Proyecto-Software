@@ -17,7 +17,7 @@ class CreateEventtypesTable extends Migration
             $table->increments('id');
             $table->string('subtipo');
             $table->string('descripcion')->nullable();
-            $table->string('title');
+            
             $table->timestamps();
         });
     }

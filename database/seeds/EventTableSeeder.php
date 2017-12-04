@@ -18,6 +18,7 @@ class EventTableSeeder extends Seeder
       $evento->direccion= 'Irarrázabal 5310' ;
       $evento->cupos=4;
       $evento->start = '2017-11-10' ;
+      $evento->title='feria ñuñoa';
       $evento -> save();
 
       $evento1 = new Event();
@@ -27,6 +28,7 @@ class EventTableSeeder extends Seeder
       $evento1->direccion= 'Utem Campus Macul' ;
       $evento1->cupos=4;
       $evento1->start = '2017-11-15' ;
+      $evento1->title='ensayo psu macul';
       $evento1 -> save();
     }
 }

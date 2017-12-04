@@ -38,29 +38,7 @@
 				$('#calendar').fullCalendar('unselect');
 			},
 
-			events: [
-				{
-					title: 'Expo 1',
-					start: '2017-11-01'
-
-				},
-				{
-					title: 'Semana de exposiones',
-					start: '2017-11-07',
-					end: '2017-11-10'
-				},
-				{
-					id: 999,
-					title: 'Expo 2',
-					start: '2017-11-09T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Expo Mapocho',
-					start: '2017-11-16T16:00:00'
-				}
-			]
-		});
+			events: '/events'  });
 
 	});
 </script>

@@ -185,12 +185,14 @@
                                     <strong>Alerta! </strong> Al guardar, se cambiará la clave
 
                                 </div>
-                            </div>
-                            @if ($errors->has('password'))
-    <div class="alert alert-success">
-       <strong>Alerta! </strong> se cambió la clave
-    </div>
-@endif
+
+                              <div class="alert alert-danger" style="display: none" id="de">
+                                <i class="ace-icon fa fa-warning"></i>
+                                <strong>Alerta!</strong> <span id="demo"></span>
+
+</div>
+                          </div>
+
 
                             <div class="space-40"></div>
                             <div class="clearfix form-actions">
@@ -200,14 +202,15 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="content msg_error" style="display: none">
+                            <!--div class="content msg_error" >
                                 <div class="col-sm-10 col-sm-offset-1">
                                     <div class="row">
-                                        <div class="alert alert-danger log_error" id="demo">
+                                        <div class="alert alert-danger log_error" >
+                                          <p id="demo" >AAAAAAAAAA</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div-->
                         </form>
                     </div>
                 </div>
@@ -232,7 +235,7 @@
                                         </td>
                                         <td class="form-control-static">
 
-                                            <input type="text" class="col-md-12" value="{{$expo->direccion}}" name="txtDireccion" required placeholder="Ingrese nueva dirección" >
+                                            <input type="text" class="col-md-12" vadocument.getElementById("p2").style.color = "blue";lue="{{$expo->direccion}}" name="txtDireccion" required placeholder="Ingrese nueva dirección" >
                                         </td>
                                     </tr>
                                     <tr>
@@ -295,11 +298,11 @@ function validateForm() {
   var x = document.forms["myForm"]["confirmacion_password"].value;
   var y = document.forms["myForm"]["nueva_password"].value;
       if (x !== y) {
-         document.getElementById("demo").innerHTML="ERROR!";
+         document.getElementById("demo").innerHTML="Las Contraseñas no coinciden";
+         document.getElementById("de").style.display= "";
           return false;
       }else{
-          document.getElementById("demo").innerHTML="ERROR!";
-          return false;
+          return true;
       }
 }
 </script>

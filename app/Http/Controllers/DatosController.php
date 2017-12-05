@@ -269,6 +269,12 @@ class DatosController extends Controller
     public function pagos()
     {
       if (Auth::user()->id_rol == 1){
+        $expo = Exhibitor::all();
+        dd($expo);
+
+
+
+
         return view('pagos');
       }
     }

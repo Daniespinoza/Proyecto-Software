@@ -65,7 +65,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Descripción</label>
         <div class="col-md-4">
-          <input class="form-control" type="text" name = "descripcion" required/>
+          <input class="form-control" type="text" name = "descripcion" />
         </div>
     </div>
 

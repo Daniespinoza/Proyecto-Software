@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Coordinadora
+class Personal
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class Coordinadora
      */
      public function handle($request, Closure $next)
      {
-       if(auth()->user()->id_rol == 2){
+       if(auth()->user()->id_rol != 4){
        return $next($request);
      }
        return redirect('/');

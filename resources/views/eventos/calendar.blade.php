@@ -37,8 +37,16 @@
 				}
 				$('#calendar').fullCalendar('unselect');
 			},
-
-			events: '/events'  });
+			events: {
+				url: '/events',
+				error: function() {
+					$('#script-warning').show();
+				}
+			},
+			loading: function(bool) {
+				$('#loading').toggle(bool);
+			}
+			});
 
 	});
 </script>

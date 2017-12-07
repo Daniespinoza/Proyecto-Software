@@ -13,7 +13,6 @@
 <script>
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
-			defaultDate: '2017-11-12',
 			editable: false,
       navLinks: false,
       selectable: false,

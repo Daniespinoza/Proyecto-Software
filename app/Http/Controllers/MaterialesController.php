@@ -39,7 +39,7 @@ class MaterialesController extends Controller
      */
     public function create()
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol != 4){
         return view('materiales.create');
       }
       else{
@@ -55,7 +55,7 @@ class MaterialesController extends Controller
      */
     public function store(Request $request)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol != 4){
           $material = new Material([
             'descripcion' => $request->get('nombre'),
             'stock_total' => $request->get('cantidad'),
@@ -104,7 +104,7 @@ class MaterialesController extends Controller
      */
     public function edit($id)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol  != 4){
           $materiales = Material::find($id);
 
           return view('materiales.edit', compact('materiales','id'));
@@ -123,7 +123,7 @@ class MaterialesController extends Controller
      */
     public function update(Request $request, $id)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol != 4){
         $materiales = Material::find($id);
         $materiales->descripcion = $request->get('nombre');
         $materiales->stock_total = $request->get('cantidad');
@@ -145,7 +145,7 @@ class MaterialesController extends Controller
      */
     public function destroy($id)
     {
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol != 4){
         $materiales = Material::find($id);
 
         $mod = Material::where('id',$id)->first();
@@ -164,7 +164,7 @@ class MaterialesController extends Controller
     }
 
 
-  
+
 
 
 

@@ -167,7 +167,7 @@ class EstablecimientosController extends Controller
         $estab = Establishment::find($id);
 
         $estab->rbd = $request->get('rbd');
-        $estab->nombre_establecimiento = $request->get('rbd');
+        $estab->nombre_establecimiento = $request->get('nombre');
         $estab->id_comuna = $request->get('comuna');
         $estab->direccion = $request->get('direccion');
         $estab->id_depto = $request->get('depto');

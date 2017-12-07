@@ -14,29 +14,11 @@
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			defaultDate: '2017-11-12',
-			editable: true,
-      navLinks: true,
-      selectable: true,
-			selectHelper: true,
+			editable: false,
+      navLinks: false,
+      selectable: false,
+			selectHelper: false,
 			eventLimit: true, // allow "more" link when too many events
-			select: function(start, end) {
-				var title = prompt('Event Title:');
-				var cupos = prompt('cupos:');
-				var hora = prompt('hora:');
-				var eventData;
-				if (title) {
-					eventData = {
-						title: title,
-						cupos: cupos,
-						hora: hora,
-						start: start,
-
-						end: end
-					};
-					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-				}
-				$('#calendar').fullCalendar('unselect');
-			},
 			events: {
 				url: '/events',
 				error: function() {

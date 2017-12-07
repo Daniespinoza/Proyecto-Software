@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Eventtype;
-use App\Subtype;
 use App\Jornada;
 use App\Turn;
 use App\Turndetail;
@@ -40,15 +39,32 @@ class EventosController extends Controller
     public function create()
     {
 
-        if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
-          $establecimientos = Establishment::all()->toArray();
-          $evento = Eventtype::all()->toArray();
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $establecimientos = Establishment::all()->toArray();
+        $evento = Eventtype::all()->toArray();
+        $evn = Event::all();
+        $evn->toJson();
+        return view('eventos.create',compact('establecimientos','evento' ,'evn'));
+      }
+      else{
+        return redirect('/');
+      }
 
-          return view('eventos.create',compact('establecimientos','evento'));
-        }
-        else{
-          return redirect('/');
-        }
+    }
+
+    public function ingresaEvento()
+    {
+
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $establecimientos = Establishment::all()->toArray();
+        $evento = Eventtype::all()->toArray();
+        $evn = Event::all();
+        $evn->toJson();
+        return view('eventos.ingresa',compact('establecimientos','evento' ,'evn'));
+      }
+      else{
+        return redirect('/');
+      }
 
     }
 
@@ -168,9 +184,10 @@ class EventosController extends Controller
       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
         $establecimientos = Establishment::all()->toArray();
         $evento = Eventtype::all()->toArray();
-        $sub = Subtype::all()->toArray();
+        $evn = Event::all();
+        $evn->toJson();
 
-        return view('eventos.prueba',compact('establecimientos','evento','sub'));
+        return view('eventos.prueba',compact('establecimientos','evento' ,'evn'));
       }
       else{
         return redirect('/');

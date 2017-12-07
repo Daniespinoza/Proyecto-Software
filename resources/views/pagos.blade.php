@@ -12,8 +12,7 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
 </div>
 
 
-<div class="table-responsive">
-
+<div style="overflow-x:auto;">
 <table id="example" class="display" cellspacing="0" width="100%">
       <thead>
           <tr>

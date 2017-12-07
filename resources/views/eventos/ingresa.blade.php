@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title','Calendario')
-@section('ventana','Calendario')
+@section('ventana','Agregar Evento')
 @section('contenido')
 
 <div class="row">
@@ -41,13 +41,10 @@
                 <label class="col-md-3 control-label no-padding-right"> Otro</label>
                 <div class="col-md-1">
           </div>
-
             <div class="col-md-1 checkbox">
+              <input type="checkbox"  pattern=".{4,}"name="otros" onclick="document.create.tipo.disabled = true; document.create.tip.disabled = false; tip.disabled = !this.checked; tipo.disabled = this.checked;"/>
 
-
-              <input type="checkbox"  name="otros" onclick="document.create.tipo.disabled = true; document.create.tip.disabled = false; tip.disabled = !this.checked; tipo.disabled = this.checked;"/>
-
-</div>
+          </div>
 
 
             <div class="col-md-1">

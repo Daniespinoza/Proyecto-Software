@@ -64,6 +64,8 @@ Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/generar_pagos','DatosController@pagos')->middleware('admin');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
+Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('auth');
+
 Route::get('/asignar_horario','EventosController@asignarHorario')->middleware('auth');
 
 

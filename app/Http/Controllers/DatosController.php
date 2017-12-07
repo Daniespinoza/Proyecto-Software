@@ -270,7 +270,7 @@ class DatosController extends Controller
     {
       if (Auth::user()->id_rol == 1){
         $expo = Exhibitor::all();
-        dd($expo);
+        //dd($expo);
 
 
 

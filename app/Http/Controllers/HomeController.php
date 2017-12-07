@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Event;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,9 @@ class HomeController extends Controller
     {
         $request->user()->roles('admin');
 
-        return view('index');
+        $eventos = Event::all();
+        $eventos->toJson();
+      
+        return view('index',compact('eventos'));
     }
 }

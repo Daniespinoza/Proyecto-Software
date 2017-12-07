@@ -297,7 +297,7 @@
             <ul class="submenu">
 							@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 3 )
                 <li class="">
-                    <a class="link" href="{{action('EventosController@create')}}">
+                    <a class="link" href="{{action('EventosController@ingresaEvento')}}">
                         <i class="menu-icon fa fa-plus"></i>
                         Crear Evento
                     </a>
@@ -383,7 +383,7 @@
                     </a>
                     <b class="arrow"></b>
                 </li>
-								@if (Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
+								@if (Auth::user()->id_rol != 4)
                 <li class="">
                     <a class="link" href="{{action('MaterialesController@create')}}">
                         <i class="menu-icon fa fa-plus"></i>

@@ -17,18 +17,18 @@ class EventTableSeeder extends Seeder
       $evento->id_establecimiento = 1 ;
       $evento->direccion= 'Irarrázabal 5310' ;
       $evento->cupos=4;
-      $evento->start = '2017-11-10' ;
-      $evento->title='feria ñuñoa';
+      $evento->start = '2017-12-18 13:30' ;
+      $evento->title='Feria Ñuñoa';
       $evento -> save();
 
       $evento1 = new Event();
       $evento1->id_tipo_evento = 6;
       $evento1->id_personal = 2;
       $evento1->id_establecimiento = 2 ;
-      $evento1->direccion= 'Utem Campus Macul' ;
+      $evento1->direccion= 'UTEM Campus Macul' ;
       $evento1->cupos=4;
-      $evento1->start = '2017-11-15' ;
-      $evento1->title='ensayo psu macul';
+      $evento1->start = '2017-12-25 10:00' ;
+      $evento1->title='Ensayo PSU Macul';
       $evento1 -> save();
     }
 }

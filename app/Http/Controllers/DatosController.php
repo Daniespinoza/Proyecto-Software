@@ -306,22 +306,60 @@ class DatosController extends Controller
     {
       if (Auth::user()->id_rol == 1){
         $expos = Exhibitor::all();
+        $pago =array();
+        $element = 0;
+        $medio = array();
+        $completo = array();
+        $tarde = array();
+        $total = array();
+        $canmedio=array();
+        $cancompleto=array();
+        $cantarde=array();
+
         foreach ($expos as $expo) {
+            $cmd = 0;
+            $md = 0;
+            $cdc = 0;
+            $dc = 0;
+            $cd18=0;
+            $d18 = 0;
+            $tot = 0;
             $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->get();
             foreach ($turndetail as $dt ) {
                 $turn = Turn::where('id','=',$dt['id_turno'])->get();
                 foreach ($turn as $tr) {
                   $jornada = Jornada::where('id','=',$tr['id_jornada'])->get();
+                  if($jornada[0]['tipo']==1){
+                    $md = $md + $jornada[0]['valor'];
+                    $cmd= $cmd +1;
+                  }
+                  if($jornada[0]['tipo']==2){
+                    $dc = $dc + $jornada[0]['valor'];
+                    $cdc = $cdc +1 ;
+                  }
+                  if($jornada[0]['tipo']==3){
+                    $d18 = $d18 + $jornada[0]['valor'];
+                    $cd18 = $cd18 + 1;
+                  }
+
                 }
-                dd($jornada);
             }
-
-
-
+            $element = $element +1 ;
+            $tot = $md + $dc + $d18;
+            array_push($pago,$expo);
+            array_push($medio,$md);
+            array_push($completo,$dc);
+            array_push($tarde,$d18);
+            array_push($canmedio,$cmd);
+            array_push($cancompleto,$cdc);
+            array_push($cantarde,$cd18);
+            array_push($total,$tot);
 
         }
-        //dd($expo);
-        return view('pagos');
+        
+
+        return view('pagos',compact('pago','expos','element','medio','completo','tarde',
+        'canmedio','cantarde','cancompleto','total'));
       }
     }
 

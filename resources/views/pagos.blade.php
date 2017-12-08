@@ -10,22 +10,8 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
 <div class="page-header">
   <h1></h1>
 </div>
+<input type="month" name="mes"  id="meses" onChange=cargar(this.value)>
 
-<select class="" name="">
-  <option value="">--Seleccionar mes--</option>
-  <option value="1">Enero</option>
-  <option value="2">Febrero</option>
-  <option value="3">Marzo</option>
-  <option value="4">Abril</option>
-  <option value="5">Mayo</option>
-  <option value="6">Junio</option>
-  <option value="7">Julio</option>
-  <option value="8">Agosto</option>
-  <option value="9">Septiembre</option>
-  <option value="10">Octubre</option>
-  <option value="11">Noviembre</option>
-  <option value="12">Diciembre</option>
-</select>
 <div style="overflow-x:auto;">
 <table id="example" class="display" cellspacing="0" width="100%">
       <thead>
@@ -60,12 +46,12 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
             <th class="text-center">Correo Electrónico</th>
             <th class="text-center">Dirección</th>
 
-            <th class="text-center">Fecha</th>
+            <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
 
-            <th class="text-center">Fecha</th>
+            <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
-            <th class="text-center">Fecha</th>
+            <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
             <th class="text-center">$ Total liquido</th>
             <th class="text-center">$ Total bruto</th>
@@ -103,12 +89,12 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
           <th class="text-center">Correo Electrónico</th>
           <th class="text-center">Dirección</th>
 
-          <th class="text-center">Fecha</th>
+          <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
 
-          <th class="text-center">Fecha</th>
+          <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
-          <th class="text-center">Fecha</th>
+          <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
 
 
@@ -119,7 +105,30 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
       </tfoot>
       <tbody>
 
+        @for($i=0 ; $i < $element ; $i++ )
+        <tr>
 
+
+          <td class="text-center">{{$i+1}}</td>
+          <td class="text-center">{{$expos[$i]['alu_apellido_paterno']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_apellido_materno']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_nombre']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_rut']}}</td>
+          <td class="text-center">{{$expos[$i]['semestre_actual']}}</td>
+
+          <td class="text-center">{{$expos[$i]['semestres_aprobados']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_email']}}</td>
+          <td class="text-center">{{$expos[$i]['direccion']}}</td>
+          <td class="text-center">$ {{$medio[$i]}}</td>
+          <td class="text-center">{{$canmedio[$i]}}</td>
+          <td class="text-center">$ {{$completo[$i]}}</td>
+          <td class="text-center">{{$cancompleto[$i]}}</td>
+          <td class="text-center">$ {{$tarde[$i]}}</td>
+          <td class="text-center">{{$cantarde[$i]}}</td>
+          <td class="text-center">$ {{$total[$i] - $total[$i]*0.1  }}</td>
+          <td class="text-center">$ {{$total[$i]   }}</td>
+          </tr>
+          @endfor
 
       </tbody>
   </table>
@@ -139,6 +148,14 @@ $(document).ready(function() {
       }
   } );
 } );
+</script>
+<script>
+
+ function cargar($id)
+ {
+    
+ }
+
 </script>
 
 

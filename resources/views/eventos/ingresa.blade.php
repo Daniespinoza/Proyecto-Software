@@ -93,11 +93,10 @@
             </div>
           <div class="form-group">
               <label class="col-md-5 control-label no-padding-right">Cupos requeridos</label>
-              <div class="col-md-4">
+              <div class="col-md-1">
                 <input type="number" name="cupos"  min="1" pattern="[0-9]" required>
             </div>
-            <br><br><br>
-            <div class="col-md-6"></div>
+            <div class="col-md-7"></div>
             <input type="submit" class="btn btn-primary">
             </div>
           </div>

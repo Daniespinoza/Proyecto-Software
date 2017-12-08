@@ -28,7 +28,9 @@ class EventosController extends Controller
      */
     public function index()
     {
-        return view('eventos.calendar');
+        $event = Event::all();
+        $event->toJson();
+        return view('eventos.index',compact('event'));
     }
 
     /**
@@ -39,7 +41,7 @@ class EventosController extends Controller
     public function create()
     {
 
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol != 4){
         $establecimientos = Establishment::all()->toArray();
         $evento = Eventtype::all()->toArray();
         $evn = Event::all();
@@ -55,7 +57,7 @@ class EventosController extends Controller
     public function ingresaEvento()
     {
 
-      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+      if(Auth::user()->id_rol != 4){
         $establecimientos = Establishment::all()->toArray();
         $evento = Eventtype::all()->toArray();
         $evn = Event::all();

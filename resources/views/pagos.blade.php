@@ -11,7 +11,21 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
   <h1></h1>
 </div>
 
-
+<select class="" name="">
+  <option value="">--Seleccionar mes--</option>
+  <option value="1">Enero</option>
+  <option value="2">Febrero</option>
+  <option value="3">Marzo</option>
+  <option value="4">Abril</option>
+  <option value="5">Mayo</option>
+  <option value="6">Junio</option>
+  <option value="7">Julio</option>
+  <option value="8">Agosto</option>
+  <option value="9">Septiembre</option>
+  <option value="10">Octubre</option>
+  <option value="11">Noviembre</option>
+  <option value="12">Diciembre</option>
+</select>
 <div style="overflow-x:auto;">
 <table id="example" class="display" cellspacing="0" width="100%">
       <thead>
@@ -28,6 +42,7 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
             <th class="text-center"></th>
             <th class="text-center" colspan="2">Medio día de trabajo</th>
             <th class="text-center" colspan="2">Día completo de trabajo</th>
+            <th class="text-center" colspan="2">Medio dia 18:00</th>
             <th class="text-center"></th>
             <th class="text-center"></th>
 
@@ -50,6 +65,8 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
 
             <th class="text-center">Fecha</th>
             <th class="text-center">N° dias</th>
+            <th class="text-center">Fecha</th>
+            <th class="text-center">N° dias</th>
             <th class="text-center">$ Total liquido</th>
             <th class="text-center">$ Total bruto</th>
           </tr>
@@ -68,6 +85,7 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
           <th class="text-center"></th>
           <th class="text-center" colspan="2">Medio día de trabajo</th>
           <th class="text-center" colspan="2">Día completo de trabajo</th>
+          <th class="text-center" colspan="2">Medio dia 18:00</th>
           <th class="text-center"></th>
           <th class="text-center"></th>
 
@@ -90,6 +108,11 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
 
           <th class="text-center">Fecha</th>
           <th class="text-center">N° dias</th>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">N° dias</th>
+
+
+
           <th class="text-center">$ Total liquido</th>
           <th class="text-center">$ Total bruto</th>
         </tr>

@@ -269,7 +269,21 @@ class DatosController extends Controller
     public function pagos()
     {
       if (Auth::user()->id_rol == 1){
-        $expo = Exhibitor::all();
+        $expos = Exhibitor::all();
+        foreach ($expos as $expo) {
+            $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->get();
+            foreach ($turndetail as $dt ) {
+                $turn = Turn::where('id','=',$dt['id_turno'])->get();
+                foreach ($turn as $tr) {
+                  $jornada = Jornada::where('id','=',$tr['id_jornada'])->get();
+                }
+                dd($jornada);
+            }
+
+
+
+
+        }
         //dd($expo);
 
 

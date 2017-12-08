@@ -18,6 +18,7 @@ class CreateJornadasTable extends Migration
             $table->string('descripcion');
             $table->integer('valor');
             $table->boolean('activo');
+            $table->integer('tipo');
             $table->timestamps();
         });
     }

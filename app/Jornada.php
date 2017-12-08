@@ -11,10 +11,11 @@ class Jornada extends Model
   protected $fillable = [
     'descripcion',
     'valor',
-    'activo'
+    'activo',
+    'tipo'
   ];
   public function Turns(){
     return $this->belongsTo('App\Turn');
   }
-  
+
 }

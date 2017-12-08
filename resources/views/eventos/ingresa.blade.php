@@ -56,7 +56,7 @@
 
           <div class="form-group">
               <label class="col-md-5 control-label no-padding-right"> Establecimiento</label>
-                <div class="col-md-4">
+                <div class="col-md-7">
                   <div class="input-group">
                   <select class="" id="esta" name="esta" required >
 
@@ -87,19 +87,20 @@
 
             <div class="form-group">
                 <label class="col-md-5 control-label no-padding-right"> Fecha</label>
-                <div class="col-md-4">
+                <div class="col-md-7">
                   <input type="datetime-local" name="fecha" value="" required>
               </div>
             </div>
           <div class="form-group">
               <label class="col-md-5 control-label no-padding-right">Cupos requeridos</label>
-              <div class="col-md-1">
+              <div class="col-md-3">
                 <input type="number" name="cupos"  min="1" pattern="[0-9]" required>
             </div>
-            <div class="col-md-7"></div>
+          </div>
+
+            <div class="col-md-10"></div>
             <input type="submit" class="btn btn-primary">
             </div>
-          </div>
         </div>
       </form>
 

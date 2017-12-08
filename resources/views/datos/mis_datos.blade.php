@@ -2,7 +2,7 @@
 
 
 @section('title','Mi Perfil')
-@section('ventana','mis datos')
+@section('ventana','Mis datos')
 @section('contenido')
 <div class="page-content">
                         <script src="/js/perfil.js"></script>
@@ -17,7 +17,7 @@
             @if (Auth::user()->id_rol == 4)
             <li class="">
                 <a aria-expanded="false" data-toggle="tab" href="#misDirecciones">
-                    <i class="orange ace-icon fa fa-home bigger-120"></i> Mi Direccion
+                    <i class="orange ace-icon fa fa-home bigger-120"></i> Mi Dirección
                 </a>
             </li>
             @endif
@@ -100,7 +100,7 @@
             <div id="misDirecciones" class="tab-pane">
                 <div class="page-header">
                     <h1>
-                        Mi Direccion
+                        Mi Dirección
                     </h1>
                 </div>
                     <div class="col-sm-6">
@@ -117,7 +117,7 @@
                                 </li>
                                 <li>
                                     <i class="ace-icon fa fa-caret-right bigger-110 green"></i>
-                                    <span class="text-centered"><b>Region: </b></span>{{$region->nombre}}
+                                    <span class="text-centered"><b>Región: </b></span>{{$region->nombre}}
                                 </li>
                                 <li>
                                     <i class="ace-icon fa fa-caret-right bigger-110 green"></i>
@@ -278,7 +278,7 @@
                                 </table>
                                 <div class="validacion_direccion"> </div>
                             </div>
-                            <div class="modal-footer">e4
+                            <div class="modal-footer">
                                 <button type="submit" class="btn btn-success">Modificar</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                             </div>

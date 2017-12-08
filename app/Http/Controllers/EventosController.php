@@ -30,7 +30,20 @@ class EventosController extends Controller
     {
         $event = Event::all();
         $event->toJson();
-        return view('eventos.index',compact('event'));
+
+        if (Auth::user()->id_rol == 4){
+          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+          $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+        //  dd($turns);
+          $count = 0;
+          foreach ($turns as $turno) {
+              if ($turno->visto == 0) {
+                $count++;
+              }
+          }
+        }
+
+        return view('eventos.index',compact('event','count'));
     }
 
     /**

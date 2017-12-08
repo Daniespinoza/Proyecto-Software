@@ -49,7 +49,20 @@ class DatosController extends Controller
         $region = Region::where('id',$comuna['id_region'])->first();
         $comunas = Commune::all()->toArray();
         $regions = Region::all()->toArray();
-        return  view('datos.mis_datos',compact('expo','array','carrera','comuna','region','user','comunas','regions'));
+
+        if (Auth::user()->id_rol == 4){
+          $exp = Exhibitor::where('id_user',Auth::user()->id)->get();
+          $turns = Turndetail::where('id_expositor',$exp[0]->id)->get();
+        //  dd($turns);
+          $count = 0;
+          foreach ($turns as $turno) {
+              if ($turno->visto == 0) {
+                $count++;
+              }
+          }
+        }
+
+        return  view('datos.mis_datos',compact('expo','array','carrera','comuna','region','user','comunas','regions','count'));
 
       }
       else {
@@ -178,11 +191,23 @@ class DatosController extends Controller
       $horario = Disponibilidad::where('id_expositor',$id)->first();
       //dd($horario);
       if ($horario == null) {
+
         return redirect('/ingresar_horario');
       }
       else {
         //dd([$expositor,$id,$horario['lunes']]);
-        return view('datos.mi_horario',compact('expositor','horario','id'));
+        if (Auth::user()->id_rol == 4){
+          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+          $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+        //  dd($turns);
+          $count = 0;
+          foreach ($turns as $turno) {
+              if ($turno->visto == 0) {
+                $count++;
+              }
+          }
+        }
+        return view('datos.mi_horario',compact('expositor','horario','id','count'));
       }
 
     }
@@ -196,7 +221,18 @@ class DatosController extends Controller
       //dd($horario);
       if($horario == null){
         //dd([$expositor,$id,$horario['lunes']]);
-        return view('datos.agregar_horario',compact('expositor','horario','id'));
+        if (Auth::user()->id_rol == 4){
+          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+          $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+        //  dd($turns);
+          $count = 0;
+          foreach ($turns as $turno) {
+              if ($turno->visto == 0) {
+                $count++;
+              }
+          }
+        }
+        return view('datos.agregar_horario',compact('expositor','horario','id','count'));
       }
       else {
         return redirect('/mi_horario');
@@ -271,10 +307,6 @@ class DatosController extends Controller
       if (Auth::user()->id_rol == 1){
         $expo = Exhibitor::all();
         //dd($expo);
-
-
-
-
         return view('pagos');
       }
     }
@@ -323,7 +355,19 @@ class DatosController extends Controller
           }
           $max = count($evento);
 
-            return view('/datos.mi_historia',compact('det','jornada','tipo','evento','esta','pagar','max','fecha','post') );
+          if (Auth::user()->id_rol == 4){
+            $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+            $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+          //  dd($turns);
+            $count = 0;
+            foreach ($turns as $turno) {
+                if ($turno->visto == 0) {
+                  $count++;
+                }
+            }
+          }
+
+            return view('/datos.mi_historia',compact('det','jornada','tipo','evento','esta','pagar','max','fecha','post','count') );
           }
     }
     public function updateAsistir(Request $request)
@@ -332,6 +376,7 @@ class DatosController extends Controller
         $idd = $request->getQueryString();
         $detail = Turndetail::find($idd);
         $detail ->confirmacion = $request->get('asistir');
+        $detail->visto = 1;
         $detail->save();
 
 
@@ -340,5 +385,21 @@ class DatosController extends Controller
 
       }
     }
+
+    /*public function checkTurns()
+    {
+      //return view('/mi_historial');
+      //dd(Auth::user());
+        if (Auth::user()->id_rol  == 4) {
+          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+          $turn = Turndetail::where('id_expositor',$expo[0]->id);
+          foreach ($turn as $t) {
+            $t->visto = 1;
+            $t->save();
+        }
+
+      }
+
+    }*/
 
 }

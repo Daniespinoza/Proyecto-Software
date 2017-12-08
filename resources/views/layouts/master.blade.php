@@ -528,8 +528,8 @@
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-        <script src="{{asset('js/formulario.js')}}"></script>
-        <script src="{{asset('js/jquery.carousel.js')}}"></script>
+        <!--script src="{{asset('js/formulario.js')}}"></script>
+        <script src="{{asset('js/jquery.carousel.js')}}"></script-->
 
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/bootbox.min.js')}}"></script>

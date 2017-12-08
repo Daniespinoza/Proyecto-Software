@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +16,52 @@ Route::get('/', function () {
     return view('index');
 });
 */
+Auth::routes();
 
 Route::get('events', function () {
-    $event = App\Event::all();
-    $event->toJson();
-    return response($event);
+
+    if (Auth::check())
+    {
+      if (Auth::user()['id_rol'] == 4){
+        $expo = App\Exhibitor::where('id_user',Auth::user()->id_rol)->get();
+        $turns = App\Turndetail::where('id_expositor',$expo[0]->id)->get();
+        $count = 0;
+        $id_turnos = array();
+        foreach ($turns as $turno) {
+            if ($turno->visto == 0) {
+              $count++;
+            }
+            elseif ($turno->confirmacion == 1) {
+              array_push($id_turnos,$turno->id_turno);//turnos confirmados por expositor
+            }
+          }
+        $TURNOS = App\Turn::all();
+        $eventos_user = array();
+        foreach ($TURNOS as $tur) {
+          //dd($ev);
+            if (in_array($tur->id,$id_turnos)) {
+              array_push($eventos_user,$tur->id_evento);
+            }
+        }
+
+        $eventss = App\Event::all()->toArray();
+        $_event = array();
+        foreach ($eventss as $ev) {
+          if(in_array($ev['id'],$eventos_user)){
+            array_push($_event,$ev);
+          }
+        }
+        $event = collect($_event);
+        $event->toJson();
+        return response($event);
+      }
+      else{
+        $event = App\Event::all();
+        $event->toJson();
+        return response($event);
+      }
+
+}
 });
 
 // QUESTION: Debemos crear nuevos campos en la base de datos
@@ -27,7 +69,6 @@ Route::get('events', function () {
 // IDEA: Crear nuevos campo en la tabla eventos
 
 
-Auth::routes();
 Route::get('/', 'HomeController@index');
 
 Route::resource('establecimientos','EstablecimientosController');
@@ -45,7 +86,6 @@ Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi')
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
-//Route::post('/notificado','DatosController@checkTurns')->middleware('exhi');
 
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/asignar_horario','EventosController@asignarHorario')->middleware('personal');

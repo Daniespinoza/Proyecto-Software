@@ -65,7 +65,7 @@
 														<div style="display: none;" class="scroll-track"><div class="scroll-bar"></div></div><div style="" class="scroll-content">
 															<ul class="dropdown-menu dropdown-navbar navbar-pink">
 																	<li>
-																		<a>
+																		<a href="/mi_historial">
 
 																			<div class="clearfix">
 																				<span class="pull-left">

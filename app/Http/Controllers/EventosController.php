@@ -28,22 +28,59 @@ class EventosController extends Controller
      */
     public function index()
     {
-        $event = Event::all();
-        $event->toJson();
-
-        if (Auth::user()->id_rol == 4){
-          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
-          $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
-        //  dd($turns);
-          $count = 0;
-          foreach ($turns as $turno) {
-              if ($turno->visto == 0) {
-                $count++;
-              }
+      //dd(Auth::user()['id_rol']);
+      if (Auth::user()['id_rol'] == 4){
+        $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+        $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+        $count = 0;
+        $id_turnos = array();
+        foreach ($turns as $turno) {
+            if ($turno->visto == 0) {
+              $count++;
+            }
+            elseif ($turno->confirmacion == 1) {
+              array_push($id_turnos,$turno->id_turno);//turnos confirmados por expositor
+            }
           }
+        $TURNOS = Turn::all();
+        $eventos_user = array();
+        foreach ($TURNOS as $tur) {
+          //dd($ev);
+            if (in_array($tur->id,$id_turnos)) {
+              array_push($eventos_user,$tur->id_evento);
+            }
         }
 
+        $eventss = Event::all()->toArray();
+
+        $_event = array();
+        //dd($eventos_user);
+        foreach ($eventss as $ev) {
+          if(in_array($ev['id'],$eventos_user)){
+            array_push($_event,$ev);
+          }
+        }
+        //$event = json_encode($_event, JSON_FORCE_OBJECT);
+        //$event = App\Event::all();
+        //$event->toJson();
+        //return response($event);
+        $event = collect($_event);
+        $event->toJson();
+      //  dd($event);
+      //  return response($event);
         return view('eventos.index',compact('event','count'));
+        }
+      else{
+        $event = Event::all();
+        //dd($event);
+        $event->toJson();
+        //return response($event);
+      //  dd($event);
+
+        return view('eventos.index',compact('event','count'));
+      }
+
+
     }
 
     /**
@@ -59,6 +96,7 @@ class EventosController extends Controller
         $evento = Eventtype::all()->toArray();
         $evn = Event::all();
         $evn->toJson();
+        //dd($evn);
         return view('eventos.create',compact('establecimientos','evento' ,'evn'));
       }
       else{

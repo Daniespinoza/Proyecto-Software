@@ -285,7 +285,19 @@ class ExpositoresController extends Controller
                 array_push($turno,$tur);
           }
           $max = count($evento);
-            return view('/expositores.pagos',compact('jornada','tipo','evento','esta','pagar','max') );
+
+          if (Auth::user()->id_rol == 4){
+            $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+            $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+          //  dd($turns);
+            $count = 0;
+            foreach ($turns as $turno) {
+                if ($turno->visto == 0) {
+                  $count++;
+                }
+            }
+          }
+            return view('/expositores.pagos',compact('jornada','tipo','evento','esta','pagar','max','count') );
           }
     }
 

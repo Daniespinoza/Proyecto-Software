@@ -25,28 +25,7 @@ Route::get('events', function () {
 // QUESTION: Debemos crear nuevos campos en la base de datos
 // TEMP: Como pasar una tabla de datos a json
 // IDEA: Crear nuevos campo en la tabla eventos
-/*
-Route::get('/mis_datos', 'StaffsController@datos');
 
-Route::get('/agregar_expositor', 'StaffsController@addexp');
-Route::get('/ver_expositores', 'StaffsController@viewexp');
-Route::get('/actualizar_expositor', 'StaffsController@updateexp');
-Route::get('/eliminar_expositor', 'StaffsController@deleteexp');
-
-
-Route::get('/agregar_establecimiento', 'StaffsController@addestablish');
-Route::get('/ver_establecimientos', 'StaffsController@viewestablish');
-Route::get('/actualizar_establecimientos', 'StaffsController@updateestablish');
-Route::get('/eliminar_establecimiento', 'StaffsController@deleteestablish');
-
-
-Route::get('/agregar_material', 'StaffsController@addmat');
-Route::get('/ver_materiales', 'StaffsController@viewmat');
-Route::get('/actualizar_material', 'StaffsController@updatemat');
-Route::get('/eliminar_material', 'StaffsController@deletemat');
-
-Route::get('/agregar_convenio', 'StaffsController@addagree');
-*/
 
 Auth::routes();
 Route::get('/', 'HomeController@index');
@@ -66,6 +45,7 @@ Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi')
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
+//Route::post('/notificado','DatosController@checkTurns')->middleware('exhi');
 
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/asignar_horario','EventosController@asignarHorario')->middleware('personal');

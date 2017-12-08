@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Turndetail;
+use App\Exhibitor;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -28,7 +31,19 @@ class HomeController extends Controller
 
         $eventos = Event::all();
         $eventos->toJson();
-      
-        return view('index',compact('eventos'));
+
+        if (Auth::user()->id_rol == 4){
+          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+          $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+        //  dd($turns);
+          $count = 0;
+          foreach ($turns as $turno) {
+              if ($turno->visto == 0) {
+                $count++;
+              }
+          }
+        }
+
+        return view('index',compact('eventos','expo','turns','count'));
     }
 }

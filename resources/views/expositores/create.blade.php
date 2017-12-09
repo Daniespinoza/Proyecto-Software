@@ -12,10 +12,8 @@
   @if ($errors->any())
   <div class="alert alert-danger">
       @foreach ($errors->all() as $error)
-      <div class="alert alert-danger" >
         <i class="ace-icon fa fa-warning"></i>
         <strong>Alerta! </strong>{{ $error }}
-      </div>
       @endforeach
   </div>
   @endif

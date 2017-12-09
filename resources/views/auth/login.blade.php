@@ -167,9 +167,18 @@
                             <i class="ace-icon fa fa-info-circle"></i>
                             <strong>Estimado!</strong> Recuerde que su credencial de acceso es personal, confidencial e intransferible.
                         </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                              <i class="ace-icon fa fa-warning"></i>
+                              <strong>Alerta! </strong>{{ $error }}
+                            @endforeach
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
+
             <!-- /.main-content -->
         </div>
         <div class="footer">

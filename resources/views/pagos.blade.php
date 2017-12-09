@@ -5,12 +5,34 @@
 @section('contenido')
 
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-Nómina de pagos Estudiantes Expositores de Difusión UTEM
+
 
 <div class="page-header">
-  <h1></h1>
+  <h1>Nómina de pagos Estudiantes Expositores de Difusión UTEM</h1>
 </div>
-<input type="month" name="mes"  id="meses" onChange=cargar(this.value)>
+
+<div class="form-group">
+<form class="form-horizontal" method="post" action="{{action('DatosController@pagoss')}}">
+{{ csrf_field() }} 
+<select class="" name="meses">
+  <option value="">--Seleccionar mes--</option>
+  <option value="1">Enero</option>
+  <option value="2">Febrero</option>
+  <option value="3">Marzo</option>
+  <option value="4">Abril</option>
+  <option value="5">Mayo</option>
+  <option value="6">Junio</option>
+  <option value="7">Julio</option>
+  <option value="8">Agosto</option>
+  <option value="9">Septiembre</option>
+  <option value="10">Octubre</option>
+  <option value="11">Noviembre</option>
+  <option value="12">Diciembre</option>
+</select>
+<button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+</div>
 
 <div style="overflow-x:auto;">
 <table id="example" class="display" cellspacing="0" width="100%">
@@ -149,15 +171,4 @@ $(document).ready(function() {
   } );
 } );
 </script>
-<script>
-
- function cargar($id)
- {
-    
- }
-
-</script>
-
-
-
 @endsection

@@ -324,7 +324,7 @@ class DatosController extends Controller
             $cd18=0;
             $d18 = 0;
             $tot = 0;
-            $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->get();
+            $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->where('asistencia','=','1')->get();
             foreach ($turndetail as $dt ) {
                 $turn = Turn::where('id','=',$dt['id_turno'])->get();
                 foreach ($turn as $tr) {
@@ -344,6 +344,7 @@ class DatosController extends Controller
 
                 }
             }
+            if($cmd!=0 || $cd18 !=0 || $cdc !=0 ){
             $element = $element +1 ;
             $tot = $md + $dc + $d18;
             array_push($pago,$expo);
@@ -354,9 +355,9 @@ class DatosController extends Controller
             array_push($cancompleto,$cdc);
             array_push($cantarde,$cd18);
             array_push($total,$tot);
-
+          }
         }
-        
+
 
         return view('pagos',compact('pago','expos','element','medio','completo','tarde',
         'canmedio','cantarde','cancompleto','total'));
@@ -438,6 +439,77 @@ class DatosController extends Controller
       }
     }
 
+
+    public function pagoss(Request $request){
+
+      if (Auth::user()->id_rol == 1){
+        $mes =  $request->meses;
+
+        $expos = Exhibitor::all();
+        $pago =array();
+        $element = 0;
+        $medio = array();
+        $completo = array();
+        $tarde = array();
+        $total = array();
+        $canmedio=array();
+        $cancompleto=array();
+        $cantarde=array();
+
+        foreach ($expos as $expo) {
+            $cmd = 0;
+            $md = 0;
+            $cdc = 0;
+            $dc = 0;
+            $cd18=0;
+            $d18 = 0;
+            $tot = 0;
+            $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->where('asistencia','=','1')->where('pagado','=','0')->get();
+
+
+            foreach ($turndetail as $dt ) {
+                $turn = Turn::where('id','=',$dt['id_turno'])->get();
+                foreach ($turn as $tr) {
+                  $jornada = Jornada::where('id','=',$tr['id_jornada'])->get();
+                  $evento = Event::where('id','=',$tr['id_evento'])->first();
+                  $date = date("m", strtotime($evento['start']));
+                  
+                  if($date == $mes){
+                  if($jornada[0]['tipo']==1){
+                    $md = $md + $jornada[0]['valor'];
+                    $cmd= $cmd +1;
+                  }
+                  if($jornada[0]['tipo']==2){
+                    $dc = $dc + $jornada[0]['valor'];
+                    $cdc = $cdc +1 ;
+                  }
+                  if($jornada[0]['tipo']==3){
+                    $d18 = $d18 + $jornada[0]['valor'];
+                    $cd18 = $cd18 + 1;
+                  }
+                }
+
+                }
+            }
+            if($cmd!=0 || $cd18 !=0 || $cdc !=0 ){
+            $element = $element +1 ;
+            $tot = $md + $dc + $d18;
+            array_push($pago,$expo);
+            array_push($medio,$md);
+            array_push($completo,$dc);
+            array_push($tarde,$d18);
+            array_push($canmedio,$cmd);
+            array_push($cancompleto,$cdc);
+            array_push($cantarde,$cd18);
+            array_push($total,$tot);
+          }
+        }
+
+
+        return view('pagos',compact('pago','expos','element','medio','completo','tarde',
+        'canmedio','cantarde','cancompleto','total'));
+      }
+    }
     /*public function checkTurns()
     {
       //return view('/mi_historial');

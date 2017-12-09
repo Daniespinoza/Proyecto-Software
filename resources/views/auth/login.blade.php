@@ -163,10 +163,10 @@
                 <div class="space-16"></div>
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="row">
-                        <div class="alert alert-info">
-                            <i class="ace-icon fa fa-info-circle"></i>
-                            <strong>Estimado!</strong> Recuerde que su credencial de acceso es personal, confidencial e intransferible.
-                        </div>
+                      <div class="alert alert-info">
+                        <i class="ace-icon fa fa-info-circle"></i>
+                        <strong>Estimado!</strong> Recuerde que su credencial de acceso es personal, confidencial e intransferible.
+                      </div>
                         @if ($errors->any())
                         <div class="alert alert-danger">
                             @foreach ($errors->all() as $error)

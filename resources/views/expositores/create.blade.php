@@ -10,12 +10,12 @@
 </div>
 <div class="row">
   @if ($errors->any())
-  <div class="alert alert-danger">
       @foreach ($errors->all() as $error)
+      <div class="alert alert-danger">
         <i class="ace-icon fa fa-warning"></i>
         <strong>Alerta! </strong>{{ $error }}
+      </div>
       @endforeach
-  </div>
   @endif
 <div class="col-xs-12">
 <form class="form-horizontal "  method="post" action="{{url('expositores')}}">
@@ -58,33 +58,22 @@
     <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Región</label>
         <div class="col-md-4">
-          <select class="form-control" name="regiones" required>
+          <select class="form-control" name="regiones" onchange="load(this.value)" required>
             <option value="">-- Seleccione una región --</option>
-
           @foreach ($regions as $region)
             <option value="{{$region['id']}}">{{$region['nombre']}}</option>
-
         @endforeach
         </select>
-
-
         <input  type="checkbox" name="otraReg" value="1"/>otra
-
-
       </div>
       </div>
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Comuna</label>
           <div class="col-md-4">
-
-            <select class="form-control" name="comuna"required>
+            <div id="demo">
+            <select class="form-control" name="comuna" required>
               <option value="">-- Seleccione una Comuna --</option>
-
-            @foreach ($commun as $comunas)
-              <option value="{{$comunas['id']}}">{{$comunas['nombre']}}</option>
-
-          @endforeach
-          </select>
+        </div>
           <input  type="checkbox" name="otraCom" value="si"/>otra
         </select>
         </div>
@@ -141,6 +130,22 @@
 </form>
 </div>
 
-
+<script type="text/javascript">
+function load(x) {
+  $.getJSON( "/comuna", function( data ) {
+    $( "#demo" ).empty();
+    var items = [];
+  items.push('<option value="">-- Seleccione una Comuna --</option>');
+  $.each( data, function( key, val ) {
+    if(val.id_region==x){items.push( "<option value='" + val.id + "'>" + val.nombre + "</option>" );}
+  });
+  $( "<select/>", {
+    "class": "form-control",
+    "name": "comuna",
+    html: items.join( "" )
+  }).appendTo( "#demo" );
+  });
+}
+</script>
 
 @endsection

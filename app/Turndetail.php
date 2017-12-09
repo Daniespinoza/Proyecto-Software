@@ -15,7 +15,8 @@ class Turndetail extends Model
     'asistencia',
     'encargado_turno',
     'dinero_turno',
-    'visto'
+    'visto',
+    'pagado'
   ];
   public function Exhibitors(){
     return $this->belongsToMany('App\Exhibitor');

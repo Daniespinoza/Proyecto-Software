@@ -5,12 +5,34 @@
 @section('contenido')
 
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-Nómina de pagos Estudiantes Expositores de Difusión UTEM
+
 
 <div class="page-header">
-  <h1></h1>
+  <h1>Nómina de pagos Estudiantes Expositores de Difusión UTEM</h1>
 </div>
-<input type="month" name="mes"  id="meses" onChange=cargar(this.value)>
+
+<div class="form-group">
+<form class="form-horizontal" method="post" action="{{action('DatosController@pagoss')}}">
+{{ csrf_field() }}
+<select class="" name="meses">
+  <option value="">--Seleccionar mes--</option>
+  <option value="1">Enero</option>
+  <option value="2">Febrero</option>
+  <option value="3">Marzo</option>
+  <option value="4">Abril</option>
+  <option value="5">Mayo</option>
+  <option value="6">Junio</option>
+  <option value="7">Julio</option>
+  <option value="8">Agosto</option>
+  <option value="9">Septiembre</option>
+  <option value="10">Octubre</option>
+  <option value="11">Noviembre</option>
+  <option value="12">Diciembre</option>
+</select>
+<button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+</div>
 
 <div style="overflow-x:auto;">
 <table id="example" class="display" cellspacing="0" width="100%">
@@ -26,9 +48,9 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
             <th class="text-center"></th>
             <th class="text-center"></th>
             <th class="text-center"></th>
-            <th class="text-center" colspan="2">Medio día de trabajo</th>
-            <th class="text-center" colspan="2">Día completo de trabajo</th>
-            <th class="text-center" colspan="2">Medio dia 18:00</th>
+            <th class="text-center" colspan="3">Medio día de trabajo</th>
+            <th class="text-center" colspan="3">Día completo de trabajo</th>
+            <th class="text-center" colspan="3">Medio dia 18:00</th>
             <th class="text-center"></th>
             <th class="text-center"></th>
 
@@ -45,12 +67,13 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
             <th class="text-center">Semestre aprobados</th>
             <th class="text-center">Correo Electrónico</th>
             <th class="text-center">Dirección</th>
-
+            <th class="text-center">Fechas</th>
             <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
-
+            <th class="text-center">Fechas</th>
             <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
+            <th class="text-center">Fechas</th>
             <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
             <th class="text-center">$ Total liquido</th>
@@ -69,9 +92,9 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
           <th class="text-center"></th>
           <th class="text-center"></th>
           <th class="text-center"></th>
-          <th class="text-center" colspan="2">Medio día de trabajo</th>
-          <th class="text-center" colspan="2">Día completo de trabajo</th>
-          <th class="text-center" colspan="2">Medio dia 18:00</th>
+          <th class="text-center" colspan="3">Medio día de trabajo</th>
+          <th class="text-center" colspan="3">Día completo de trabajo</th>
+          <th class="text-center" colspan="3">Medio dia 18:00</th>
           <th class="text-center"></th>
           <th class="text-center"></th>
 
@@ -88,12 +111,13 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
           <th class="text-center">Semestre aprobados</th>
           <th class="text-center">Correo Electrónico</th>
           <th class="text-center">Dirección</th>
-
+          <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
-
+          <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
+          <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
 
@@ -119,10 +143,13 @@ Nómina de pagos Estudiantes Expositores de Difusión UTEM
           <td class="text-center">{{$expos[$i]['semestres_aprobados']}}</td>
           <td class="text-center">{{$expos[$i]['alu_email']}}</td>
           <td class="text-center">{{$expos[$i]['direccion']}}</td>
+          <td class="text-center">{{$fechamediodia[$i]}}</td>
           <td class="text-center">$ {{$medio[$i]}}</td>
           <td class="text-center">{{$canmedio[$i]}}</td>
+          <td class="text-center">{{$fechadiacompleto[$i]}}</td>
           <td class="text-center">$ {{$completo[$i]}}</td>
           <td class="text-center">{{$cancompleto[$i]}}</td>
+          <td class="text-center">{{$fechatarde[$i]}}</td>
           <td class="text-center">$ {{$tarde[$i]}}</td>
           <td class="text-center">{{$cantarde[$i]}}</td>
           <td class="text-center">$ {{$total[$i] - $total[$i]*0.1  }}</td>
@@ -149,15 +176,4 @@ $(document).ready(function() {
   } );
 } );
 </script>
-<script>
-
- function cargar($id)
- {
-    
- }
-
-</script>
-
-
-
 @endsection

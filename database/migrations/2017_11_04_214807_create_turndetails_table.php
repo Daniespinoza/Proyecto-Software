@@ -22,6 +22,7 @@ class CreateTurndetailsTable extends Migration
             $table->boolean('encargado_turno')->nullable();
             $table->bigInteger('dinero_turno')->nullable();
             $table->boolean('visto');
+            $table->boolean('pagado');
             $table->timestamps();
         });
     }

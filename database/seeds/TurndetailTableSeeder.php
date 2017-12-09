@@ -17,6 +17,7 @@ class TurndetailTableSeeder extends Seeder
       $turndet->confirmacion = 0 ;
       $turndet->asistencia=0;
       $turndet->visto = 0;
+      $turndet->pagado = 0;
       $turndet->save();
 
       $turndet1 = new Turndetail();
@@ -25,6 +26,7 @@ class TurndetailTableSeeder extends Seeder
       $turndet1->confirmacion = 0 ;
       $turndet1->asistencia = 0;
       $turndet1->visto = 0;
+      $turndet1->pagado = 0;
       $turndet1->save();
     }
 }

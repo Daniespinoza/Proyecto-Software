@@ -12,11 +12,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 /*
-Route::get('/', function () {
-    return view('index');
+Route::get('/ruta', function () {
+    return view('home');
 });
 */
+
 Auth::routes();
+
+Route::get('/comuna', function () {
+  $event = App\Commune::all();
+  $event->toJson();
+  return response($event);
+});
+
 
 Route::get('events', function () {
 

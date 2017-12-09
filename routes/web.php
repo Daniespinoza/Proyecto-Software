@@ -100,9 +100,15 @@ Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/historial_eventos','EventosController@historialEventos')->middleware('personal');
 Route::get('/listado_eventos','EventosController@listarEventos')->middleware('personal');
-Route::get('/asignación_turnos/{id}',['uses' => 'EventosController@asignarHorario'])->middleware('personal');
+Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
+Route::get('/asignar_horario/{id}',['uses' => 'EventosController@asignarHorario'])->middleware('personal');
+Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
+
+
 /*Route::get('/ficha_evento','EventosController@getFicha')->middleware('personal');
 Route::post('/enviar_ficha','EventosController@setFicha')->middleware('personal');*/
+
+//Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
 
 
 

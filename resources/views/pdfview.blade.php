@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>User list - PDF</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+
+@extends('layouts.master')
+
+@section('title','Eventos')
+@section('ventana','Listado de Eventos')
+@section('contenido')
+
+<!--link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+
 <script src="js/jspdf.debug.js"></script>
 <script src='js/jquery.min.js'></script>
 
 
 
-<body>
+
 	<div class="" id="reporte">
 
 <div class="container">
@@ -37,7 +40,7 @@
 <input name="Imprimir" onclick="DescargarPDF('reporte','Archivo')"  type="submit" id="Imprimir" value="Descargar PDF" />
 
 <script>
-DescargarPDF('reporte','Archivo');
+//DescargarPDF('reporte','Archivo');
 function DescargarPDF(ContenidoID,nombre) {
 
 	var pdf = new jsPDF('p', 'pt', 'letter');
@@ -52,7 +55,4 @@ function DescargarPDF(ContenidoID,nombre) {
 
 }
 </script>
-
-
-</body>
-</html>
+@endsection

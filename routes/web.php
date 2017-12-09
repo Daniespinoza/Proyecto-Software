@@ -100,7 +100,7 @@ Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/asignar_horario','EventosController@asignarHorario')->middleware('personal');
 
-
+Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
 //Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
 
 

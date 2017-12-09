@@ -31,11 +31,14 @@
 </select>
 <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
+<body>
 
 </div>
 
+
 <div style="overflow-x:auto;">
-<table id="example" class="display" cellspacing="0" width="100%">
+
+<table id="reporte" class="display" cellspacing="0" width="100%">
       <thead>
           <tr>
             <th class="text-center"></th>
@@ -159,15 +162,20 @@
 
       </tbody>
   </table>
-
 </div>
+
+
+<input name="Imprimir" onclick="DescargarPDF('reporte','Archivo')"  type="submit" id="Imprimir" value="Descargar PDF" />
 
 
 
 
 <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
+
+
 <script>
+
 $(document).ready(function() {
   $('#example').DataTable( {
       "language": {
@@ -176,4 +184,24 @@ $(document).ready(function() {
   } );
 } );
 </script>
+
+
+<script>
+
+function DescargarPDF(ContenidoID,nombre) {
+
+  var pdf = new jsPDF('p', 'pt', 'letter');
+
+  html = $('#'+ContenidoID).html();
+
+  specialElementHandlers = {};
+
+  margins = {top: 10,bottom: 20,left: 20,width: 522};
+
+  pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width},function (dispose) {pdf.save(nombre+'.pdf');}, margins);
+
+}
+</script>
+
+</body>
 @endsection

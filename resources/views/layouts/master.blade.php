@@ -542,6 +542,7 @@
         <script src="{{asset('js/jquery.dataTables.bootstrap.min.js')}}"></script>
         <script src="{{asset('js/jquery.colorbox-min.js')}}"></script>
         <script src="{{asset('js/ace.min.js')}}"></script>
+				<script src="{{asset('js/jspdf.debug.js')}}"></script>
         <script src="{{asset('js/fuelux/fuelux.wizard.min.js')}}"></script>
         <script src="{{asset('js/x-editable/ace-editable.min.js')}}"></script>
         <script src="{{asset('js/x-editable/bootstrap-editable.min.js')}}"></script>
@@ -549,6 +550,8 @@
         <script src="{{asset('js/date-time/datepicker.min.js')}}"></script>
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
+				
+
 
 
 

@@ -13,7 +13,7 @@
 
 <div class="form-group">
 <form class="form-horizontal" method="post" action="{{action('DatosController@pagoss')}}">
-{{ csrf_field() }} 
+{{ csrf_field() }}
 <select class="" name="meses">
   <option value="">--Seleccionar mes--</option>
   <option value="1">Enero</option>
@@ -48,9 +48,9 @@
             <th class="text-center"></th>
             <th class="text-center"></th>
             <th class="text-center"></th>
-            <th class="text-center" colspan="2">Medio día de trabajo</th>
-            <th class="text-center" colspan="2">Día completo de trabajo</th>
-            <th class="text-center" colspan="2">Medio dia 18:00</th>
+            <th class="text-center" colspan="3">Medio día de trabajo</th>
+            <th class="text-center" colspan="3">Día completo de trabajo</th>
+            <th class="text-center" colspan="3">Medio dia 18:00</th>
             <th class="text-center"></th>
             <th class="text-center"></th>
 
@@ -67,12 +67,13 @@
             <th class="text-center">Semestre aprobados</th>
             <th class="text-center">Correo Electrónico</th>
             <th class="text-center">Dirección</th>
-
+            <th class="text-center">Fechas</th>
             <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
-
+            <th class="text-center">Fechas</th>
             <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
+            <th class="text-center">Fechas</th>
             <th class="text-center">Monto</th>
             <th class="text-center">N° dias</th>
             <th class="text-center">$ Total liquido</th>
@@ -91,9 +92,9 @@
           <th class="text-center"></th>
           <th class="text-center"></th>
           <th class="text-center"></th>
-          <th class="text-center" colspan="2">Medio día de trabajo</th>
-          <th class="text-center" colspan="2">Día completo de trabajo</th>
-          <th class="text-center" colspan="2">Medio dia 18:00</th>
+          <th class="text-center" colspan="3">Medio día de trabajo</th>
+          <th class="text-center" colspan="3">Día completo de trabajo</th>
+          <th class="text-center" colspan="3">Medio dia 18:00</th>
           <th class="text-center"></th>
           <th class="text-center"></th>
 
@@ -110,12 +111,13 @@
           <th class="text-center">Semestre aprobados</th>
           <th class="text-center">Correo Electrónico</th>
           <th class="text-center">Dirección</th>
-
+          <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
-
+          <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
+          <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
 
@@ -141,10 +143,13 @@
           <td class="text-center">{{$expos[$i]['semestres_aprobados']}}</td>
           <td class="text-center">{{$expos[$i]['alu_email']}}</td>
           <td class="text-center">{{$expos[$i]['direccion']}}</td>
+          <td class="text-center">{{$fechamediodia[$i]}}</td>
           <td class="text-center">$ {{$medio[$i]}}</td>
           <td class="text-center">{{$canmedio[$i]}}</td>
+          <td class="text-center">{{$fechadiacompleto[$i]}}</td>
           <td class="text-center">$ {{$completo[$i]}}</td>
           <td class="text-center">{{$cancompleto[$i]}}</td>
+          <td class="text-center">{{$fechatarde[$i]}}</td>
           <td class="text-center">$ {{$tarde[$i]}}</td>
           <td class="text-center">{{$cantarde[$i]}}</td>
           <td class="text-center">$ {{$total[$i] - $total[$i]*0.1  }}</td>

@@ -97,10 +97,18 @@ Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
 
 
+Route::get('/historial_eventos','EventosController@historialEventos')->middleware('personal');
+Route::get('/listado_eventos','EventosController@listarEventos')->middleware('personal');
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
+<<<<<<< HEAD
 Route::get('/asignar_horario','EventosController@asignarHorario')->middleware('personal');
 
 Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
+=======
+/*Route::get('/ficha_evento','EventosController@getFicha')->middleware('personal');
+Route::post('/enviar_ficha','EventosController@setFicha')->middleware('personal');*/
+
+>>>>>>> a10ccef0420964bfbbe647417ce4229930c3cc60
 //Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
 
 

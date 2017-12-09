@@ -110,7 +110,7 @@ class EventosController extends Controller
     {
 
       if(Auth::user()->id_rol != 4){
-        $establecimientos = Establishment::all()->toArray();
+        $establecimientos = Establishment::orderBy('rbd','asc')->get();
         $evento = Eventtype::all()->toArray();
         $evn = Event::all();
         $evn->toJson();
@@ -150,8 +150,6 @@ class EventosController extends Controller
 
             $evento->save();
 
-
-
           }
           else {
 
@@ -178,9 +176,6 @@ class EventosController extends Controller
           }
 
           return view('eventos.calendar');
-
-
-
 
 
         }
@@ -254,6 +249,7 @@ class EventosController extends Controller
 
 
     }
+
     public function asignarHorario($id)
     {
       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
@@ -261,7 +257,7 @@ class EventosController extends Controller
         $eventos = Eventtype::all();
         $tiposevento = Event::all();
 
-        //return view('eventos.listado_eventos',compact('establecimientos','eventos' ,'tiposevento'));
+        return view('eventos.asignar_turnos',compact('establecimientos','eventos' ,'tiposevento','id'));
       }
       else{
         return redirect('/');
@@ -283,6 +279,7 @@ class EventosController extends Controller
       }
 
     }
+
     public function historialEventos()
     {
       if(Auth::user()->id_rol  != 4){

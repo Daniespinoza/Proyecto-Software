@@ -97,13 +97,13 @@ Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
 
 
+Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/historial_eventos','EventosController@historialEventos')->middleware('personal');
 Route::get('/listado_eventos','EventosController@listarEventos')->middleware('personal');
-Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
+Route::get('/asignación_turnos/{id}',['uses' => 'EventosController@asignarHorario'])->middleware('personal');
 /*Route::get('/ficha_evento','EventosController@getFicha')->middleware('personal');
 Route::post('/enviar_ficha','EventosController@setFicha')->middleware('personal');*/
 
-//Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
 
 
 

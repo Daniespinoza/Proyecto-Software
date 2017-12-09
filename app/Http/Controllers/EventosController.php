@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Eventtype;
@@ -12,6 +12,7 @@ use App\Turndetail;
 use App\Exhibitor;
 use App\Establishment;
 use App\Staff;
+use App\Stock;
 use Auth;
 
 
@@ -228,19 +229,71 @@ class EventosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        //
+      if(Auth::user()->id_rol != 4){
+        $evento = Event::find($id);
+        $turno = Turn::where('id_evento',$evento['id'])->first();
+        //dd($turnos[0]['id']);
+        $stocks = Stock::where('id_turno',$turno['id'])->get();
+        foreach ($stocks as $key) {
+          $key->detele();
+        }
+        $turndetails = Turndetail::where('id_turno',$turno['id'])->get();
+        foreach ($turndetails as $key) {
+          $key->delete();
+        }
+        $turno->delete();
+        $evento->delete();
+        return redirect('listado_eventos');
+      }
+      else{
+        return redirect('/');
+      }
+
+
     }
-    public function asignarHorario()
+    public function asignarHorario($id)
     {
       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
-        $establecimientos = Establishment::all()->toArray();
-        $evento = Eventtype::all()->toArray();
-        $evn = Event::all();
-        $evn->toJson();
+        $establecimientos = Establishment::all();
+        $eventos = Eventtype::all();
+        $tiposevento = Event::all();
 
-        return view('eventos.prueba',compact('establecimientos','evento' ,'evn'));
+        //return view('eventos.listado_eventos',compact('establecimientos','eventos' ,'tiposevento'));
+      }
+      else{
+        return redirect('/');
+      }
+
+    }
+
+    public function listarEventos()
+    {
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+        $establecimientos = Establishment::all();
+        $tiposevento = Eventtype::all();
+        $eventos = Event::all();
+        $hoy = Carbon::now();
+        return view('eventos.listado_eventos',compact('establecimientos','eventos' ,'tiposevento','hoy'));
+      }
+      else{
+        return redirect('/');
+      }
+
+    }
+    public function historialEventos()
+    {
+      if(Auth::user()->id_rol  != 4){
+        $establecimientos = Establishment::all();
+        $tiposevento = Eventtype::all();
+        $eventos = Event::all();
+        $hoy = Carbon::now();
+
+
+
+        return view('eventos.historial_eventos',compact('establecimientos','eventos' ,'tiposevento','hoy'));
       }
       else{
         return redirect('/');

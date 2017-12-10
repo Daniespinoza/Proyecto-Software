@@ -310,7 +310,7 @@ class EventosController extends Controller
         //dd(Carbon::parse($ev['start'])->format('H:m'));
         //get event day
         $semana = array(array('Mon','lunes'), array('Tue','martes'), array('Wed','miercoles'),
-                        array('Thu','jueves'), array('Fri','viernes'), array('Sat','dabado'), array('Sun','domingo'));
+                        array('Thu','jueves'), array('Fri','viernes'), array('Sat','sabado'), array('Sun','domingo'));
 
         foreach ($semana as $dia) {
             if(Carbon::parse($ev['start'])->format('D') == $dia[0]){
@@ -327,14 +327,14 @@ class EventosController extends Controller
             array_push($disp,$key['id_expositor']);
             array_push($_disp,$disp);
           }
-          elseif ($key[$dia_ev] == 'Mañana') {
-            if (Carbon::parse($ev['start'])->format('H:m') > '12:00') {
+          if ($key[$dia_ev] == 'Mañana') {
+            if (Carbon::parse($ev['start'])->format('H:m') < '12:00') {
               array_push($disp,$key['id_expositor']);
               array_push($_disp,$disp);
             }
           }
-          elseif ($key[$dia_ev] == 'Tarde') {
-            if (Carbon::parse($ev['start'])->format('H:m') < '12:00') {
+          if ($key[$dia_ev] == 'Tarde') {
+            if (Carbon::parse($ev['start'])->format('H:m') > '12:00') {
               array_push($disp,$key['id_expositor']);
               array_push($_disp,$disp);
             }

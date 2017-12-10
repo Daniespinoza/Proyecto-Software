@@ -66,10 +66,9 @@
     <input type="button" id="confirmar" class="btn btn-success" value="Confirmar " onclick="ok()" disabled="true"/>
   </div>
   <div class="col-md-2">
-    <input type="button" id="limpiar" class="btn btn-warning" value="Reestablecer los turnos" onclick="limpiar" disabled="true"/>
+    <input type="button" id="limpiar" class="btn btn-warning" value="Reestablecer los turnos" onclick="limpiar()" disabled="true"/>
   </div>
 </div>
-
 
 
 </div>
@@ -101,6 +100,18 @@
     document.getElementById('confirmar').disabled=false;
     document.getElementById('limpiar').disabled=false;
   }
+  function limpiar(){
+    document.getElementById('gen').disabled=false;
+    document.getElementById('confirmar').disabled=true;
+    document.getElementById('limpiar').disabled=true;
+    var table = document.getElementById("tabla");
+    var rowCount = table.rows.length;
+    while(table.rows.length > 0) {
+      table.deleteRow(0);
+    }
+  }
+
+
 </script>
 
 

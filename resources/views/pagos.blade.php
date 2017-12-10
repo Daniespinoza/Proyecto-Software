@@ -4,7 +4,7 @@
 @section('ventana','Generar Pagos')
 @section('contenido')
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->
 
 
 <div class="page-header">
@@ -36,54 +36,45 @@
 </div>
 
 
+
+
 <div style="overflow-x:auto;">
 
-<table id="reporte" class="display" cellspacing="0" width="100%">
-      <thead>
-          <tr>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
 
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-            <th class="text-center" colspan="3">Medio día de trabajo</th>
-            <th class="text-center" colspan="3">Día completo de trabajo</th>
-            <th class="text-center" colspan="3">Medio dia 18:00</th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
+<!--<table id="reporte" class="display" cellspacing="0" width="100%"> width="100%"  HEIGHT="8" border="0" cellspacing="0" cellpadding="0" style="font-size:10px" -->
+<div class="" id="reporte">
+<table id="reportes" class="table " >
+
+      <thead >
 
 
-          </tr>
-          <tr>
-            <th class="text-center">N°</th>
-            <th class="text-center">Apellido Paterno</th>
-            <th class="text-center">Apellido Materno</th>
-            <th class="text-center">Nombre</th>
+            <th  align="center"><center> N°</center> </th>
+            <th align="center" >Apellido Paterno</th>
+            <th align="center" >Apellido Materno</th>
+            <th align="center">Nombre</th>
             <th class="text-center">Rut</th>
 
-            <th class="text-center">Semestre que cursa</th>
-            <th class="text-center">Semestre aprobados</th>
-            <th class="text-center">Correo Electrónico</th>
-            <th class="text-center">Dirección</th>
-            <th class="text-center">Fechas</th>
-            <th class="text-center">Monto</th>
-            <th class="text-center">N° dias</th>
-            <th class="text-center">Fechas</th>
-            <th class="text-center">Monto</th>
-            <th class="text-center">N° dias</th>
-            <th class="text-center">Fechas</th>
-            <th class="text-center">Monto</th>
-            <th class="text-center">N° dias</th>
-            <th class="text-center">$ Total liquido</th>
-            <th class="text-center">$ Total bruto</th>
-          </tr>
+            <th align="center">S.Actual</th>
+            <th align="center">S.Aprobados</th>
+            <th class="center">Correo Electrónico</th>
+            <th align="center">Dirección</th>
+
+            <th align="center">Fechas</th>
+            <th align="center">Monto</th>
+            <th align="center">N° dias</th>
+
+            <th align="center">Fechas</th>
+            <th align="center">Monto</th>
+            <th align="center">N° dias</th>
+            <th align="center">Fechas</th>
+            <th align="center">Monto</th>
+            <th align="center">N° dias</th>
+            <th align="center">$ Total liquido</th>
+            <th align="center">$ Total bruto</th>
+
+
       </thead>
-      <tfoot>
+    <!--  <tfoot>
         <tr>
           <th class="text-center"></th>
           <th class="text-center"></th>
@@ -129,34 +120,32 @@
           <th class="text-center">$ Total liquido</th>
           <th class="text-center">$ Total bruto</th>
         </tr>
-      </tfoot>
+      </tfoot>-->
       <tbody>
 
         @for($i=0 ; $i < $element ; $i++ )
         <tr>
+          <td class="text-center"nowrap>{{$i+1}}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['alu_apellido_paterno']}}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['alu_apellido_materno']}}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['alu_nombre']}}</td>
+          <td class="text-center" nowrap >{{$expos[$i]['alu_rut']}}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['semestre_actual']}}</td>
 
-
-          <td class="text-center">{{$i+1}}</td>
-          <td class="text-center">{{$expos[$i]['alu_apellido_paterno']}}</td>
-          <td class="text-center">{{$expos[$i]['alu_apellido_materno']}}</td>
-          <td class="text-center">{{$expos[$i]['alu_nombre']}}</td>
-          <td class="text-center">{{$expos[$i]['alu_rut']}}</td>
-          <td class="text-center">{{$expos[$i]['semestre_actual']}}</td>
-
-          <td class="text-center">{{$expos[$i]['semestres_aprobados']}}</td>
-          <td class="text-center">{{$expos[$i]['alu_email']}}</td>
-          <td class="text-center">{{$expos[$i]['direccion']}}</td>
-          <td class="text-center">{{$fechamediodia[$i]}}</td>
-          <td class="text-center">$ {{$medio[$i]}}</td>
-          <td class="text-center">{{$canmedio[$i]}}</td>
-          <td class="text-center">{{$fechadiacompleto[$i]}}</td>
-          <td class="text-center">$ {{$completo[$i]}}</td>
-          <td class="text-center">{{$cancompleto[$i]}}</td>
-          <td class="text-center">{{$fechatarde[$i]}}</td>
-          <td class="text-center">$ {{$tarde[$i]}}</td>
-          <td class="text-center">{{$cantarde[$i]}}</td>
-          <td class="text-center">$ {{$total[$i] - $total[$i]*0.1  }}</td>
-          <td class="text-center">$ {{$total[$i]   }}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['semestres_aprobados']}}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['alu_email']}}</td>
+          <td class="text-center"nowrap>{{$expos[$i]['direccion']}}</td>
+          <td class="text-center"nowrap>{{$fechamediodia[$i]}}</td>
+          <td class="text-center"nowrap>$ {{$medio[$i]}}</td>
+          <td class="text-center"nowrap>{{$canmedio[$i]}}</td>
+          <td class="text-center"nowrap>{{$fechadiacompleto[$i]}}</td>
+          <td class="text-center"nowrap> $  {{$completo[$i]}}</td>
+          <td class="text-center"nowrap>{{$cancompleto[$i]}}</td>
+          <td class="text-center"nowrap>{{$fechatarde[$i]}}</td>
+          <td class="text-center"nowrap> $  {{$tarde[$i]}}</td>
+          <td class="text-center"nowrap>{{$cantarde[$i]}}</td>
+          <td class="text-center" nowrap>$ {{$total[$i] - $total[$i]*0.1  }}</td>
+          <td class="text-center" nowrap>$ {{$total[$i]   }}</td>
           </tr>
           @endfor
 
@@ -164,41 +153,49 @@
   </table>
 </div>
 
+</div>
+
 
 <input name="Imprimir" onclick="DescargarPDF('reporte','Archivo')"  type="submit" id="Imprimir" value="Descargar PDF" />
 
 
 
+<!--<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
 
-<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-
+<!--
 
 <script>
 
 $(document).ready(function() {
-  $('#example').DataTable( {
+  $('#reporte').DataTable( {
       "language": {
           "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
       }
   } );
-} );
+} )
 </script>
-
+-->
 
 <script>
 
 function DescargarPDF(ContenidoID,nombre) {
 
-  var pdf = new jsPDF('p', 'pt', 'letter');
+  var pdf = new jsPDF('l', 'pt', 'A2');
 
-  html = $('#'+ContenidoID).html();
+  var html = $('#'+ContenidoID).html();
 
   specialElementHandlers = {};
 
-  margins = {top: 10,bottom: 20,left: 20,width: 522};
+  margins = {top: 30, left: 5 , width:5};
+  pdf.text(20,20,"Nómina de pagos Estudiantes Expositores de Difusión UTEM");
 
-  pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width},function (dispose) {pdf.save(nombre+'.pdf');}, margins);
+  pdf.setFontSize(2);
+
+  pdf.fromHTML(html ,
+     margins.left, margins.top,  {'width': margins.width} ,
+     function (dispose)
+      {pdf.save(nombre+'.pdf');},
+       margins);
 
 }
 </script>

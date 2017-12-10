@@ -102,6 +102,7 @@ Route::get('/historial_eventos','EventosController@historialEventos')->middlewar
 Route::get('/listado_eventos','EventosController@listarEventos')->middleware('personal');
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/asignar_horario/{id}',['uses' => 'EventosController@asignarHorario'])->middleware('personal');
+Route::post('/confirmar_turnos','EventosController@confirmaTurnos')->middleware('personal');
 Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
 
 

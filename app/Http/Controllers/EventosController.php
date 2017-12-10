@@ -276,9 +276,15 @@ class EventosController extends Controller
         }
         $turndetails = Turndetail::where('id_turno',$turno['id'])->get();
         foreach ($turndetails as $key) {
-          $key->delete();
+          if($key != null){
+            $key->delete();
+
+          }
         }
-        $turno->delete();
+        if($turno != null){
+          $turno->delete();
+
+        }
         $evento->delete();
         return redirect('listado_eventos');
       }
@@ -395,6 +401,14 @@ class EventosController extends Controller
       }
 
     }
+
+
+    public function confirmaTurnos(Request $request)
+    {
+      $json = json_decode($request->get('p'));
+      dd($json);
+    }
+
 
     public function listarEventos()
     {

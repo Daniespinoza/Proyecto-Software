@@ -6,7 +6,6 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
-
 <div class="page-header">
   <h1>Asignación de turnos para evento:  <strong>{{$ev['title']}} </strong></h1>
 </div>
@@ -33,7 +32,7 @@
 
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="button" id="gen" class="btn btn-info" value="Seleccionar Expositores" onclick="llenar()"/>
   </div>
 
@@ -47,7 +46,7 @@
     <table class="table table-bordered table-responsive">
       <thead>
         <tr>
-          <td class="hidden"><strong>ID</strong></td>
+          <td><strong>ID</strong></td>
           <td><strong>Nombre</strong></td>
           <td><strong>Apellido Paterno</strong></td>
           <td><strong>Apellido Materno</strong></td>
@@ -61,17 +60,52 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6"></div>
-  <div class="col-md-1">
-    <input type="button" id="confirmar" class="btn btn-success" value="Confirmar " onclick="ok()" disabled="true"/>
-  </div>
-  <div class="col-md-2">
-    <input type="button" id="limpiar" class="btn btn-warning" value="Reestablecer los turnos" onclick="limpiar()" disabled="true"/>
-  </div>
+    <div class="col-md-8">
+    </div>
+      <div class="col-md-1">
+        &nbsp;
+        <input type="button" id="limpiar" class="btn btn-warning" value="Limpiar" onclick="limpiar()" disabled="true"/>
+      </div>
 </div>
 
-
+<div class="">
+  <p id="json" class="hidden"></p>
 </div>
+
+<form name="create" class="form-horizontal "  method="post" action="{{url('/confirmar_turnos')}}">
+{{csrf_field()}}
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-7" >
+      <input type="text" id="data" class="hidden" name="p" value="" />
+    </div>
+    <div class="row">
+      <input type="number" class="hidden" name="id_evento" value="{{$ev['id']}}">
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8"></div>
+    <div class="col-md-1">
+      <input type="submit" id="confirmar" class="btn btn-success" value="Confirmar " onclick="submit()" disabled="true"/>
+    </div>
+  </div>
+  </div>
+</form>
+
+
+<script>
+$(document).ready(function(){
+  $("#gen").click(function(){
+      $("#data").val($("#json").text());
+  });
+});
+$(document).ready(function(){
+  $("#limpiar").click(function(){
+      $("#data").val("");
+  });
+});
+</script>
+
 
 <script>
   function llenar(){
@@ -86,7 +120,7 @@
     for(var j=0 ; j<datos.length; j++){
       var row = "<tr>";
       var arr = datos[j].split(",");
-      for(var k =1; k<arr.length ; k++){
+      for(var k =0; k<arr.length ; k++){
 
         row += "<td>" + arr[k] + "</td>";
       }
@@ -99,6 +133,34 @@
     document.getElementById('gen').disabled=true;
     document.getElementById('confirmar').disabled=false;
     document.getElementById('limpiar').disabled=false;
+
+    var tableToObj = function( table ) {
+    var trs = table.rows,
+        trl = trs.length,
+        i = 0,
+        j = 0,
+        keys = [],
+        ret = [];
+
+    for (; i < trl; i++) {
+        if (i == 0) {
+            for (; j < trs[i].children.length; j++) {
+                keys.push(trs[i].children[j].innerHTML);
+            }
+        } else {
+            obj = {};
+            for (j = 0; j < trs[i].children.length; j++) {
+                obj[keys[j]] = trs[i].children[j].innerHTML;
+            }
+            ret.push(obj);
+        }
+    }
+    return ret;
+    };
+    document.getElementById('json').innerHTML = JSON.stringify(tableToObj(document.getElementsByTagName('table')[0]));
+    var data = document.getElementById('r').innerHTML;
+
+
   }
   function limpiar(){
     document.getElementById('gen').disabled=false;
@@ -110,8 +172,6 @@
       table.deleteRow(0);
     }
   }
-
-
 </script>
 
 
@@ -126,9 +186,10 @@ $(document).ready(function() {
 </script>
 
 
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/default"+"-*.min.js"></script>
 
 
 @endsection

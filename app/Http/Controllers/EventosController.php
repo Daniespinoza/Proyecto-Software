@@ -13,6 +13,8 @@ use App\Exhibitor;
 use App\Establishment;
 use App\Staff;
 use App\Stock;
+use App\Disponibilidad;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 
@@ -293,8 +295,100 @@ class EventosController extends Controller
         $establecimientos = Establishment::all();
         $eventos = Eventtype::all();
         $tiposevento = Event::all();
+        $ev = Event::find($id);
+      //  dd($ev['start']);
+        $expositores = Exhibitor::orderBy('alu_nombre','asc')->get();
+        //dd($expositores);
+        $detalles = Turndetail::all()->toArray();
+        $disponibilidades = Disponibilidad::all()->toArray();
 
-        return view('eventos.asignar_turnos',compact('establecimientos','eventos' ,'tiposevento','id'));
+        $cant_exp = DB::table('exhibitors')->count();
+        $_texpo = array(); //turnos expositor
+
+        $hoy = Carbon::now();
+
+        //dd(Carbon::parse($ev['start'])->format('H:m'));
+        //get event day
+        $semana = array(array('Mon','lunes'), array('Tue','martes'), array('Wed','miercoles'),
+                        array('Thu','jueves'), array('Fri','viernes'), array('Sat','dabado'), array('Sun','domingo'));
+
+        foreach ($semana as $dia) {
+            if(Carbon::parse($ev['start'])->format('D') == $dia[0]){
+              $dia_ev = $dia[1];
+            }
+        }
+        //dd($disponibilidades[0][$dia_ev]);
+
+        //get expositores Disponibles
+        $_disp = array();
+        foreach ($disponibilidades as $key) {
+          $disp = array();
+          if($key[$dia_ev] == 'Todo el Día'){
+            array_push($disp,$key['id_expositor']);
+            array_push($_disp,$disp);
+          }
+          elseif ($key[$dia_ev] == 'Mañana') {
+            if (Carbon::parse($ev['start'])->format('H:m') > '12:00') {
+              array_push($disp,$key['id_expositor']);
+              array_push($_disp,$disp);
+            }
+          }
+          elseif ($key[$dia_ev] == 'Tarde') {
+            if (Carbon::parse($ev['start'])->format('H:m') < '12:00') {
+              array_push($disp,$key['id_expositor']);
+              array_push($_disp,$disp);
+            }
+          }
+        }
+
+        //arreglo con id y expositor disponible
+        $all = array();
+        foreach ($_disp as $key) {
+          $count = 0;
+          $_all = array();
+          //dd($key[0]);
+          foreach ($detalles as $det) {
+            if(($key[0] == $det['id_expositor']) && ($ev['start'] > $hoy)){
+              if ($det['confirmacion'] == 1) {
+                $count++;
+              }
+            }
+          }
+          array_push($_all,$key[0]);
+          array_push($_all,$count);
+          array_push($all,$_all);
+        }
+        //dd($all);
+
+        //arreglo con id, expositor y cantidad de turnos confirmados
+        $fin = array();
+        foreach ($all as $key) {
+          $_fin = array();
+          foreach($expositores as $e){
+            if($key[0] == $e['id']){
+              array_push($_fin,$e['id']);
+              array_push($_fin,$e['alu_nombre']);
+              array_push($_fin,$e['alu_apellido_paterno']);
+              array_push($_fin,$e['alu_apellido_materno']);
+              array_push($_fin,$key[1]);
+              array_push($fin,$_fin);
+            }
+          }
+        }
+        //dd($fin);
+
+        $_turns = array();
+        for ($i=0; $i < count($fin) ; $i++) {
+          if(!in_array($fin[$i][4],$_turns)){
+            array_push($_turns,$fin[$i][4]);
+          }
+        }
+        sort($_turns);
+        //dd($_turns);
+        $_cantidad = count($fin);
+
+
+        return view('eventos.asignar_turnos',compact('establecimientos','eventos' ,'tiposevento','id','ev','fin','_turns','_cantidad'));
       }
       else{
         return redirect('/');

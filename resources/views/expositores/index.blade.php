@@ -26,7 +26,6 @@
               <th class="text-center" >Celular</th>
               <th class="text-center" >Dirección</th>
               <th class="text-center" >Comuna</th>
-              <th class="text-center">Fecha de ingreso</th>
               @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
               <th class="text-right">Acciones</th>
               <th></th>
@@ -46,7 +45,6 @@
             <th class="text-center" >Celular</th>
             <th class="text-center" >Dirección</th>
             <th class="text-center" >Comuna</th>
-            <th class="text-center">Fecha de ingreso</th>
             @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
             <th class="text-right">Acciones</th>
             <th></th>
@@ -77,7 +75,6 @@
             <td class="text-center" >{{$post['alu_celular']}}</td>
             <td class="text-center" >{{$post['direccion']}}</td>
             <td class="text-center" >{{$post['id_comuna']}}</td>
-            <td class="text-center" >{{$post['created_at']}}</td>
             @if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2)
             <td class="text-center" ><a href="{{action('ExpositoresController@edit', $post['id'])}}" class="btn btn-success"><strong>Editar</strong></a></td>
             <td class="text-center" ><form action="{{action('ExpositoresController@destroy', $post['id'])}}" method="post">

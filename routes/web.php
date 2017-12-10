@@ -112,6 +112,4 @@ Route::post('/enviar_ficha','EventosController@setFicha')->middleware('personal'
 
 
 
-
-
 ////////////////////

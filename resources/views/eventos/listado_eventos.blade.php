@@ -53,7 +53,7 @@
           <td class="text-center">{{\Carbon\Carbon::parse($post['start'])->format('H:m')}}</td>
           @foreach($establecimientos as $est)
             @if($est['id'] == $post['id_establecimiento'])
-            <td class="text-center">{{$est['nombre_establecimiento']}}</td>
+            <td class="text-center">{{$est['rbd']}} / {{$est['nombre_establecimiento']}}</td>
             @endif
           @endforeach
           <td class="text-center">{{$post['direccion']}}</td>

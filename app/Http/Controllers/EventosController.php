@@ -175,7 +175,7 @@ class EventosController extends Controller
             $evento->save();
           }
 
-          return view('eventos.calendar');
+          return view('eventos.index');
 
 
         }
@@ -203,7 +203,27 @@ class EventosController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(Auth::user()->id_rol != 4){
+          $evento = Event::find($id);
+          $establecimiento = Establishment::where('id',$evento->id_establecimiento)->get();
+          //dd($establecimiento[0]['nombre_establecimiento']);
+          $nombre_est = $establecimiento[0]['nombre_establecimiento'];
+          $id_est = $establecimiento[0]['rbd'];
+          $tipo = Eventtype::where('id',$evento->id_tipo_evento)->get();
+
+          $tipo_est = $tipo[0]['subtipo'];
+          $establecimientos = Establishment::all();
+          $et = Eventtype::all();
+
+          $personal = Staff::where('id_user',Auth::user()->id)->get();
+
+          //dd($personal[0]['id']);
+
+          return view('eventos.editar_evento',compact('evento','nombre_est','tipo_est','id','establecimientos','id_est','tipo','et','personal','establecimiento'));
+
+        }else{
+          return redirect('/');
+        }
     }
 
     /**
@@ -215,7 +235,24 @@ class EventosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
+
+        $evento = Event::find($id);
+        //dd($request->get('start'));
+        $evento->id_tipo_evento = $request->get('id_tipo_evento');
+        $evento->id_personal = $request->get('id_personal');
+        $evento->id_establecimiento = $request->get('id_establecimiento');
+        $evento->direccion = $request->get('direccion');
+        $evento->cupos = $request->get('cupos');
+        $evento->start = $request->get('start');
+        $evento->title = $request->get('title');
+        //dd($evento);
+        $evento->save();
+        return redirect('/listado_eventos');
+      }else{
+        return redirect('/');
+      }
+
     }
 
     /**

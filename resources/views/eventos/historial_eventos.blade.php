@@ -37,13 +37,13 @@
       </tfoot>
       <tbody>
         @foreach ($eventos as $post)
-        @if($hoy < $post['start'])
+        @if($hoy > $post['start'])
         <tr>
           <td class="text-center">{{$post['title']}}</td>
           <td class="text-center">{{\Carbon\Carbon::parse($post['start'])->format('d/m/Y H:m')}}</td>
           @foreach($establecimientos as $est)
             @if($est['id'] == $post['id_establecimiento'])
-            <td class="text-center">{{$est['nombre_establecimiento']}}</td>
+            <td class="text-center">{{$est['rbd']}} / {{$est['nombre_establecimiento']}}</td>
             @endif
           @endforeach
           <td class="text-center">{{$post['direccion']}}</td>

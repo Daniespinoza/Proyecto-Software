@@ -62,7 +62,7 @@
 
                   <option class="" name="tipo_esta" required>-- Seleccione un Establecimiento --</option>
                     @foreach($establecimientos as $estab)
-                    <option value="{{$estab['id']}}">{{$estab['nombre_establecimiento']}}</option>
+                    <option value="{{$estab['id']}}">{{$estab['rbd']}} / {{$estab['nombre_establecimiento']}}</option>
                     @endforeach
                   </select>
                    <input type="button" class="btn btn-success" onclick=" location.href='{{action('EstablecimientosController@create')}}' " value="Agregar nuevo" name="boton" />

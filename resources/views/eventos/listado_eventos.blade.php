@@ -53,14 +53,14 @@
           <td class="text-center">{{\Carbon\Carbon::parse($post['start'])->format('H:m')}}</td>
           @foreach($establecimientos as $est)
             @if($est['id'] == $post['id_establecimiento'])
-            <td class="text-center">{{$est['nombre_establecimiento']}}</td>
+            <td class="text-center">{{$est['rbd']}} / {{$est['nombre_establecimiento']}}</td>
             @endif
           @endforeach
           <td class="text-center">{{$post['direccion']}}</td>
           <td class="text-center">{{$post['cupos']}}</td>
           <td class="text-center">{{\Carbon\Carbon::parse($post['created_at'])->format('d/m/Y H:m')}}</td>
-          <td class="text-center"><a href="#" class="btn btn-warning"><strong>Asignar Turnos</strong></a></td>
-          <td class="text-center"><a href="#" class="btn btn-success"><strong>Editar Evento</strong></a></td>
+          <td class="text-center"><a href="{{action('EventosController@asignarHorario',$post['id'])}}" class="btn btn-warning"><strong>Asignar Turnos</strong></a></td>
+          <td class="text-center"><a href="{{action('EventosController@edit',$post['id'])}}" class="btn btn-success"><strong>Editar Evento</strong></a></td>
           <td class="text-center"><form action="{{action('EventosController@destroy',$post['id'])}}" method="post" >
             {{csrf_field()}}
             <input type="hidden" name="_method" value="DELETE">

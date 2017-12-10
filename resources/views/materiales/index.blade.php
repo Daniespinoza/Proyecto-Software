@@ -43,6 +43,7 @@
           <tr>
             @if($post['activo'] == true)
               <td class="text-center">{{$post['descripcion']}}</td>
+
               <td class="text-center">{{$post['stock_total']}}</td>
               <td class="text-center">{{$post['created_at']}}</td>
               <td class="text-center">{{$post['updated_at']}}</td>
@@ -73,7 +74,12 @@ $(document).ready(function() {
   $('#example').DataTable( {
       "language": {
           "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-      }
+      },
+      "createdRow": function( row, data, dataIndex){
+                if( data[1] < 20 ){
+                    $(row).addClass('red');
+                }
+            }
   } );
 } );
 </script>

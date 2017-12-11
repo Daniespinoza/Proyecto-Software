@@ -59,6 +59,7 @@
           <td class="text-center">{{$post['direccion']}}</td>
           <td class="text-center">{{$post['cupos']}}</td>
           <td class="text-center">{{\Carbon\Carbon::parse($post['created_at'])->format('d/m/Y H:m')}}</td>
+          
           <td class="text-center"><a href="{{action('EventosController@asignarHorario',$post['id'])}}" class="btn btn-warning"><strong>Asignar Turnos</strong></a></td>
           <td class="text-center"><a href="{{action('EventosController@edit',$post['id'])}}" class="btn btn-success"><strong>Editar Evento</strong></a></td>
           <td class="text-center"><form action="{{action('EventosController@destroy',$post['id'])}}" method="post" >

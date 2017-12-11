@@ -11,6 +11,7 @@ class TurndetailTableSeeder extends Seeder
      */
     public function run()
     {
+      /*
       $turndet = new Turndetail();
       $turndet->id_turno = 1;
       $turndet->id_expositor = 1;
@@ -28,5 +29,6 @@ class TurndetailTableSeeder extends Seeder
       $turndet1->visto = 0;
       $turndet1->pagado = 0;
       $turndet1->save();
+      */
     }
 }

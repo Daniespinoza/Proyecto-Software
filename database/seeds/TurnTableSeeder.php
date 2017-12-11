@@ -11,6 +11,7 @@ class TurnTableSeeder extends Seeder
      */
     public function run()
     {
+      /*
           $turno = new Turn();
           $turno->id_jornada = 3;
           $turno->id_evento = 1;
@@ -20,6 +21,6 @@ class TurnTableSeeder extends Seeder
           $turno1->id_jornada = 1;
           $turno1->id_evento = 2;
           $turno1 -> save();
-
+      */
     }
 }

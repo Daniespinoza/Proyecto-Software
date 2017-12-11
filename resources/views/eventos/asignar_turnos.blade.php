@@ -48,8 +48,8 @@
         <tr>
           <td><strong>ID</strong></td>
           <td><strong>Nombre</strong></td>
-          <td><strong>Apellido Paterno</strong></td>
-          <td><strong>Apellido Materno</strong></td>
+          <td><strong>Apellido_Paterno</strong></td>
+          <td><strong>Apellido_Materno</strong></td>
           <td><strong>Turnos</strong></td>
         </tr>
       </thead>
@@ -81,6 +81,8 @@
     </div>
     <div class="row">
       <input type="number" class="hidden" name="id_evento" value="{{$ev['id']}}">
+      <input type="text" class="hidden" name="dia_evento" value="{{$dia_ev}}">
+      <input type="text" class="hidden" name="hora_evento" value="{{$hora_ev}}">
     </div>
     <br>
     <div class="row">

@@ -39,10 +39,11 @@ Route::get('events', function () {
             if ($turno->visto == 0) {
               $count++;
             }
-            elseif ($turno->confirmacion == 1) {
+            if ($turno->confirmacion != 0 ) {
               array_push($id_turnos,$turno->id_turno);//turnos confirmados por expositor
             }
           }
+          //dd($id_turnos);
         $TURNOS = App\Turn::all();
         $eventos_user = array();
         foreach ($TURNOS as $tur) {

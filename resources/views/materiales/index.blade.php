@@ -67,14 +67,27 @@
 
 
 
-<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.html5.min.js"> </script>
 <script>
+
+
 $(document).ready(function() {
   $('#example').DataTable( {
-      "language": {
-          "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-      },
+
+      dom: 'Bfrtip',
+       buttons: [
+           {
+               extend: 'pdfHtml5',
+               orientation: 'landscape',
+               pageSize:'LEGAL',
+              
+           }
+       ],
       "createdRow": function( row, data, dataIndex){
                 if( data[1] < 20 ){
                     $(row).addClass('red');

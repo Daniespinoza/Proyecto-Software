@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Generar Pagos')
+@section('title','Nómina de pagos Estudiantes Expositores de Difusión UTEM')
 @section('ventana','Generar Pagos')
 @section('contenido')
 
@@ -31,76 +31,27 @@
 </select>
 <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
-<body>
+
 
 </div>
 
 
 
 
-<div style="overflow-x:auto;">
 
 
 <!--<table id="reporte" class="display" cellspacing="0" width="100%"> width="100%"  HEIGHT="8" border="0" cellspacing="0" cellpadding="0" style="font-size:10px" -->
-<div class="" id="reporte">
-<table id="reportes" class="table " >
+
+<div style="overflow-x:auto;">
+<table id="example" class="display" cellspacing="0" width="100%">
 
       <thead >
-
-
-            <th  align="center"><center> N°</center> </th>
-            <th align="center" >Apellido Paterno</th>
-            <th align="center" >Apellido Materno</th>
-            <th align="center">Nombre</th>
-            <th class="text-center">Rut</th>
-
-            <th align="center">S.Actual</th>
-            <th align="center">S.Aprobados</th>
-            <th class="center">Correo Electrónico</th>
-            <th align="center">Dirección</th>
-
-            <th align="center">Fechas</th>
-            <th align="center">Monto</th>
-            <th align="center">N° dias</th>
-
-            <th align="center">Fechas</th>
-            <th align="center">Monto</th>
-            <th align="center">N° dias</th>
-            <th align="center">Fechas</th>
-            <th align="center">Monto</th>
-            <th align="center">N° dias</th>
-            <th align="center">$ Total liquido</th>
-            <th align="center">$ Total bruto</th>
-
-
-      </thead>
-    <!--  <tfoot>
-        <tr>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-          <th class="text-center" colspan="3">Medio día de trabajo</th>
-          <th class="text-center" colspan="3">Día completo de trabajo</th>
-          <th class="text-center" colspan="3">Medio dia 18:00</th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-
-
-        </tr>
         <tr>
           <th class="text-center">N°</th>
           <th class="text-center">Apellido Paterno</th>
           <th class="text-center">Apellido Materno</th>
           <th class="text-center">Nombre</th>
           <th class="text-center">Rut</th>
-
           <th class="text-center">Semestre que cursa</th>
           <th class="text-center">Semestre aprobados</th>
           <th class="text-center">Correo Electrónico</th>
@@ -114,38 +65,61 @@
           <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
           <th class="text-center">N° dias</th>
+          <th class="text-center">$ Total liquido</th>
+          <th class="text-center">$ Total bruto</th>
 
+          </tr>
 
-
+      </thead>
+      <tfoot>
+        <tr>
+          <th class="text-center">N°</th>
+          <th class="text-center">Apellido Paterno</th>
+          <th class="text-center">Apellido Materno</th>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Rut</th>
+          <th class="text-center">Semestre que cursa</th>
+          <th class="text-center">Semestre aprobados</th>
+          <th class="text-center">Correo Electrónico</th>
+          <th class="text-center">Dirección</th>
+          <th class="text-center">Fechas</th>
+          <th class="text-center">Monto</th>
+          <th class="text-center">N° dias</th>
+          <th class="text-center">Fechas</th>
+          <th class="text-center">Monto</th>
+          <th class="text-center">N° dias</th>
+          <th class="text-center">Fechas</th>
+          <th class="text-center">Monto</th>
+          <th class="text-center">N° dias</th>
           <th class="text-center">$ Total liquido</th>
           <th class="text-center">$ Total bruto</th>
         </tr>
-      </tfoot>-->
+      </tfoot>
       <tbody>
 
         @for($i=0 ; $i < $element ; $i++ )
         <tr>
-          <td class="text-center"nowrap>{{$i+1}}</td>
-          <td class="text-center"nowrap>{{$expos[$i]['alu_apellido_paterno']}}</td>
-          <td class="text-center"nowrap>{{$expos[$i]['alu_apellido_materno']}}</td>
-          <td class="text-center"nowrap>{{$expos[$i]['alu_nombre']}}</td>
-          <td class="text-center" nowrap >{{$expos[$i]['alu_rut']}}</td>
-          <td class="text-center"nowrap>{{$expos[$i]['semestre_actual']}}</td>
+          <td class="text-center">{{$i+1}}</td>
+          <td class="text-center">{{$expos[$i]['alu_apellido_paterno']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_apellido_materno']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_nombre']}}</td>
+          <td class="text-center"  >{{$expos[$i]['alu_rut']}}</td>
+          <td class="text-center">{{$expos[$i]['semestre_actual']}}</td>
 
-          <td class="text-center"nowrap>{{$expos[$i]['semestres_aprobados']}}</td>
-          <td class="text-center"nowrap>{{$expos[$i]['alu_email']}}</td>
-          <td class="text-center"nowrap>{{$expos[$i]['direccion']}}</td>
-          <td class="text-center"nowrap>{{$fechamediodia[$i]}}</td>
-          <td class="text-center"nowrap>$ {{$medio[$i]}}</td>
-          <td class="text-center"nowrap>{{$canmedio[$i]}}</td>
-          <td class="text-center"nowrap>{{$fechadiacompleto[$i]}}</td>
-          <td class="text-center"nowrap> $  {{$completo[$i]}}</td>
-          <td class="text-center"nowrap>{{$cancompleto[$i]}}</td>
-          <td class="text-center"nowrap>{{$fechatarde[$i]}}</td>
-          <td class="text-center"nowrap> $  {{$tarde[$i]}}</td>
-          <td class="text-center"nowrap>{{$cantarde[$i]}}</td>
-          <td class="text-center" nowrap>$ {{$total[$i] - $total[$i]*0.1  }}</td>
-          <td class="text-center" nowrap>$ {{$total[$i]   }}</td>
+          <td class="text-center">{{$expos[$i]['semestres_aprobados']}}</td>
+          <td class="text-center">{{$expos[$i]['alu_email']}}</td>
+          <td class="text-center">{{$expos[$i]['direccion']}}</td>
+          <td class="text-center">{{$fechamediodia[$i]}}</td>
+          <td class="text-center">$ {{$medio[$i]}}</td>
+          <td class="text-center">{{$canmedio[$i]}}</td>
+          <td class="text-center">{{$fechadiacompleto[$i]}}</td>
+          <td class="text-center"> ${{$completo[$i]}}</td>
+          <td class="text-center">{{$cancompleto[$i]}}</td>
+          <td class="text-center">{{$fechatarde[$i]}}</td>
+          <td class="text-center"> ${{$tarde[$i]}}</td>
+          <td class="text-center">{{$cantarde[$i]}}</td>
+          <td class="text-center" >${{$total[$i] - $total[$i]*0.1  }}</td>
+          <td class="text-center" >${{$total[$i]   }}</td>
           </tr>
           @endfor
 
@@ -153,52 +127,33 @@
   </table>
 </div>
 
-</div>
 
-
-<input name="Imprimir" onclick="DescargarPDF('reporte','Archivo')"  type="submit" id="Imprimir" value="Descargar PDF" />
-
-
-
-<!--<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
-
-<!--
-
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.html5.min.js"> </script>
 <script>
+
 
 $(document).ready(function() {
-  $('#reporte').DataTable( {
-      "language": {
-          "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-      }
+  $('#example').DataTable( {
+
+      dom: 'Bfrtip',
+       buttons: [
+           {
+               extend: 'pdfHtml5',
+               orientation: 'landscape',
+               pageSize:'LEGAL',
+
+           }
+       ]
   } );
-} )
+} );
 </script>
--->
 
-<script>
 
-function DescargarPDF(ContenidoID,nombre) {
-
-  var pdf = new jsPDF('l', 'pt', 'A2');
-
-  var html = $('#'+ContenidoID).html();
-
-  specialElementHandlers = {};
-
-  margins = {top: 30, left: 5 , width:5};
-  pdf.text(20,20,"Nómina de pagos Estudiantes Expositores de Difusión UTEM");
-
-  pdf.setFontSize(2);
-
-  pdf.fromHTML(html ,
-     margins.left, margins.top,  {'width': margins.width} ,
-     function (dispose)
-      {pdf.save(nombre+'.pdf');},
-       margins);
-
-}
-</script>
 
 </body>
 @endsection

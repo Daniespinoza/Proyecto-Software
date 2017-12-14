@@ -28,7 +28,7 @@
                                 <h1>
                                     <img alt="25x25" src="images/logo.png" height="40" width="40">
                                     <span class="red">Difusión</span>
-                                    <span class="grey" id="id-text2">Utem</span>
+                                    <span class="grey" id="id-text2">UTEM</span>
                                 </h1>
                                 <h4 class="blue" id="id-company-text">Universidad Tecnológica Metropolitana</h4>
                             </div>

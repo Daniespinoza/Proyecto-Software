@@ -4,6 +4,36 @@
 @section('title','Expositores')
 @section('ventana','Agregar Expositor')
 @section('contenido')
+
+<script>
+function validarRut(data){
+  if (data.length == 10){
+    var x = data.replace('-','');
+    var dv = data.slice(-1);
+    var cpo = data.slice(0,-2);
+    var suma= 0, c=3;
+    for(var i = 0; i< cpo.length ;i++){
+        if(c==1){ c = 7; }
+        suma += parseInt(cpo[i]) * c;
+        c--;
+    }
+    var rest = 11 - (suma%11);
+    if (rest == 11){ rest = 0; }
+    if (rest == 10){ rest = 'K'; }
+
+    if(rest != dv)
+    {
+      $('#de').fadeIn();
+      document.getElementById('submit').disabled=true;
+    }
+    else{
+      $('#de').fadeOut();
+      document.getElementById('submit').disabled=false;
+    }
+  }
+}
+</script>
+
 <div class="page-content">
 <div class="page-header">
   <h1>Formulario Inscripción de Expositor</h1>
@@ -17,15 +47,36 @@
       </div>
       @endforeach
   @endif
+
+
+
+
 <div class="col-xs-12">
+
 <form class="form-horizontal "  method="post" action="{{url('expositores')}}">
 {{csrf_field()}}
+
 <div class="form-group">
+  <div class="col-md-3">
+
+  </div>
+
+    <div class="alert alert-danger col-md-4 " style="display: none" id="de">
+      <i class="ace-icon fa fa-warning"></i>
+      <strong>Alerta! </strong> Dígito verificador inválido. Si es k, utilice mayúsculas
+    </div>
+
+</div>
+
+
+<div class="form-group">
+
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Rut </label>
      <div class="col-md-4">
-        <input class="form-control" type="text" name="rut" placeholder="11111111-k" pattern="[0-9]{8}(-[0-9]|-k|-K)"required/>
+        <input id="rut" class="form-control" oninput="validarRut(this.value)" type="text" name="rut" placeholder="11111111-K" pattern="[0-9]{8}(-[0-9]|-K)"required/>
       </div>
     </div>
+
     <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Nombre </label>
         <div class="col-md-4">
@@ -78,11 +129,13 @@
         </select>
         </div>
 </div>
+<div class="form-group"></div>
+
 <div class="form-group">
-    <label class="col-md-3 control-label no-padding-right"> Dirección</label>
-  <div class="col-md-4">
-    <input type="text" name="direccion" class="form-control" placeholder="dirección ejemplo #334"required/>
-  </div>
+  <label class="col-md-3 control-label no-padding-right"> Dirección</label>
+<div class="col-md-4">
+  <input type="text" name="direccion" class="form-control" placeholder="dirección ejemplo #334"required/>
+</div>
 </div>
       <div class="form-group">
           <label class="col-md-3 control-label no-padding-right">Teléfono</label>
@@ -119,7 +172,7 @@
         </div>
       </div>
       <div class="col-md-6"></div>
-      <input type="submit" class="btn btn-primary">
+      <input type="submit" id="submit" class="btn btn-primary">
 
 
     </div>
@@ -147,5 +200,7 @@ function load(x) {
   });
 }
 </script>
+
+
 
 @endsection

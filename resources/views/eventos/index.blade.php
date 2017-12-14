@@ -21,8 +21,7 @@ $(document).ready(function() {
     selectable: false,
     selectHelper: false,
     eventLimit: true, // allow "more" link when too many event
-    //events: { url: '/eventos', error: function() { $('#script-warning').show(); }}
-      events: $('#a').text()
+    events: @json($event)
     ,
     loading: function(bool) {
       $('#loading').toggle(bool);

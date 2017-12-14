@@ -45,8 +45,8 @@
               <td class="text-center">{{$post['descripcion']}}</td>
 
               <td class="text-center">{{$post['stock_total']}}</td>
-              <td class="text-center">{{$post['created_at']}}</td>
-              <td class="text-center">{{$post['updated_at']}}</td>
+              <td class="text-center">{{\Carbon\Carbon::parse($post['created_at'])->format('d/m/Y')}}</td>
+              <td class="text-center">{{\Carbon\Carbon::parse($post['updated_at'])->format('d/m/Y')}}</td>
               @if(Auth::user()->id_rol != 4)
               <td class="text-center" ><a href="{{action('MaterialesController@edit', $post['id'])}}" class="btn btn-success"><strong>Editar</strong></a></td>
               <td class="text-center" ><form action="{{action('MaterialesController@destroy', $post['id'])}}" method="post">
@@ -78,14 +78,16 @@
 
 $(document).ready(function() {
   $('#example').DataTable( {
-
+      "language": {
+        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+      },
       dom: 'Bfrtip',
        buttons: [
            {
                extend: 'pdfHtml5',
                orientation: 'landscape',
                pageSize:'LEGAL',
-              
+
            }
        ],
       "createdRow": function( row, data, dataIndex){

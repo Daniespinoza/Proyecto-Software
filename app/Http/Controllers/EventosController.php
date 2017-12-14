@@ -32,19 +32,20 @@ class EventosController extends Controller
     public function index()
     {
       //dd(Auth::user()['id_rol']);
-      if (Auth::user()['id_rol'] == 4){
+      if (Auth::user()->id_rol == 4){
         $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
-        $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+        $turns = Turndetail::where('id_expositor',$expo[0]->id)->where('confirmacion','=',1)->get();
         $count = 0;
         $id_turnos = array();
+        $today = Carbon::now();
         foreach ($turns as $turno) {
             if ($turno->visto == 0) {
               $count++;
             }
-            elseif ($turno->confirmacion == 1) {
-              array_push($id_turnos,$turno->id_turno);//turnos confirmados por expositor
-            }
+            array_push($id_turnos,$turno->id_turno);
           }
+
+
         $TURNOS = Turn::all();
         $eventos_user = array();
         foreach ($TURNOS as $tur) {
@@ -63,14 +64,21 @@ class EventosController extends Controller
             array_push($_event,$ev);
           }
         }
+        //dd($event);
         //$event = json_encode($_event, JSON_FORCE_OBJECT);
         //$event = App\Event::all();
         //$event->toJson();
         //return response($event);
         $event = collect($_event);
         $event->toJson();
+      //  json_encode($_event);
+        //dd($_event);
+        //dd($_event);
        //dd($event);
       //  return response($event);
+        //$view =  View::make('eventos.index',compact('_event','count'));
+        //dd($view);
+        //dd($event);
         return view('eventos.index',compact('event','count'));
         }
       else{

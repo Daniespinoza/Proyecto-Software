@@ -21,12 +21,9 @@ $(document).ready(function() {
     selectable: false,
     selectHelper: false,
     eventLimit: true, // allow "more" link when too many event
-    events: {
-      url: '/events',
-      error: function() {
-        $('#script-warning').show();
-      }
-    },
+    //events: { url: '/eventos', error: function() { $('#script-warning').show(); }}
+      events: $('#a').text()
+    ,
     loading: function(bool) {
       $('#loading').toggle(bool);
     }
@@ -35,6 +32,7 @@ $(document).ready(function() {
 });
 </script>
 <div class="page-content">
+<h1 id="a" class="hidden">{{$event}} </h1>
   <div id='calendar'></div>
 
 </div>

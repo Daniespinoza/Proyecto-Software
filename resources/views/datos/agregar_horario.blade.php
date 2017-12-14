@@ -18,7 +18,7 @@
           {{ Form::radio('lunes','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('lunes','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('lunes','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('lunes','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('lunes','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
@@ -27,7 +27,7 @@
           {{ Form::radio('martes','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('martes','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('martes','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('martes','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('martes','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
@@ -36,7 +36,7 @@
           {{ Form::radio('miercoles','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('miercoles','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('miercoles','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('miercoles','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('miercoles','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
@@ -45,7 +45,7 @@
           {{ Form::radio('jueves','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('jueves','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('jueves','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('jueves','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('jueves','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
@@ -54,7 +54,7 @@
           {{ Form::radio('viernes','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('viernes','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('viernes','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('viernes','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('viernes','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
@@ -63,7 +63,7 @@
           {{ Form::radio('sabado','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('sabado','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('sabado','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('sabado','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('sabado','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
     <div class="form-group">
@@ -72,7 +72,7 @@
           {{ Form::radio('domingo','Ninguno',array('required' => 'required')) }}&nbsp;&nbsp;&nbsp;Ninguno&nbsp;&nbsp;&nbsp;
           {{ Form::radio('domingo','Mañana') }}&nbsp;&nbsp;&nbsp;Mañana&nbsp;&nbsp;&nbsp;
           {{ Form::radio('domingo','Tarde') }}&nbsp;&nbsp;&nbsp;Tarde&nbsp;&nbsp;&nbsp;
-          {{ Form::radio('domingo','Todo el día') }}&nbsp;&nbsp;&nbsp;Todo el día&nbsp;&nbsp;&nbsp;
+          {{ Form::radio('domingo','Todo el Día') }}&nbsp;&nbsp;&nbsp;Todo el Día&nbsp;&nbsp;&nbsp;
         </div>
     </div>
 

@@ -278,7 +278,7 @@ class DatosController extends Controller
         elseif ($dias[$i] == 'Tarde') {
           $tot_t++;
         }
-        elseif ($dias[$i] == 'Todo el día') {
+        elseif ($dias[$i] == 'Todo el Día') {
           $tot_m++;
           $tot_t++;
         }

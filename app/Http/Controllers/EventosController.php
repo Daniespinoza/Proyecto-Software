@@ -133,7 +133,8 @@ class EventosController extends Controller
               'cupos'=>$request->get('cupos'),
               'direccion'=> $request->get('direccion'),
               'start'=>$request->get('fecha'),
-              'title' => $request->get('nombre')
+              'title' => $request->get('nombre'),
+              'ficha' => false
 
             ]);
 
@@ -236,6 +237,7 @@ class EventosController extends Controller
         $evento->cupos = $request->get('cupos');
         $evento->start = $request->get('start');
         $evento->title = $request->get('title');
+        $evento->ficha = false;
         //dd($evento);
         $evento->save();
         return redirect('/listado_eventos');
@@ -505,5 +507,25 @@ class EventosController extends Controller
       }
 
     }
+
+    public function getFicha($id)
+    {
+      if(Auth::user()->id_rol != 4){
+        return view('eventos.ficha_evento');
+      }else{
+        return redirect('/');
+      }
+    }
+
+    public function setFicha()
+    {
+      if(Auth::user()->id_rol != 4){
+        return view('eventos');
+      }else{
+        return redirect('/');
+      }
+    }
+
+
 
 }

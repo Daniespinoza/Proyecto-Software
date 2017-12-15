@@ -8,8 +8,9 @@
 <div class="page-content">
 
 <div class="page-header">
-  <h1>Ficha de Asistencia y Regristro a Eventos</h1>
+  <h1>Ficha de Asistencia y Registro a Evento </h1>
 </div>
+
 
 
 

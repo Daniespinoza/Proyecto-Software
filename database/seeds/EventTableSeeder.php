@@ -19,6 +19,7 @@ class EventTableSeeder extends Seeder
       $evento->cupos=4;
       $evento->start = '2017-12-18 13:30' ;
       $evento->title='Feria Ñuñoa';
+      $evento->ficha=false;
       $evento -> save();
 
       $evento1 = new Event();
@@ -29,6 +30,7 @@ class EventTableSeeder extends Seeder
       $evento1->cupos=4;
       $evento1->start = '2017-12-25 10:00' ;
       $evento1->title='Ensayo PSU Macul';
+      $evento1->ficha=false;
       $evento1 -> save();
     }
 }

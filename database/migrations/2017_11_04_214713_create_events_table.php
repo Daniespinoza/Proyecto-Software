@@ -22,6 +22,7 @@ class CreateEventsTable extends Migration
             $table->integer('cupos');
             $table->dateTime('start');
             $table->string('title');
+            $table->boolean('ficha');
             $table->timestamps();
         });
     }

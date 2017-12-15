@@ -59,8 +59,11 @@
           <td class="text-center">{{$post['direccion']}}</td>
           <td class="text-center">{{$post['cupos']}}</td>
           <td class="text-center">{{\Carbon\Carbon::parse($post['created_at'])->format('d/m/Y H:m')}}</td>
-          
+          @if($post['cupos'] > 0)
           <td class="text-center"><a href="{{action('EventosController@asignarHorario',$post['id'])}}" class="btn btn-warning"><strong>Asignar Turnos</strong></a></td>
+          @else
+          <td class="text-center" ><b><font color="green"> Ya fueron asignados todos los cupos disponibles </font></b></td>
+          @endif
           <td class="text-center"><a href="{{action('EventosController@edit',$post['id'])}}" class="btn btn-success"><strong>Editar Evento</strong></a></td>
           <td class="text-center"><form action="{{action('EventosController@destroy',$post['id'])}}" method="post" >
             {{csrf_field()}}

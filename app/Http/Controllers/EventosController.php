@@ -290,7 +290,7 @@ class EventosController extends Controller
         $eventos = Eventtype::all();
         $tiposevento = Event::all();
         $ev = Event::find($id);
-      //  dd($ev['start']);
+        //dd($ev['start']);
         $expositores = Exhibitor::orderBy('alu_nombre','asc')->get();
         //dd($expositores);
         $detalles = Turndetail::all()->toArray();
@@ -301,7 +301,6 @@ class EventosController extends Controller
 
         $hoy = Carbon::now();
 
-        //dd(Carbon::parse($ev['start'])->format('H:m'));
         //get event day
         $semana = array(array('Mon','lunes'), array('Tue','martes'), array('Wed','miercoles'),
                         array('Thu','jueves'), array('Fri','viernes'), array('Sat','sabado'), array('Sun','domingo'));
@@ -312,8 +311,7 @@ class EventosController extends Controller
               $hora_ev = Carbon::parse($ev['start'])->format('H:m');
             }
         }
-        //dd($hora_ev);
-        //dd($disponibilidades[0][$dia_ev]);
+
 
         //get expositores Disponibles
         $_disp = array();
@@ -354,7 +352,6 @@ class EventosController extends Controller
           array_push($_all,$count);
           array_push($all,$_all);
         }
-        //dd($all);
 
         //arreglo con id, expositor y cantidad de turnos confirmados
         $fin = array();
@@ -371,7 +368,6 @@ class EventosController extends Controller
             }
           }
         }
-        //dd($fin);
 
         $_turns = array();
         for ($i=0; $i < count($fin) ; $i++) {
@@ -380,9 +376,26 @@ class EventosController extends Controller
           }
         }
         sort($_turns);
-        //dd($_turns);
         $_cantidad = count($fin);
 
+        //verificar si ya hubo turnos asignados
+        $turnexist = Turn::where('id_evento',$ev->id)->get();
+        if(count($turnexist)){
+          $nuevo_array = array();
+          $turnosexist = Turndetail::where('id_turno',$turnexist[0]['id'])->get();
+          for ($i=0; $i < $_cantidad ; $i++) {
+            $esta = false;
+            for ($j=0; $j < count($turnosexist) ; $j++)
+              if($turnosexist[$j]['id_expositor'] == $fin[$i][0] ){
+                $esta = true;
+              }
+            if($esta == false){
+              array_push($nuevo_array,$fin[$i]);
+            }
+          }
+          $fin = $nuevo_array; //nuevo fin sin los expositores existentes en el turno
+          $_cantidad = count($fin);
+        }
 
         return view('eventos.asignar_turnos',compact('establecimientos','eventos' ,'tiposevento','id','ev','fin','_turns','_cantidad','dia_ev','hora_ev'));
       }
@@ -425,6 +438,7 @@ class EventosController extends Controller
         $id_turno = $_turn[0]['id'];
         //dd($id_turno);
         //dd($json[0]->Apellido_Paterno);
+        $cont = 0;
         foreach ($json as $expo) {
            $detail = new Turndetail([
              'id_turno' => $id_turno,
@@ -437,7 +451,13 @@ class EventosController extends Controller
              'pagado' => 0,
            ]);
            $detail->save();
+           $cont++;
         }
+
+        $ev_cup = Event::find($request->get('id_evento'));
+        $current = $ev_cup->cupos;
+        $ev_cup->cupos = $current - $cont;
+        $ev_cup->save();
 
         $establecimientos = Establishment::all();
         $tiposevento = Eventtype::all();

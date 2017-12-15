@@ -203,12 +203,23 @@
 					</li>
 
             <li class="">
-                <a class="link" href="{{action('DatosController@setHorario')}}">
+                <a class="link" onclick="return confirmacion()" href="{{action('DatosController@setHorario')}}">
                     <i class="menu-icon fa fa-upload"></i>
                     Ingresar Horario
                 </a>
                 <b class="arrow"></b>
             </li>
+						<script>
+						  confirmacion = function(event) {
+						    var rsp = confirm("Si ya posee un horario, se reiniciará por completo.\n¿Está seguro que desea realizar esta operación?");
+						    if (rsp == true){
+						      return true;
+						    }else{
+						      return false;
+						    }
+						}
+						</script>
+
 
 
 
@@ -559,7 +570,7 @@
         <script src="{{asset('js/date-time/datepicker.min.js')}}"></script>
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
-				
+
 
 
 

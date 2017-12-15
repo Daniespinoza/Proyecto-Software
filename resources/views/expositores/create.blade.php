@@ -34,6 +34,23 @@ function validarRut(data){
 }
 </script>
 
+<script>
+function validaCorreo(data){
+  document.getElementById('submit').disabled=true;
+  if (data.length >14){
+    var utem = data.slice(-8);
+    if(utem == '@utem.cl'){
+      $('#di').fadeOut();
+      document.getElementById('submit').disabled=false;
+    }
+    else{
+      $('#di').fadeIn();
+    }
+  }
+}
+</script>
+
+
 <div class="page-content">
 <div class="page-header">
   <h1>Formulario Inscripción de Expositor</h1>
@@ -57,15 +74,19 @@ function validarRut(data){
 {{csrf_field()}}
 
 <div class="form-group">
-  <div class="col-md-3">
-
-  </div>
-
+  <div class="col-md-3"></div>
     <div class="alert alert-danger col-md-4 " style="display: none" id="de">
       <i class="ace-icon fa fa-warning"></i>
       <strong>Alerta! </strong> Dígito verificador inválido. Si es k, utilice mayúsculas
     </div>
+</div>
 
+<div class="form-group">
+  <div class="col-md-3"></div>
+    <div class="alert alert-warning col-md-4 " style="display: none" id="di">
+      <i class="ace-icon fa fa-warning"></i>
+      <strong>Cuidado! </strong> Recuerda que el correo debe terminar con @utem.cl
+    </div>
 </div>
 
 
@@ -165,7 +186,7 @@ function validarRut(data){
       <div class="form-group">
         <label class="col-md-3 control-label no-padding-right"> Correo </label>
         <div class="col-md-4">
-          <input type="email" class="form-control"  placeholder="ejemplo@utem.cl" name = "mail" required/>
+          <input type="email" class="form-control"  oninput="validaCorreo(this.value)" minlength="15"  placeholder="ejemplo@utem.cl" name = "mail" required/>
         </div>
         <div class="col-md-3 control-label no-padding-right">
 

@@ -17,7 +17,9 @@
       <tr>
         <th class="text-center" >Fecha</th>
         <th class="text-center" >Evento</th>
+        <th class="text-center" >Tipo</th>
         <th class="text-center" >Organizador</th>
+        <th class="text-center" >Dirección</th>
         <th class="text-center" >Monto</th>
       </tr>
     </thead>
@@ -25,7 +27,9 @@
       <tr>
         <th class="text-center" >Fecha</th>
         <th class="text-center" >Evento</th>
+        <th class="text-center" >Tipo</th>
         <th class="text-center" >Organizador</th>
+        <th class="text-center" >Dirección</th>
         <th class="text-center" >Monto</th>
       </tr>
     </tfoot>
@@ -33,10 +37,12 @@
 @for($i=0; $i< $max ; $i++)
       <tr>
 
-        <td class="text-center" >{{$evento[$i][0]['start']}}</td>
+        <td class="text-center" >{{\Carbon\Carbon::parse($evento[$i][0]['start'])->format('d/m/Y H:m')}}</td>
+        <td class="text-center" >{{$evento[$i][0]['title']}}</td>
         <td class="text-center" >{{$tipo[$i][0]['subtipo']}}</td>
         <td class="text-center" >{{$esta[$i][0]['nombre_establecimiento']}}</td>
-        <td class="text-center" >{{$jornada[$i][0]['valor']}}</td>
+        <td class="text-center" >{{$evento[$i][0]['direccion']}}</td>
+        <td class="text-center" >$ {{$jornada[$i][0]['valor']}}</td>
 
       </tr>
       @endfor

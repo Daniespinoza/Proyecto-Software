@@ -17,7 +17,7 @@ use App\Turndetail;
 use App\Establishment;
 use Validator;
 use Illuminate\Validation\Rule;
-
+use \Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Auth;
 

@@ -13,7 +13,7 @@
 <div class="page-header">
   <h1 id="title" align="center"/>
 </div>
-<div class="container">
+<div class="page-content">
 
   <script>
   var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
@@ -27,23 +27,14 @@
 $(document).ready(function() {
   $('#calendar').fullCalendar({
     //defaultDate: '2017-11-12',
-    header: {
-    left: '',
-    center: '',
-    right: ''
-    },
+    header: false,
     timeFormat: 'H:mm',
     editable: false,
     navLinks: false,
     selectable: false,
     selectHelper: false,
     eventLimit: true, // allow "more" link when too many event
-    events: {
-      url: '/events',
-      error: function() {
-        $('#script-warning').show();
-      }
-    },
+    events: @json($event),
     loading: function(bool) {
       $('#loading').toggle(bool);
     },

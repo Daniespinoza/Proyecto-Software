@@ -21,8 +21,8 @@
               <th class="text-center">Fecha y Hora</th>
               <th class="text-center">Establecimiento</th>
               <th class="text-center">Dirección</th>
-              <th class="text-center">Cupos</th>
-
+              <th class="text-right">Ficha de Asistencia</th>
+              <th></th>
           </tr>
       </thead>
       <tfoot>
@@ -31,7 +31,8 @@
             <th class="text-center">Fecha y Hora</th>
             <th class="text-center">Establecimiento</th>
             <th class="text-center">Dirección</th>
-            <th class="text-center">Cupos</th>
+            <th class="text-right">Ficha de Asistencia</th>
+            <th></th>
         </tr>
 
       </tfoot>
@@ -47,7 +48,13 @@
             @endif
           @endforeach
           <td class="text-center">{{$post['direccion']}}</td>
-          <td class="text-center">{{$post['cupos']}}</td>
+          @if($post['ficha'] == true)
+            <th class="text-center"><b><font color="green">Ficha llenada satisfactoriamente</font></b></th>
+            <td class="text-center"><a href="#" class="btn btn-info"><strong>Ver ficha</strong></a></td>
+          @else
+          <td class="text-center"><a href="{{action('EventosController@getFicha',$post['id'])}}" class="btn btn-success"><strong>Llenar ficha</strong></a></td>
+            <th class="text-center"><b><font color="brown"> Aún no se llena la ficha </font></b></th>
+          @endif
         </tr>
         @endif
         @endforeach

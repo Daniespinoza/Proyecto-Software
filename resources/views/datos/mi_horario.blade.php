@@ -3,6 +3,17 @@
 @section('title','Horario')
 @section('ventana','Mi Horario')
 @section('contenido')
+
+<script>
+  confirmacion = function(event) {
+    var rsp = confirm("¿Está seguro que desea realizar esta operación?\nSe reiniciará su horario por completo.");
+    if (rsp == true){
+      return true;
+    }else{
+      return false;
+    }
+}
+</script>
 <div class="page-header">
   <h1>Tu horario {{Auth::user()->name}}</h1>
 </div>
@@ -69,7 +80,7 @@
 
         <td class="text-center" >{{$horario['total_m']}}</td>
         <td class="text-center" >{{$horario['total_t']}}</td>
-        <td class="text-center" ><a href="" class="btn btn-success"><strong>Actualizar</strong></a></td>
+        <td class="text-center" ><a href="{{action('DatosController@setHorario')}}" id="confirm" onclick="return confirmacion();" class="btn btn-success"><strong>Actualizar</strong></a></td>
 
       </tr>
 

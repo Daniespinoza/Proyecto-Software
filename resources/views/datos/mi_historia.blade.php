@@ -40,9 +40,9 @@
         @for($i=0; $i< $max ; $i++)
               <tr>
 
-                <td class="text-center" >{{$evento[$i][0]['start']}}</td>
+                <td class="text-center" >{{\Carbon\Carbon::parse($evento[$i][0]['start'])->format('d/m/Y  H:m')}}</td>
+                <td class="text-center" >{{$evento[$i][0]['title']}}</td>
                 <td class="text-center" >{{$tipo[$i][0]['subtipo']}}</td>
-                <td class="text-center" >{{$tipo[$i][0]['descripcion']   }}</td>
                 <td class="text-center" >{{$esta[$i][0]['nombre_establecimiento']}}</td>
                 <td class="text-center" >{{$evento[$i][0]['direccion']}}</td>
                 @if($det[$i]['confirmacion'] != 1 && $det[$i]['confirmacion'] != 2 && $fecha[$i]->invert == 1)

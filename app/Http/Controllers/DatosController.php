@@ -235,7 +235,18 @@ class DatosController extends Controller
         return view('datos.agregar_horario',compact('expositor','horario','id','count'));
       }
       else {
-        return redirect('/mi_horario');
+        DB::table('disponibilidads')->where('id_expositor',$id)->delete();
+        $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+        $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+      //  dd($turns);
+        $count = 0;
+        foreach ($turns as $turno) {
+            if ($turno->visto == 0) {
+              $count++;
+            }
+        }
+        return view('datos.agregar_horario',compact('expositor','horario','id','count'));
+
       }
     }
     public function updateHorario(Request $request)

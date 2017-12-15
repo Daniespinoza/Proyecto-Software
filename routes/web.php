@@ -26,53 +26,6 @@ Route::get('/comuna', function () {
 });
 
 
-Route::get('events', function () {
-
-    if (Auth::check())
-    {
-      if (Auth::user()['id_rol'] == 4){
-        $expo = App\Exhibitor::where('id_user',Auth::user()->id_rol)->get();
-        $turns = App\Turndetail::where('id_expositor',$expo[0]->id)->get();
-        $count = 0;
-        $id_turnos = array();
-        foreach ($turns as $turno) {
-            if ($turno->visto == 0) {
-              $count++;
-            }
-            if ($turno->confirmacion != 0 ) {
-              array_push($id_turnos,$turno->id_turno);//turnos confirmados por expositor
-            }
-          }
-          //dd($id_turnos);
-        $TURNOS = App\Turn::all();
-        $eventos_user = array();
-        foreach ($TURNOS as $tur) {
-          //dd($ev);
-            if (in_array($tur->id,$id_turnos)) {
-              array_push($eventos_user,$tur->id_evento);
-            }
-        }
-
-        $eventss = App\Event::all()->toArray();
-        $_event = array();
-        foreach ($eventss as $ev) {
-          if(in_array($ev['id'],$eventos_user)){
-            array_push($_event,$ev);
-          }
-        }
-        $event = collect($_event);
-        $event->toJson();
-        return response($event);
-      }
-      else{
-        $event = App\Event::all();
-        $event->toJson();
-        return response($event);
-      }
-
-}
-});
-
 // QUESTION: Debemos crear nuevos campos en la base de datos
 // TEMP: Como pasar una tabla de datos a json
 // IDEA: Crear nuevos campo en la tabla eventos
@@ -96,7 +49,7 @@ Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi')
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
-
+//Route::post('/actualizar_horario','DatosController@newHorario')->middleware('exhi');
 
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/historial_eventos','EventosController@historialEventos')->middleware('personal');
@@ -104,7 +57,7 @@ Route::get('/listado_eventos','EventosController@listarEventos')->middleware('pe
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/asignar_horario/{id}',['uses' => 'EventosController@asignarHorario'])->middleware('personal');
 Route::post('/confirmar_turnos','EventosController@confirmaTurnos')->middleware('personal');
-Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
+//Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
 
 
 /*Route::get('/ficha_evento','EventosController@getFicha')->middleware('personal');

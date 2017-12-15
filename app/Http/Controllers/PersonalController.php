@@ -7,6 +7,7 @@ use App\Staff;
 use App\Role;
 use App\User;
 use Auth;
+use \Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PersonalController extends Controller
@@ -75,12 +76,18 @@ class PersonalController extends Controller
 
         $user->save();
 
+        if(strlen($request->get('rut')) == 10){
+          $run = substr($request->get('rut'), 0,8);
+        }else{
+          $run = substr($request->get('rut'), 0,7);
+        }
+
         $staff = new Staff([
           'nombre' => $request->get('nombre'),
           'apellido_paterno' => $request->get('ap_pat'),
           'apellido_materno' => $request->get('ap_mat'),
           'rut' => $request->get('rut'),
-          'run' => $request->get('run'),
+          'run' => $run,
           'id_rol' => $request->get('rol'),
           'correo' => $request->get('correo'),
           'activo' => true,

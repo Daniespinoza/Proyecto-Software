@@ -52,7 +52,7 @@
               <td class="text-center">{{$post['rut']}}</td>
               <td class="text-center">{{$post['id_rol']}}</td>
               <td class="text-center">{{$post['correo']}}</td>
-              <td class="text-center">{{$post['created_at']}}</td>
+              <td class="text-center">{{\Carbon\Carbon::parse($post['created_at'])->format('d/m/Y')}}</td>
               <td class="text-center"><a href="{{action('PersonalController@edit', $post['id'])}}" class="btn btn-success"><strong>Editar</strong></a></td>
               <td class="text-center"><form action="{{action('PersonalController@destroy', $post['id'])}}" method="post">
                   {{csrf_field()}}

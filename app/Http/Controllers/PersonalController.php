@@ -157,11 +157,18 @@ class PersonalController extends Controller
         //dd($user);
         $user->save();
 
+        if(strlen($request->get('rut')) == 10){
+          $run = substr($request->get('rut'), 0,8);
+        }else{
+          $run = substr($request->get('rut'), 0,7);
+        }
+
+
         $personal->nombre = $request->get('nombre');
         $personal->apellido_paterno = $request->get('ap_pat');
         $personal->apellido_materno = $request->get('ap_mat');
         $personal->rut = $request->get('rut');
-        $personal->run = $request->get('run');
+        $personal->run = $run;
         $personal->id_rol = $request->get('rol');
         $personal->correo = $request->get('correo');
         $personal->activo = true;

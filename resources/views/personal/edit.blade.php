@@ -3,6 +3,76 @@
 @section('title','Personal')
 @section('ventana','Actualizar Personal')
 @section('contenido')
+
+<script>
+function validarRut(data){
+  if (data.length == 10){
+    var x = data.replace('-','');
+    var dv = data.slice(-1);
+    var cpo = data.slice(0,-2);
+    var suma= 0, c=3;
+    for(var i = 0; i< cpo.length ;i++){
+        if(c==1){ c = 7; }
+        suma += parseInt(cpo[i]) * c;
+        c--;
+    }
+    var rest = 11 - (suma%11);
+    if (rest == 11){ rest = 0; }
+    if (rest == 10){ rest = 'K'; }
+
+    if(rest != dv)
+    {
+      $('#de').fadeIn();
+      document.getElementById('submit').disabled=true;
+    }
+    else{
+      $('#de').fadeOut();
+      document.getElementById('submit').disabled=false;
+    }
+  }if (data.length == 9){
+    var x = data.replace('-','');
+    var dv = data.slice(-1);
+    var cpo = data.slice(0,-2);
+    var suma= 0, c=2;
+    for(var i = 0; i< cpo.length ;i++){
+        if(c==1){ c = 7; }
+        suma += parseInt(cpo[i]) * c;
+        c--;
+    }
+    var rest = 11 - (suma%11);
+    if (rest == 11){ rest = 0; }
+    if (rest == 10){ rest = 'K'; }
+
+    if(rest != dv)
+    {
+      $('#de').fadeIn();
+      document.getElementById('submit').disabled=true;
+    }
+    else{
+      $('#de').fadeOut();
+      document.getElementById('submit').disabled=false;
+    }
+  }
+}
+
+</script>
+
+<script>
+function validaCorreo(data){
+  document.getElementById('submit').disabled=true;
+  if (data.length >14){
+    var utem = data.slice(-8);
+    if(utem == '@utem.cl'){
+      $('#di').fadeOut();
+      document.getElementById('submit').disabled=false;
+    }
+    else{
+      $('#di').fadeIn();
+    }
+  }
+}
+</script>
+
 <div class="page-content">
 <div class="page-header">
   <h1>Formulario Actualización de Personal</h1>
@@ -11,6 +81,24 @@
 <div class="col-xs-12">
 <form class="form-horizontal" method="post" action="{{action('PersonalController@update',$id)}}">
 {{csrf_field()}}
+
+<div class="form-group">
+  <div class="col-md-3"></div>
+    <div class="alert alert-danger col-md-4 " style="display: none" id="de">
+      <i class="ace-icon fa fa-warning"></i>
+      <strong>Alerta! </strong> Dígito verificador inválido. Si es k, utilice mayúsculas
+    </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-3"></div>
+    <div class="alert alert-warning col-md-4 " style="display: none" id="di">
+      <i class="ace-icon fa fa-warning"></i>
+      <strong>Cuidado! </strong> Recuerda que el correo debe terminar con @utem.cl
+    </div>
+</div>
+
+
 <div class="form-group">
   <input name="_method" type="hidden" value="PATCH"/>
 
@@ -37,16 +125,16 @@
         <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> RUT</label>
             <div class="col-md-4">
-                <input type="text" name="rut" class="form-control" pattern="([0-9]{2}|[0-9]{1}).[0-9]{3}.[0-9]{3}(-[0-9]{1}|-k|-K)" value="{{$personal->rut}}" required/>
+                <input type="text" id="rut" name="rut" oninput="validarRut(this.value)" class="form-control" pattern="([0-9]{8}|[0-9]{7})(-K|-[0-9]))" value="{{$personal->rut}}" required/>
             </div>
         </div>
 
-        <div class="form-group">
+        <!--div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> RUN</label>
             <div class="col-md-4">
                 <input type="number" name="run" class="form-control"  pattern="[0-9]" min="1" max="99999999" value="{{$personal->run}}" required/>
             </div>
-        </div>
+        </div-->
 
         <div class="form-group">
             <label class="col-md-3 control-label no-padding-right"> Permisos</label>
@@ -68,13 +156,13 @@
         <div class="form-group">
           <label class="col-md-3 control-label no-padding-right"> Correo</label>
             <div class="col-md-4">
-                <input type="text" name="correo" class="form-control" value="{{$personal->correo}}" required/>
+                <input type="email" id="correo" oninput="validaCorreo(this.value)" name="correo" minlength="15" class="form-control" value="{{$personal->correo}}" required/>
             </div>
         </div>
 
     </div>
     <div class="col-md-6"></div>
-      <button type="submit" class="btn btn-primary">Actualizar</button>
+      <button type="submit" id="submit" class="btn btn-primary">Actualizar</button>
     </div>
   </div>
 

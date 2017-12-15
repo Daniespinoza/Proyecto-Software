@@ -188,14 +188,6 @@ class ExpositoresController extends Controller
     public function update(Request $request, $id)
     {
       if(Auth::user()->id_rol == 1 || Auth::user()->id_rol == 2){
-        $validatedData = Validator::make($request->all(),[
-        'rut' => 'unique:exhibitors,alu_rut',
-        'mail' => 'unique:exhibitors,alu_email',
-      ]);
-    if ($validatedData->fails()) {
-              return redirect()->route('expositores/{id}/edit', ['id' => $id])->withErrors($validatedData)->withInput();
-            }
-            else {
         $sema = $request->get('sem') - 1;
 
         $expo = Exhibitor::find($id);
@@ -220,7 +212,7 @@ class ExpositoresController extends Controller
         return redirect('/expositores');
 
       }
-    }
+    
       else{
         return redirect('/');
       }

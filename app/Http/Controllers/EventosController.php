@@ -31,7 +31,6 @@ class EventosController extends Controller
      */
     public function index()
     {
-      //dd(Auth::user()['id_rol']);
       if (Auth::user()->id_rol == 4){
         $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
         $turns = Turndetail::where('id_expositor',$expo[0]->id)->where('confirmacion','=',1)->get();
@@ -44,12 +43,9 @@ class EventosController extends Controller
             }
             array_push($id_turnos,$turno->id_turno);
           }
-
-
         $TURNOS = Turn::all();
         $eventos_user = array();
         foreach ($TURNOS as $tur) {
-          //dd($ev);
             if (in_array($tur->id,$id_turnos)) {
               array_push($eventos_user,$tur->id_evento);
             }
@@ -58,35 +54,18 @@ class EventosController extends Controller
         $eventss = Event::all()->toArray();
 
         $_event = array();
-        //dd($eventos_user);
         foreach ($eventss as $ev) {
           if(in_array($ev['id'],$eventos_user)){
             array_push($_event,$ev);
           }
         }
-        //dd($event);
-        //$event = json_encode($_event, JSON_FORCE_OBJECT);
-        //$event = App\Event::all();
-        //$event->toJson();
-        //return response($event);
         $event = collect($_event);
         $event->toJson();
-      //  json_encode($_event);
-        //dd($_event);
-        //dd($_event);
-       //dd($event);
-      //  return response($event);
-        //$view =  View::make('eventos.index',compact('_event','count'));
-        //dd($view);
-        //dd($event);
         return view('eventos.index',compact('event','count'));
         }
       else{
         $event = Event::all();
-        //dd($event);
         $event->toJson();
-        //return response($event);
-       //dd($event);
 
         return view('eventos.index',compact('event','count'));
       }
@@ -184,8 +163,9 @@ class EventosController extends Controller
             ]);
             $evento->save();
           }
-
-          return view('eventos.index');
+          $event = Event::all();
+          $event->toJson();
+          return view('eventos.index',compact('event'));
 
 
         }

@@ -126,12 +126,7 @@
       selectable: false,
 			selectHelper: false,
 			eventLimit: true, // allow "more" link when too many event
-      events: {
-        url: '/events',
-        error: function() {
-          $('#script-warning').show();
-        }
-      },
+      events: @json($evn),
       loading: function(bool) {
         $('#loading').toggle(bool);
       }

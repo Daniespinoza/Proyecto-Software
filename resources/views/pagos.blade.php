@@ -3,9 +3,9 @@
 @section('title','Nómina de pagos Estudiantes Expositores de Difusión UTEM')
 @section('ventana','Generar Pagos')
 @section('contenido')
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->
-
 
 <div class="page-header">
   <h1>Nómina de pagos Estudiantes Expositores de Difusión UTEM</h1>
@@ -35,15 +35,7 @@
 
 </div>
 
-
-
-
-
-
-<!--<table id="reporte" class="display" cellspacing="0" width="100%"> width="100%"  HEIGHT="8" border="0" cellspacing="0" cellpadding="0" style="font-size:10px" -->
-
-<div style="overflow-x:auto;">
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="example" class="display table table-hover" cellspacing="0" width="100%">
 
       <thead >
         <tr>
@@ -105,12 +97,11 @@
           <td class="text-center">{{$expos[$i]['alu_nombre']}}</td>
           <td class="text-center"  >{{$expos[$i]['alu_rut']}}</td>
           <td class="text-center">{{$expos[$i]['semestre_actual']}}</td>
-
           <td class="text-center">{{$expos[$i]['semestres_aprobados']}}</td>
           <td class="text-center">{{$expos[$i]['alu_email']}}</td>
           <td class="text-center">{{$expos[$i]['direccion']}}</td>
           <td class="text-center">{{$fechamediodia[$i]}}</td>
-          <td class="text-center">$ {{$medio[$i]}}</td>
+          <td class="text-center">${{$medio[$i]}}</td>
           <td class="text-center">{{$canmedio[$i]}}</td>
           <td class="text-center">{{$fechadiacompleto[$i]}}</td>
           <td class="text-center"> ${{$completo[$i]}}</td>
@@ -125,34 +116,41 @@
 
       </tbody>
   </table>
-</div>
 
 
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-<script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.html5.min.js"> </script>
-<script>
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.0/js/dataTables.buttons.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.5.0/js/buttons.html5.min.js"> </script>
 
 
-$(document).ready(function() {
-  $('#example').DataTable( {
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        },
+        responsive: true,
+        "scrollX": true,
+        dom: 'Bfrtip',
+        buttons: [
+             {
+                 extend: 'pdfHtml5',
+                 orientation: 'landscape',
+                 pageSize:'LEGAL',
 
-      dom: 'Bfrtip',
-       buttons: [
-           {
-               extend: 'pdfHtml5',
-               orientation: 'landscape',
-               pageSize:'LEGAL',
 
-           }
-       ]
+             }
+         ],
+        paging: false,
+        ordering: true,
+        searching: false
+
+    } );
   } );
-} );
-</script>
-
+  </script>
 
 
 </body>

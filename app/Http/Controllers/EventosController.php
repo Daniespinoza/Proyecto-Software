@@ -541,21 +541,65 @@ class EventosController extends Controller
         $dinero = $request->get('money');
         $transporte = $request->get('trsp');
         $id_evento = $request->get('evento');
+        $horas = $request->get('horas');
 
         $expositores= json_decode($json_expositores);
         $materiales= json_decode($json_materiales);
 
+        $evento = Event::find($id_evento);
+        $semana = array(array('Mon','lunes'), array('Tue','martes'), array('Wed','miercoles'),
+                        array('Thu','jueves'), array('Fri','viernes'), array('Sat','sabado'), array('Sun','domingo'));
+        foreach ($semana as $dia) {
+            if(Carbon::parse($evento['start'])->format('D') == $dia[0]){
+              $dia_ev = $dia[1];
+              $hora_ev = Carbon::parse($evento['start'])->format('H:m');
+            }
+        }
+        $jornada;
+        if ($dia_ev == 'sabado') {
+          if ($horas > 0 && $horas <= 5) {
+            $jornada = 4;
+          }
+          else{ $jornada = 5; }
+        }
+        else if($dia_ev == 'domingo'){
+          if ($horas > 0 && $horas <= 5) {
+            $jornada = 6;
+          }
+          else{ $jornada = 7; }
+        }
+        else{
+          if($hora_ev >= '18:00'){ $jornada = 3; }
+          else if($horas > 0 && $horas <= 5){
+            $jornada = 1;
+          }
+          else{ $jornada = 2; }
+        }
+
+
+
         $turno = Turn::where('id_evento',$id_evento)->get();
 
         $t = Turn::find($turno[0]->id);
+        $t->id_jornada = $jornada;
         $t->tipo_transporte = $transporte;
         $t->save();
+
 
 
         foreach($materiales as $material){
           $mat = Material::find($material->id);
           $mat->stock_total = $material->disponibles - $material->utilizados;
           $mat->save();
+
+          if($material->utilizados > 0){
+          $stock = new Stock([
+            'id_turno' => $t->id,
+            'id_material' => $mat->id,
+            'cantidad' => $material->utilizados,
+          ]);
+          $stock->save();
+          }
         }
 
         foreach($expositores as $expositor){
@@ -590,6 +634,7 @@ class EventosController extends Controller
         $evento = Event::find($id_evento);
         $evento->ficha = 1;
         $evento->save();
+
 
         $establecimientos = Establishment::all();
         $tiposevento = Eventtype::all();

@@ -117,6 +117,7 @@ input[type=checkbox]
     <p><strong>Encargado: &nbsp;&nbsp;</strong><span id="enc"></span> </p>
     <p id="id_enc" class="hidden" ></p>
     <strong>Dinero asignado al turno: &nbsp;&nbsp;</strong> <input type="number" id="dinero" style="width:90px;height:28px" min="0" name="dinero"  value="0" disabled />
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>Horas trabajadas: &nbsp;&nbsp;</strong> <input type="number" id="horas" style="width:90px;height:28px" min="0" max="12" name="horas"  value="0" disabled />
     <br><br>
     <select id="sel_t" class="selectpicker" multiple title="Transporte utilizado" data-size="8" data-max-options="1" value="">
       <option value="No requiere" >No requiere</option>
@@ -150,6 +151,7 @@ input[type=checkbox]
       <input type="text" id="et" class="hidden" name="enc_t" value="" />
       <input type="text" id="money" class="hidden" name="money" value="" />
       <input type="text" id="tp" class="hidden" name="trsp" value="" />
+      <input type="text" id="hr" class="hidden" name="horas" value="" />
       <input type="text" class="hidden" name="evento" value="{{$event['id']}}" />
       <h2 align="center">Para confirmar solicitud y enviar Ficha, pulse "Enviar Formulario"</h1>
         <div class="col-md-4"></div>
@@ -255,7 +257,10 @@ input[type=checkbox]
   //  alert(json);
   }
   function confirm(){
-    if(document.getElementById('sel').value == ""){
+    if($("#horas").val() == 0){
+      alert("Debe indicar horas trabajadas");
+    }
+    else if(document.getElementById('sel').value == ""){
       alert("Debe seleccionar un encargado.");
     }
     else if($("#dinero").val() == 0){
@@ -273,6 +278,7 @@ input[type=checkbox]
       $("#et").val($("#id_enc").text());
       $("#money").val($("#dinero").val());
       $("#tp").val($("#transp").text());
+      $("#hr").val($("#horas").val());
     }
   }
 </script>
@@ -287,6 +293,7 @@ input[type=checkbox]
         $('#enc').text(exp);
         $('#id_enc').text(expositor[0]);
         document.getElementById('dinero').disabled=false;
+        document.getElementById('horas').disabled=false;
       }
       else{
         alert('Debe seleccionar un Expositor');

@@ -17,7 +17,6 @@ class CreateTurnsTable extends Migration
             $table->increments('id');
             $table->integer('id_jornada')->unsigned();
             $table->integer('id_evento')->unsigned();
-            $table->boolean('transporte')->nullable();
             $table->string('tipo_transporte')->nullable();
             $table->timestamps();
         });

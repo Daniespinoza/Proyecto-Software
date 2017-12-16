@@ -23,6 +23,9 @@ class CreateTurndetailsTable extends Migration
             $table->bigInteger('dinero_turno')->nullable();
             $table->boolean('visto');
             $table->boolean('pagado');
+            $table->boolean('polera')->nullable();
+            $table->boolean('poleron')->nullable();
+            $table->boolean('chaqueta')->nullable();
             $table->timestamps();
         });
     }

@@ -519,7 +519,7 @@ class EventosController extends Controller
         $expositores = array();
         foreach($expo_turno as $key){
           $exp = Exhibitor::find($key['id_expositor']);
-          array_push($expositores,$exp);
+          if ($key['confirmacion'] == 1){ array_push($expositores,$exp); }
         }
         $expos = collect($expositores);
         $expos->toJson();

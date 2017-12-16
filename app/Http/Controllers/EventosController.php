@@ -428,13 +428,16 @@ class EventosController extends Controller
             $jornada = 1;
           }
         }
-        $turno = new Turn([
-          'id_jornada' => $jornada,
-          'id_evento' => $request->get('id_evento'),
-          'transporte' => null,
-          'tipo_transporte' => null,
-        ]);
-        $turno->save();
+        $existe_turno = Turn::where('id_evento',$request->get('id_evento'))->get();
+        if(!count($existe_turno)){
+          $turno = new Turn([
+            'id_jornada' => $jornada,
+            'id_evento' => $request->get('id_evento'),
+            'transporte' => null,
+            'tipo_transporte' => null,
+          ]);
+          $turno->save();
+        }
 
         $_turn = Turn::where('id_evento',$request->get('id_evento'))->get();
         $id_turno = $_turn[0]['id'];
@@ -511,7 +514,19 @@ class EventosController extends Controller
     public function getFicha($id)
     {
       if(Auth::user()->id_rol != 4){
-        return view('eventos.ficha_evento');
+        $event = Event::find($id);
+        $turno = Turn::where('id_evento',$id)->get();
+        $expo_turno = Turndetail::where('id_turno',$turno[0]->id)->get();
+        $expositores = array();
+        foreach($expo_turno as $key){
+          $exp = Exhibitor::find($key['id_expositor']);
+          array_push($expositores,$exp);
+        }
+        $expos = collect($expositores);
+        $expos->toJson();
+        //dd($expositores);
+
+        return view('eventos.ficha_evento',compact('event','turno','expos'));
       }else{
         return redirect('/');
       }

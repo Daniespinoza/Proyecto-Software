@@ -15,6 +15,7 @@ use App\Staff;
 use App\Stock;
 use App\Disponibilidad;
 use Illuminate\Support\Facades\DB;
+use App\Material;
 use Auth;
 
 
@@ -501,8 +502,6 @@ class EventosController extends Controller
         $eventos = Event::all();
         $hoy = Carbon::now();
 
-
-
         return view('eventos.historial_eventos',compact('establecimientos','eventos' ,'tiposevento','hoy'));
       }
       else{
@@ -524,18 +523,82 @@ class EventosController extends Controller
         }
         $expos = collect($expositores);
         $expos->toJson();
-        //dd($expositores);
+        $materiales = Material::orderBy('descripcion','asc')->get();
+        $materiales->toJson();
 
-        return view('eventos.ficha_evento',compact('event','turno','expos'));
+        return view('eventos.ficha_evento',compact('event','turno','expos','materiales'));
       }else{
         return redirect('/');
       }
     }
 
-    public function setFicha()
+    public function confirmarFicha(Request $request)
     {
       if(Auth::user()->id_rol != 4){
-        return view('eventos');
+        $json_expositores = $request->get('expos');
+        $json_materiales = $request->get('mates');
+        $encargado = $request->get('enc_t');
+        $dinero = $request->get('money');
+        $transporte = $request->get('trsp');
+        $id_evento = $request->get('evento');
+
+        $expositores= json_decode($json_expositores);
+        $materiales= json_decode($json_materiales);
+
+        $turno = Turn::where('id_evento',$id_evento)->get();
+
+        $t = Turn::find($turno[0]->id);
+        $t->tipo_transporte = $transporte;
+        $t->save();
+
+
+        foreach($materiales as $material){
+          $mat = Material::find($material->id);
+          $mat->stock_total = $material->disponibles - $material->utilizados;
+          $mat->save();
+        }
+
+        foreach($expositores as $expositor){
+          $turno_expo = Turndetail::where('id_turno',$t->id)->where('id_expositor',$expositor->id)->get();
+          $up_t = Turndetail::find($turno_expo[0]->id);
+
+          if($expositor->firma == 'false'){ $up_t->asistencia = 0; }
+          if($expositor->firma =='true'){ $up_t->asistencia = 1; }
+          else{}
+
+          if($encargado == $expositor->id){
+            $up_t->encargado_turno = 1;
+            $up_t->dinero_turno = $dinero;
+          }else{}
+
+          if($expositor->polera == 'false'){ $up_t->polera = 0; }
+          if($expositor->polera =='true'){ $up_t->polera = 1; }
+          else{}
+
+          if($expositor->poleron == 'false'){ $up_t->poleron = 0; }
+          if($expositor->poleron =='true'){ $up_t->poleron = 1; }
+          else{}
+
+
+          if($expositor->chaqueta == 'false'){ $up_t->chaqueta = 0; }
+          if($expositor->chaqueta =='true'){ $up_t->chaqueta = 1; }
+          else{}
+
+          $up_t->save();
+        }
+
+        $evento = Event::find($id_evento);
+        $evento->ficha = 1;
+        $evento->save();
+
+        $establecimientos = Establishment::all();
+        $tiposevento = Eventtype::all();
+        $eventos = Event::all();
+        $hoy = Carbon::now();
+
+        return view('eventos.historial_eventos',compact('establecimientos','eventos' ,'tiposevento','hoy'));
+
+
       }else{
         return redirect('/');
       }

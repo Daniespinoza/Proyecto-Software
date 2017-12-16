@@ -57,7 +57,9 @@ Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('pe
 Route::get('/asignar_horario/{id}',['uses' => 'EventosController@asignarHorario'])->middleware('personal');
 Route::post('/confirmar_turnos','EventosController@confirmaTurnos')->middleware('personal');
 Route::get('/ficha_asistencia/{id}',['uses' => 'EventosController@getFicha'])->middleware('personal');
+Route::get('/ver_ficha/{id}',['uses' => 'EventosController@getVerFicha'])->middleware('personal');
 Route::post('confirmar_ficha','EventosController@confirmarFicha')->middleware('personal');
+
 //Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
 
 

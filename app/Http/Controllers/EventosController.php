@@ -649,6 +649,36 @@ class EventosController extends Controller
       }
     }
 
+public function getVerFicha($id)
+{
+  $event  = Event::find($id);
+  $turno = Turn::find($event->id);
+  $stock = Stock::where('id_turno',$turno->id)->get();
+  $turnodetail = Turndetail::where('id_turno',$turno->id)->get();
+  $eventype = Eventtype::where('id',$event->id_tipo_evento)->first();
+  $canma=0;
+  $canexp=0;
+  $materias = array();
+  $expos = array();
+  $encar = array();
+  foreach ($stock as $st ) {
+    $mat = Material::where('id',$st['id_material'])->first();
+    array_push($materias,$mat->descripcion);
+    $canma++;
+  }
+  foreach ($turnodetail as $turn ) {
+    $expo = Exhibitor::where('id',$turn->id_expositor)->first();
+    if($turn->encargado_turno == 1)
+    {
+      array_push($encar,$expo,$turn->dinero_turno);
+    }
+    $canexp++;
+    array_push($expos,$expo);
+  }
+  
 
+    return view('eventos.ver_ficha',compact('event','turno','stock','turnodetail','eventype','materias','expos','canma','canexp','encar'));
+
+}
 
 }

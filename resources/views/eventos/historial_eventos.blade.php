@@ -50,7 +50,7 @@
           <td class="text-center">{{$post['direccion']}}</td>
           @if($post['ficha'] == true)
             <th class="text-center"><b><font color="green">Ficha llenada satisfactoriamente</font></b></th>
-            <td class="text-center"><a href="#" class="btn btn-info"><strong>Ver ficha</strong></a></td>
+            <td class="text-center"><a href="{{action('EventosController@getVerFicha',$post['id'])}}" class="btn btn-info"><strong>Ver ficha</strong></a></td>
           @else
           <td class="text-center"><a href="{{action('EventosController@getFicha',$post['id'])}}" class="btn btn-success"><strong>Llenar ficha</strong></a></td>
             <th class="text-center"><b><font color="brown"> Aún no se llena la ficha </font></b></th>

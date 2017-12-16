@@ -36,7 +36,6 @@
 </div>
 
 <table id="example" class="display table table-hover" cellspacing="0" width="100%">
-
       <thead >
         <tr>
           <th class="text-center">N°</th>
@@ -59,9 +58,7 @@
           <th class="text-center">N° dias</th>
           <th class="text-center">$ Total liquido</th>
           <th class="text-center">$ Total bruto</th>
-
           </tr>
-
       </thead>
       <tfoot>
         <tr>
@@ -140,8 +137,6 @@
                  extend: 'pdfHtml5',
                  orientation: 'landscape',
                  pageSize:'LEGAL',
-
-
              }
          ],
         paging: false,

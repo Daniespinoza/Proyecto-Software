@@ -28,6 +28,22 @@ class PersonalController extends Controller
             $role = Role::where('id',$per['id_rol'])->first();
             $rol = $role->permiso;
             $per['id_rol'] = $rol;
+
+            $largo = strlen ($per['rut']);
+            if($largo == 9)
+            {
+              $mistring =$per['rut'];
+              $mistring= substr($mistring,0,1).".".substr($mistring,1,3).".".substr($mistring,4,7);
+              $per['rut']=$mistring;
+            }
+            if($largo == 10)
+            {
+              $mistring = $per['rut'];
+              $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
+              $per['rut']=$mistring;    
+            }
+
+
             array_push($personal,$per);
           }
         }

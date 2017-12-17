@@ -45,6 +45,22 @@ class ExpositoresController extends Controller
             $comuna = Commune::where('id',$expo['id_comuna'])->first();
             $nomcomuna = $comuna->nombre;
             $expo['id_comuna'] = $nomcomuna;
+
+            $largo = strlen($expo['alu_rut']);
+            if($largo == 9)
+            {
+              $mistring = $expo['alu_rut'];
+              $mistring= substr($mistring,0,1).".".substr($mistring,1,3).".".substr($mistring,4,7);
+              $expo['alu_rut']=$mistring;
+            }
+            if($largo == 10)
+            {
+              $mistring = $expo['alu_rut'];
+              $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
+              $expo['alu_rut']=$mistring;  
+            }
+
+
             array_push($expositores,$expo);
           }
           $facultades = Facultad::all()->toArray();
@@ -212,7 +228,7 @@ class ExpositoresController extends Controller
         return redirect('/expositores');
 
       }
-    
+
       else{
         return redirect('/');
       }

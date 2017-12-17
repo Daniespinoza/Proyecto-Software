@@ -42,6 +42,19 @@ class DatosController extends Controller
         $expo = Exhibitor::where('id_user','=',$user)->first();
         $nombre = $expo->alu_nombre." ".$expo->alu_apellido_paterno." ".$expo->alu_apellido_materno;
         $correo=$expo->alu_email;
+        $largo=strlen($expo->alu_rut);
+        if($largo==9)
+        {
+            $mistring = $expo->alu_rut;
+            $mistring= substr($mistring,0,1).".".substr($mistring,1,3).".".substr($mistring,4,7);
+            $expo->alu_rut=$mistring;
+        }
+        if($largo == 10)
+        {
+          $mistring = $expo->alu_rut;
+          $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
+          $expo->alu_rut=$mistring;
+        }
         $rut = $expo->alu_rut;
         $array = array('nombre' => $nombre,'correo' =>$correo,'rut'=>$rut);
         $carrera = Carrera::where('id',$expo['id_carrera'])->first();
@@ -69,6 +82,19 @@ class DatosController extends Controller
         $staffs = Staff::where('id_user','=',$user)->first();
         $nombre = $staffs->nombre." ".$staffs->apellido_paterno." ".$staffs->apellido_materno;
         $correo = $staffs->correo;
+        $largo=strlen($staffs->rut);
+        if($largo==9)
+        {
+            $mistring = $staffs->rut;
+            $mistring= substr($mistring,0,1).".".substr($mistring,1,3).".".substr($mistring,4,7);
+            $staffs->rut=$mistring;
+        }
+        if($largo == 10)
+        {
+          $mistring = $staffs->rut;
+          $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
+          $staffs->rut=$mistring;
+        }
         $rut = $staffs->rut;
         $array = array('nombre' => $nombre,'correo' =>$correo,'rut'=>$rut);
         $comuna = Commune::where('id',$staffs['id_comuna'])->first();
@@ -330,6 +356,23 @@ class DatosController extends Controller
         $fechamediodia=array();
         $fechatarde=array();
 
+        $largo = strlen($expos[1]['alu_rut']);
+
+        foreach ($expos as $exp ) {
+          if($largo == 9)
+          {
+            $mistring=$exp['alu_rut'];
+            $mistring= substr($mistring,0,1).".".substr($mistring,1,3).".".substr($mistring,4,7);
+            $exp['alu_rut']=$mistring;
+          }
+
+          else{
+          $mistring=$exp['alu_rut'];
+          $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
+          $exp['alu_rut']=$mistring;
+
+          }
+        }
         foreach ($expos as $expo) {
             $cmd = 0;
             $md = 0;
@@ -491,6 +534,23 @@ class DatosController extends Controller
         $fechadiacompleto=array();
         $fechamediodia=array();
         $fechatarde=array();
+
+        $largo = strlen($expos[1]['alu_rut']);
+
+        foreach ($expos as $exp ) {
+          if($largo == 9)
+          {
+            $mistring=$exp['alu_rut'];
+            $mistring= substr($mistring,0,1).".".substr($mistring,1,3).".".substr($mistring,4,7);
+            $exp['alu_rut']=$mistring;
+          }
+          else{
+          $mistring=$exp['alu_rut'];
+          $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
+          $exp['alu_rut']=$mistring;
+
+          }
+        }
 
         foreach ($expos as $expo) {
             $cmd = 0;

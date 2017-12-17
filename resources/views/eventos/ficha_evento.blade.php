@@ -263,9 +263,7 @@ input[type=checkbox]
     else if(document.getElementById('sel').value == ""){
       alert("Debe seleccionar un encargado.");
     }
-    else if($("#dinero").val() == 0){
-      alert("Debe ingresar un monto.");
-    }
+    
     else if(document.getElementById('sel_t').value == ""){
       alert("Debe seleccionar transporte.");
     }

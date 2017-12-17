@@ -14,7 +14,7 @@
 <div class="form-group">
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> RBD </label>
      <div class="col-md-4">
-        <input class="form-control" pattern="[0-9]" min="1" type="number" name="rbd" required/>
+        <input class="form-control" pattern="[0-9]" min="0" type="number" name="rbd" value="0000" required/>
       </div>
     </div>
     <div class="form-group">

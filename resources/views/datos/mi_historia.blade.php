@@ -62,7 +62,7 @@
                 @elseif($fecha[$i]->invert == 0 && $det[$i]['confirmacion'] != 0 && $det[$i]['confirmacion'] != 2)
                     <td class="text-center" ><b><font color="green"> Turno confirmado </font></b></td>
                 @elseif($fecha[$i]->invert == 0 && $det[$i]['confirmacion'] != 0 && $det[$i]['confirmacion'] != 1)
-                        <td class="text-center" ><b><font color="green"> Usted Rechazo el turno </font></b></td>                    
+                        <td class="text-center" ><b><font color="green"> Usted Rechazo el turno </font></b></td>
                 @else
                           <td class="text-center" ><b><font color="red"> Usted no confirmó </font></b></td>
 
@@ -70,7 +70,7 @@
 
                 @endif
 
-                @if($fecha[$i]->m >=0 && $fecha[$i]->d >0 && $fecha[$i]->invert == 1 &&  $det[$i]['confirmacion'] !=2)
+                @if( $fecha[$i]->invert == 1 &&  $det[$i]['confirmacion'] !=2)
                   <td class="text-center" >
                     <form action="{{action('DatosController@updateAsistir',$det[$i])}}" method="post">
                         {{csrf_field()}}

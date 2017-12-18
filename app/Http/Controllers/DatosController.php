@@ -163,10 +163,10 @@ class DatosController extends Controller
        $pass = $request->get('nueva_password');
        $dir = $request->get('txtDireccion');
 
-    if($pass != ""){
+       if($pass != ""){
        $pass = $request->get('nueva_password');
        $pass2= $request->get('confirmacion_password');
-       if($pass == $pass2){
+            if($pass == $pass2){
 
         $user = User::where('id','=',$id)->first();
         $user -> password = bcrypt($request->get('nueva_password'));
@@ -178,16 +178,16 @@ class DatosController extends Controller
           return redirect('mis_datos');
       }
     }
-    if($dir =!""){
-      $expo = Exhibitor::where('id_user','=',$id)->first();
-      $com = $request ->get('selectComuna');
-      $tel = $request -> get ('txtTelefono');
-      $dir = $request->get('txtDireccion');
-      $expo ->id_comuna = $com;
-      $expo ->direccion = $dir;
-      $expo ->alu_celular = $tel;
-      $expo->save();
-      return redirect('mis_datos');
+        if($dir =!""){
+        $expo = Exhibitor::where('id_user','=',$id)->first();
+        $com = $request ->get('selectComuna');
+        $tel = $request -> get ('txtTelefono');
+        $dir = $request->get('txtDireccion');
+        $expo ->id_comuna = $com;
+        $expo ->direccion = $dir;
+        $expo ->alu_celular = $tel;
+        $expo->save();
+        return redirect('mis_datos');
 
     }
   }
@@ -355,7 +355,6 @@ class DatosController extends Controller
         $fechadiacompleto=array();
         $fechamediodia=array();
         $fechatarde=array();
-
         $largo = strlen($expos[1]['alu_rut']);
 
         foreach ($expos as $exp ) {
@@ -504,7 +503,15 @@ class DatosController extends Controller
       if (Auth::user()->id_rol == 4){
         $idd = $request->getQueryString();
         $detail = Turndetail::find($idd);
+
         $detail ->confirmacion = $request->get('asistir');
+        if($detail->confirmacion == 2 )
+        {
+          $turno = Turn::where('id',$detail->id_turno)->first();
+          $event = Event::where('id',$turno->id_evento)->first();
+          $event->cupos = $event->cupos + 1;
+          $event->save();
+        }
         $detail->visto = 1;
         $detail->save();
 

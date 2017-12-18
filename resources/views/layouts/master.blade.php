@@ -27,7 +27,6 @@
 	<link rel="stylesheet" href=" {{asset('css/datepicker.min.css')}}" />
 	<link rel="apple-touch-icon" href=" {{asset('images/apple-touch-icon.png')}}">
 </head>
-
 <body class="no-skin">
         <div id="navbar" class="navbar navbar-default">
             <div class="navbar-container" id="navbar-container">
@@ -138,8 +137,6 @@
     } catch (e) {
     }
 </script>
-
-
 <ul class="nav nav-list">
     <li>
         <a href="/">
@@ -514,11 +511,9 @@
         <b class="arrow"></b>
     </li>
 </ul><!-- /.nav-list -->
-
 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
     <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 </div>
-
 <script type="text/javascript">
     try {
         ace.settings.check('sidebar', 'collapsed')
@@ -526,7 +521,6 @@
     }
 </script>
             </div>
-
             <div class="main-content">
                 <div class="main-content-inner">
 
@@ -550,11 +544,6 @@
                         </div><!-- /.main-content -->
                     <div class="page-content">
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-        <!--script src="{{asset('js/formulario.js')}}"></script>
-        <script src="{{asset('js/jquery.carousel.js')}}"></script-->
-
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/bootbox.min.js')}}"></script>
         <script src="{{asset('js/ace-elements.min.js')}}"></script>
@@ -570,13 +559,6 @@
         <script src="{{asset('js/date-time/datepicker.min.js')}}"></script>
         <script src="{{asset('js/date-time/moment.js')}}"></script>
         <script src="{{asset('js/date-time/bootstrap-datepicker.min.js')}}"></script>
-
-
-
-
-
-
-
 						@yield('contenido')
 						<div class="footer">
 		                        <div class="footer-inner">
@@ -601,8 +583,6 @@
             if ('ontouchstart' in document.documentElement)
                 document.write("<script src='/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
         </script>
-
-
         <style>
             @media only screen and (max-height: 540px){
                 .ace-nav>li>.dropdown-menu {  margin-top: auto;
@@ -611,6 +591,5 @@
                 }
             }
         </style>
-
 	</body>
 </html>

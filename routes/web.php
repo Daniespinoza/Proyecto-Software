@@ -16,40 +16,27 @@ Route::get('/ruta', function () {
     return view('home');
 });
 */
-
 Auth::routes();
-
 Route::get('/comuna', function () {
   $event = App\Commune::all();
   $event->toJson();
   return response($event);
 });
-
-
-// QUESTION: Debemos crear nuevos campos en la base de datos
-// TEMP: Como pasar una tabla de datos a json
-// IDEA: Crear nuevos campo en la tabla eventos
-
-
 Route::get('/', 'HomeController@index');
-
 Route::resource('establecimientos','EstablecimientosController');
 Route::resource('expositores','ExpositoresController');
 Route::resource('personal','PersonalController');
 Route::resource('materiales','MaterialesController');
 Route::resource('eventos','EventosController');
 Route::resource('mis_datos','DatosController');
-
 Route::get('/generar_pagos','DatosController@pagos')->middleware('personal');
 Route::post('/generar_pagos','DatosController@pagoss')->middleware('personal');
-
 Route::get('/mi_horario','DatosController@getHorario')->middleware('exhi');
 Route::get('/mis_pagos','ExpositoresController@getPagos')->middleware('exhi');
 Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi');
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
-
 Route::get('/ingresar_evento','EventosController@ingresaEvento')->middleware('personal');
 Route::get('/historial_eventos','EventosController@historialEventos')->middleware('personal');
 Route::get('/listado_eventos','EventosController@listarEventos')->middleware('personal');

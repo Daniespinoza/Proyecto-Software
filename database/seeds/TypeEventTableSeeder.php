@@ -67,10 +67,6 @@ class TypeEventTableSeeder extends Seeder
       $ensayo->descripcion = null;
       $ensayo->save();
 
-      $otros = new Eventtype();
-      $otros->subtipo = 'Otros';
-      $otros->descripcion = null;
-      $otros->save();
 
 
     }

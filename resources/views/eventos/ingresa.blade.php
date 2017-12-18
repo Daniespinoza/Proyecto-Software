@@ -98,9 +98,11 @@
             </div>
           </div>
 
-            <div class="col-md-10"></div>
+          <div class="form-group">
+            <div class="col-md-8"></div>
             <input type="submit" class="btn btn-primary">
             </div>
+          </div>
         </div>
       </form>
 

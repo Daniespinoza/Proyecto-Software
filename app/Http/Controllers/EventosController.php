@@ -15,18 +15,9 @@ use App\Staff;
 use App\Stock;
 use App\Disponibilidad;
 use Illuminate\Support\Facades\DB;
-
+use App\Material;
 use Auth;
 
-/*
-use App\Mail\confirma; aqui va depender que mensaje se quiera enviar
-use App\Mail\rechaza; tambien de lo que se quiere usar
-use App\Mail\turno;
-esta son las lineas de codigo que mandan el mail
-Mail::to($request->user())->send(new turno($turno);
-Mail::to($request->user())->send(new rechaza($turno);
-Mail::to($request->user())->send(new confirma($turno);
-*/
 
 class EventosController extends Controller
 {
@@ -41,7 +32,6 @@ class EventosController extends Controller
      */
     public function index()
     {
-      //dd(Auth::user()['id_rol']);
       if (Auth::user()->id_rol == 4){
         $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
         $turns = Turndetail::where('id_expositor',$expo[0]->id)->where('confirmacion','=',1)->get();
@@ -54,12 +44,9 @@ class EventosController extends Controller
             }
             array_push($id_turnos,$turno->id_turno);
           }
-
-
         $TURNOS = Turn::all();
         $eventos_user = array();
         foreach ($TURNOS as $tur) {
-          //dd($ev);
             if (in_array($tur->id,$id_turnos)) {
               array_push($eventos_user,$tur->id_evento);
             }
@@ -68,35 +55,18 @@ class EventosController extends Controller
         $eventss = Event::all()->toArray();
 
         $_event = array();
-        //dd($eventos_user);
         foreach ($eventss as $ev) {
           if(in_array($ev['id'],$eventos_user)){
             array_push($_event,$ev);
           }
         }
-        //dd($event);
-        //$event = json_encode($_event, JSON_FORCE_OBJECT);
-        //$event = App\Event::all();
-        //$event->toJson();
-        //return response($event);
         $event = collect($_event);
         $event->toJson();
-      //  json_encode($_event);
-        //dd($_event);
-        //dd($_event);
-       //dd($event);
-      //  return response($event);
-        //$view =  View::make('eventos.index',compact('_event','count'));
-        //dd($view);
-        //dd($event);
         return view('eventos.index',compact('event','count'));
         }
       else{
         $event = Event::all();
-        //dd($event);
         $event->toJson();
-        //return response($event);
-       //dd($event);
 
         return view('eventos.index',compact('event','count'));
       }
@@ -164,7 +134,8 @@ class EventosController extends Controller
               'cupos'=>$request->get('cupos'),
               'direccion'=> $request->get('direccion'),
               'start'=>$request->get('fecha'),
-              'title' => $request->get('nombre')
+              'title' => $request->get('nombre'),
+              'ficha' => false
 
             ]);
 
@@ -194,8 +165,9 @@ class EventosController extends Controller
             ]);
             $evento->save();
           }
-
-          return view('eventos.index');
+          $event = Event::all();
+          $event->toJson();
+          return view('eventos.index',compact('event'));
 
 
         }
@@ -266,6 +238,7 @@ class EventosController extends Controller
         $evento->cupos = $request->get('cupos');
         $evento->start = $request->get('start');
         $evento->title = $request->get('title');
+        $evento->ficha = false;
         //dd($evento);
         $evento->save();
         return redirect('/listado_eventos');
@@ -320,7 +293,7 @@ class EventosController extends Controller
         $eventos = Eventtype::all();
         $tiposevento = Event::all();
         $ev = Event::find($id);
-      //  dd($ev['start']);
+        //dd($ev['start']);
         $expositores = Exhibitor::orderBy('alu_nombre','asc')->get();
         //dd($expositores);
         $detalles = Turndetail::all()->toArray();
@@ -331,7 +304,6 @@ class EventosController extends Controller
 
         $hoy = Carbon::now();
 
-        //dd(Carbon::parse($ev['start'])->format('H:m'));
         //get event day
         $semana = array(array('Mon','lunes'), array('Tue','martes'), array('Wed','miercoles'),
                         array('Thu','jueves'), array('Fri','viernes'), array('Sat','sabado'), array('Sun','domingo'));
@@ -342,8 +314,7 @@ class EventosController extends Controller
               $hora_ev = Carbon::parse($ev['start'])->format('H:m');
             }
         }
-        //dd($hora_ev);
-        //dd($disponibilidades[0][$dia_ev]);
+
 
         //get expositores Disponibles
         $_disp = array();
@@ -384,7 +355,6 @@ class EventosController extends Controller
           array_push($_all,$count);
           array_push($all,$_all);
         }
-        //dd($all);
 
         //arreglo con id, expositor y cantidad de turnos confirmados
         $fin = array();
@@ -401,7 +371,6 @@ class EventosController extends Controller
             }
           }
         }
-        //dd($fin);
 
         $_turns = array();
         for ($i=0; $i < count($fin) ; $i++) {
@@ -410,9 +379,26 @@ class EventosController extends Controller
           }
         }
         sort($_turns);
-        //dd($_turns);
         $_cantidad = count($fin);
 
+        //verificar si ya hubo turnos asignados
+        $turnexist = Turn::where('id_evento',$ev->id)->get();
+        if(count($turnexist)){
+          $nuevo_array = array();
+          $turnosexist = Turndetail::where('id_turno',$turnexist[0]['id'])->get();
+          for ($i=0; $i < $_cantidad ; $i++) {
+            $esta = false;
+            for ($j=0; $j < count($turnosexist) ; $j++)
+              if($turnosexist[$j]['id_expositor'] == $fin[$i][0] ){
+                $esta = true;
+              }
+            if($esta == false){
+              array_push($nuevo_array,$fin[$i]);
+            }
+          }
+          $fin = $nuevo_array; //nuevo fin sin los expositores existentes en el turno
+          $_cantidad = count($fin);
+        }
 
         return view('eventos.asignar_turnos',compact('establecimientos','eventos' ,'tiposevento','id','ev','fin','_turns','_cantidad','dia_ev','hora_ev'));
       }
@@ -443,18 +429,22 @@ class EventosController extends Controller
             $jornada = 1;
           }
         }
-        $turno = new Turn([
-          'id_jornada' => $jornada,
-          'id_evento' => $request->get('id_evento'),
-          'transporte' => null,
-          'tipo_transporte' => null,
-        ]);
-        $turno->save();
+        $existe_turno = Turn::where('id_evento',$request->get('id_evento'))->get();
+        if(!count($existe_turno)){
+          $turno = new Turn([
+            'id_jornada' => $jornada,
+            'id_evento' => $request->get('id_evento'),
+            'transporte' => null,
+            'tipo_transporte' => null,
+          ]);
+          $turno->save();
+        }
 
         $_turn = Turn::where('id_evento',$request->get('id_evento'))->get();
         $id_turno = $_turn[0]['id'];
         //dd($id_turno);
         //dd($json[0]->Apellido_Paterno);
+        $cont = 0;
         foreach ($json as $expo) {
            $detail = new Turndetail([
              'id_turno' => $id_turno,
@@ -467,7 +457,13 @@ class EventosController extends Controller
              'pagado' => 0,
            ]);
            $detail->save();
+           $cont++;
         }
+
+        $ev_cup = Event::find($request->get('id_evento'));
+        $current = $ev_cup->cupos;
+        $ev_cup->cupos = $current - $cont;
+        $ev_cup->save();
 
         $establecimientos = Establishment::all();
         $tiposevento = Eventtype::all();
@@ -506,8 +502,6 @@ class EventosController extends Controller
         $eventos = Event::all();
         $hoy = Carbon::now();
 
-
-
         return view('eventos.historial_eventos',compact('establecimientos','eventos' ,'tiposevento','hoy'));
       }
       else{
@@ -515,5 +509,179 @@ class EventosController extends Controller
       }
 
     }
+
+    public function getFicha($id)
+    {
+      if(Auth::user()->id_rol != 4){
+        $event = Event::find($id);
+        $turno = Turn::where('id_evento',$id)->get();
+        $expo_turno = Turndetail::where('id_turno',$turno[0]->id)->get();
+        $expositores = array();
+        foreach($expo_turno as $key){
+          $exp = Exhibitor::find($key['id_expositor']);
+          if ($key['confirmacion'] == 1){ array_push($expositores,$exp); }
+        }
+        $expos = collect($expositores);
+        $expos->toJson();
+        $materiales = Material::orderBy('descripcion','asc')->get();
+        $materiales->toJson();
+
+        return view('eventos.ficha_evento',compact('event','turno','expos','materiales'));
+      }else{
+        return redirect('/');
+      }
+    }
+
+    public function confirmarFicha(Request $request)
+    {
+      if(Auth::user()->id_rol != 4){
+        $json_expositores = $request->get('expos');
+        $json_materiales = $request->get('mates');
+        $encargado = $request->get('enc_t');
+        $dinero = $request->get('money');
+        $transporte = $request->get('trsp');
+        $id_evento = $request->get('evento');
+        $horas = $request->get('horas');
+
+        $expositores= json_decode($json_expositores);
+        $materiales= json_decode($json_materiales);
+
+        $evento = Event::find($id_evento);
+        $semana = array(array('Mon','lunes'), array('Tue','martes'), array('Wed','miercoles'),
+                        array('Thu','jueves'), array('Fri','viernes'), array('Sat','sabado'), array('Sun','domingo'));
+        foreach ($semana as $dia) {
+            if(Carbon::parse($evento['start'])->format('D') == $dia[0]){
+              $dia_ev = $dia[1];
+              $hora_ev = Carbon::parse($evento['start'])->format('H:m');
+            }
+        }
+        $jornada;
+        if ($dia_ev == 'sabado') {
+          if ($horas > 0 && $horas <= 5) {
+            $jornada = 4;
+          }
+          else{ $jornada = 5; }
+        }
+        else if($dia_ev == 'domingo'){
+          if ($horas > 0 && $horas <= 5) {
+            $jornada = 6;
+          }
+          else{ $jornada = 7; }
+        }
+        else{
+          if($hora_ev >= '18:00'){ $jornada = 3; }
+          else if($horas > 0 && $horas <= 5){
+            $jornada = 1;
+          }
+          else{ $jornada = 2; }
+        }
+
+
+
+        $turno = Turn::where('id_evento',$id_evento)->get();
+
+        $t = Turn::find($turno[0]->id);
+        $t->id_jornada = $jornada;
+        $t->tipo_transporte = $transporte;
+        $t->save();
+
+
+
+        foreach($materiales as $material){
+          $mat = Material::find($material->id);
+          $mat->stock_total = $material->disponibles - $material->utilizados;
+          $mat->save();
+
+          if($material->utilizados > 0){
+          $stock = new Stock([
+            'id_turno' => $t->id,
+            'id_material' => $mat->id,
+            'cantidad' => $material->utilizados,
+          ]);
+          $stock->save();
+          }
+        }
+
+        foreach($expositores as $expositor){
+          $turno_expo = Turndetail::where('id_turno',$t->id)->where('id_expositor',$expositor->id)->get();
+          $up_t = Turndetail::find($turno_expo[0]->id);
+
+          if($expositor->firma == 'false'){ $up_t->asistencia = 0; }
+          if($expositor->firma =='true'){ $up_t->asistencia = 1; }
+          else{}
+
+          if($encargado == $expositor->id){
+            $up_t->encargado_turno = 1;
+            $up_t->dinero_turno = $dinero;
+          }else{}
+
+          if($expositor->polera == 'false'){ $up_t->polera = 0; }
+          if($expositor->polera =='true'){ $up_t->polera = 1; }
+          else{}
+
+          if($expositor->poleron == 'false'){ $up_t->poleron = 0; }
+          if($expositor->poleron =='true'){ $up_t->poleron = 1; }
+          else{}
+
+
+          if($expositor->chaqueta == 'false'){ $up_t->chaqueta = 0; }
+          if($expositor->chaqueta =='true'){ $up_t->chaqueta = 1; }
+          else{}
+
+          $up_t->save();
+        }
+
+        $evento = Event::find($id_evento);
+        $evento->ficha = 1;
+        $evento->save();
+
+
+        $establecimientos = Establishment::all();
+        $tiposevento = Eventtype::all();
+        $eventos = Event::all();
+        $hoy = Carbon::now();
+
+        return view('eventos.historial_eventos',compact('establecimientos','eventos' ,'tiposevento','hoy'));
+
+
+      }else{
+        return redirect('/');
+      }
+    }
+
+public function getVerFicha($id)
+{
+  $event  = Event::find($id);
+  $turno = Turn::where('id_evento',$event->id)->get();
+  $stock = Stock::where('id_turno',$turno[0]['id'])->get();
+  $turnodetail = Turndetail::where('id_turno',$turno[0]['id'])->get();
+  //dd($turnodetail);
+  $eventype = Eventtype::where('id',$event->id_tipo_evento)->first();
+  $canma=0;
+  $canexp=0;
+  $materias = array();
+  $expos = array();
+  $encar = array();
+  if(count($stock)){
+    foreach ($stock as $st ) {
+      $mat = Material::where('id',$st['id_material'])->first();
+      array_push($materias,$mat->descripcion);
+      $canma++;
+    }
+  }
+  foreach ($turnodetail as $turn ) {
+    $expo = Exhibitor::where('id',$turn->id_expositor)->first();
+    if($turn->encargado_turno == 1)
+    {
+      array_push($encar,$expo,$turn->dinero_turno);
+    }
+    $canexp++;
+    array_push($expos,$expo);
+  }
+
+
+    return view('eventos.ver_ficha',compact('event','turno','stock','turnodetail','eventype','materias','expos','canma','canexp','encar'));
+
+}
 
 }

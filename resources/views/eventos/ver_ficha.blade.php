@@ -100,7 +100,7 @@
 </table>
 <div class="page-content">
   <div class="row">
-    <div class="col-md-4" ><h4 align="right"><strong>Transporte:</strong> {{ $turno->tipo_transporte }}</h4></div>
+    <div class="col-md-4" ><h4 align="right"><strong>Transporte:</strong> {{ $turno[0]['tipo_transporte'] }}</h4></div>
     <div class="col-md-4" ><h4 align="center"><strong>Encargado:</strong> {{$encar[0]->alu_nombre." ".$encar[0]->alu_apellido_paterno." ".$encar[0]->alu_apellido_materno }}</h4></div>
     <div class="col-md-3" ><h4 align="right"><strong>Monto:</strong> {{$encar[1]}}</h4></div>
 </div>

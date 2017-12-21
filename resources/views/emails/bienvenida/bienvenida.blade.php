@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-El expositor ha confirmado la asistencia al evento.
+Bienvenido expositor.
 
 @component('mail::button', ['url' => ''])
 Button Text

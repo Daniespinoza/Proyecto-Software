@@ -7,6 +7,6 @@ El expositor ha rechazado la asistencia al evento.
 Button Text
 @endcomponent
 
-Thanks,<br>
+Gracias,<br>
 {{ config('app.name') }}
 @endcomponent

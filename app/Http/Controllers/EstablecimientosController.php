@@ -46,10 +46,15 @@ class EstablecimientosController extends Controller
           $cargo = Establishmentcharge::where('id',$estab['id_cargo'])->first();
           $car = $cargo->descripcion;
           $estab['id_cargo'] = $car;
+          if($estab['rbd'] == null)
+          {
+            $estab['rbd']='0000';
+          }
 
           array_push($establecimientos,$estab);
 
         }
+
         return view('establecimientos.index',compact('establecimientos'));
       }
       else{
@@ -86,8 +91,19 @@ class EstablecimientosController extends Controller
     public function store(Request $request)
     {
       if(Auth::user()->id_rol != 4){
+        $ti= $request->get('tipo');
+        $Eve= Establishmenttype::where('id',$ti)->first();
+
+        if($Eve->tipo == 'PREU')
+        {
+          $rb = null;
+        }
+        else {
+          $rb= $request->get('rbd');
+        }
+
         $est = new Establishment([
-          'rbd' => $request->get('rbd'),
+          'rbd' => $rb,
           'nombre_establecimiento' => $request->get('nombre'),
           'id_comuna' => $request->get('comuna'),
           'direccion' => $request->get('direccion'),
@@ -99,6 +115,7 @@ class EstablecimientosController extends Controller
           'telefono' => $request->get('fono'),
           'pace' => $request->get('pace'),
         ]);
+
         $est->save();
 
         return redirect('/establecimientos');
@@ -164,9 +181,21 @@ class EstablecimientosController extends Controller
     public function update(Request $request, $id)
     {
       if(Auth::user()->id_rol != 4){
+
+          $ti= $request->get('tipo');
+          $Eve= Establishmenttype::where('id',$ti)->first();
+
+          if($Eve->tipo == 'PREU')
+          {
+            $rb = null;
+          }
+          else {
+            $rb= $request->get('rbd');
+          }
         $estab = Establishment::find($id);
 
-        $estab->rbd = $request->get('rbd');
+
+        $estab->rbd = $rb;
         $estab->nombre_establecimiento = $request->get('nombre');
         $estab->id_comuna = $request->get('comuna');
         $estab->direccion = $request->get('direccion');

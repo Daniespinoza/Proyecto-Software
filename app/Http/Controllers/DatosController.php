@@ -636,20 +636,51 @@ class DatosController extends Controller
         'canmedio','cantarde','cancompleto','total','fechamediodia','fechadiacompleto','fechatarde','fecha'));
       }
     }
-    /*public function checkTurns()
-    {
-      //return view('/mi_historial');
-      //dd(Auth::user());
-        if (Auth::user()->id_rol  == 4) {
-          $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
-          $turn = Turndetail::where('id_expositor',$expo[0]->id);
-          foreach ($turn as $t) {
-            $t->visto = 1;
-            $t->save();
-        }
 
+    public function getJornadas(){
+      if(Auth::user()->id_rol == 1){
+        $jornadas = Jornada::all();
+        return view('datos.jornadas',compact('jornadas'));
+      }else{
+        return redirect('/');
       }
+    }
 
-    }*/
+    public function setJornadas(Request $request){
+      if(Auth::user()->id_rol == 1){
+        $LU1 = Jornada::find(1);
+        $LU1->valor = $request->get('lu1');
+        $LU1->save();
+
+        $LU2 = Jornada::find(2);
+        $LU2->valor = $request->get('lu2');
+        $LU2->save();
+
+        $LU3 = Jornada::find(3);
+        $LU3->valor = $request->get('lu3');
+        $LU3->save();
+
+        $SA1 = Jornada::find(4);
+        $SA1->valor = $request->get('sa1');
+        $SA1->save();
+
+        $SA2 = Jornada::find(5);
+        $SA2->valor = $request->get('sa2');
+        $SA2->save();
+
+        $DO1 = Jornada::find(6);
+        $DO1->valor = $request->get('do1');
+        $DO1->save();
+
+        $DO2 = Jornada::find(7);
+        $DO2->valor = $request->get('do2');
+        $DO2->save();
+
+        $jornadas = Jornada::all();
+        return view('datos.jornadas',compact('jornadas'));
+      }else{
+        return redirect('/');
+      }
+    }
 
 }

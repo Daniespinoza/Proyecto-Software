@@ -4,11 +4,11 @@
     'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost/800:/',
+    'url' => 'http://localhost',
     'timezone' => 'America/Santiago',
     'locale' => 'es',
     'fallback_locale' => 'en',
-    'key' => 'base64:/tTDZmHjfedhpa7+4CyoaJPr74SJQaNY7jvVBnDJjGw=',
+    'key' => 'base64:NbfquflgsA4iOYQlXF7f2wYLmOX+6XDsVzmCgqkbrfY=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -171,7 +171,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/daniel/laravel/Proyecto-Software/storage/framework/cache/data',
+        'path' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -276,13 +276,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/home/daniel/laravel/Proyecto-Software/storage/app',
+        'root' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/home/daniel/laravel/Proyecto-Software/storage/app/public',
-        'url' => 'http://localhost/800://storage',
+        'root' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/app/public',
+        'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -314,7 +314,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/home/daniel/laravel/Proyecto-Software/resources/views/vendor/mail',
+        0 => '/opt/lampp/htdocs/ws/Proyecto-Software/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -391,10 +391,10 @@
   'session' => 
   array (
     'driver' => 'file',
-    'lifetime' => 120,
+    'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/home/daniel/laravel/Proyecto-Software/storage/framework/sessions',
+    'files' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -441,9 +441,9 @@
   array (
     'paths' => 
     array (
-      0 => '/home/daniel/laravel/Proyecto-Software/resources/views',
+      0 => '/opt/lampp/htdocs/ws/Proyecto-Software/resources/views',
     ),
-    'compiled' => '/home/daniel/laravel/Proyecto-Software/storage/framework/views',
+    'compiled' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/framework/views',
   ),
   'trustedproxy' => 
   array (

@@ -432,12 +432,23 @@
 		@endif
 
 
-		<!-- Generar convenio -->
+		<!-- Generar pagos -->
 		@if (Auth::user()->id_rol == 1)
     <li class="">
         <a class="link" href="{{action('DatosController@pagos')}}">
             <i class="menu-icon fa fa-pencil-square-o "></i>
             <span class="menu-text"> Generar Pagos </span>
+        </a>
+        <b class="arrow"></b>
+    </li>
+		@endif
+
+		<!-- Actualizar montos -->
+		@if (Auth::user()->id_rol == 1)
+    <li class="">
+        <a class="link" href="{{action('DatosController@getJornadas')}}">
+            <i class="menu-icon fa fa-money "></i>
+            <span class="menu-text"> Montos por jornadas </span>
         </a>
         <b class="arrow"></b>
     </li>

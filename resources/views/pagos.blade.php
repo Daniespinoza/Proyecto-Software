@@ -8,27 +8,15 @@
 <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->
 
 <div class="page-header">
-  <h1>Nómina de pagos Estudiantes Expositores de Difusión UTEM</h1>
+  <h1>Nómina de pagos Estudiantes Expositores de Difusión UTEM {{$fecha}}</h1>
+  <h4>favor seleccionar un mes y año para filtrar la información</h4>
 </div>
 
 <div class="form-group">
 <form class="form-horizontal" method="post" action="{{action('DatosController@pagoss')}}">
 {{ csrf_field() }}
-<select class="" name="meses">
-  <option value="">--Seleccionar mes--</option>
-  <option value="1">Enero</option>
-  <option value="2">Febrero</option>
-  <option value="3">Marzo</option>
-  <option value="4">Abril</option>
-  <option value="5">Mayo</option>
-  <option value="6">Junio</option>
-  <option value="7">Julio</option>
-  <option value="8">Agosto</option>
-  <option value="9">Septiembre</option>
-  <option value="10">Octubre</option>
-  <option value="11">Noviembre</option>
-  <option value="12">Diciembre</option>
-</select>
+
+<input type="month" name="meses" value="">
 <button type="submit" class="btn btn-primary">Buscar</button>
 </form>
 
@@ -37,6 +25,13 @@
 
 <table id="example" class="display table table-hover" cellspacing="0" width="100%">
       <thead >
+        <tr>
+          <th class="text-center" colspan="9"></th>
+          <th class="text-center" colspan="3">Medio Día</th>
+          <th class="text-center"colspan="3">Día Completo</th>
+          <th class="text-center"colspan="3">Días después 18:00 Hrs</th>
+          <th class="text-center" colspan="2">Montos Finales</th>
+          </tr>
         <tr>
           <th class="text-center">N°</th>
           <th class="text-center">Apellido Paterno</th>
@@ -49,18 +44,25 @@
           <th class="text-center">Dirección</th>
           <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
-          <th class="text-center">N° dias</th>
+          <th class="text-center">N° días</th>
           <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
-          <th class="text-center">N° dias</th>
+          <th class="text-center">N° días</th>
           <th class="text-center">Fechas</th>
           <th class="text-center">Monto</th>
-          <th class="text-center">N° dias</th>
+          <th class="text-center">N° días</th>
           <th class="text-center">$ Total liquido</th>
           <th class="text-center">$ Total bruto</th>
           </tr>
       </thead>
       <tfoot>
+        <tr>
+          <th class="text-center" colspan="9"></th>
+          <th class="text-center" colspan="3">Medio Día</th>
+          <th class="text-center"colspan="3">Día Completo</th>
+          <th class="text-center"colspan="3">Días después 18:00 Hrs</th>
+          <th class="text-center" colspan="2">Montos Finales</th>
+          </tr>
         <tr>
           <th class="text-center">N°</th>
           <th class="text-center">Apellido Paterno</th>
@@ -85,8 +87,8 @@
         </tr>
       </tfoot>
       <tbody>
-
         @for($i=0 ; $i < $element ; $i++ )
+
         <tr>
           <td class="text-center">{{$i+1}}</td>
           <td class="text-center">{{$expos[$i]['alu_apellido_paterno']}}</td>

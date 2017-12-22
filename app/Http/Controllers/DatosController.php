@@ -356,6 +356,11 @@ class DatosController extends Controller
         $fechamediodia=array();
         $fechatarde=array();
         $largo = strlen($expos[1]['alu_rut']);
+        $hoy = date("Y");
+        $fecha = "Todo el registro";
+
+
+
 
         foreach ($expos as $exp ) {
           if($largo == 9)
@@ -384,16 +389,15 @@ class DatosController extends Controller
             $fecmd="";
             $fecd18="";
             $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->where('asistencia','=','1')->where('pagado','=','0')->get();
-
-
             foreach ($turndetail as $dt ) {
                 $turn = Turn::where('id','=',$dt['id_turno'])->get();
                 foreach ($turn as $tr) {
                   $jornada = Jornada::where('id','=',$tr['id_jornada'])->get();
                   $evento = Event::where('id','=',$tr['id_evento'])->first();
                   $date = date("m", strtotime($evento['start']));
+                  $ano = date("Y");
 
-                  //if($date == $mes){
+                  if($ano == $hoy){
                   if($jornada[0]['tipo']==1){
                     $md = $md + $jornada[0]['valor'];
                     $cmd= $cmd +1;
@@ -411,10 +415,9 @@ class DatosController extends Controller
                     $cd18 = $cd18 + 1;
                     $date = date("d/m/y", strtotime($evento['start']));
                     $fecd18 = $fecd18 .$date."-";
-
                   }
                 }
-
+                }
                 //}
             }
             if($cmd!=0 || $cd18 !=0 || $cdc !=0 ){
@@ -435,7 +438,7 @@ class DatosController extends Controller
           }
         }
         return view('pagos',compact('pago','expos','element','medio','completo','tarde',
-        'canmedio','cantarde','cancompleto','total','fechamediodia','fechadiacompleto','fechatarde'));
+        'canmedio','cantarde','cancompleto','total','fechamediodia','fechadiacompleto','fechatarde','fecha'));
       }
     }
 
@@ -526,7 +529,10 @@ class DatosController extends Controller
     public function pagoss(Request $request){
 
       if (Auth::user()->id_rol == 1){
-        $mes =  $request->meses;
+        $fecha =  $request->meses;
+        $mes = date("m", strtotime($fecha));
+        $ano = date("Y", strtotime($fecha));
+
 
         $expos = Exhibitor::all();
         $pago =array();
@@ -541,6 +547,9 @@ class DatosController extends Controller
         $fechadiacompleto=array();
         $fechamediodia=array();
         $fechatarde=array();
+
+
+        $fecha = strftime("%B del %Y", strtotime($request->meses));
 
         $largo = strlen($expos[1]['alu_rut']);
 
@@ -573,30 +582,32 @@ class DatosController extends Controller
             $turndetail = Turndetail::where('id_expositor','=',$expo['id'])->where('asistencia','=','1')->where('pagado','=','0')->get();
 
 
+
             foreach ($turndetail as $dt ) {
                 $turn = Turn::where('id','=',$dt['id_turno'])->get();
                 foreach ($turn as $tr) {
                   $jornada = Jornada::where('id','=',$tr['id_jornada'])->get();
                   $evento = Event::where('id','=',$tr['id_evento'])->first();
                   $date = date("m", strtotime($evento['start']));
+                  $datean = date("Y", strtotime($evento['start']));
 
-                  if($date == $mes){
+                  if($date == $mes && $datean == $ano ){
                   if($jornada[0]['tipo']==1){
                     $md = $md + $jornada[0]['valor'];
                     $cmd= $cmd +1;
-                      $date = date("d/m/y", strtotime($evento['start']));
+                      $date = date("d", strtotime($evento['start']));
                     $fecmd = $fecmd .$date."-";
                   }
                   if($jornada[0]['tipo']==2){
                     $dc = $dc + $jornada[0]['valor'];
                     $cdc = $cdc +1 ;
-                    $date = date("d/m/y", strtotime($evento['start']));
+                    $date = date("d", strtotime($evento['start']));
                     $fecdc = $fecdc .$date."-";
                   }
                   if($jornada[0]['tipo']==3){
                     $d18 = $d18 + $jornada[0]['valor'];
                     $cd18 = $cd18 + 1;
-                    $date = date("d/m/y", strtotime($evento['start']));
+                    $date = date("d", strtotime($evento['start']));
                     $fecd18 = $fecd18.$date."-";
 
                   }
@@ -622,7 +633,7 @@ class DatosController extends Controller
           }
         }
         return view('pagos',compact('pago','expos','element','medio','completo','tarde',
-        'canmedio','cantarde','cancompleto','total','fechamediodia','fechadiacompleto','fechatarde'));
+        'canmedio','cantarde','cancompleto','total','fechamediodia','fechadiacompleto','fechatarde','fecha'));
       }
     }
     /*public function checkTurns()

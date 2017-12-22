@@ -682,5 +682,24 @@ class DatosController extends Controller
         return redirect('/');
       }
     }
+    public function con()
+    {
+      if (Auth::user()->id_rol == 4){
+        $exp = Exhibitor::where('id_user',Auth::user()->id)->get();
+        $turns = Turndetail::where('id_expositor',$exp[0]->id)->get();
+      //  dd($turns);
+        $count = 0;
+        foreach ($turns as $turno) {
+            if ($turno->visto == 0) {
+              $count++;
+            }
+        }
+        return view('contact',compact('count'));
+      }
+      else {
+        return redirect('/');
+      }
+      # code...
+    }
 
 }

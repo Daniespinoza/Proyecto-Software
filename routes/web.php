@@ -11,11 +11,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/ruta', function () {
-    return view('home');
-});
-*/
+
+Route::get('/contact', 'DatosController@con' );
+
 Auth::routes();
 Route::get('/comuna', function () {
   $event = App\Commune::all();

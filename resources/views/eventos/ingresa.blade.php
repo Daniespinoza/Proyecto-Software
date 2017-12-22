@@ -4,6 +4,21 @@
 @section('ventana','Agregar Evento')
 @section('contenido')
 
+<script>
+  function validaCantidad(data, cant){
+    if(data.length > 1){
+      if (data > cant){
+        $('#de').fadeIn();
+        document.getElementById('sub').disabled=true;
+      }else{
+        $('#de').fadeOut();
+        document.getElementById('sub').disabled=false;
+      }
+    }
+  }
+</script>
+
+
 <div class="row">
   <div class="col-md-4">
 
@@ -91,16 +106,25 @@
                   <input type="datetime-local" name="fecha" value="" required>
               </div>
             </div>
+
           <div class="form-group">
               <label class="col-md-5 control-label no-padding-right">Cupos requeridos</label>
               <div class="col-md-3">
-                <input type="number" name="cupos"  min="1" pattern="[0-9]" required>
+                <input type="number" name="cupos" oninput="validaCantidad(this.value,{{$cantidad}})" min="1" max="{{$cantidad}}" pattern="[0-9]" required>
             </div>
           </div>
 
           <div class="form-group">
+            <div class="col-md-2"></div>
+              <div class="alert alert-danger col-md-10 " style="display: none" id="de">
+                <i class="ace-icon fa fa-warning"></i>
+                <strong>Alerta! </strong> Cantidad de cupos excede el máximo de expositores.
+              </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-md-8"></div>
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" id="sub" class="btn btn-primary">
             </div>
           </div>
         </div>

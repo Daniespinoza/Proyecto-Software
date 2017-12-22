@@ -9,8 +9,8 @@
 
 <div class="page-header">
   <h1>Nómina de pagos Estudiantes Expositores de Difusión UTEM {{$fecha}}</h1>
-  <h4>favor seleccionar un mes y año para filtrar la información</h4>
 </div>
+<h4>Seleccionar un mes y año para filtrar la información</h4>
 
 <div class="form-group">
 <form class="form-horizontal" method="post" action="{{action('DatosController@pagoss')}}">

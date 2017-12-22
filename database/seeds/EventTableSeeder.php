@@ -16,10 +16,10 @@ class EventTableSeeder extends Seeder
       $evento->id_personal = 2;
       $evento->id_establecimiento = 1 ;
       $evento->direccion= 'Irarrázabal 5310' ;
-      $evento->cupos=4;
-      $evento->start = '2017-12-18 13:30' ;
+      $evento->cupos=10;
+      $evento->start = '2017-12-27 13:30' ;
       $evento->title='Feria Ñuñoa';
-      $evento->ficha=false;
+      $evento->ficha=0;
       $evento -> save();
 
       $evento1 = new Event();
@@ -30,7 +30,7 @@ class EventTableSeeder extends Seeder
       $evento1->cupos=4;
       $evento1->start = '2017-12-25 10:00' ;
       $evento1->title='Ensayo PSU Macul';
-      $evento1->ficha=false;
+      $evento1->ficha=0;
       $evento1 -> save();
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Nómina de pagos Estudiantes Expositores de Difusión UTEM')
+@section('title','Nómina de pagos Estudiantes Expositores de Difusión UTEM '.$fecha)
 @section('ventana','Generar Pagos')
 @section('contenido')
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">

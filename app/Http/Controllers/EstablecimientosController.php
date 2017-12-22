@@ -73,9 +73,9 @@ class EstablecimientosController extends Controller
         $tipos = Establishmenttype::all();
         $deptos = Departament::all();
         $comunas = Commune::orderBy('nombre','asc')->get();
-        $regiones = Region::orderBy('nombre','asc')->get();
+        $regions = Region::all();
         $cargos = Establishmentcharge::orderBy('descripcion','asc')->get();
-        return view('establecimientos.create',compact('tipos','deptos','comunas','regiones','cargos'));
+        return view('establecimientos.create',compact('tipos','deptos','comunas','regions','cargos'));
       }
       else{
         return redirect('/');

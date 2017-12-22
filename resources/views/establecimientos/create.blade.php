@@ -23,20 +23,30 @@
           <input class="form-control" type="text" name="nombre" required/>
         </div>
       </div>
+
       <div class="form-group">
-          <label class="col-md-3 control-label no-padding-right"> Comuna</label>
+          <label class="col-md-3 control-label no-padding-right"> Región</label>
           <div class="col-md-4">
-
-          <select class="form-control" name="comuna" required>
-            <option class="form-control" value="">-- Seleccione una comuna --</option>
-            @foreach($comunas as $comuna)
-              <option class="form-control" value="{{$comuna['id']}}"> {{$comuna['nombre']}}</option>
-            @endforeach
-          <!--input  type="checkbox" name="si_otra" value="si" /-->
-        </select>
+            <select class="form-control" name="regiones" onchange="load(this.value)" required>
+              <option value="">-- Seleccione una región --</option>
+            @foreach ($regions as $region)
+              <option value="{{$region['id']}}">{{$region['nombre']}}</option>
+          @endforeach
+          </select>
         </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label no-padding-right"> Comuna</label>
+            <div class="col-md-4">
+              <div id="demo">
+              <select class="form-control" name="comuna" required>
+                <option value="">-- Seleccione una Comuna --</option>
+              </select>
+        </div>
+          </div>
+  </div>
 
-</div>
+
 <div class="form-group">
 <label class="col-md-3 control-label no-padding-right"> Dirección</label>
 <div class="col-md-4">
@@ -111,6 +121,23 @@
 </form>
 </div>
 
+<script type="text/javascript">
+function load(x) {
+  $.getJSON( "/comuna", function( data ) {
+    $( "#demo" ).empty();
+    var items = [];
+  items.push('<option value="">-- Seleccione una Comuna --</option>');
+  $.each( data, function( key, val ) {
+    if(val.id_region==x){items.push( "<option value='" + val.id + "'>" + val.nombre + "</option>" );}
+  });
+  $( "<select/>", {
+    "class": "form-control",
+    "name": "comuna",
+    html: items.join( "" )
+  }).appendTo( "#demo" );
+  });
+}
+</script>
 
 
 

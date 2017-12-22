@@ -675,8 +675,11 @@ public function getVerFicha($id)
     {
       array_push($encar,$expo,$turn->dinero_turno);
     }
+    if($turn->asistencia == 1)
+    {
     $canexp++;
     array_push($expos,$expo);
+    }
   }
 
 

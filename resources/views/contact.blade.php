@@ -6,7 +6,7 @@
 <div class="page-content">
 <div class="page-header">
     <h1>
-        Comunicate con nosotros
+        Comunícate con nosotros
     </h1>
 </div>
 <div class="row">
@@ -14,7 +14,7 @@
               <form class="form-horizontal enviar_mensaje" method="post" action="{{ url('/contacto/enviar_mensaje') }}">
                 {{csrf_field()}}
                   <div class="form-group">
-                      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Fucionario </label>
+                      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Funcionario </label>
                       <div class="col-sm-9" style="width: 40%;">
                           <select name="area" id="area" class="form-control area">
                             <option value="correo1">JEFA DE AREA DE DIFUSIÓN</option>
@@ -28,7 +28,7 @@
                       <div class="col-sm-9" style="width: 50%;">
                           <div class="space-4"></div>
                           <p>
-                              <span>expositor@utem.cl</span>
+                              <span>{{Auth::user()->email}}</span>
                               <!--span class="label label-Default arrowed-in-right arrowed">
                                     <i class="ace-icon fa fa-info-circle bigger-120"></i>
                                     Para cambiar tu email ingresa <a href='/perfil/mis_datos'><b>AQUÍ</b></a>
@@ -70,6 +70,6 @@
                 </div>
 
   </div>
-                  </div>
-                </div>
+                
+
 @endsection

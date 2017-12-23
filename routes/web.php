@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/contact', 'DatosController@con' );
+Route::get('/contact', 'DatosController@con' )->middleware('exhi');;
 
 Auth::routes();
 Route::get('/comuna', function () {
@@ -34,6 +34,7 @@ Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi')
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');
 Route::post('/historial','DatosController@updateAsistir')->middleware('exhi');
+Route::post('/contacto/enviar_mensaje', 'DatosController@store')->middleware('exhi');
 
 
 Route::get('/generar_pagos','DatosController@pagos')->middleware('personal');

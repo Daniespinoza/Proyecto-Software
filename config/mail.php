@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'difusion@utem.cl'),
+        'name' => env('MAIL_FROM_NAME', 'Difusión UTEM'),
     ],
 
     /*
@@ -91,7 +91,7 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Sendmail System Path
-    |--------------------------------------------------------------------------
+    |--------------------------------------Example------------------------------------
     |
     | When using the "sendmail" driver to send e-mails, we will need to know
     | the path to where Sendmail lives on this server. A default path has

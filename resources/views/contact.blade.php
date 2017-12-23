@@ -11,7 +11,7 @@
 </div>
 <div class="row">
           <div class="col-xs-12">
-              <form class="form-horizontal enviar_mensaje" method="post" action="{{ url('contact') }}">
+              <form class="form-horizontal enviar_mensaje" method="post" action="{{ url('/contacto/enviar_mensaje') }}">
                 {{csrf_field()}}
                   <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Fucionario </label>

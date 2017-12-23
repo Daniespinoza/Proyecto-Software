@@ -87,8 +87,9 @@ class EventosController extends Controller
         $evento = Eventtype::all()->toArray();
         $evn = Event::all();
         $evn->toJson();
+        $cantidad = Exhibitor::all()->count();
         //dd($evn);
-        return view('eventos.create',compact('establecimientos','evento' ,'evn'));
+        return view('eventos.create',compact('establecimientos','evento' ,'evn','cantidad'));
       }
       else{
         return redirect('/');
@@ -104,7 +105,9 @@ class EventosController extends Controller
         $evento = Eventtype::all()->toArray();
         $evn = Event::all();
         $evn->toJson();
-        return view('eventos.ingresa',compact('establecimientos','evento' ,'evn'));
+        $cantidad = Exhibitor::all()->count();
+        //dd($evn);
+        return view('eventos.ingresa',compact('establecimientos','evento' ,'evn','cantidad'));
       }
       else{
         return redirect('/');

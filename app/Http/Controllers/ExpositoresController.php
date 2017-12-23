@@ -279,17 +279,17 @@ class ExpositoresController extends Controller
           foreach ($detalle_turno as $dt) {
                 $tur = Turn::where('id','=',$dt->id_turno)->get();
                 foreach ($tur as $tr ) {
-                  $jorn = Jornada::where('id','=',$tr->id_jornada)->get();
-                  $pagar = $pagar + $jorn[0]['valor'];
+                  $jorn = Jornada::where('id','=',$tr->id_jornada)->first();
+                  $pagar = $pagar + $jorn['valor'];
                   array_push($jornada,$jorn);
-                  $eve = Event::where('id','=',$tr->id_evento)->get();
-                  foreach($eve as $e){
-                    $tp = Eventtype::where('id','=',$e->id_tipo_evento)->get();
+                  $eve = Event::where('id','=',$tr->id_evento)->first();
+
+                    $tp = Eventtype::where('id','=',$eve->id_tipo_evento)->first();
                     array_push($tipo,$tp);
-                    $et = Establishment::where('id','=',$e->id_establecimiento)->get();
+                    $et = Establishment::where('id','=',$eve->id_establecimiento)->first();
                     array_push($esta,$et);
-                  }
-                  array_push($evento,$eve);
+                      array_push($evento,$eve);
+                          
                 }
                 array_push($turno,$tur);
           }

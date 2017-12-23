@@ -100,6 +100,17 @@ function validaCorreo(data){
     </div>
 </div>
 
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+            <div class="alert alert-danger">
+              <i class="ace-icon fa fa-warning"></i>
+              <strong>Alerta! </strong>{{ $error }}
+            </div>
+            @endforeach
+        @endif
+
+
 <div class="form-group">
      <label class="col-md-3 control-label no-padding-right" for="form-field-1"> Nombre </label>
      <div class="col-md-4">

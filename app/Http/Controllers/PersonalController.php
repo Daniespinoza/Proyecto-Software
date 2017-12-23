@@ -9,6 +9,8 @@ use App\User;
 use Auth;
 use \Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Validator;
+use Illuminate\Validation\Rule;
 
 class PersonalController extends Controller
 {
@@ -40,7 +42,7 @@ class PersonalController extends Controller
             {
               $mistring = $per['rut'];
               $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
-              $per['rut']=$mistring;    
+              $per['rut']=$mistring;
             }
 
 
@@ -80,15 +82,25 @@ class PersonalController extends Controller
     {
       if(Auth::user()->id_rol == 1){
 
-        $pass = substr($request->get('correo'),0,-8);
-        $ac = true;
-        $user = new User([
-          'name' => $request->get('nombre'),
-          'email' => $request->get('correo'),
-          'password' => bcrypt($pass),
-          'id_rol' => $request->get('rol'),
-          'activo' => $ac
-        ]);
+        $validatedData = Validator::make($request->all(),[
+        'rut' => 'unique:staff,rut',
+        'correo' => 'unique:users,email',
+      ]);
+      if ($validatedData->fails()) {
+                return redirect('/personal/create')->withErrors($validatedData)->withInput();
+              }
+              else {
+
+
+              $pass = substr($request->get('correo'),0,-8);
+              $ac = true;
+              $user = new User([
+                'name' => $request->get('nombre'),
+                'email' => $request->get('correo'),
+                'password' => bcrypt($pass),
+                'id_rol' => $request->get('rol'),
+                'activo' => $ac
+              ]);
 
         $user->save();
 
@@ -114,6 +126,7 @@ class PersonalController extends Controller
 
         return redirect('/personal');
       }
+    }
       else{
         return redirect('/');
       }

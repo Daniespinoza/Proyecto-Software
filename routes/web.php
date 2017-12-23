@@ -29,6 +29,7 @@ Route::resource('mis_datos','DatosController');
 
 Route::get('/mi_horario','DatosController@getHorario')->middleware('exhi');
 Route::get('/mis_pagos','ExpositoresController@getPagos')->middleware('exhi');
+Route::post('/mis_pagos','ExpositoresController@Pagoss')->middleware('exhi');
 Route::get('/ingresar_horario','DatosController@setHorario')->middleware('exhi');
 Route::post('/horario','DatosController@updateHorario')->middleware('exhi');
 Route::get('/mi_historial','DatosController@getHistorial')->middleware('exhi');

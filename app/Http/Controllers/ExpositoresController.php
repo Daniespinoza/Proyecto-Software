@@ -57,7 +57,7 @@ class ExpositoresController extends Controller
             {
               $mistring = $expo['alu_rut'];
               $mistring= substr($mistring,0,2).".".substr($mistring,2,3).".".substr($mistring,5,7);
-              $expo['alu_rut']=$mistring;  
+              $expo['alu_rut']=$mistring;
             }
 
 
@@ -275,6 +275,7 @@ class ExpositoresController extends Controller
           $tipo = array();
           $esta = array();
           $pagar = 0;
+          $fecha = "Acumulado Hasta Hoy";
           foreach ($detalle_turno as $dt) {
                 $tur = Turn::where('id','=',$dt->id_turno)->get();
                 foreach ($tur as $tr ) {
@@ -305,9 +306,73 @@ class ExpositoresController extends Controller
                 }
             }
           }
-            return view('/expositores.pagos',compact('jornada','tipo','evento','esta','pagar','max','count') );
+            return view('/expositores.pagos',compact('jornada','tipo','evento','esta','pagar','max','count','fecha') );
           }
     }
 
+    public function Pagoss(Request $request)
+    {
+      if (Auth::user()->id_rol == 4){
+          $id = Auth::user()->id;
+          $expo = Exhibitor::where('id_user','=',$id)->first();
+          $detalle_turno = Turndetail::where('id_expositor','=',$expo->id)->where('asistencia','=',1)->get();
+          $turno = array();
+          $jornada = array();
+          $evento = array();
+          $tipo = array();
+          $esta = array();
+          $pagar = 0;
+
+          $fecha =  $request->meses;
+          $mes = date("m", strtotime($fecha));
+          $ano = date("Y", strtotime($fecha));
+
+          $fecha = strftime("%B del %Y", strtotime($request->meses));
+
+
+
+          foreach ($detalle_turno as $dt) {
+                $tur = Turn::where('id','=',$dt->id_turno)->get();
+                foreach ($tur as $tr ) {
+                  $eve = Event::where('id','=',$tr->id_evento)->first();
+
+                    $date = date("m", strtotime($eve['start']));
+                    $datean = date("Y", strtotime($eve['start']));
+
+                    if($date == $mes && $datean == $ano ){
+
+                      $tp = Eventtype::where('id','=',$eve->id_tipo_evento)->first();
+                      array_push($tipo,$tp);
+                      $et = Establishment::where('id','=',$eve->id_establecimiento)->first();
+                      array_push($esta,$et);
+                      $jorn = Jornada::where('id','=',$tr->id_jornada)->first();
+                      $pagar = $pagar + $jorn['valor'];
+
+                      array_push($jornada,$jorn);
+
+                      array_push($evento,$eve);
+                  }
+                }
+                array_push($turno,$tur);
+          }
+
+          $max = count($evento);
+
+
+
+          if (Auth::user()->id_rol == 4){
+            $expo = Exhibitor::where('id_user',Auth::user()->id)->get();
+            $turns = Turndetail::where('id_expositor',$expo[0]->id)->get();
+          //  dd($turns);
+            $count = 0;
+            foreach ($turns as $turno) {
+                if ($turno->visto == 0) {
+                  $count++;
+                }
+            }
+          }
+            return view('/expositores.pagos',compact('jornada','tipo','evento','esta','pagar','max','count','fecha') );
+          }
+    }
 
 }

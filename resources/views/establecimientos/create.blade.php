@@ -8,6 +8,14 @@
   <h1>Formulario Inscripción de Establecimiento</h1>
 </div>
 <div class="row">
+  @if ($errors->any())
+      @foreach ($errors->all() as $error)
+      <div class="alert alert-danger">
+        <i class="ace-icon fa fa-warning"></i>
+        <strong>Alerta! </strong>{{ $error }}
+      </div>
+      @endforeach
+  @endif
 <div class="col-xs-12">
 <form class="form-horizontal" method="post" action="{{url('establecimientos')}}">
 {{csrf_field()}}

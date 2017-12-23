@@ -10,6 +10,8 @@ use App\Departament;
 use App\Region;
 use App\Commune;
 use Auth;
+use Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
 class EstablecimientosController extends Controller
@@ -91,34 +93,44 @@ class EstablecimientosController extends Controller
     public function store(Request $request)
     {
       if(Auth::user()->id_rol != 4){
-        $ti= $request->get('tipo');
-        $Eve= Establishmenttype::where('id',$ti)->first();
-
-        if($Eve->tipo == 'PREU')
-        {
-          $rb = null;
+        $validatedData = Validator::make($request->all(),[
+        'rbd' => 'unique:establishments,rbd',
+        ]);
+        if ($validatedData->fails()) {
+                return redirect('/establecimientos/create')->withErrors($validatedData)->withInput();
         }
         else {
-          $rb= $request->get('rbd');
+
+
+          $ti= $request->get('tipo');
+          $Eve= Establishmenttype::where('id',$ti)->first();
+
+          if($Eve->tipo == 'PREU')
+          {
+            $rb = null;
+          }
+          else {
+            $rb= $request->get('rbd');
+          }
+
+          $est = new Establishment([
+            'rbd' => $rb,
+            'nombre_establecimiento' => $request->get('nombre'),
+            'id_comuna' => $request->get('comuna'),
+            'direccion' => $request->get('direccion'),
+            'id_depto' => $request->get('depto'),
+            'id_tipo_establecimiento' => $request->get('tipo'),
+            'encargado' => $request->get('encargado'),
+            'id_cargo' => $request->get('cargo'),
+            'correo' => $request->get('correo'),
+            'telefono' => $request->get('fono'),
+            'pace' => $request->get('pace'),
+          ]);
+
+          $est->save();
+
+          return redirect('/establecimientos');
         }
-
-        $est = new Establishment([
-          'rbd' => $rb,
-          'nombre_establecimiento' => $request->get('nombre'),
-          'id_comuna' => $request->get('comuna'),
-          'direccion' => $request->get('direccion'),
-          'id_depto' => $request->get('depto'),
-          'id_tipo_establecimiento' => $request->get('tipo'),
-          'encargado' => $request->get('encargado'),
-          'id_cargo' => $request->get('cargo'),
-          'correo' => $request->get('correo'),
-          'telefono' => $request->get('fono'),
-          'pace' => $request->get('pace'),
-        ]);
-
-        $est->save();
-
-        return redirect('/establecimientos');
       }
       else{
         return redirect('/');

@@ -8,7 +8,7 @@
     'timezone' => 'America/Santiago',
     'locale' => 'es',
     'fallback_locale' => 'en',
-    'key' => 'base64:NbfquflgsA4iOYQlXF7f2wYLmOX+6XDsVzmCgqkbrfY=',
+    'key' => 'base64:aEhPeI+1xIwwD/1jsr6i7/ZX4ZErXDM+mu7TpSPHZw4=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
     'log_level' => 'debug',
@@ -171,7 +171,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/framework/cache/data',
+        'path' => '/home/informatica/Proyecto-Software/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -211,7 +211,7 @@
       'sqlite' => 
       array (
         'driver' => 'sqlite',
-        'database' => 'difusion',
+        'database' => 'cododb',
         'prefix' => '',
       ),
       'mysql' => 
@@ -219,9 +219,9 @@
         'driver' => 'mysql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'difusion',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'cododb',
+        'username' => 'compu',
+        'password' => 'difu123',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -234,9 +234,9 @@
         'driver' => 'pgsql',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'difusion',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'cododb',
+        'username' => 'compu',
+        'password' => 'difu123',
         'charset' => 'utf8',
         'prefix' => '',
         'schema' => 'public',
@@ -247,9 +247,9 @@
         'driver' => 'sqlsrv',
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'difusion',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'cododb',
+        'username' => 'compu',
+        'password' => 'difu123',
         'charset' => 'utf8',
         'prefix' => '',
       ),
@@ -276,12 +276,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/app',
+        'root' => '/home/informatica/Proyecto-Software/storage/app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/app/public',
+        'root' => '/home/informatica/Proyecto-Software/storage/app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -306,15 +306,15 @@
       'name' => 'Example',
     ),
     'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
+    'username' => '600f4fc3d17a17',
+    'password' => 'bd59a8fd1d1fc7',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/opt/lampp/htdocs/ws/Proyecto-Software/resources/views/vendor/mail',
+        0 => '/home/informatica/Proyecto-Software/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -394,7 +394,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/framework/sessions',
+    'files' => '/home/informatica/Proyecto-Software/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -441,9 +441,9 @@
   array (
     'paths' => 
     array (
-      0 => '/opt/lampp/htdocs/ws/Proyecto-Software/resources/views',
+      0 => '/home/informatica/Proyecto-Software/resources/views',
     ),
-    'compiled' => '/opt/lampp/htdocs/ws/Proyecto-Software/storage/framework/views',
+    'compiled' => '/home/informatica/Proyecto-Software/storage/framework/views',
   ),
   'trustedproxy' => 
   array (

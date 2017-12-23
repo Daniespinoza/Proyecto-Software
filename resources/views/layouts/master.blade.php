@@ -514,13 +514,15 @@
             </li>
         </ul>
     </li>
+		@if (Auth::user()->id_rol == 4)
     <li>
-        <a href="">
+        <a href="{{action('DatosController@con')}}">
             <i class="menu-icon fa fa-send"></i>
             <span class="menu-text"> Contáctanos</span>
         </a>
         <b class="arrow"></b>
     </li>
+		@endif
 </ul><!-- /.nav-list -->
 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
     <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

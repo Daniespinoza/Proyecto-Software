@@ -19,6 +19,8 @@ use App\Establishment;
 use App\Jornada;
 use App\Turn;
 use App\Turndetail;
+use App\Mail\turno;
+use Mail;
 
 
 
@@ -126,7 +128,10 @@ class DatosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('area');
+        $msg = $request->input('mensaje');
+        Mail::to('zagalvelozo@gmail.com')->send(new turno()); 
+
     }
 
     /**
@@ -681,6 +686,25 @@ class DatosController extends Controller
       }else{
         return redirect('/');
       }
+    }
+    public function con()
+    {
+      if (Auth::user()->id_rol == 4){
+        $exp = Exhibitor::where('id_user',Auth::user()->id)->get();
+        $turns = Turndetail::where('id_expositor',$exp[0]->id)->get();
+      //  dd($turns);
+        $count = 0;
+        foreach ($turns as $turno) {
+            if ($turno->visto == 0) {
+              $count++;
+            }
+        }
+        return view('contact',compact('count'));
+      }
+      else {
+        return redirect('/');
+      }
+      # code...
     }
 
 }

@@ -85,8 +85,10 @@ $(document).ready(function() {
        buttons: [
            {
                extend: 'pdfHtml5',
-               orientation: 'landscape',
                pageSize:'LEGAL',
+               exportOptions: {
+                    columns: [ 0, 1, 2, 3 ]
+                }
 
            }
        ],

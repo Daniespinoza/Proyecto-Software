@@ -297,8 +297,8 @@ class EventosController extends Controller
         $tiposevento = Event::all();
         $ev = Event::find($id);
         //dd($ev['start']);
-        $expositores = Exhibitor::orderBy('alu_nombre','asc')->get();
-        //dd($expositores);
+        $expositores = Exhibitor::orderBy('alu_nombre','asc')->where('activo','=',1)->get();
+        dd($expositores);
         $detalles = Turndetail::all()->toArray();
         $disponibilidades = Disponibilidad::all()->toArray();
 

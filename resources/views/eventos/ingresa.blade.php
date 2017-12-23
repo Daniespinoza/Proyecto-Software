@@ -6,7 +6,7 @@
 
 <script>
   function validaCantidad(data, cant){
-    if(data.length > 1){
+    if(data.length > 0){
       if (data > cant){
         $('#de').fadeIn();
         document.getElementById('sub').disabled=true;

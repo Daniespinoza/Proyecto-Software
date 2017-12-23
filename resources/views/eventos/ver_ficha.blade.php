@@ -17,10 +17,12 @@
     <div class="col-md-3"><h4 align="center"><strong>Horario:</strong> {{\Carbon\Carbon::parse($event['start'])->format('H:m')}}</h4></div>
 
     <div class="col-md-3"><h4 align="left"><strong>Lugar:</strong> {{$event['direccion']}}</h4></div>
-
-    <div class="col-md-5"><h4 align="center"><strong>Tipo Evento:</strong> {{$eventype['subtipo']}}</h4></div>
-
   </div>
+<div class="row">
+
+  <div class=""><h4 align="center"><strong>Tipo Evento:</strong> {{$eventype['subtipo']}}</h4></div>
+</div>
+
 
 <table id="examples" class="display table table-hover" cellspacing="0" width="100%">
   <thead>
@@ -82,11 +84,11 @@
 <table id="example" class="display table table-hover" cellspacing="0" width="100%">
 
   <thead>
-    <th class="text-center">Descripcion</th>
+    <th class="text-center">Descripción</th>
     <th class="text-center">Cantidad utilizada</th>
   </thead>
   <tfoot>
-    <th class="text-center">Descripcion</th>
+    <th class="text-center">Descripción</th>
     <th class="text-center">Cantidad utilizada</th>
   </tfoot>
   <tbody>
@@ -102,7 +104,7 @@
   <div class="row">
     <div class="col-md-4" ><h4 align="right"><strong>Transporte:</strong> {{ $turno[0]['tipo_transporte'] }}</h4></div>
     <div class="col-md-4" ><h4 align="center"><strong>Encargado:</strong> {{$encar[0]->alu_nombre." ".$encar[0]->alu_apellido_paterno." ".$encar[0]->alu_apellido_materno }}</h4></div>
-    <div class="col-md-3" ><h4 align="right"><strong>Monto:</strong> {{$encar[1]}}</h4></div>
+    <div class="col-md-3" ><h4 align="right"><strong>Monto:</strong> $ {{$encar[1]}}</h4></div>
 </div>
 
 

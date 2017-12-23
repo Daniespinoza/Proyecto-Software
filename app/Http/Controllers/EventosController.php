@@ -138,7 +138,7 @@ class EventosController extends Controller
               'direccion'=> $request->get('direccion'),
               'start'=>$request->get('fecha'),
               'title' => $request->get('nombre'),
-              'ficha' => false
+              'ficha' => 0
 
             ]);
 

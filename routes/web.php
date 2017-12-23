@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/contact', 'DatosController@con' )->middleware('exhi');;
-
 Auth::routes();
 Route::get('/comuna', function () {
   $event = App\Commune::all();
@@ -50,15 +49,6 @@ Route::get('/ver_ficha/{id}',['uses' => 'EventosController@getVerFicha'])->middl
 Route::post('confirmar_ficha','EventosController@confirmarFicha')->middleware('personal');
 Route::get('/ver_jornadas','DatosController@getJornadas')->middleware('admin');
 Route::post('/actualizar_jornadas','DatosController@setJornadas')->middleware('admin');
-
-//Route::get('generate-pdf', 'PdfGenerateController@pdfview')->name('generate-pdf');
-
-
-/*Route::get('/ficha_evento','EventosController@getFicha')->middleware('personal');
-Route::post('/enviar_ficha','EventosController@setFicha')->middleware('personal');*/
-
-//Route::get('/mi_sueldo','DatosController@getSueldo')->middleware('exhi');
-
 
 
 ////////////////////

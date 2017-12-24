@@ -20,7 +20,6 @@ use App\Jornada;
 use App\Turn;
 use App\Turndetail;
 use App\Mail\turno;
-use App\Mail\contacto;
 use Mail;
 
 

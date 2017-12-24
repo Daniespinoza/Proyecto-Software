@@ -20,6 +20,7 @@ use App\Jornada;
 use App\Turn;
 use App\Turndetail;
 use App\Mail\turno;
+use App\Mail\contacto;
 use Mail;
 
 
@@ -130,7 +131,7 @@ class DatosController extends Controller
     {
         $name = $request->input('area');
         $msg = $request->input('mensaje');
-        Mail::to('zagalvelozo@gmail.com')->send(new turno()); 
+        Mail::to($name)->send($msg);
 
     }
 

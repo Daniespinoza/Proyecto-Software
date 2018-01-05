@@ -29,6 +29,9 @@ class TipoEncargadoTableSeeder extends Seeder
         $encargado4->descripcion = 'Jefe UTP';
         $encargado4->save();
 
+        $encargado5 = new Establishmentcharge();
+        $encargado5->descripcion = 'Otro';
+        $encargado5->save();
 
     }
 }

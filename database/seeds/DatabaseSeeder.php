@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
             DepartamentTableSeeder::class,
             EstablecimientoTableSeeder::class,
             TypeEventTableSeeder::class,
-            HorarioTableSeeder::class,
+            //HorarioTableSeeder::class,
             JornadaTableSeeder::class,
-            EventTableSeeder::class,
-            TurnTableSeeder::class,
-            TurndetailTableSeeder::class
+          //  EventTableSeeder::class,
+          //  TurnTableSeeder::class,
+          //  TurndetailTableSeeder::class
         ]);
     }
 }

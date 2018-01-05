@@ -12,7 +12,7 @@ class HorarioTableSeeder extends Seeder
      */
     public function run()
     {
-        $horario = new Disponibilidad();
+        /*$horario = new Disponibilidad();
         $horario->id_expositor = 1;
         $horario->lunes = 'Ninguno' ;
         $horario->martes = 'Mañana' ;
@@ -154,6 +154,6 @@ class HorarioTableSeeder extends Seeder
         $horario->total_m = 5;
         $horario->total_t = 5;
         $horario->save();
-
+/*
     }
 }

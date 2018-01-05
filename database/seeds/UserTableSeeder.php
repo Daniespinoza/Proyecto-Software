@@ -13,13 +13,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
       $admin = new User();
-      $admin->name = 'Verónica';
-      $admin->email = 'veronica@utem.cl';
-      $admin->password = bcrypt('veronica');
+      $admin->name = 'Administrador';
+      $admin->email = 'Administrador@utem.cl';
+      $admin->password = bcrypt('Administrador');
       $admin->id_rol = 1;
       $admin->activo = true;
       $admin->save();
-
+/*
       $roja = new User();
       $roja->name = 'Amaya';
       $roja->email = 'amaya@utem.cl';
@@ -125,5 +125,6 @@ class UserTableSeeder extends Seeder
       $expositor0->save();
 
 
+*/
     }
 }

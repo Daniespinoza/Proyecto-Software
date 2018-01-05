@@ -11,7 +11,7 @@ class EventTableSeeder extends Seeder
      */
     public function run()
     {
-      $evento = new Event();
+      /*$evento = new Event();
       $evento->id_tipo_evento = 1;
       $evento->id_personal = 2;
       $evento->id_establecimiento = 1 ;
@@ -32,5 +32,6 @@ class EventTableSeeder extends Seeder
       $evento1->title='Ensayo PSU Macul';
       $evento1->ficha=0;
       $evento1 -> save();
+      */
     }
 }

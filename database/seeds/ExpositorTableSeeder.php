@@ -12,7 +12,7 @@ class ExpositorTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {/*
         $expo = new Exhibitor();
         $expo->alu_nombre = 'Expositor';
         $expo->alu_apellido_paterno = 'Paterno';
@@ -211,6 +211,6 @@ class ExpositorTableSeeder extends Seeder
         $expo0->activo = true;
         $expo0->save();
 
-
+*/
     }
 }

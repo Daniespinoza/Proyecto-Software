@@ -318,6 +318,7 @@
 								@endif
 
 								@if (Auth::user()->id_rol != 4 )
+								@if(Auth::user()->id_rol ==1 || Auth::user()->id_rol ==2)
                 <li class="">
                     <a class="link" href="{{action('EventosController@listarEventos')}}">
                         <i class="menu-icon fa fa-search"></i>
@@ -326,6 +327,7 @@
 
                     <b class="arrow"></b>
                 </li>
+								@endif
 
 								<li class="">
                     <a class="link" href="{{action('EventosController@historialEventos')}}">

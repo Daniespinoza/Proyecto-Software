@@ -13,17 +13,17 @@ class PersonalTableSeeder extends Seeder
     public function run()
     {
       $personal = new Staff();
-      $personal->nombre = 'Verónica';
-      $personal->apellido_paterno = 'Paterno';
-      $personal->apellido_materno = 'Materno';
-      $personal->rut = '9.999.999-9';
-      $personal->run = 9999999;
+      $personal->nombre = 'Administrador';
+      $personal->apellido_paterno = '';
+      $personal->apellido_materno = '';
+      $personal->rut = '';
+      $personal->run = 0000000;
       $personal->id_rol = 1;
-      $personal->correo = 'veronica@utem.cl';
+      $personal->correo = 'Administrador@utem.cl';
       $personal->activo = true;
       $personal->id_user = 1;
       $personal->save();
-
+/*
       $personal2 = new Staff();
       $personal2->nombre = 'Amaya';
       $personal2->apellido_paterno = 'Paterno2';
@@ -47,5 +47,6 @@ class PersonalTableSeeder extends Seeder
       $personal3->activo = true;
       $personal3->id_user = 3;
       $personal3->save();
+      */
     }
 }

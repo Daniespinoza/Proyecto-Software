@@ -17,9 +17,9 @@
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Funcionario </label>
                       <div class="col-sm-9" style="width: 40%;">
                           <select name="area" id="area" class="form-control area">
-                            <option value="correo1">JEFA DE AREA DE DIFUSIÓN</option>
-                            <option value="correo2">COORDINADORA DE EXPOSITORES</option>
-                            <option value="correo3">SECRETARIA</option>
+                            <option value="veronica@utem.cl">JEFA DE AREA DE DIFUSIÓN</option>
+                            <option value="amaya@utem.cl">COORDINADORA DE EXPOSITORES</option>
+                            <option value="secretaria.difusion@utem.cl">SECRETARIA</option>
                             </select>
                       </div>
                   </div>
@@ -70,6 +70,6 @@
                 </div>
 
   </div>
-                
+
 
 @endsection

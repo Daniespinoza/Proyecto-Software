@@ -130,7 +130,7 @@ class DatosController extends Controller
     {
         $name = $request->input('area');
         $msg = $request->input('mensaje');
-        Mail::to('zagalvelozo@gmail.com')->send(new turno()); 
+        Mail::to($name)->send($msg);
 
     }
 

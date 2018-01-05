@@ -16,11 +16,11 @@
                   <div class="form-group">
                       <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Funcionario </label>
                       <div class="col-sm-9" style="width: 40%;">
-                          <select name="area" id="area" class="form-control area">
+                        <!--  <select name="area" id="area" class="form-control area">
                             <option value="veronica@utem.cl">JEFA DE AREA DE DIFUSIÓN</option>
                             <option value="amaya@utem.cl">COORDINADORA DE EXPOSITORES</option>
                             <option value="secretaria.difusion@utem.cl">SECRETARIA</option>
-                            </select>
+                          </select>-->
                       </div>
                   </div>
                   <div class="form-group">
@@ -44,6 +44,7 @@
                           <textarea  name="mensaje" class='form-control mensaje' rows="5" maxlength="500" required="true" ></textarea>
                       </div>
                   </div>
+                  <!--
                   <div class="clearfix form-actions">
                       <div class="col-md-offset-3 col-md-9">
                           <button class="btn btn-purple" type="submit">
@@ -51,7 +52,7 @@
                               Enviar
                           </button>
                       </div>
-                  </div>
+                  </div>-->
               </form>
           </div>
       <div id="mensaje">
